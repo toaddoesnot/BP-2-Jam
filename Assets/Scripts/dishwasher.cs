@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cookedToast : MonoBehaviour
+public class dishwasher : MonoBehaviour
 {
-    
+    public FoodClasses FoodSelected;
 
     void OnMouseDown()
     {

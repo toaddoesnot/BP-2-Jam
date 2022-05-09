@@ -23,58 +23,58 @@ public class FoodButtonClick : MonoBehaviour
     // Start is called before the first frame update
     void OnMouseDown()
     {
-        if(HaveToast)
-        {
-            if (FoodSelected.currentFoods == 1)
-            {
-                strawberry.SetActive(true);
-            }
-            if (FoodSelected.currentFoods == 2)
-            {
-                butter.SetActive(true);
-            }
-        }
+        //if(HaveToast)
+        //{
+        //    if (FoodSelected.currentFoods == 1)
+        //    {
+        //        strawberry.SetActive(true);
+        //    }
+        //    if (FoodSelected.currentFoods == 2)
+        //    {
+        //        butter.SetActive(true);
+       //     }
+      //  }
         
-        if (ToastIsCooked.ToastCooked)
-        {
-            toast.SetActive(true);
-            HaveToast = true;
-        }
-        else
-        {
-            if (ToastIsCooked2.ToastCooked)
-            {
-                toast.SetActive(true);
-                HaveToast = true;
-            }
-        }
+       // if (ToastIsCooked.ToastCooked)
+       // {
+       //     toast.SetActive(true);
+       //     HaveToast = true;
+       // }
+        //else
+        //{
+        //    if (ToastIsCooked2.ToastCooked)
+        //    {
+         //       toast.SetActive(true);
+          //      HaveToast = true;
+          //  }
+      //  }
 
-        if (HaveNoodles)
-        {
-            if (FoodSelected.currentFoods == 5)
-            {
-                print("You have toast!");
-                egg.SetActive(true);
-            }
-            if (FoodSelected.currentFoods == 6)
-            {
-                shroom.SetActive(true);
-            }
-        }
+       // if (HaveNoodles)
+        //{
+        //    if (FoodSelected.currentFoods == 5)
+        //    {
+        //        print("You have toast!");
+        //        egg.SetActive(true);
+        //    }
+        //    if (FoodSelected.currentFoods == 6)
+        //    {
+        //        shroom.SetActive(true);
+         //   }
+       // }
 
-        if (RamenIsCooked.RamenCooked)
-        {
-            noodles.SetActive(true);
-            HaveNoodles = true;
-        }
-        else
-        {
-            if (RamenIsCooked2.RamenCooked)
-            {
-                noodles.SetActive(true);
-                HaveNoodles = true;
-            }
-        }
+        //if (RamenIsCooked.RamenCooked)
+        //{
+           // noodles.SetActive(true);
+           // HaveNoodles = true;
+       // }
+      //  else
+       // {
+        //    if (RamenIsCooked2.RamenCooked)
+        //    {
+         //       noodles.SetActive(true);
+         //       HaveNoodles = true;
+         //   }
+       // }
     }
 
     // Update is called once per frame

@@ -4,26 +4,51 @@ using UnityEngine;
 
 public class Cookers : MonoBehaviour
 {
-    public FoodClasses FoodSelected;
-
+    
     public GameObject Ramen;
     public GameObject FrenchToast;
-    public GameObject InstantRamen;
 
     public bool RamenReady;
     public bool ToastReady;
 
+    public bool HasRamen;
+    public bool HasToast;
+
+    public GameObject foodSelected;
+    public FoodClasses foodScript;
+
+    private void Start()
+    {
+        foodSelected = GameObject.FindGameObjectWithTag("Inventory");
+        foodScript = foodSelected.GetComponent<FoodClasses>();
+    }
+
     void OnMouseDown()
     {
-        if (FoodSelected.currentFoods == 4)
+        if (foodScript.currentFoods == 4)
         {
-            Ramen.SetActive(true);
-            RamenReady = true;
+            if(HasRamen)
+            {
+
+            }
+            else
+            {
+                Instantiate(Ramen, transform.position, Quaternion.identity);
+                HasRamen = true;
+            }
         }
-        if (FoodSelected.currentFoods == 0)
+        if (foodScript.currentFoods == 0)
         {
-            FrenchToast.SetActive(true);
-            ToastReady = true;
+            if (HasToast)
+            {
+
+            }
+            else
+            {
+                Instantiate(FrenchToast, transform.position, Quaternion.identity);
+                HasToast = true;
+            }
+
         }
     }
 }
