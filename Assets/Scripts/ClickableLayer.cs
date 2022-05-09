@@ -17,7 +17,7 @@ public class ClickableLayer : MonoBehaviour
 
             if (hit)
             {
-                print("i clicked");
+                //print("i clicked");
             }
         }
     }
