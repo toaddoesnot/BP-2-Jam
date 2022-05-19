@@ -11,8 +11,8 @@ public class Cookers : MonoBehaviour
     public bool RamenReady;
     public bool ToastReady;
 
-    public bool HasRamen;
-    public bool HasToast;
+    public bool HasFood;
+    public bool Selected;
 
     public GameObject foodSelected;
     public FoodClasses foodScript;
@@ -21,34 +21,55 @@ public class Cookers : MonoBehaviour
     {
         foodSelected = GameObject.FindGameObjectWithTag("Inventory");
         foodScript = foodSelected.GetComponent<FoodClasses>();
+        Selected = false;
+        HasFood = false;
     }
 
     void OnMouseDown()
     {
-        if (foodScript.currentFoods == 4)
-        {
-            if(HasRamen)
-            {
+        
 
+        if (HasFood)
+        {
+            
+        }
+        else
+        {
+            if (Selected)
+            {
+                Selected = false;
             }
             else
+            {
+                Selected = true;
+            }
+
+
+            if (foodScript.currentFoods == 4)
             {
                 Instantiate(Ramen, transform.position, Quaternion.identity);
-                HasRamen = true;
             }
-        }
-        if (foodScript.currentFoods == 0)
-        {
-            if (HasToast)
-            {
-
-            }
-            else
+            if (foodScript.currentFoods == 0)
             {
                 Instantiate(FrenchToast, transform.position, Quaternion.identity);
-                HasToast = true;
             }
+        }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Food")
+        {
+            HasFood = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Food")
+        {
+            HasFood = false;
+        }
+    }
+
 }

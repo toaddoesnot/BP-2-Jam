@@ -8,7 +8,6 @@ public class KitchenwareClicked : MonoBehaviour
 
     public GameObject Pot;
     public GameObject Toaster;
-    //public GameObject itemSpawn;
 
     public bool HasItem;
 
@@ -23,8 +22,6 @@ public class KitchenwareClicked : MonoBehaviour
             else
             {
                 Instantiate(Pot, transform.position, Quaternion.identity);
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                HasItem = true;
             }
         }
            
@@ -37,10 +34,26 @@ public class KitchenwareClicked : MonoBehaviour
             else
             {
                 Instantiate(Toaster, transform.position, Quaternion.identity);
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                HasItem = true;
             }
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cooker")
+        {
+            HasItem = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cooker")
+        {
+            HasItem = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
 }
+
