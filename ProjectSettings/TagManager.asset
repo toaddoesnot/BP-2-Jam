@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inventory
-  - Food
   - Cooker
+  - Toast
+  - Food
+  - Noodles
   layers:
   - Default
   - TransparentFX

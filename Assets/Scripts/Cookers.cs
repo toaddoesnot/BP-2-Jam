@@ -27,11 +27,9 @@ public class Cookers : MonoBehaviour
 
     void OnMouseDown()
     {
-        
-
         if (HasFood)
         {
-            
+            Selected = false;
         }
         else
         {
@@ -48,10 +46,12 @@ public class Cookers : MonoBehaviour
             if (foodScript.currentFoods == 4)
             {
                 Instantiate(Ramen, transform.position, Quaternion.identity);
+                Selected = false;
             }
             if (foodScript.currentFoods == 0)
             {
                 Instantiate(FrenchToast, transform.position, Quaternion.identity);
+                Selected = false;
             }
         }
 
@@ -59,16 +59,28 @@ public class Cookers : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Food")
+        if (collision.gameObject.tag == "Toast")
         {
             HasFood = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        if (collision.gameObject.tag == "Noodles")
+        {
+            HasFood = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Food")
+        if (collision.gameObject.tag == "Toast")
         {
             HasFood = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        if (collision.gameObject.tag == "Noodles")
+        {
+            HasFood = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 
