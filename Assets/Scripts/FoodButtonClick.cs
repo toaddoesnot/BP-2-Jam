@@ -5,10 +5,8 @@ using UnityEngine;
 public class FoodButtonClick : MonoBehaviour
 {
     public FoodClasses FoodSelected;
-    public cookedToast ToastIsCooked;
-    public cookedToast ToastIsCooked2;
-    public cookedSpaghetti RamenIsCooked;
-    public cookedSpaghetti RamenIsCooked2;
+    public Inventory inventory;
+    public GameObject inventoryManager;
 
     public GameObject toast;
     public GameObject strawberry;
@@ -20,61 +18,60 @@ public class FoodButtonClick : MonoBehaviour
     public bool HaveToast;
     public bool HaveNoodles;
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
+        inventory = inventoryManager.GetComponent<Inventory>();
+        FoodSelected = inventoryManager.GetComponent<FoodClasses>();
+    }
+
     void OnMouseDown()
     {
-        //if(HaveToast)
-        //{
-        //    if (FoodSelected.currentFoods == 1)
-        //    {
-        //        strawberry.SetActive(true);
-        //    }
-        //    if (FoodSelected.currentFoods == 2)
-        //    {
-        //        butter.SetActive(true);
-       //     }
-      //  }
         
-       // if (ToastIsCooked.ToastCooked)
-       // {
-       //     toast.SetActive(true);
-       //     HaveToast = true;
-       // }
-        //else
-        //{
-        //    if (ToastIsCooked2.ToastCooked)
-        //    {
-         //       toast.SetActive(true);
-          //      HaveToast = true;
-          //  }
-      //  }
+        if (HaveToast)
+        {
+            if (FoodSelected.currentFoods == 1)
+            {
+                strawberry.SetActive(true);
+            }
+            if (FoodSelected.currentFoods == 2)
+            {
+                butter.SetActive(true);
+            }
+        }
 
-       // if (HaveNoodles)
-        //{
-        //    if (FoodSelected.currentFoods == 5)
-        //    {
-        //        print("You have toast!");
-        //        egg.SetActive(true);
-        //    }
-        //    if (FoodSelected.currentFoods == 6)
-        //    {
-        //        shroom.SetActive(true);
-         //   }
-       // }
+        if (HaveToast is false)
+        {
+            if (inventory.ToastCooked)
+            {
+                toast.SetActive(true);
+                HaveToast = true;
+                inventory.ToastCooked = false;
+            }
+        }
 
-        //if (RamenIsCooked.RamenCooked)
-        //{
-           // noodles.SetActive(true);
-           // HaveNoodles = true;
-       // }
-      //  else
-       // {
-        //    if (RamenIsCooked2.RamenCooked)
-        //    {
-         //       noodles.SetActive(true);
-         //       HaveNoodles = true;
-         //   }
-       // }
+        if (HaveNoodles)
+        {
+            if (FoodSelected.currentFoods == 5)
+            {
+                egg.SetActive(true);
+            }
+            if (FoodSelected.currentFoods == 6)
+            {
+                shroom.SetActive(true);
+            }
+        }
+
+        if (HaveNoodles is false)
+        {
+            if (inventory.SpaghettiCooked)
+            {
+                noodles.SetActive(true);
+                HaveNoodles = true;
+                inventory.SpaghettiCooked = false;
+            }
+        }
+
     }
 
     // Update is called once per frame

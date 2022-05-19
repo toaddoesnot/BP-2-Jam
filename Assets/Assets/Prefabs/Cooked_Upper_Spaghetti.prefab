@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1148187575731177015}
   m_Layer: 3
   m_Name: Cooked_Upper_Spaghetti
-  m_TagString: Food
+  m_TagString: Noodles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
+  buttons: {fileID: 0}
   inventoryManager: {fileID: 0}
   self: {fileID: 7395158208473479804}
 --- !u!50 &1148187575731177015
