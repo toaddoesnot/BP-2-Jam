@@ -7,6 +7,13 @@ public class FoodClasses : MonoBehaviour
     public GameObject[] Foods;
     public int currentFoods = -1;
 
+    
+
+    private void Start()
+    {
+        
+    }
+
     public void SetButton(int index)
     {
         currentFoods = index;
@@ -19,6 +26,8 @@ public class FoodClasses : MonoBehaviour
     public void Update()
     {
         //print(currentFoods);
+        //Foods[currentFoods].SetActive(false);
+        //Foods[index].SetActive(true);
     }
 
 
