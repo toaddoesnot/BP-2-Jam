@@ -33,10 +33,12 @@ public class FoodButtonClick : MonoBehaviour
             if (FoodSelected.currentFoods == 1)
             {
                 strawberry.SetActive(true);
+                FoodSelected.currentFoods = -1;
             }
             if (FoodSelected.currentFoods == 2)
             {
                 butter.SetActive(true);
+                FoodSelected.currentFoods = -1;
             }
         }
 
@@ -47,6 +49,7 @@ public class FoodButtonClick : MonoBehaviour
                 toast.SetActive(true);
                 HaveToast = true;
                 inventory.ToastCooked = false;
+                FoodSelected.currentFoods = -1;
             }
         }
 
@@ -55,10 +58,12 @@ public class FoodButtonClick : MonoBehaviour
             if (FoodSelected.currentFoods == 5)
             {
                 egg.SetActive(true);
+                FoodSelected.currentFoods = -1;
             }
             if (FoodSelected.currentFoods == 6)
             {
                 shroom.SetActive(true);
+                FoodSelected.currentFoods = -1;
             }
         }
 
@@ -69,6 +74,7 @@ public class FoodButtonClick : MonoBehaviour
                 noodles.SetActive(true);
                 HaveNoodles = true;
                 inventory.SpaghettiCooked = false;
+                FoodSelected.currentFoods = -1;
             }
         }
 

@@ -22,6 +22,7 @@ public class KitchenwareClicked : MonoBehaviour
             else
             {
                 Instantiate(Pot, transform.position, Quaternion.identity);
+                FoodSelected.currentFoods = -1;
             }
         }
            
@@ -34,6 +35,7 @@ public class KitchenwareClicked : MonoBehaviour
             else
             {
                 Instantiate(Toaster, transform.position, Quaternion.identity);
+                FoodSelected.currentFoods = -1;
             }
         }
     }

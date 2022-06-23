@@ -47,11 +47,13 @@ public class Cookers : MonoBehaviour
             {
                 Instantiate(Ramen, transform.position, Quaternion.identity);
                 Selected = false;
+                foodScript.currentFoods = -1;
             }
             if (foodScript.currentFoods == 0)
             {
                 Instantiate(FrenchToast, transform.position, Quaternion.identity);
                 Selected = false;
+                foodScript.currentFoods = -1;
             }
         }
 
