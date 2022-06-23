@@ -9,6 +9,7 @@ public class CursorChanger : MonoBehaviour
     public GameObject[] Cursors;
 
     public FoodClasses FoodClassSc;
+    public Inventory inventorySc;
     public GameObject foods;
 
     void Start()
@@ -29,6 +30,37 @@ public class CursorChanger : MonoBehaviour
         Cursor.visible = false;
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorPos;
+
+        if (FoodClassSc.currentFoods is -1)
+        {
+            if (inventorySc.SpaghettiCooked)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[4].SetActive(true);
+                }
+            }
+            else
+            {
+                if (inventorySc.ToastCooked)
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[10].SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                    }
+                }
+            }
+
+        }
 
         if (FoodClassSc.currentFoods is 0)
         {
@@ -101,6 +133,7 @@ public class CursorChanger : MonoBehaviour
                 Cursors[6].SetActive(true);
             }
         }
+
 
         //0 toast
         //1 straw
