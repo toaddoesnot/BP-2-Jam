@@ -53,10 +53,22 @@ public class CursorChanger : MonoBehaviour
                 }
                 else
                 {
-                    foreach (GameObject cur in Cursors)
+                    if (inventorySc.havePlate)
                     {
-                        cur.SetActive(false);
+                        foreach (GameObject cur in Cursors)
+                        {
+                            cur.SetActive(false);
+                            Cursors[3].SetActive(true);
+                        }
                     }
+                    else
+                    {
+                        foreach (GameObject cur in Cursors)
+                        {
+                            cur.SetActive(false);
+                        }
+                    }
+
                 }
             }
 
