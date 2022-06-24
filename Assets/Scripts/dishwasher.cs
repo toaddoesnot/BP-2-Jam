@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class dishwasher : MonoBehaviour
 {
-    public Cookers CookersScr;
-    public GameObject PotItem;
-
-    public GameObject scrapToast;
-    public GameObject scrapRamen;
-
     public Inventory inventory;
-    public GameObject inventoryManager;
+    public FoodClasses foodSelected;
 
     private void Start()
     {
-        inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
-        inventory = inventoryManager.GetComponent<Inventory>();
+       
     }
 
     private void Update()
@@ -27,27 +20,24 @@ public class dishwasher : MonoBehaviour
 
     void OnMouseDown()
     {
-        PotItem = GameObject.FindGameObjectWithTag("Cooker");
-        CookersScr = PotItem.GetComponent<Cookers>();
-
-        scrapToast = GameObject.FindGameObjectWithTag("Toast");
-        scrapRamen = GameObject.FindGameObjectWithTag("Noodles");
-
-        if (CookersScr.Selected)
+        if(foodSelected.currentFoods is -1)
         {
-            Object.Destroy(PotItem);
+            if (inventory.ToastCooked)
+            {
+                inventory.ToastCooked = false;
+            }
+            if (inventory.SpaghettiCooked)
+            {
+                inventory.SpaghettiCooked = false;
+            }
+            if (inventory.havePlate)
+            {
+                inventory.havePlate = false;
+            }
         }
-
-        if (inventory.ToastCooked)
+        else
         {
-            Object.Destroy(scrapToast);
-            inventory.ToastCooked = false;
-        }
-
-        if (inventory.SpaghettiCooked)
-        {
-            Object.Destroy(scrapRamen);
-            inventory.SpaghettiCooked = false;
+            foodSelected.currentFoods = -1;
         }
 
     }

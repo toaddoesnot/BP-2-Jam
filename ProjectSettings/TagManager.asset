@@ -9,6 +9,7 @@ TagManager:
   - Toast
   - Food
   - Noodles
+  - Plate
   layers:
   - Default
   - TransparentFX

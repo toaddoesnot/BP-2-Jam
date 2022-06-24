@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public bool ToastCooked;
     public bool SpaghettiCooked;
     public bool sthCooked;
+    public bool havePlate;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +22,24 @@ public class Inventory : MonoBehaviour
         {
             sthCooked = true;
         }
+
         if (SpaghettiCooked)
         {
             sthCooked = true;
         }
-        else
-        {
-            if (ToastCooked is false)
+
+        if (ToastCooked is false)
             {
                 if (SpaghettiCooked is false)
                 {
                     sthCooked = false;
                 }
             }
+        
+        if (havePlate)
+        {
+
         }
+
     }
 }
