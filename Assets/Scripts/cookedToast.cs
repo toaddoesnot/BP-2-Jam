@@ -28,6 +28,7 @@ public class cookedToast : MonoBehaviour
         {
             inventory.ToastCooked = true;
             Object.Destroy(self);
+            buttons.currentFoods = -1;
         }
     }
 }

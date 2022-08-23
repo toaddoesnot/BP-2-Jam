@@ -13,32 +13,37 @@ public class plateGenerator : MonoBehaviour
         GeneratePlate();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Plate")
-        {
-            HasPlate = true;
-        }
+        
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Plate")
         {
+            Destroy(collision); 
             HasPlate = false;
-            GeneratePlate();
+            
+            //GeneratePlate();
         }
     }
 
     public void GeneratePlate()
     {
-        Instantiate(plate, transform.position, Quaternion.identity);
+        if (HasPlate is false)
+        {
+            
+            Instantiate(plate, transform.position, Quaternion.identity);
+
+            HasPlate = true;
+        }
+        else
+        {
+
+        }
     }
 
 }

@@ -5,84 +5,128 @@ using UnityEngine;
 public class Cookers : MonoBehaviour
 {
     
-    public GameObject Ramen;
-    public GameObject FrenchToast;
+    //public GameObject Ramen;
+    //public GameObject FrenchToast;
 
     public bool RamenReady;
     public bool ToastReady;
 
     public bool HasFood;
-    public bool Selected;
+
+    public bool IAmPot;
+    public bool IAmToaster;
+    public GameObject self;
 
     public GameObject foodSelected;
     public FoodClasses foodScript;
+
+    public Inventory inventory;
+    public GameObject inventoryManager;
+
+
 
     private void Start()
     {
         foodSelected = GameObject.FindGameObjectWithTag("Inventory");
         foodScript = foodSelected.GetComponent<FoodClasses>();
-        Selected = false;
         HasFood = false;
+
+        inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
+        inventory = inventoryManager.GetComponent<Inventory>();
+    }
+
+    private void Update()
+    {
+        if (HasFood)
+        {
+            //self.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        else
+        {
+            //self.GetComponent<BoxCollider2D>().enabled = true;
+        }
+
     }
 
     void OnMouseDown()
     {
         if (HasFood)
         {
-            Selected = false;
+            Checker();
         }
         else
         {
-            if (Selected)
+            if (foodScript.currentFoods is -1)
             {
-                Selected = false;
+                if (HasFood is false)
+                {
+                     
+                }
             }
             else
             {
-                Selected = true;
-            }
+                if (foodScript.currentFoods == 4)
+                {
+                    if (IAmPot)
+                    {
+                        HasFood = true;
+                        //Instantiate(Ramen, transform.position, Quaternion.identity);
+                        foodScript.currentFoods = -1;
+                    }
+                    else
+                    {
 
+                    }
+                }
+                else
+                {
+                    if (foodScript.currentFoods == 0)
+                    {
+                        if (IAmToaster)
+                        {
+                            HasFood = true;
+                            //Instantiate(FrenchToast, transform.position, Quaternion.identity);
+                            foodScript.currentFoods = -1;
+                        }
+                        else
+                        {
 
-            if (foodScript.currentFoods == 4)
-            {
-                Instantiate(Ramen, transform.position, Quaternion.identity);
-                Selected = false;
-                foodScript.currentFoods = -1;
-            }
-            if (foodScript.currentFoods == 0)
-            {
-                Instantiate(FrenchToast, transform.position, Quaternion.identity);
-                Selected = false;
-                foodScript.currentFoods = -1;
+                        }
+                       
+                    }
+                }
             }
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Toast")
+        if (collision.gameObject.tag == "Toast" || collision.gameObject.tag == "Noodles")
         {
-            HasFood = true;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+           HasFood = true;
         }
-        if (collision.gameObject.tag == "Noodles")
-        {
-            HasFood = true;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Toast")
+        if (collision.gameObject.tag == "Toast" || collision.gameObject.tag == "Noodles")
         {
             HasFood = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
         }
-        if (collision.gameObject.tag == "Noodles")
+    }
+
+    public void Checker()
+    {
+        if (IAmPot)
         {
-            HasFood = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            inventory.SpaghettiCooked = true;
+            Destroy(self);
+        }
+
+        if (IAmToaster)
+        {
+            inventory.ToastCooked = true;
+            Destroy(self);
         }
     }
 

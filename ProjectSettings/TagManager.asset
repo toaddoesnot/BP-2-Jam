@@ -10,6 +10,8 @@ TagManager:
   - Food
   - Noodles
   - Plate
+  - Order
+  - Customer
   layers:
   - Default
   - TransparentFX

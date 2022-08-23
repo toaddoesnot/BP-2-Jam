@@ -19,7 +19,7 @@ public class cookedSpaghetti : MonoBehaviour
 
     void OnMouseDown()
     {
-        buttons.currentFoods = -1;
+        print("Crissie wake up");
         if (inventory.sthCooked)
         {
 
@@ -28,6 +28,7 @@ public class cookedSpaghetti : MonoBehaviour
         {
             inventory.SpaghettiCooked = true;
             Object.Destroy(self);
+            buttons.currentFoods = -1;
         }
     }
 }

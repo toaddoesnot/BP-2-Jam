@@ -100,12 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a0072df5ea1b4dad2bcbf9446613b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ramen: {fileID: 0}
+  Ramen: {fileID: 7395158208473479804, guid: 92ad5fffae48f8d42a06fb7e2f19d662, type: 3}
   FrenchToast: {fileID: 1347638510022070191, guid: 0ca34aca10db6b84ca0ed15ed6f50649, type: 3}
   RamenReady: 0
   ToastReady: 0
   HasFood: 0
-  Selected: 0
+  IAmPot: 0
+  IAmToaster: 1
+  self: {fileID: 5980453700668372918}
   foodSelected: {fileID: 0}
   foodScript: {fileID: 0}
 --- !u!60 &5980453700668372555
