@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Fungus;
 
 public class FoodButtonClick : MonoBehaviour
 {
@@ -17,14 +19,46 @@ public class FoodButtonClick : MonoBehaviour
     public GameObject egg;
     public GameObject shroom;
 
+    public int orderCompletion;
+
     public bool HaveToast;
     public bool HaveNoodles;
+    public bool HaveDrink;
+
+    public Flowchart Main;
+
 
     private void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
         FoodSelected = inventoryManager.GetComponent<FoodClasses>();
+    }
+
+    public void Update()
+    {
+        if (toast.activeInHierarchy)
+        {
+            if (butter.activeInHierarchy)
+            {
+                if (strawberry.activeInHierarchy)
+                {
+                    Main.SetBooleanVariable("MadeToast", true);
+                }
+            }
+        }
+
+        if (noodles.activeInHierarchy)
+        {
+            if (egg.activeInHierarchy)
+            {
+                if (shroom.activeInHierarchy)
+                {
+                    Main.SetBooleanVariable("MadeSoup", true);
+                }
+            }
+        }
+
     }
 
     void OnMouseDown()
@@ -36,6 +70,7 @@ public class FoodButtonClick : MonoBehaviour
                 if (inventory.ToastCooked)
                 {
                     toast.SetActive(true);
+                    orderCompletion++;
                     HaveToast = true;
                     inventory.ToastCooked = false;
                     FoodSelected.currentFoods = -1;
@@ -47,6 +82,7 @@ public class FoodButtonClick : MonoBehaviour
                 if (inventory.SpaghettiCooked)
                 {
                     noodles.SetActive(true);
+                    orderCompletion++;
                     HaveNoodles = true;
                     inventory.SpaghettiCooked = false;
                     FoodSelected.currentFoods = -1;
@@ -61,11 +97,16 @@ public class FoodButtonClick : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(self);
-                    inventory.havePlate = true;
+                   if (orderCompletion is 0)
+                    {
+                        inventory.havePlate = true;
+                    } 
+                   
+                   inventory.OrderStatus = orderCompletion;
+                    
+
                 }
             }
-
         }
 
         if (FoodSelected.currentFoods == 1)
@@ -73,7 +114,8 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveToast)
                 {
                     strawberry.SetActive(true);
-                    FoodSelected.currentFoods = -1;
+                orderCompletion++;
+                FoodSelected.currentFoods = -1;
                 }
         }
            
@@ -82,7 +124,8 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveToast)
                 {
                     butter.SetActive(true);
-                    FoodSelected.currentFoods = -1;
+                orderCompletion++;
+                FoodSelected.currentFoods = -1;
                 }
         }
        
@@ -92,7 +135,8 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveNoodles)
                 {
                     egg.SetActive(true);
-                    FoodSelected.currentFoods = -1;
+                orderCompletion++;
+                FoodSelected.currentFoods = -1;
                 }
         }
 
@@ -101,7 +145,8 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveNoodles)
                 {
                     shroom.SetActive(true);
-                    FoodSelected.currentFoods = -1;
+                orderCompletion++;
+                FoodSelected.currentFoods = -1;
                 }
         }
         
