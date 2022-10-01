@@ -9,24 +9,11 @@ public class dishwasher : MonoBehaviour
     public Inventory inventory;
     public FoodClasses foodSelected;
 
-    public TextMeshProUGUI orderText;
     public int orderCount;
 
     public plateGenerator plateSc1;
     public plateGenerator plateSc2;
     public plateGenerator plateSc3;
-    public plateGenerator plateSc4;
-
-    private void Start()
-    {
-       
-    }
-
-    private void Update()
-    {
-        
-    }
-
 
     void OnMouseDown()
     {
@@ -44,14 +31,12 @@ public class dishwasher : MonoBehaviour
             {
                 inventory.havePlate = false;
                 RegeneratePlates();
-               
             }
         }
         else
         {
             foodSelected.currentFoods = -1;
         }
-
     }
 
     public void RegeneratePlates()
@@ -59,6 +44,5 @@ public class dishwasher : MonoBehaviour
         plateSc1.GeneratePlate();
         plateSc2.GeneratePlate();
         plateSc3.GeneratePlate();
-        plateSc4.GeneratePlate();
     }
 }

@@ -97,14 +97,16 @@ public class FoodButtonClick : MonoBehaviour
                 }
                 else
                 {
-                    
-                    inventory.havePlate = true;
+                   if (orderCompletion is 0)
+                    {
+                        inventory.havePlate = true;
+                    } 
+                   
                    inventory.OrderStatus = orderCompletion;
                     
 
                 }
             }
-
         }
 
         if (FoodSelected.currentFoods == 1)

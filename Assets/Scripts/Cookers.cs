@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cookers : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class Cookers : MonoBehaviour
     public Inventory inventory;
     public GameObject inventoryManager;
 
+    public KitchenwareClicked myStove;
+
+    public Slider timer;
+    public bool foodReady;
 
 
     private void Start()
@@ -52,7 +57,11 @@ public class Cookers : MonoBehaviour
     {
         if (HasFood)
         {
-            Checker();
+            if (foodReady)
+            {
+                print("Ready to check");
+                Checker();
+            }
         }
         else
         {
@@ -60,7 +69,28 @@ public class Cookers : MonoBehaviour
             {
                 if (HasFood is false)
                 {
-                     
+                    print("go to dishwasher");
+
+                    if (IAmToaster)
+                    {
+                        if (inventory.sthCooked is false)
+                        {
+                            foodScript.currentFoods = 10;
+                            Destroy(self);
+                        }
+                    }
+                    if (IAmPot)
+                    {
+                        if (inventory.sthCooked is false)
+                        {
+                            foodScript.currentFoods = 9;
+                            Destroy(self);
+                        }
+                    }
+                }
+                else
+                {
+
                 }
             }
             else
@@ -69,13 +99,10 @@ public class Cookers : MonoBehaviour
                 {
                     if (IAmPot)
                     {
+                        StartCoroutine(Cook());
                         HasFood = true;
                         //Instantiate(Ramen, transform.position, Quaternion.identity);
                         foodScript.currentFoods = -1;
-                    }
-                    else
-                    {
-
                     }
                 }
                 else
@@ -84,50 +111,59 @@ public class Cookers : MonoBehaviour
                     {
                         if (IAmToaster)
                         {
+                            StartCoroutine(Cook());
                             HasFood = true;
                             //Instantiate(FrenchToast, transform.position, Quaternion.identity);
                             foodScript.currentFoods = -1;
                         }
-                        else
-                        {
-
-                        }
-                       
                     }
                 }
             }
+
+
+
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Toast" || collision.gameObject.tag == "Noodles")
-        {
-           HasFood = true;
-        }
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Toast" || collision.gameObject.tag == "Noodles")
-        {
-            HasFood = false;
-        }
-    }
 
     public void Checker()
     {
+        print("CHECKING");
+
         if (IAmPot)
         {
             inventory.SpaghettiCooked = true;
-            Destroy(self);
+            ResetTimer();
+            HasFood = false;
+            //Destroy(self);
         }
 
         if (IAmToaster)
         {
             inventory.ToastCooked = true;
-            Destroy(self);
+            ResetTimer();
+            HasFood = false;
+            // Destroy(self);
         }
+    }
+
+    public IEnumerator Cook()
+    {
+        print("ALIVE");
+        timer.value += 1;
+        yield return new WaitForSeconds(1);
+        timer.value += 1;
+        yield return new WaitForSeconds(1);
+        timer.value += 1;
+        yield return new WaitForSeconds(1);
+        timer.value += 1;
+        foodReady = true;
+    }
+
+    public void ResetTimer()
+    {
+        timer.value = 0;
+        foodReady = false;
     }
 
 }
