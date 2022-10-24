@@ -8,12 +8,15 @@ public class dishwasher : MonoBehaviour
 {
     public Inventory inventory;
     public FoodClasses foodSelected;
+    public drinkManager drinkSc;
 
     public int orderCount;
 
     public plateGenerator plateSc1;
     public plateGenerator plateSc2;
     public plateGenerator plateSc3;
+
+    public AudioSource trashSound;
 
     void OnMouseDown()
     {
@@ -22,20 +25,31 @@ public class dishwasher : MonoBehaviour
             if (inventory.ToastCooked)
             {
                 inventory.ToastCooked = false;
+                trashSound.Play();
             }
             if (inventory.SpaghettiCooked)
             {
                 inventory.SpaghettiCooked = false;
+                trashSound.Play();
             }
             if (inventory.havePlate)
             {
                 inventory.havePlate = false;
                 RegeneratePlates();
+                trashSound.Play();
+            }
+            if (drinkSc.HasReadyCoffee || drinkSc.HasReadySoda || drinkSc.HasReadyOJ)
+            {
+                drinkSc.HasReadyCoffee = false;
+                drinkSc.HasReadySoda = false;
+                drinkSc.HasReadyOJ = false;
+                trashSound.Play();
             }
         }
         else
         {
             foodSelected.currentFoods = -1;
+            trashSound.Play();
         }
     }
 

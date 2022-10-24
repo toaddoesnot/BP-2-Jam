@@ -24,7 +24,7 @@ public class Cookers : MonoBehaviour
     public Inventory inventory;
     public GameObject inventoryManager;
 
-    public KitchenwareClicked myStove;
+    public GameObject myStove;
 
     public Slider timer;
     public bool foodReady;
@@ -135,6 +135,8 @@ public class Cookers : MonoBehaviour
             inventory.SpaghettiCooked = true;
             ResetTimer();
             HasFood = false;
+            myStove.GetComponent<KitchenwareClicked>().TakePasta();
+            //PLAY PICK NOOD READY SOUND
             //Destroy(self);
         }
 
@@ -143,6 +145,8 @@ public class Cookers : MonoBehaviour
             inventory.ToastCooked = true;
             ResetTimer();
             HasFood = false;
+            myStove.GetComponent<KitchenwareClicked>().TakeBread();
+            //PLAY PICK TOAST READY SOUND
             // Destroy(self);
         }
     }
@@ -150,6 +154,18 @@ public class Cookers : MonoBehaviour
     public IEnumerator Cook()
     {
         print("ALIVE");
+
+        if (IAmPot)
+        {
+            myStove.GetComponent<KitchenwareClicked>().Boiling();
+        }
+        if (IAmToaster)
+        {
+            myStove.GetComponent<KitchenwareClicked>().Frying();
+        }
+
+        timer.value += 1;
+        yield return new WaitForSeconds(1);
         timer.value += 1;
         yield return new WaitForSeconds(1);
         timer.value += 1;
@@ -158,6 +174,16 @@ public class Cookers : MonoBehaviour
         yield return new WaitForSeconds(1);
         timer.value += 1;
         foodReady = true;
+
+        if (IAmPot)
+        {
+            myStove.GetComponent<KitchenwareClicked>().BoilingReady();
+        }
+        if (IAmToaster)
+        {
+            myStove.GetComponent<KitchenwareClicked>().FryingReady();
+        }
+
     }
 
     public void ResetTimer()

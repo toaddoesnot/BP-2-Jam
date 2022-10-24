@@ -17,6 +17,14 @@ public class KitchenwareClicked : MonoBehaviour
 
     public Slider myTimer;
 
+    public AudioSource mySound;
+    public bool isPlaying;
+
+    public AudioSource foodSound;
+    public AudioClip[] foodSounds;
+
+    public GameObject self;
+
     public void Start()
     {
         
@@ -29,11 +37,19 @@ public class KitchenwareClicked : MonoBehaviour
         {
             HasItem = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            if (isPlaying is false)
+            {
+                mySound.Play();
+                isPlaying = true;
+            }
+            
         }
         else
         {
             HasItem = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            mySound.Stop();
+            isPlaying = false;
         }
     }
 
@@ -74,6 +90,7 @@ public class KitchenwareClicked : MonoBehaviour
             myObject = collision.gameObject;
             myObjectsSc = myObject.GetComponent<Cookers>();
             myObjectsSc.timer = myTimer;
+            myObjectsSc.myStove = self;
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //HasItem = true;
         }
@@ -88,6 +105,29 @@ public class KitchenwareClicked : MonoBehaviour
        // }
     }
 
-
+    public void Boiling()
+    {
+        foodSound.PlayOneShot(foodSounds[0]);
+    }
+    public void BoilingReady()
+    {
+        foodSound.PlayOneShot(foodSounds[1]);
+    }
+    public void Frying()
+    {
+        foodSound.PlayOneShot(foodSounds[2]);
+    }
+    public void FryingReady()
+    {
+        foodSound.PlayOneShot(foodSounds[3]);
+    }
+    public void TakeBread()
+    {
+        foodSound.PlayOneShot(foodSounds[4]);
+    }
+    public void TakePasta()
+    {
+        foodSound.PlayOneShot(foodSounds[5]);
+    }
 }
 
