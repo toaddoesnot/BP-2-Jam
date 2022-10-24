@@ -25,7 +25,9 @@ public class FoodButtonClick : MonoBehaviour
     public bool HaveNoodles;
     public bool HaveDrink;
 
-    public Flowchart Main;
+    public GameObject myPlace;
+
+    //public Flowchart Main;
 
 
     private void Start()
@@ -43,7 +45,7 @@ public class FoodButtonClick : MonoBehaviour
             {
                 if (strawberry.activeInHierarchy)
                 {
-                    Main.SetBooleanVariable("MadeToast", true);
+                    //Main.SetBooleanVariable("MadeToast", true);
                 }
             }
         }
@@ -54,7 +56,7 @@ public class FoodButtonClick : MonoBehaviour
             {
                 if (shroom.activeInHierarchy)
                 {
-                    Main.SetBooleanVariable("MadeSoup", true);
+                    //Main.SetBooleanVariable("MadeSoup", true);
                 }
             }
         }
@@ -74,6 +76,7 @@ public class FoodButtonClick : MonoBehaviour
                     HaveToast = true;
                     inventory.ToastCooked = false;
                     FoodSelected.currentFoods = -1;
+                    myPlace.GetComponent<plateGenerator>().ToastOn();
                 }
             }
 
@@ -86,6 +89,7 @@ public class FoodButtonClick : MonoBehaviour
                     HaveNoodles = true;
                     inventory.SpaghettiCooked = false;
                     FoodSelected.currentFoods = -1;
+                    myPlace.GetComponent<plateGenerator>().PastaOn();
                 }
             }
 
@@ -113,9 +117,10 @@ public class FoodButtonClick : MonoBehaviour
         {
                 if (HaveToast)
                 {
-                    strawberry.SetActive(true);
+                strawberry.SetActive(true);
                 orderCompletion++;
                 FoodSelected.currentFoods = -1;
+                myPlace.GetComponent<plateGenerator>().CherryOn();
                 }
         }
            
@@ -123,10 +128,11 @@ public class FoodButtonClick : MonoBehaviour
         {
                 if (HaveToast)
                 {
-                    butter.SetActive(true);
+                butter.SetActive(true);
                 orderCompletion++;
                 FoodSelected.currentFoods = -1;
-                }
+                myPlace.GetComponent<plateGenerator>().ButterOn();
+            }
         }
        
 
@@ -134,20 +140,22 @@ public class FoodButtonClick : MonoBehaviour
         {
                 if (HaveNoodles)
                 {
-                    egg.SetActive(true);
+                egg.SetActive(true);
                 orderCompletion++;
                 FoodSelected.currentFoods = -1;
-                }
+                myPlace.GetComponent<plateGenerator>().EggOn();
+            }
         }
 
         if (FoodSelected.currentFoods == 6)
         {
                 if (HaveNoodles)
                 {
-                    shroom.SetActive(true);
+                shroom.SetActive(true);
                 orderCompletion++;
                 FoodSelected.currentFoods = -1;
-                }
+                myPlace.GetComponent<plateGenerator>().ShroomOn();
+            }
         }
         
     }

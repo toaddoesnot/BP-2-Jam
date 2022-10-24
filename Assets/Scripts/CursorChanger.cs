@@ -63,9 +63,42 @@ public class CursorChanger : MonoBehaviour
                     }
                     else
                     {
-                        foreach (GameObject cur in Cursors)
+                        if (foods.GetComponent<drinkManager>().HasReadyCoffee)
                         {
-                            cur.SetActive(false);
+                            foreach (GameObject cur in Cursors)
+                            {
+                                cur.SetActive(false);
+                                Cursors[13].SetActive(true);
+                            }
+                        }
+                        else
+                        {
+                            if (foods.GetComponent<drinkManager>().HasReadySoda)
+                            {
+                                foreach (GameObject cur in Cursors)
+                                {
+                                    cur.SetActive(false);
+                                    Cursors[14].SetActive(true);
+                                }
+                            }
+                            else
+                            {
+                                if (foods.GetComponent<drinkManager>().HasReadyOJ)
+                                {
+                                    foreach (GameObject cur in Cursors)
+                                    {
+                                        cur.SetActive(false);
+                                        Cursors[15].SetActive(true);
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (GameObject cur in Cursors)
+                                    {
+                                        cur.SetActive(false);
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -143,6 +176,15 @@ public class CursorChanger : MonoBehaviour
             {
                 cur.SetActive(false);
                 Cursors[6].SetActive(true);
+            }
+        }
+
+        if (FoodClassSc.currentFoods is 12)
+        {
+            foreach (GameObject cur in Cursors)
+            {
+                cur.SetActive(false);
+                Cursors[12].SetActive(true);
             }
         }
 

@@ -456,7 +456,7 @@ MonoBehaviour:
   HaveToast: 0
   HaveNoodles: 0
   HaveDrink: 0
-  Main: {fileID: 0}
+  myPlace: {fileID: 0}
 --- !u!50 &1226239441175795262
 Rigidbody2D:
   serializedVersion: 4
@@ -696,7 +696,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 8f9f797c0d2826f44886841a0752e567, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
