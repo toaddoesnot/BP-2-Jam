@@ -7,7 +7,6 @@ public class plateGenerator : MonoBehaviour
     public bool HasPlate;
     public GameObject plate;
 
-    public GameObject myCoaster;
     public GameObject myPlate;
     public GameObject self;
 
@@ -18,6 +17,15 @@ public class plateGenerator : MonoBehaviour
     void Start()
     {
         GeneratePlate();
+    }
+
+    public void Update()
+    {
+        if (HasPlate is false)
+        {
+            Instantiate(plate, transform.position, Quaternion.identity);
+            HasPlate = true;
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)

@@ -23,6 +23,8 @@ public class drinkManager : MonoBehaviour
     public bool pouring2;
     public bool pouring3;
 
+    public int drinkHave;
+
     public void Update()
     {
         if (this.GetComponent<FoodClasses>().currentFoods is 12)
@@ -42,6 +44,31 @@ public class drinkManager : MonoBehaviour
         {
             HasSthReady = false;
         }
+
+        if (HasReadyCoffee)
+        {
+            drinkHave = 0;
+        }
+        else
+        {
+            if (HasReadySoda)
+            {
+                drinkHave = 1;
+            }
+            else
+            {
+                if (HasReadyOJ)
+                {
+                    drinkHave = 2;
+                }
+                else
+                {
+                    drinkHave = 4;
+                }
+            }
+        }
+        
+        
 
     }
 

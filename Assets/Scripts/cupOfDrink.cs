@@ -17,6 +17,15 @@ public class cupOfDrink : MonoBehaviour
     public Slider timePour;
     public AudioSource takeDrink;
 
+    public FoodClasses foodScript;
+    public GameObject foodSelected;
+
+    public void Start()
+    {
+        foodSelected = GameObject.FindGameObjectWithTag("Inventory");
+        foodScript = foodSelected.GetComponent<FoodClasses>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -52,7 +61,7 @@ public class cupOfDrink : MonoBehaviour
     {
         if (drinkManagerSc.GetComponent<drinkManager>().HasSthReady is false)
         {
-            if (drinkReady)
+            if (drinkReady && foodScript.noUcant is false && foodScript.currentFoods is -1)
             {
                 if (IamCoffee)
                 {

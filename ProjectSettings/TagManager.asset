@@ -12,6 +12,7 @@ TagManager:
   - Plate
   - Order
   - Customer
+  - OrderManager
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Water
   - UI
   - afterUI
-  - 
-  - 
+  - non-clickable
+  - cursor
   - 
   - 
   - 
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Food
     uniqueID: 717996953
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 1756208663
     locked: 0

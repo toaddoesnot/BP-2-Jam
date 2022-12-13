@@ -452,11 +452,15 @@ MonoBehaviour:
   noodles: {fileID: 9048258299523887644}
   egg: {fileID: 9048258298391159979}
   shroom: {fileID: 9048258299463867542}
-  orderCompletion: 0
   HaveToast: 0
   HaveNoodles: 0
-  HaveDrink: 0
   myPlace: {fileID: 0}
+  ToastWButter: 0
+  ToastWCherry: 0
+  ToastComplete: 0
+  NoodWShroom: 0
+  NoodWEgg: 0
+  NoodComplete: 0
 --- !u!50 &1226239441175795262
 Rigidbody2D:
   serializedVersion: 4

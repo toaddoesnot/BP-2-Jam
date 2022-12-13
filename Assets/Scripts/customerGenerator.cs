@@ -18,10 +18,20 @@ public class customerGenerator : MonoBehaviour
 
     public AudioSource doorOpen;
 
+    public float howFast;
+
+
     public void Start()
     {
-        InvokeRepeating("GenerateCustomer", 2f, 5.0f);
+        //InvokeRepeating("GenerateCustomer", 2f, 15.0f);
     }
+
+    public void StartCustomers()
+    {
+        InvokeRepeating("GenerateCustomer", 2f, howFast);
+    }
+
+
 
     public void Update()
     {
@@ -29,24 +39,28 @@ public class customerGenerator : MonoBehaviour
         if (customerSlots[0].GetComponent<characterSlot>().occupied is false)
         {
             chosenSeat = customerSlots[0];
+            weFull = false;
         }
         else
         {
             if (customerSlots[1].GetComponent<characterSlot>().occupied is false)
             {
                 chosenSeat = customerSlots[1];
+                weFull = false;
             }
             else
             {
                 if (customerSlots[2].GetComponent<characterSlot>().occupied is false)
                 {
                     chosenSeat = customerSlots[2];
+                    weFull = false;
                 }
                 else
                 {
                     if (customerSlots[3].GetComponent<characterSlot>().occupied is false)
                     {
                         chosenSeat = customerSlots[3];
+                        weFull = false;
                     }
                     else
                     {

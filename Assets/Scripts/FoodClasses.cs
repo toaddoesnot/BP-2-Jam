@@ -1,11 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodClasses : MonoBehaviour
 {
     public GameObject[] Foods;
     public int currentFoods = -1;
+
+    public bool noUcant;
+
+    public void Update()
+    {
+        if (this.GetComponent<Inventory>().sthCooked is true || this.GetComponent<drinkManager>().HasSthReady is true)
+        {
+            foreach (GameObject but in Foods)
+            {
+                but.GetComponent<Button>().interactable = false;
+            }
+            noUcant = true;
+        }
+        else
+        {
+            foreach (GameObject but in Foods)
+            {
+                but.GetComponent<Button>().interactable = true;
+            }
+            noUcant = false;
+        }
+    }
 
     public void SetButton(int index)
     {

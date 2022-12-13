@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     public bool sthCooked;
     public bool havePlate;
 
-    public int OrderStatus;
     public int HowManyOrds;
 
     //public TextMeshProUGUI orderText;
@@ -27,7 +26,6 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         
-
         if (ToastCooked is true)
         {
             sthCooked = true;

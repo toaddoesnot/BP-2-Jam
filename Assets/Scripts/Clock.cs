@@ -23,6 +23,8 @@ public class Clock : MonoBehaviour
     {
         hourHand.rotation = Quaternion.Euler(0, 0, -tm.GetHour() * hoursToDegree);
         minuteHand.rotation = Quaternion.Euler(0, 0, -tm.GetMinutes() * minutesToDegrees);
+
+
     }
 
 

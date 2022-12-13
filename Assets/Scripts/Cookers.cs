@@ -57,7 +57,7 @@ public class Cookers : MonoBehaviour
     {
         if (HasFood)
         {
-            if (foodReady)
+            if (foodReady && foodScript.noUcant is false && foodScript.currentFoods is -1)
             {
                 print("Ready to check");
                 Checker();
@@ -73,7 +73,7 @@ public class Cookers : MonoBehaviour
 
                     if (IAmToaster)
                     {
-                        if (inventory.sthCooked is false)
+                        if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
                             foodScript.currentFoods = 10;
                             Destroy(self);
@@ -81,7 +81,7 @@ public class Cookers : MonoBehaviour
                     }
                     if (IAmPot)
                     {
-                        if (inventory.sthCooked is false)
+                        if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
                             foodScript.currentFoods = 9;
                             Destroy(self);

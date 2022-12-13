@@ -12,6 +12,8 @@ public class CursorChanger : MonoBehaviour
     public Inventory inventorySc;
     public GameObject foods;
 
+    public hand handSc;
+
     void Start()
     {
         //Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
@@ -93,9 +95,20 @@ public class CursorChanger : MonoBehaviour
                                 }
                                 else
                                 {
-                                    foreach (GameObject cur in Cursors)
+                                    if (handSc.haveOrder)
                                     {
-                                        cur.SetActive(false);
+                                        foreach (GameObject cur in Cursors)
+                                        {
+                                            cur.SetActive(false);
+                                            Cursors[16].SetActive(true);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (GameObject cur in Cursors)
+                                        {
+                                            cur.SetActive(false);
+                                        }
                                     }
                                 }
                             }
