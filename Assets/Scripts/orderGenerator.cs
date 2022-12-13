@@ -48,24 +48,28 @@ public class orderGenerator : MonoBehaviour
             randomOrder = 0;
             Order();
         }
-        if (handSc.tutorialLvl is 2)
-        {
-            firstCourse = Random.Range(0, 3);
-            secondCourse = Random.Range(0, 3);
-            drinks = 3;
-
-            randomOrder = Random.Range(0, 3);
-            Order();
-        }
         else
         {
-            firstCourse = Random.Range(0, 3);
-            secondCourse = Random.Range(0, 3);
-            drinks = Random.Range(0, 4);
+            if (handSc.tutorialLvl is 2)
+            {
+                firstCourse = Random.Range(0, 3);
+                secondCourse = Random.Range(0, 3);
+                drinks = 3;
 
-            randomOrder = Random.Range(0, 3);
-            Order();
+                randomOrder = Random.Range(0, 3);
+                Order();
+            }
+            else
+            {
+                firstCourse = Random.Range(0, 3);
+                secondCourse = Random.Range(0, 3);
+                drinks = Random.Range(0, 4);
+
+                randomOrder = Random.Range(0, 3);
+                Order();
+            }
         }
+        
 
         
     }

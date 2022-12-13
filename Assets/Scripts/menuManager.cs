@@ -20,7 +20,8 @@ public class menuManager : MonoBehaviour
     {
         if (menuLvl)
         {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Cursor.visible = true;
+            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
         Debug.Log(Time.time);
         if (menuLvl is false)

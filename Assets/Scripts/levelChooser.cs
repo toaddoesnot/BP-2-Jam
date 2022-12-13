@@ -15,6 +15,8 @@ public class levelChooser : MonoBehaviour
     public Button[] buttons;
     public int levelsUnlocked;
 
+    public GameObject testText;
+
     void Start()
     {
         
@@ -37,7 +39,9 @@ public class levelChooser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        Cursor.visible = true;
+        //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        
         currentLvl = levelsUnlocked -1;
         //filters[currentLvl].SetActive(false);
 
@@ -81,6 +85,8 @@ public class levelChooser : MonoBehaviour
             screens[2].SetActive(true);
             screens[3].SetActive(true);
             screens[4].SetActive(true);
+
+            testText.SetActive(true);
         }
 
         // foreach (GameObject day in days)

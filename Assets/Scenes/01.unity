@@ -533,7 +533,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: A big thump from a spaceship docking with a diner station has caused
     a short radio interference. It took a good few minutes to try out different channels
-    and establish the connection between the two*
+    and establish the connection between the two.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 218601296}
   selectedCommands:
-  - {fileID: 218601312}
+  - {fileID: 218601302}
   variables: []
   description: 
   stepPause: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
   itemId: 6
   indentLevel: 0
   storyText: "The response has followed shortly after the spaceship\u2019s engine
-    has completely come to stop"
+    has completely come to stop."
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
