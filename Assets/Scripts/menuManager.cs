@@ -65,4 +65,9 @@ public class menuManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
