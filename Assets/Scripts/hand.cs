@@ -12,6 +12,7 @@ public class hand : MonoBehaviour
 
     public int toastFill;
     public int noodFill;
+    public bool potatoInstead;
 
     public bool haveOrder;
 
@@ -30,13 +31,14 @@ public class hand : MonoBehaviour
     void Update()
     {
         //moneyText.SetText("$:", moneyAm);
-        moneyText.text = "$:" + moneyAm.ToString();
+        moneyText.text = "$" + moneyAm.ToString();
 
         if (haveOrder is false)
         {
             foodHave = 4;
             toastFill = 4;
             noodFill = 4;
+            potatoInstead = false;
         }
     }
 

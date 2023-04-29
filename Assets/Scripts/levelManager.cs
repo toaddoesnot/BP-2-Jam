@@ -17,4 +17,9 @@ public class levelManager : MonoBehaviour
         Debug.Log("LEVEL" + PlayerPrefs.GetInt("levelsUnlocked") + "unlocked");
         SceneManager.LoadScene(1);
     }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

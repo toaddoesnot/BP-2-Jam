@@ -12,6 +12,8 @@ public class customerGenerator : MonoBehaviour
     public GameObject chosenCustomer;
     public GameObject chosenSeat;
 
+    public TimeManager clockSc;
+
     public int randomCustomer;
     //public float randomInterval;
     public bool weFull;
@@ -23,7 +25,7 @@ public class customerGenerator : MonoBehaviour
 
     public void Start()
     {
-        //InvokeRepeating("GenerateCustomer", 2f, 15.0f);
+        InvokeRepeating("GenerateCustomer", 2f, 15.0f);
     }
 
     public void StartCustomers()
@@ -74,11 +76,11 @@ public class customerGenerator : MonoBehaviour
 
     public void GenerateCustomer()
     {
-        if (weFull is false)
+        if (weFull is false && clockSc.timeOn)
         {
             randomCustomer = Random.Range(0, 3);
             chosenCustomer = todayCustomers[randomCustomer];
-            Instantiate(chosenCustomer, chosenSeat.transform.position, Quaternion.identity);
+            Instantiate(chosenCustomer, chosenSeat.transform.position, Quaternion.identity, chosenSeat.transform);
             doorOpen.Play();
         }
     }

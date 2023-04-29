@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
     public bool doneFloat;
     public Fungus.Flowchart myFlowchart2;
 
-    public void StartTime()
+    public void Start() //StartTime
     {
         timeOn = true;
     }
@@ -71,7 +71,8 @@ public class TimeManager : MonoBehaviour
 
     public void FinishTime()
     {
-        myFlowchart2.ExecuteBlock("step2");
+        
         timeOn = false;
+        //myFlowchart2.ExecuteBlock("step2");
     }
 }

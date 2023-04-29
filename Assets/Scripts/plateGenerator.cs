@@ -13,6 +13,7 @@ public class plateGenerator : MonoBehaviour
     public AudioSource myPlateSource;
     public AudioClip[] plateSounds;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class plateGenerator : MonoBehaviour
     {
         if (HasPlate is false)
         {
-            Instantiate(plate, transform.position, Quaternion.identity);
+            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
             HasPlate = true;
         }
     }
@@ -54,7 +55,7 @@ public class plateGenerator : MonoBehaviour
         if (HasPlate is false)
         {
             
-            Instantiate(plate, transform.position, Quaternion.identity);
+            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
 
             HasPlate = true;
         }

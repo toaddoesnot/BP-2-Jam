@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class orderGenerator : MonoBehaviour
@@ -30,9 +31,15 @@ public class orderGenerator : MonoBehaviour
     public AudioSource chewSnd;
 
     public GameObject noodleBase;
+    public GameObject potatoBase;
     public GameObject toastBase;
 
     public AudioSource exitSnd;
+    public GameObject mee;
+
+    public int PotatoONoodle;
+
+    public Image guest;
 
     public void Start()
     {
@@ -61,6 +68,7 @@ public class orderGenerator : MonoBehaviour
             }
             else
             {
+                PotatoONoodle = Random.Range(0, 2);
                 firstCourse = Random.Range(0, 3);
                 secondCourse = Random.Range(0, 3);
                 drinks = Random.Range(0, 4);
@@ -98,17 +106,37 @@ public class orderGenerator : MonoBehaviour
                     OrderFullfilled = true;
                     handSc.moneyAm += 10;
                 }
-                if (randomOrder is 1 && handSc.noodFill == secondCourse)
+
+                if (PotatoONoodle is 1)
                 {
-                    handSc.haveOrder = false;
-                    OrderFullfilled = true;
-                    handSc.moneyAm += 15;
+                    if (randomOrder is 1 && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                    {
+                        handSc.haveOrder = false;
+                        OrderFullfilled = true;
+                        handSc.moneyAm += 15;
+                    }
+                    if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                    {
+                        handSc.haveOrder = false;
+                        OrderFullfilled = true;
+                        handSc.moneyAm += 25;
+                    }
                 }
-                if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
+                else
                 {
-                    handSc.haveOrder = false;
-                    OrderFullfilled = true;
-                    handSc.moneyAm += 25;
+                    if (randomOrder is 1 && handSc.noodFill == secondCourse)
+                    {
+                        handSc.haveOrder = false;
+                        OrderFullfilled = true;
+                        handSc.moneyAm += 15;
+                    }
+                    if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
+                    {
+                        handSc.haveOrder = false;
+                        OrderFullfilled = true;
+                        handSc.moneyAm += 25;
+                    }
+                
                 }
             }
         }
@@ -131,12 +159,13 @@ public class orderGenerator : MonoBehaviour
                 allFood.SetActive(false);
             }
         }
+
     }
 
     public void Skidaddle()
     {
         exitSnd.Play();
-        Destroy(this.gameObject);
+        Destroy(mee);
     }
 
 
@@ -192,7 +221,15 @@ public class orderGenerator : MonoBehaviour
     }
     public void Noodle()
     {
-        noodleBase.SetActive(true);
+        if (PotatoONoodle is 0)
+        {
+            noodleBase.SetActive(true);
+        }
+
+        if (PotatoONoodle is 1)
+        {
+            potatoBase.SetActive(true);
+        }
 
         if (secondCourse is 0 || secondCourse is 1)
         {
@@ -209,5 +246,11 @@ public class orderGenerator : MonoBehaviour
                 noodee.SetActive(true);
             }
         }
+
+
+
+
+        
+
     }
 }

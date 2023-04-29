@@ -29,6 +29,15 @@ public class dishwasher : MonoBehaviour
             {
                 inventory.SpaghettiCooked = false;
             }
+            if (inventory.EggCooked)
+            {
+                inventory.EggCooked = false;
+            }
+            if (inventory.PotatoCooked)
+            {
+                inventory.PotatoCooked = false;
+            }
+
             if (inventory.havePlate)
             {
                 inventory.havePlate = false;

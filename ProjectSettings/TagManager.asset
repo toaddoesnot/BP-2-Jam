@@ -13,6 +13,7 @@ TagManager:
   - Order
   - Customer
   - OrderManager
+  - Canvas
   layers:
   - Default
   - TransparentFX
