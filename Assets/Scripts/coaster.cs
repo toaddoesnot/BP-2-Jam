@@ -1,51 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class coaster : MonoBehaviour
 {
     public GameObject myCup;
-    public GameObject drinkInventory;
+    public drinkManager drinkSc;
+    public FoodClasses foodSelected;
 
     public bool occupied;
 
-    public bool hasCof;
-    public bool hasSoda;
-    public bool hasOJ;
-
     public AudioSource cupSound;
+    public pourDrink myButton;
+    public int myDrink;
 
-    public void OnMouseDown()
+    void OnMouseDown()
     {
-        if (occupied is false)
+        if (occupied)
         {
-            if (drinkInventory.GetComponent<drinkManager>().HasSthReady is true)
+            if (myCup.GetComponent<cupOfDrink>().drinkReady && foodSelected.noUcant is false && foodSelected.currentFoods is -1)
             {
+                if (myCup.GetComponent<cupOfDrink>().IamCoffee)
+                {
+                    drinkSc.HasReadyCoffee = true;
+                }
+                if (myCup.GetComponent<cupOfDrink>().IamSoda)
+                {
+                    drinkSc.HasReadySoda = true;
+                }
+                if (myCup.GetComponent<cupOfDrink>().IamJuice)
+                {
+                    drinkSc.HasReadyOJ = true;
+                }
+
+                occupied = false;
+                myCup.GetComponent<cupOfDrink>().drinkReady = false;
+
+                myButton.filled = false;
+                myButton.ResetPadding();
+
+                myCup.GetComponent<cupOfDrink>().takeDrink.Play();
+                myCup.SetActive(false);
+            }
+            else //just with a glass
+            {
+                if (myCup.GetComponent<RectMask2D>().padding.w == 175) //if didn't start pouring
+                {
+                    occupied = false;
+                    myCup.SetActive(false);
+                    cupSound.Play();
+                    foodSelected.currentFoods = 12;
+                }
+            }
+        }
+        else
+        {
+            if (foodSelected.currentFoods == 12)
+            {
+                occupied = true;
                 myCup.SetActive(true);
                 cupSound.Play();
+                foodSelected.currentFoods = -1;
+            }
+            if (drinkSc.drinkHave == myDrink)
+            {
+                myButton.filled = true;
+                occupied = true;
+                myCup.SetActive(true);
+                cupSound.Play();
+                foodSelected.currentFoods = -1;
 
-                if (drinkInventory.GetComponent<drinkManager>().HasReadyCoffee is true)
+                if (myCup.GetComponent<cupOfDrink>().IamCoffee)
                 {
-                    myCup.GetComponent<coasterCup>().layers[0].SetActive(true);
-                    drinkInventory.GetComponent<drinkManager>().HasReadyCoffee = false;
-                    hasCof = true;
-                    occupied = true;
+                    drinkSc.HasReadyCoffee = false;
                 }
-                if (drinkInventory.GetComponent<drinkManager>().HasReadySoda is true)
+                if (myCup.GetComponent<cupOfDrink>().IamSoda)
                 {
-                    myCup.GetComponent<coasterCup>().layers[1].SetActive(true);
-                    drinkInventory.GetComponent<drinkManager>().HasReadySoda = false;
-                    hasSoda = true;
-                    occupied = true;
+                    drinkSc.HasReadySoda = false;
                 }
-                if (drinkInventory.GetComponent<drinkManager>().HasReadyOJ is true)
+                if (myCup.GetComponent<cupOfDrink>().IamJuice)
                 {
-                    myCup.GetComponent<coasterCup>().layers[2].SetActive(true);
-                    drinkInventory.GetComponent<drinkManager>().HasReadyOJ = false;
-                    hasOJ = true;
-                    occupied = true;
+                    drinkSc.HasReadyOJ = false;
                 }
-                drinkInventory.GetComponent<drinkManager>().HasSthReady = false;
+
+                myButton.SetPadding();
             }
         }
     }

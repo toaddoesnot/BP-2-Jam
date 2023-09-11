@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using Fungus;
 using TMPro;
 
-
 public class hand : MonoBehaviour
 {
     public int foodHave;
@@ -52,7 +51,5 @@ public class hand : MonoBehaviour
                 doneInstruction = true;
             }
         }
-       
     }
-
 }

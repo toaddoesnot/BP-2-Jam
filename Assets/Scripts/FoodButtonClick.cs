@@ -200,15 +200,12 @@ public class FoodButtonClick : MonoBehaviour
                     
             }
 
-            if (HaveNoodles || HavePotatoes)
+            if (inventory.EggCooked) //if (HaveNoodles || HavePotatoes)
             {
-                if (inventory.EggCooked)
-                {
-                    egg.SetActive(true);
-                    inventory.EggCooked = false;
-                    FoodSelected.currentFoods = -1;
-                    myPlace.GetComponent<plateGenerator>().EggOn();
-                }
+                egg.SetActive(true);
+                inventory.EggCooked = false;
+                FoodSelected.currentFoods = -1;
+                myPlace.GetComponent<plateGenerator>().EggOn();
             }
 
             if (inventory.sthCooked is false && FoodSelected.noUcant is false && handSc.haveOrder is false)
@@ -226,12 +223,11 @@ public class FoodButtonClick : MonoBehaviour
 
                     handSc.haveOrder = true;
 
-
                     Destroy(this.gameObject);
                 }
                 else
                 {
-                    //take jsut plate
+                    //take just plate
                 }
             }
             else
@@ -315,25 +311,22 @@ public class FoodButtonClick : MonoBehaviour
                     handSc.haveOrder = false;
                 }
             }
-
-           
-
         }
 
         if (FoodSelected.currentFoods == 1)
         {
-                if (HaveToast)
-                {
+            if (HaveToast)
+            {
                 strawberry.SetActive(true);
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().CherryOn();
-                }
+            }
         }
            
         if (FoodSelected.currentFoods == 2)
         {
-                if (HaveToast)
-                {
+            if (HaveToast)
+            {
                 butter.SetActive(true);
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ButterOn();
@@ -343,8 +336,8 @@ public class FoodButtonClick : MonoBehaviour
 
         if (FoodSelected.currentFoods == 6)
         {
-                if (HaveNoodles || HavePotatoes)
-                {
+            if (HaveNoodles || HavePotatoes)
+            {
                 shroom.SetActive(true);
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ShroomOn();

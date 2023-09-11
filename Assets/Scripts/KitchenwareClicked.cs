@@ -30,11 +30,11 @@ public class KitchenwareClicked : MonoBehaviour
     {
         if (henss)
         {
-            Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
+            //Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
         }
         else
         {
-            Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
+            //Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
         }
         
     }

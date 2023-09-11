@@ -14,21 +14,16 @@ public class orderGenerator : MonoBehaviour
 
     public int randomOrder;
 
-    public GameObject[] toastIngredients;
     public GameObject[] noodleIngredients;
+    public GameObject[] toastIngredients;
     public GameObject[] drinkIngredients;
+    public GameObject[] bgs;
 
     public bool OrderFullfilled;
     public bool DrinkFullfilled;
 
-    public GameObject allDrinks;
-    public GameObject allFood;
-
     public drinkManager drinkSc;
     public hand handSc;
-
-    public AudioSource gulpSnd;
-    public AudioSource chewSnd;
 
     public GameObject noodleBase;
     public GameObject potatoBase;
@@ -38,13 +33,14 @@ public class orderGenerator : MonoBehaviour
     public GameObject mee;
 
     public int PotatoONoodle;
-
-    public Image guest;
+    public foodCart cartObj;
 
     public void Start()
     {
         drinkSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<drinkManager>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        cartObj = GameObject.FindGameObjectWithTag("foodcart").GetComponent<foodCart>(); 
+
         exitSnd = handSc.GetComponent<AudioSource>();
 
         if (handSc.tutorialLvl is 1)
@@ -77,69 +73,6 @@ public class orderGenerator : MonoBehaviour
                 Order();
             }
         }
-        
-
-        
-    }
-
-    public void OnMouseDown()
-    {
-        print("You clicked on a character");
-        
-        //DRINKS//
-        if (drinks == drinkSc.drinkHave)
-        {
-            DrinkFullfilled = true;
-            drinkSc.HasReadyCoffee = false;
-            drinkSc.HasReadySoda = false;
-            drinkSc.HasReadyOJ = false;
-            handSc.moneyAm += 5;
-        }
-
-        if (handSc.haveOrder)
-        {
-            if (handSc.foodHave == randomOrder)
-            {
-                if (randomOrder is 0 && handSc.toastFill == firstCourse)
-                {
-                    handSc.haveOrder = false;
-                    OrderFullfilled = true;
-                    handSc.moneyAm += 10;
-                }
-
-                if (PotatoONoodle is 1)
-                {
-                    if (randomOrder is 1 && handSc.noodFill == secondCourse && handSc.potatoInstead)
-                    {
-                        handSc.haveOrder = false;
-                        OrderFullfilled = true;
-                        handSc.moneyAm += 15;
-                    }
-                    if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse && handSc.potatoInstead)
-                    {
-                        handSc.haveOrder = false;
-                        OrderFullfilled = true;
-                        handSc.moneyAm += 25;
-                    }
-                }
-                else
-                {
-                    if (randomOrder is 1 && handSc.noodFill == secondCourse)
-                    {
-                        handSc.haveOrder = false;
-                        OrderFullfilled = true;
-                        handSc.moneyAm += 15;
-                    }
-                    if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
-                    {
-                        handSc.haveOrder = false;
-                        OrderFullfilled = true;
-                        handSc.moneyAm += 25;
-                    }
-                
-                }
-            }
-        }
     }
 
     public void Update()
@@ -148,26 +81,12 @@ public class orderGenerator : MonoBehaviour
         {
             Skidaddle();
         }
-        else
-        {
-            if (DrinkFullfilled)
-            {
-                allDrinks.SetActive(false);
-            }
-            if (OrderFullfilled)
-            {
-                allFood.SetActive(false);
-            }
-        }
-
     }
 
     public void Skidaddle()
     {
-        exitSnd.Play();
         Destroy(mee);
     }
-
 
     public void Order()
     {
@@ -201,6 +120,7 @@ public class orderGenerator : MonoBehaviour
 
     public void Toast()
     {
+        bgs[0].SetActive(true);
         toastBase.SetActive(true);
 
         if (firstCourse is 0 || firstCourse is 1)
@@ -221,6 +141,7 @@ public class orderGenerator : MonoBehaviour
     }
     public void Noodle()
     {
+        bgs[1].SetActive(true);
         if (PotatoONoodle is 0)
         {
             noodleBase.SetActive(true);
@@ -246,11 +167,51 @@ public class orderGenerator : MonoBehaviour
                 noodee.SetActive(true);
             }
         }
+    }
 
+    public void compareOrder()
+    {
+        if (cartObj.drinks == drinks)
+        {
+            DrinkFullfilled = true;
+            cartObj.drinks = 4;
+        }
+        //
 
+        if (handSc.foodHave == randomOrder)
+        {
+            if (randomOrder is 0 && handSc.toastFill == firstCourse)
+            {
+                handSc.haveOrder = false;
+                OrderFullfilled = true;
+            }
 
-
-        
-
+            if (PotatoONoodle is 1)
+            {
+                if (randomOrder is 1 && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                {
+                    handSc.haveOrder = false;
+                    OrderFullfilled = true;
+                }
+                if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                {
+                    handSc.haveOrder = false;
+                    OrderFullfilled = true;
+                }
+            }
+            else
+            {
+                if (randomOrder is 1 && handSc.noodFill == secondCourse)
+                {
+                    handSc.haveOrder = false;
+                    OrderFullfilled = true;
+                }
+                if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
+                {
+                    handSc.haveOrder = false;
+                    OrderFullfilled = true;
+                }
+            }
+        }
     }
 }

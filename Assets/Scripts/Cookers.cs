@@ -85,16 +85,16 @@ public class Cookers : MonoBehaviour
                     {
                         if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
-                            //foodScript.currentFoods = 10; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
-                            //Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            foodScript.currentFoods = 10; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
                         }
                     }
                     if (IAmPot)
                     {
                         if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
-                            //foodScript.currentFoods = 9; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
-                            //Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            foodScript.currentFoods = 9; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
                         }
                     }
                 }
