@@ -24,9 +24,18 @@ public class KitchenwareClicked : MonoBehaviour
     public AudioClip[] foodSounds;
 
     public GameObject self;
+    public bool henss;
 
     public void Start()
     {
+        if (henss)
+        {
+            //Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
+        }
+        else
+        {
+            //Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
+        }
         
     }
 
@@ -64,7 +73,7 @@ public class KitchenwareClicked : MonoBehaviour
             }
             else
             {
-                Instantiate(Pot, transform.position, Quaternion.identity);
+                Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
                 FoodSelected.currentFoods = -1;
             }
         }
@@ -77,7 +86,7 @@ public class KitchenwareClicked : MonoBehaviour
             }
             else
             {
-                Instantiate(Toaster, transform.position, Quaternion.identity);
+                Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
                 FoodSelected.currentFoods = -1;
             }
         }

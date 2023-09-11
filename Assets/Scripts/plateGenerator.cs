@@ -7,17 +7,26 @@ public class plateGenerator : MonoBehaviour
     public bool HasPlate;
     public GameObject plate;
 
-    public GameObject myCoaster;
     public GameObject myPlate;
     public GameObject self;
 
     public AudioSource myPlateSource;
     public AudioClip[] plateSounds;
 
+
     // Start is called before the first frame update
     void Start()
     {
         GeneratePlate();
+    }
+
+    public void Update()
+    {
+        if (HasPlate is false)
+        {
+            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
+            HasPlate = true;
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -46,7 +55,7 @@ public class plateGenerator : MonoBehaviour
         if (HasPlate is false)
         {
             
-            Instantiate(plate, transform.position, Quaternion.identity);
+            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
 
             HasPlate = true;
         }

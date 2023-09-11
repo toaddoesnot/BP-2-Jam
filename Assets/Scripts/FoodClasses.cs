@@ -1,48 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodClasses : MonoBehaviour
 {
     public GameObject[] Foods;
     public int currentFoods = -1;
+    public hand handSc;
+     
+    public bool noUcant;
 
-    public void SetButton(int index)
+    public void Update()
     {
-        currentFoods = index;
+        if (this.GetComponent<Inventory>().sthCooked is true || this.GetComponent<drinkManager>().HasSthReady is true || handSc.haveOrder)
+        {
+            noUcant = true;
+        }
+        else
+        {
+            noUcant = false;
+        }
 
-        if(currentFoods is 3) 
+        if (Input.GetMouseButtonDown(1))//right mouse button
         {
-            if (this.GetComponent<drinkManager>().pouring1)
+            if(currentFoods != -1)
             {
-                if (this.GetComponent<drinkManager>().HasAnyCup)
-                {
-                    currentFoods = 12;
-                }
-            }
-        }
-        if (currentFoods is 7)
-        {
-            if (this.GetComponent<drinkManager>().pouring2)
-            {
-                if (this.GetComponent<drinkManager>().HasAnyCup)
-                {
-                    currentFoods = 12;
-                }
-            }
-        }
-        if (currentFoods is 11)
-        {
-            if (this.GetComponent<drinkManager>().pouring3)
-            {
-                if (this.GetComponent<drinkManager>().HasAnyCup)
-                {
-                    currentFoods = 12;
-                }
+                currentFoods = -1;
             }
         }
     }
 
-
-
+    public void SetButton(int index)
+    {
+        if (!noUcant)
+        {
+            currentFoods = index;
+        }
+    }
 }

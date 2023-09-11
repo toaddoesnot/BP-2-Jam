@@ -9,8 +9,8 @@ public class Cookers : MonoBehaviour
     //public GameObject Ramen;
     //public GameObject FrenchToast;
 
-    public bool RamenReady;
-    public bool ToastReady;
+    //public bool RamenReady;
+   // public bool ToastReady;
 
     public bool HasFood;
 
@@ -29,15 +29,25 @@ public class Cookers : MonoBehaviour
     public Slider timer;
     public bool foodReady;
 
+    Image myImage;
+    public GameObject lid;
+    public Sprite empty;
+    public Sprite full;
+    public Sprite fullTwo;
+
+    public int whoDis; //1-pot; 2-pasta; 3-toast; 4-egg;
+
 
     private void Start()
     {
+        myImage = this.GetComponent<Image>();
         foodSelected = GameObject.FindGameObjectWithTag("Inventory");
         foodScript = foodSelected.GetComponent<FoodClasses>();
         HasFood = false;
 
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
+        
     }
 
     private void Update()
@@ -57,7 +67,7 @@ public class Cookers : MonoBehaviour
     {
         if (HasFood)
         {
-            if (foodReady)
+            if (foodReady && foodScript.noUcant is false && foodScript.currentFoods is -1)
             {
                 print("Ready to check");
                 Checker();
@@ -73,55 +83,63 @@ public class Cookers : MonoBehaviour
 
                     if (IAmToaster)
                     {
-                        if (inventory.sthCooked is false)
+                        if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
-                            foodScript.currentFoods = 10;
-                            Destroy(self);
+                            foodScript.currentFoods = 10; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
                         }
                     }
                     if (IAmPot)
                     {
-                        if (inventory.sthCooked is false)
+                        if (inventory.sthCooked is false && foodScript.noUcant is false)
                         {
-                            foodScript.currentFoods = 9;
-                            Destroy(self);
+                            foodScript.currentFoods = 9; //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
+                            Destroy(self); //ENABLE FOR DISHWASHING!!!!!!!!!!!!!
                         }
                     }
-                }
-                else
-                {
-
                 }
             }
             else
             {
-                if (foodScript.currentFoods == 4)
+                if (IAmPot)
                 {
-                    if (IAmPot)
+                    if (foodScript.currentFoods == 4)
                     {
+                        whoDis = 2; //pasta
                         StartCoroutine(Cook());
                         HasFood = true;
-                        //Instantiate(Ramen, transform.position, Quaternion.identity);
+                        foodScript.currentFoods = -1;
+                    }
+                    if (foodScript.currentFoods == 8)
+                    {
+                        whoDis = 1; //potato
+                        StartCoroutine(Cook());
+                        HasFood = true;
                         foodScript.currentFoods = -1;
                     }
                 }
+
                 else
                 {
-                    if (foodScript.currentFoods == 0)
+                    if (IAmToaster)
                     {
-                        if (IAmToaster)
+                        if (foodScript.currentFoods == 0)
                         {
+                            whoDis = 3; //toast
                             StartCoroutine(Cook());
                             HasFood = true;
-                            //Instantiate(FrenchToast, transform.position, Quaternion.identity);
+                            foodScript.currentFoods = -1;
+                        }
+                        if (foodScript.currentFoods == 5)
+                        {
+                            whoDis = 4; //egg
+                            StartCoroutine(Cook());
+                            HasFood = true;
                             foodScript.currentFoods = -1;
                         }
                     }
                 }
             }
-
-
-
         }
     }
 
@@ -130,30 +148,40 @@ public class Cookers : MonoBehaviour
     {
         print("CHECKING");
 
-        if (IAmPot)
+        if (whoDis is 1)
         {
-            inventory.SpaghettiCooked = true;
-            ResetTimer();
-            HasFood = false;
+            inventory.PotatoCooked = true;
             myStove.GetComponent<KitchenwareClicked>().TakePasta();
-            //PLAY PICK NOOD READY SOUND
-            //Destroy(self);
         }
 
-        if (IAmToaster)
+        if (whoDis is 2)
+        {
+            inventory.SpaghettiCooked = true;
+            myStove.GetComponent<KitchenwareClicked>().TakePasta();
+        }
+
+        if (whoDis is 3)
         {
             inventory.ToastCooked = true;
-            ResetTimer();
-            HasFood = false;
             myStove.GetComponent<KitchenwareClicked>().TakeBread();
-            //PLAY PICK TOAST READY SOUND
-            // Destroy(self);
         }
+
+        if (whoDis is 4)
+        {
+            inventory.EggCooked = true;
+            myStove.GetComponent<KitchenwareClicked>().TakeBread();
+        }
+
+        ResetTimer();
+        HasFood = false;
+        myImage.sprite = empty;
+        whoDis = 0;
     }
 
     public IEnumerator Cook()
     {
         print("ALIVE");
+        lid.SetActive(true);
 
         if (IAmPot)
         {
@@ -183,7 +211,17 @@ public class Cookers : MonoBehaviour
         {
             myStove.GetComponent<KitchenwareClicked>().FryingReady();
         }
+        lid.SetActive(false);
 
+        if (whoDis is 2 || whoDis is 3)
+        {
+            myImage.sprite = full;
+        }
+
+        if (whoDis is 1 || whoDis is 4)
+        {
+            myImage.sprite = fullTwo;
+        }
     }
 
     public void ResetTimer()

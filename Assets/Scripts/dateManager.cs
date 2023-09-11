@@ -10,12 +10,17 @@ public class dateManager : MonoBehaviour
 
     public void Start()
     {
-       // Time.timeScale = 0;
+        //Time.timeScale = 0;
+    }
+
+    public void Update()
+    {
+       
     }
 
     public void StartGameTut()
     {
-        UIobj.SetActive(false);
+        //UIobj.SetActive(false);
         Time.timeScale = 1;
     }
 }

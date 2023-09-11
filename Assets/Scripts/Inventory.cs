@@ -8,16 +8,18 @@ public class Inventory : MonoBehaviour
 {
     public bool ToastCooked;
     public bool SpaghettiCooked;
+    public bool EggCooked;
+    public bool PotatoCooked;
+
     public bool sthCooked;
+
     public bool havePlate;
 
-    public int OrderStatus;
     public int HowManyOrds;
 
     //public TextMeshProUGUI orderText;
-
-
     // Start is called before the first frame update
+
     void Start()
     {
         //orderText.text = HowManyOrds.ToString();
@@ -27,32 +29,15 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         
-
-        if (ToastCooked is true)
+        if (ToastCooked is true || SpaghettiCooked is true || EggCooked is true || PotatoCooked is true)
         {
             sthCooked = true;
         }
         else
         {
-            if (SpaghettiCooked is true)
-            {
-                sthCooked = true;
-            }
-            else
-            {
-                if (ToastCooked is false)
-                {
-                    sthCooked = false;
-                }
-                else
-                {
-                    if (SpaghettiCooked is false)
-                    {
-                        sthCooked = false;
-                    }
-                }
-            }
+            sthCooked = false;
         }
+
 
         if (havePlate)
         {

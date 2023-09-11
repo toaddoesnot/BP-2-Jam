@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Fungus;
+using System.Runtime.InteropServices;
 
 public class FoodButtonClick : MonoBehaviour
 {
@@ -16,51 +17,140 @@ public class FoodButtonClick : MonoBehaviour
     public GameObject strawberry;
     public GameObject butter;
     public GameObject noodles;
+    public GameObject potato;
     public GameObject egg;
     public GameObject shroom;
 
-    public int orderCompletion;
-
     public bool HaveToast;
     public bool HaveNoodles;
-    public bool HaveDrink;
+    public bool HavePotatoes;
 
     public GameObject myPlace;
 
-    //public Flowchart Main;
+    public bool ToastWButter;
+    public bool ToastWCherry;
+    public bool ToastComplete;
 
+    public bool NoodWShroom;
+    public bool NoodWEgg;
+    public bool NoodComplete;
+
+    //
+
+    public hand handSc;
+
+    public int myfoodHave;
+    public int toastHave;
+    public int noodHave;
+
+    public bool doneFlow;
 
     private void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
         FoodSelected = inventoryManager.GetComponent<FoodClasses>();
+
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+
     }
 
     public void Update()
     {
+        if (toast.activeInHierarchy && noodles.activeInHierarchy || toast.activeInHierarchy && potato.activeInHierarchy)
+        {
+            myfoodHave = 2;
+        }
+        else
+        {
+            if(toast.activeInHierarchy && noodles.activeInHierarchy is false || toast.activeInHierarchy && potato.activeInHierarchy is false) 
+            {
+                myfoodHave = 0;
+            }
+            else
+            {
+                if (toast.activeInHierarchy is false && noodles.activeInHierarchy || toast.activeInHierarchy is false && potato.activeInHierarchy)
+                {
+                    myfoodHave = 1;
+                }
+                else
+                {
+                    myfoodHave = 4;
+                    toastHave = 4;
+                    noodHave = 4;
+                }
+            }
+        }
+
+
         if (toast.activeInHierarchy)
         {
-            if (butter.activeInHierarchy)
+            if (butter.activeInHierarchy && strawberry.activeInHierarchy)
             {
+                ToastComplete = true;
+                if (handSc.whichFlow is 1)
+                {
+                    if (doneFlow is false)
+                    {
+                        handSc.StartBlock();
+                        doneFlow = true;
+                    }
+                }
+                toastHave = 2;
+                ToastWButter = false;
+                ToastWCherry = false;
+            }
+            else
+            {
+                if (butter.activeInHierarchy)
+                {
+                    ToastWButter = true;
+                    toastHave = 1;
+                }
                 if (strawberry.activeInHierarchy)
                 {
-                    //Main.SetBooleanVariable("MadeToast", true);
+                    ToastWCherry = true;
+                    toastHave = 0;
                 }
             }
         }
 
-        if (noodles.activeInHierarchy)
+        if (noodles.activeInHierarchy || potato.activeInHierarchy)
         {
-            if (egg.activeInHierarchy)
+            if (potato.activeInHierarchy)
             {
+                HavePotatoes = true;
+            }
+
+            if (egg.activeInHierarchy && shroom.activeInHierarchy)
+            {
+                NoodComplete = true;
+                if (handSc.whichFlow is 2)
+                {
+                    if (doneFlow is false)
+                    {
+                        handSc.StartBlock();
+                        doneFlow = true;
+                    }
+                }
+                noodHave = 2;
+                NoodWShroom = false;
+                NoodWEgg = false;
+            }
+            else
+            {
+                if (egg.activeInHierarchy)
+                {
+                    NoodWEgg = true;
+                    noodHave = 0;
+                }
                 if (shroom.activeInHierarchy)
                 {
-                    //Main.SetBooleanVariable("MadeSoup", true);
+                    NoodWShroom = true;
+                    noodHave = 1;
                 }
             }
         }
-
     }
 
     void OnMouseDown()
@@ -72,7 +162,6 @@ public class FoodButtonClick : MonoBehaviour
                 if (inventory.ToastCooked)
                 {
                     toast.SetActive(true);
-                    orderCompletion++;
                     HaveToast = true;
                     inventory.ToastCooked = false;
                     FoodSelected.currentFoods = -1;
@@ -82,77 +171,174 @@ public class FoodButtonClick : MonoBehaviour
 
             if (HaveNoodles is false)
             {
-                if (inventory.SpaghettiCooked)
+                if (HavePotatoes is false)
                 {
-                    noodles.SetActive(true);
-                    orderCompletion++;
-                    HaveNoodles = true;
-                    inventory.SpaghettiCooked = false;
-                    FoodSelected.currentFoods = -1;
-                    myPlace.GetComponent<plateGenerator>().PastaOn();
+                    if (inventory.SpaghettiCooked)
+                    {
+                        noodles.SetActive(true);
+                        HaveNoodles = true;
+                        inventory.SpaghettiCooked = false;
+                        FoodSelected.currentFoods = -1;
+                        myPlace.GetComponent<plateGenerator>().PastaOn();
+                    }
                 }
             }
 
-            if (inventory.sthCooked is false)
+            if (HavePotatoes is false)
             {
-                if (inventory.havePlate)
+                if (HaveNoodles is false)
                 {
+                    if (inventory.PotatoCooked)
+                    {
+                        potato.SetActive(true);
+                        HavePotatoes = true;
+                        inventory.PotatoCooked = false;
+                        FoodSelected.currentFoods = -1;
+                        myPlace.GetComponent<plateGenerator>().PastaOn();
+                    }
+                }
+                    
+            }
 
+            if (inventory.EggCooked) //if (HaveNoodles || HavePotatoes)
+            {
+                egg.SetActive(true);
+                inventory.EggCooked = false;
+                FoodSelected.currentFoods = -1;
+                myPlace.GetComponent<plateGenerator>().EggOn();
+            }
+
+            if (inventory.sthCooked is false && FoodSelected.noUcant is false && handSc.haveOrder is false)
+            {
+                if (myfoodHave is not 4)
+                {
+                    handSc.foodHave = myfoodHave;
+                    handSc.toastFill = toastHave;
+                    handSc.noodFill = noodHave;
+
+                    if (HavePotatoes)
+                    {
+                        handSc.potatoInstead = true;
+                    }
+
+                    handSc.haveOrder = true;
+
+                    Destroy(this.gameObject);
                 }
                 else
                 {
-                   if (orderCompletion is 0)
+                    //take just plate
+                }
+            }
+            else
+            {
+                if (handSc.haveOrder)
+                {
+                    //order values to me
+                    //
+                    if (handSc.foodHave is 0)
                     {
-                        inventory.havePlate = true;
+                        toast.SetActive(true);
+                    }
+                    if (handSc.foodHave is 1)
+                    {
+                        noodles.SetActive(true);
+                        if (handSc.potatoInstead)
+                        {
+                            noodles.SetActive(false);
+                            potato.SetActive(true);
+                        }
+                    }
+                    if (handSc.foodHave is 2)
+                    {
+                        toast.SetActive(true);
+                        noodles.SetActive(true);
+                        if (handSc.potatoInstead)
+                        {
+                            noodles.SetActive(false);
+                            potato.SetActive(true);
+                        }
                     } 
-                   
-                   inventory.OrderStatus = orderCompletion;
-                    
 
+                    if (handSc.toastFill is 1)
+                    {
+                        toast.SetActive(true);
+                        butter.SetActive(true);
+                    }
+                    if (handSc.toastFill is 0)
+                    {
+                        toast.SetActive(true);
+                        strawberry.SetActive(true);
+                    }
+                    if (handSc.toastFill is 2)
+                    {
+                        toast.SetActive(true);
+                        strawberry.SetActive(true);
+                        butter.SetActive(true);
+                    }
+                    if (handSc.noodFill is 0)
+                    {
+                        noodles.SetActive(true);
+                        egg.SetActive(true);
+                        if (handSc.potatoInstead)
+                        {
+                            noodles.SetActive(false);
+                            potato.SetActive(true);
+                        }
+                    }
+                    if (handSc.noodFill is 1)
+                    {
+                        noodles.SetActive(true);
+                        shroom.SetActive(true);
+                        if (handSc.potatoInstead)
+                        {
+                            noodles.SetActive(false);
+                            potato.SetActive(true);
+                        }
+                    }
+                    if (handSc.noodFill is 2)
+                    {
+                        noodles.SetActive(true);
+                        egg.SetActive(true);
+                        shroom.SetActive(true);
+                        if (handSc.potatoInstead)
+                        {
+                            noodles.SetActive(false);
+                            potato.SetActive(true);
+                        }
+                    }
+
+                    handSc.haveOrder = false;
                 }
             }
         }
 
         if (FoodSelected.currentFoods == 1)
         {
-                if (HaveToast)
-                {
+            if (HaveToast)
+            {
                 strawberry.SetActive(true);
-                orderCompletion++;
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().CherryOn();
-                }
+            }
         }
            
         if (FoodSelected.currentFoods == 2)
         {
-                if (HaveToast)
-                {
+            if (HaveToast)
+            {
                 butter.SetActive(true);
-                orderCompletion++;
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ButterOn();
             }
         }
        
 
-        if (FoodSelected.currentFoods == 5)
-        {
-                if (HaveNoodles)
-                {
-                egg.SetActive(true);
-                orderCompletion++;
-                FoodSelected.currentFoods = -1;
-                myPlace.GetComponent<plateGenerator>().EggOn();
-            }
-        }
-
         if (FoodSelected.currentFoods == 6)
         {
-                if (HaveNoodles)
-                {
+            if (HaveNoodles || HavePotatoes)
+            {
                 shroom.SetActive(true);
-                orderCompletion++;
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ShroomOn();
             }

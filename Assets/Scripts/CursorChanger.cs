@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorChanger : MonoBehaviour
 {
-    //public Texture2D cursorDefault;
+    public Texture2D cursorDefault;
     // Start is called before the first frame update
     public GameObject[] Cursors;
 
@@ -12,10 +12,12 @@ public class CursorChanger : MonoBehaviour
     public Inventory inventorySc;
     public GameObject foods;
 
+    public hand handSc;
+
     void Start()
     {
         //Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
-        Cursor.visible = false;
+        //Cursor.visible = false;
         FoodClassSc = foods.GetComponent<FoodClasses>();
 
         foreach (GameObject cur in Cursors)
@@ -27,9 +29,13 @@ public class CursorChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cursor.visible = false;
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = cursorPos;
+        Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 cursorPos2d = new Vector3(cursorPos.x, cursorPos.y, 1);
+        foreach (GameObject cur in Cursors)
+        {
+            cur.transform.position = cursorPos2d;
+        }
+        //Cursor.visible = false;
 
         if (FoodClassSc.currentFoods is -1)
         {
@@ -41,67 +47,84 @@ public class CursorChanger : MonoBehaviour
                     Cursors[4].SetActive(true);
                 }
             }
-            else
-            {
-                if (inventorySc.ToastCooked)
-                {
-                    foreach (GameObject cur in Cursors)
-                    {
-                        cur.SetActive(false);
-                        Cursors[10].SetActive(true);
-                    }
-                }
-                else
-                {
-                    if (inventorySc.havePlate)
-                    {
-                        foreach (GameObject cur in Cursors)
-                        {
-                            cur.SetActive(false);
-                            Cursors[3].SetActive(true);
-                        }
-                    }
-                    else
-                    {
-                        if (foods.GetComponent<drinkManager>().HasReadyCoffee)
-                        {
-                            foreach (GameObject cur in Cursors)
-                            {
-                                cur.SetActive(false);
-                                Cursors[13].SetActive(true);
-                            }
-                        }
-                        else
-                        {
-                            if (foods.GetComponent<drinkManager>().HasReadySoda)
-                            {
-                                foreach (GameObject cur in Cursors)
-                                {
-                                    cur.SetActive(false);
-                                    Cursors[14].SetActive(true);
-                                }
-                            }
-                            else
-                            {
-                                if (foods.GetComponent<drinkManager>().HasReadyOJ)
-                                {
-                                    foreach (GameObject cur in Cursors)
-                                    {
-                                        cur.SetActive(false);
-                                        Cursors[15].SetActive(true);
-                                    }
-                                }
-                                else
-                                {
-                                    foreach (GameObject cur in Cursors)
-                                    {
-                                        cur.SetActive(false);
-                                    }
-                                }
-                            }
-                        }
-                    }
 
+            if (inventorySc.ToastCooked)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[10].SetActive(true);
+                }
+            }
+
+            if (inventorySc.PotatoCooked)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[17].SetActive(true);
+                }
+            }
+
+            if (inventorySc.EggCooked)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[1].SetActive(true);
+                }
+            }
+
+            if (inventorySc.havePlate)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[3].SetActive(true);
+                }
+            }
+
+            if (foods.GetComponent<drinkManager>().HasReadyCoffee)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[13].SetActive(true);
+                }
+            }
+
+            if (foods.GetComponent<drinkManager>().HasReadySoda)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[14].SetActive(true);
+                }
+            }
+
+            if (foods.GetComponent<drinkManager>().HasReadyOJ)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[15].SetActive(true);
+                }
+            }
+
+            if (handSc.haveOrder)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
+                    Cursors[16].SetActive(true);
+                }
+            }
+
+            if (handSc.haveOrder is false && inventorySc.havePlate is false && inventorySc.sthCooked is false && foods.GetComponent<drinkManager>().HasSthReady is false)
+            {
+                foreach (GameObject cur in Cursors)
+                {
+                    cur.SetActive(false);
                 }
             }
 
@@ -188,6 +211,14 @@ public class CursorChanger : MonoBehaviour
             }
         }
 
+        if (FoodClassSc.currentFoods is 8)
+        {
+            foreach (GameObject cur in Cursors)
+            {
+                cur.SetActive(false);
+                Cursors[17].SetActive(true);
+            }
+        }
 
         //0 toast
         //1 straw
