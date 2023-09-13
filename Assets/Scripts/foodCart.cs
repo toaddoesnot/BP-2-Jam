@@ -12,6 +12,7 @@ public class foodCart : MonoBehaviour
     //handSc.moneyAm += 5; //FOR MONEY
 
     public int drinks;
+    public bool breakLoop;
     
     void Start()
     {
@@ -36,6 +37,18 @@ public class foodCart : MonoBehaviour
         foreach (GameObject juke in jukes)
         {
             juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
+
+            if (breakLoop)
+            {
+                StartCoroutine(coolDown());
+                break;
+            }
         }
+    }
+
+    IEnumerator coolDown()
+    {
+        yield return new WaitForSeconds(1f);
+        breakLoop = false;
     }
 }

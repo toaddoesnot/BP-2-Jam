@@ -34,6 +34,7 @@ public class orderGenerator : MonoBehaviour
 
     public int PotatoONoodle;
     public foodCart cartObj;
+    private bool canCheck; 
 
     public void Start()
     {
@@ -171,45 +172,43 @@ public class orderGenerator : MonoBehaviour
 
     public void compareOrder()
     {
-        if (cartObj.drinks == drinks)
+        if (DrinkFullfilled == false && cartObj.drinks == drinks)
         {
             DrinkFullfilled = true;
+            foreach (GameObject drinkee in drinkIngredients)
+            {
+                drinkee.SetActive(false);
+            }
             cartObj.drinks = 4;
+            cartObj.breakLoop = true;
         }
         //
 
-        if (handSc.foodHave == randomOrder)
+        if (OrderFullfilled == false && handSc.foodHave == randomOrder)
         {
             if (randomOrder is 0 && handSc.toastFill == firstCourse)
             {
                 handSc.haveOrder = false;
                 OrderFullfilled = true;
+                cartObj.breakLoop = true;
             }
 
             if (PotatoONoodle is 1)
             {
-                if (randomOrder is 1 && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                if (randomOrder is 1 && handSc.noodFill == secondCourse && handSc.potatoInstead || randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse && handSc.potatoInstead)
                 {
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
-                }
-                if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse && handSc.potatoInstead)
-                {
-                    handSc.haveOrder = false;
-                    OrderFullfilled = true;
+                    cartObj.breakLoop = true;
                 }
             }
             else
             {
-                if (randomOrder is 1 && handSc.noodFill == secondCourse)
+                if (randomOrder is 1 && handSc.noodFill == secondCourse || randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
                 {
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
-                }
-                if (randomOrder is 2 && handSc.toastFill == firstCourse && handSc.noodFill == secondCourse)
-                {
-                    handSc.haveOrder = false;
-                    OrderFullfilled = true;
+                    cartObj.breakLoop = true;
                 }
             }
         }
