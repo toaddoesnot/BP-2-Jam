@@ -2815,7 +2815,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434746953}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a394dd47b44705644b3ecc1a4ebe907a, type: 3}
@@ -3348,7 +3348,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 2
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &499520077
 CircleCollider2D:
@@ -9601,7 +9600,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 4
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &1301776719
 CircleCollider2D:
@@ -10520,7 +10518,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 5
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &1369046169
 CircleCollider2D:
@@ -13364,7 +13361,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 1
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &1924676082
 CircleCollider2D:
@@ -13744,7 +13740,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 6
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &1981402989
 CircleCollider2D:
@@ -14423,6 +14418,7 @@ MonoBehaviour:
   - {fileID: 1981402985}
   drinkSc: {fileID: 2328659491852343575}
   drinks: 0
+  breakLoop: 0
 --- !u!114 &2057141935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14908,7 +14904,6 @@ MonoBehaviour:
   orderInstance: {fileID: 2084879080778202221, guid: 5714faab756c6a74c9c62a4a0803a172, type: 3}
   orderPlaque: {fileID: 2118817339}
   myNo: 3
-  TEST: 0
   myOrder: {fileID: 0}
 --- !u!58 &2077596622
 CircleCollider2D:
@@ -15309,7 +15304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -243.21078, y: 568.8764}
+  m_AnchoredPosition: {x: -243.21078, y: 550.61}
   m_SizeDelta: {x: 1887.8422, y: 357.9655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118817341

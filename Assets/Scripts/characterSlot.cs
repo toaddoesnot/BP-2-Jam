@@ -27,24 +27,35 @@ public class characterSlot : MonoBehaviour
     public GameObject orderPlaque;
     public string myNo;
 
-    public bool TEST;
     public GameObject myOrder;
+    private bool drinkDone;
+    private bool foodDone;
+    private bool ready2eat;
 
     void Update()
     {
         if(myOrder != null)
         {
-            if (myOrder.GetComponent<orderGenerator>().OrderFullfilled)
+            if (!foodDone && myOrder.GetComponent<orderGenerator>().OrderFullfilled)
             {
                 print(myNo + ": I received my order");
+                foodDone = true;
+            }
+            if (!drinkDone && myOrder.GetComponent<orderGenerator>().DrinkFullfilled)
+            {
+                print(myNo + ": I received my drink");
+                drinkDone = true;
             }
         }
 
-        if (TEST)
+        if (foodDone && drinkDone)
         {
-            currentState = 3;
-            StartCoroutine(Eating());
-            TEST = false;
+            if (!ready2eat)
+            {
+                currentState = 3;
+                StartCoroutine(Eating());
+                ready2eat = true;
+            }
         }
         
         if (canPress && currentState == 0)
@@ -61,7 +72,7 @@ public class characterSlot : MonoBehaviour
             timeWaiting += Time.deltaTime;
         }
 
-        if (currentState is 0 && timeWaiting >= 5f)
+        if (currentState is 0 && timeWaiting >= 2f)
         {
             canPress = true;
         }
