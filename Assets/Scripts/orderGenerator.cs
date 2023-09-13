@@ -86,7 +86,7 @@ public class orderGenerator : MonoBehaviour
 
     public void Skidaddle()
     {
-        Destroy(mee);
+        //Destroy(mee);
     }
 
     public void Order()

@@ -53,6 +53,8 @@ public class characterSlot : MonoBehaviour
             if (!ready2eat)
             {
                 currentState = 3;
+                Destroy(myOrder);
+                myOrder = null;
                 StartCoroutine(Eating());
                 ready2eat = true;
             }

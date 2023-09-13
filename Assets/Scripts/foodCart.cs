@@ -36,8 +36,11 @@ public class foodCart : MonoBehaviour
 
         foreach (GameObject juke in jukes)
         {
-            juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
-
+            if (juke.GetComponent<characterSlot>().myOrder != null) // MAY NOT WORK
+            {
+                juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
+            }
+            
             if (breakLoop)
             {
                 StartCoroutine(coolDown());
