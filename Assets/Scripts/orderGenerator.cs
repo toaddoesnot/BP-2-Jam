@@ -34,13 +34,17 @@ public class orderGenerator : MonoBehaviour
 
     public int PotatoONoodle;
     public foodCart cartObj;
-    private bool canCheck; 
+    private bool canCheck;
+
+    public GameObject[] timers; //0 - white 1 - red 2 - both 3,4,5 - drinks
+    public int neededTimer;
+    public string nombre;
 
     public void Start()
     {
         drinkSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<drinkManager>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
-        cartObj = GameObject.FindGameObjectWithTag("foodcart").GetComponent<foodCart>(); 
+        cartObj = GameObject.FindGameObjectWithTag("foodcart").GetComponent<foodCart>();
 
         exitSnd = handSc.GetComponent<AudioSource>();
 
@@ -78,15 +82,39 @@ public class orderGenerator : MonoBehaviour
 
     public void Update()
     {
-        if(OrderFullfilled && DrinkFullfilled)
+        if (OrderFullfilled)
         {
-            Skidaddle();
+            foreach (GameObject back in bgs)
+            {
+                back.SetActive(false);
+            }
         }
-    }
 
-    public void Skidaddle()
-    {
-        //Destroy(mee);
+        foreach (GameObject nom in timers)
+        {
+            nom.GetComponent<miniTimer>().timeText.text = nombre.ToString();
+            nom.SetActive(false);
+            timers[neededTimer].SetActive(true);
+        }
+
+        if (randomOrder == 0 && OrderFullfilled == false) //toast
+        {
+            neededTimer = 4; //0,1,2 - drinks, 3 - white 4 - red 5 - both
+        }
+        else
+        {
+            if (randomOrder is 1 && OrderFullfilled is false) //noodle
+            {
+                neededTimer = 3;
+            }
+            else
+            {
+                if (randomOrder is 2 && OrderFullfilled is false) //noodle
+                {
+                    neededTimer = 5;
+                }
+            }
+        }
     }
 
     public void Order()
@@ -111,6 +139,11 @@ public class orderGenerator : MonoBehaviour
             {
                 drinkee.SetActive(false);
                 drinkIngredients[drinks].SetActive(true);
+            }
+
+            if (DrinkFullfilled == false && OrderFullfilled == true)
+            {
+                neededTimer = drinks;
             }
         }
         else
@@ -181,6 +214,7 @@ public class orderGenerator : MonoBehaviour
             }
             cartObj.drinks = 4;
             cartObj.breakLoop = true;
+            cartObj.ping.Play();
         }
         //
 
@@ -191,6 +225,7 @@ public class orderGenerator : MonoBehaviour
                 handSc.haveOrder = false;
                 OrderFullfilled = true;
                 cartObj.breakLoop = true;
+                cartObj.ping.Play();
             }
 
             if (PotatoONoodle is 1)
@@ -200,6 +235,7 @@ public class orderGenerator : MonoBehaviour
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
                     cartObj.breakLoop = true;
+                    cartObj.ping.Play();
                 }
             }
             else
@@ -209,6 +245,7 @@ public class orderGenerator : MonoBehaviour
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
                     cartObj.breakLoop = true;
+                    cartObj.ping.Play();
                 }
             }
         }

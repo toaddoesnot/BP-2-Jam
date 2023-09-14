@@ -32,6 +32,18 @@ public class characterSlot : MonoBehaviour
     private bool foodDone;
     private bool ready2eat;
 
+    public GameObject timey;
+    public GameObject plate;
+    public GameObject plate2;
+
+    public AudioSource bye;
+
+    void Awake()
+    {
+        timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
+        timey.SetActive(false);
+    }
+
     void Update()
     {
         if(myOrder != null)
@@ -55,6 +67,10 @@ public class characterSlot : MonoBehaviour
                 currentState = 3;
                 Destroy(myOrder);
                 myOrder = null;
+
+                timey.SetActive(false);
+                plate.SetActive(true);
+
                 StartCoroutine(Eating());
                 ready2eat = true;
             }
@@ -119,6 +135,8 @@ public class characterSlot : MonoBehaviour
         {
             yield return new WaitForSeconds(10f);
 
+            plate.SetActive(false);
+            plate2.SetActive(true);
             //leave and empty the place
             wheel.GetComponent<Animation>().Play("wheelSpin");
 
@@ -140,6 +158,9 @@ public class characterSlot : MonoBehaviour
             yield return new WaitForSeconds(6f); //choosing a meal
 
             myOrder = Instantiate(orderInstance, orderPlaque.transform.position, Quaternion.identity, orderPlaque.transform); //NEWNEWNE 
+            
+            myOrder.GetComponent<orderGenerator>().nombre = myNo;
+            timey.SetActive(true);
             currentState++; //now waiting for food
         }
         else
@@ -147,6 +168,8 @@ public class characterSlot : MonoBehaviour
             if (currentState is 4)
             {
                 wheel.GetComponent<Animation>().Play("wheelUnSpin");
+                bye.Play();
+                plate2.SetActive(false);
                 occupied = false;
             }
         }

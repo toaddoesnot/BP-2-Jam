@@ -25,7 +25,7 @@ public class customerGenerator : MonoBehaviour
 
     public void Start()
     {
-        InvokeRepeating("GenerateCustomer", 2f, 15.0f);
+        InvokeRepeating("GenerateCustomer", 8f, 15.0f);
     }
 
     public void StartCustomers()

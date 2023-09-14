@@ -13,6 +13,8 @@ public class foodCart : MonoBehaviour
 
     public int drinks;
     public bool breakLoop;
+
+    public AudioSource ping;
     
     void Start()
     {
