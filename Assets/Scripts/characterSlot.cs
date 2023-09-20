@@ -15,7 +15,7 @@ public class characterSlot : MonoBehaviour
 
     public Sprite[] guestSprites;
 
-    private int moodState;
+    public int moodState;
 
     public float timeWaiting;
     public bool counting;
@@ -37,6 +37,8 @@ public class characterSlot : MonoBehaviour
     public GameObject plate2;
 
     public AudioSource bye;
+    public int myGuest;
+    public bool moodChanged;
 
     void Awake()
     {
@@ -46,6 +48,16 @@ public class characterSlot : MonoBehaviour
 
     void Update()
     {
+        if (myPeep.activeInHierarchy)
+        {
+            myPeep.GetComponent<emotionChanger>().amActive = true;
+            myPeep.GetComponent<emotionChanger>().currentGuest = myGuest;
+        }
+        else
+        {
+            myPeep.GetComponent<emotionChanger>().amActive = false;
+        }
+
         if(myOrder != null)
         {
             if (!foodDone && myOrder.GetComponent<orderGenerator>().OrderFullfilled)
@@ -97,29 +109,41 @@ public class characterSlot : MonoBehaviour
 
         if (timeWaiting >= 20f && timeWaiting < 40f)
         {
-            if (moodState is 2)
-            {
-                moodState = 1;
-            }
-            else
-            {
-                if (moodState is 1)
-                {
-                    moodState = 0;
-                }
-            }
-
-            if (timeWaiting >= 40f)
+            if (!moodChanged)
             {
                 if (moodState is 2)
                 {
                     moodState = 1;
+                    moodChanged = true;
                 }
                 else
                 {
                     if (moodState is 1)
                     {
                         moodState = 0;
+                        moodChanged = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (timeWaiting >= 40f)
+            {
+                if (moodChanged)
+                {
+                    if (moodState is 2)
+                    {
+                        moodState = 1;
+                        moodChanged = false;
+                    }
+                    else
+                    {
+                        if (moodState is 1)
+                        {
+                            moodState = 0;
+                            moodChanged = false;
+                        }
                     }
                 }
             }
@@ -130,6 +154,10 @@ public class characterSlot : MonoBehaviour
     {
         yield return null;
         timeWaiting = 0;
+        if (moodState != 2)
+        {
+            moodState++;
+        }
 
         if (currentState is 3)
         {
@@ -152,6 +180,11 @@ public class characterSlot : MonoBehaviour
         yield return null;
         timeWaiting = 0;
         canPress = false;
+
+        if(moodState != 2)
+        {
+            moodState++;
+        }
 
         if (currentState is 1)
         {

@@ -56,7 +56,7 @@ public class customerGenerator : MonoBehaviour
 
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.SetActive(true);
-
+            customerSlots[randSeat].GetComponent<characterSlot>().myGuest = randomCustomer;
 
             customerSlots[randSeat].GetComponent<characterSlot>().occupied = true;
             customerSlots[randSeat].GetComponent<characterSlot>().counting = true;
