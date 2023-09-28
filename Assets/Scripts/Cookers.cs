@@ -36,7 +36,7 @@ public class Cookers : MonoBehaviour
     public Sprite fullTwo;
 
     public int whoDis; //1-pot; 2-pasta; 3-toast; 4-egg;
-
+    public GameObject timerObj;
 
     private void Start()
     {
@@ -47,7 +47,7 @@ public class Cookers : MonoBehaviour
 
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
-        
+        timerObj.SetActive(false);
     }
 
     private void Update()
@@ -182,6 +182,8 @@ public class Cookers : MonoBehaviour
     {
         print("ALIVE");
         lid.SetActive(true);
+        timerObj.SetActive(true);
+        
 
         if (IAmPot)
         {
@@ -192,6 +194,7 @@ public class Cookers : MonoBehaviour
             myStove.GetComponent<KitchenwareClicked>().Frying();
         }
 
+        timerObj.GetComponent<miniTimer>().InitiateTimer();
         timer.value += 1;
         yield return new WaitForSeconds(1);
         timer.value += 1;
@@ -228,6 +231,7 @@ public class Cookers : MonoBehaviour
     {
         timer.value = 0;
         foodReady = false;
+        timerObj.SetActive(false);
     }
 
 }

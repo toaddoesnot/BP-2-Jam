@@ -40,7 +40,15 @@ public class orderGenerator : MonoBehaviour
     public int neededTimer;
     public string nombre;
 
-    public void Start()
+    public GameObject[] additionalIng;
+
+    //foreach (GameObject nom in timers)
+       //     {
+      //          nom.GetComponent<miniTimer>().timeText.text = nombre.ToString();
+      //          nom.SetActive(false);
+      //          timers[neededTimer].SetActive(true);
+        //}
+public void Start()
     {
         drinkSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<drinkManager>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -82,6 +90,7 @@ public class orderGenerator : MonoBehaviour
 
     public void Update()
     {
+        
         if (OrderFullfilled)
         {
             foreach (GameObject back in bgs)
@@ -90,30 +99,43 @@ public class orderGenerator : MonoBehaviour
             }
         }
 
-        foreach (GameObject nom in timers)
-        {
-            nom.GetComponent<miniTimer>().timeText.text = nombre.ToString();
-            nom.SetActive(false);
-            timers[neededTimer].SetActive(true);
-        }
-
         if (randomOrder == 0 && OrderFullfilled == false) //toast
         {
             neededTimer = 4; //0,1,2 - drinks, 3 - white 4 - red 5 - both
+            timers[4].SetActive(true);
         }
         else
         {
             if (randomOrder is 1 && OrderFullfilled is false) //noodle
             {
                 neededTimer = 3;
+                timers[3].SetActive(true);
             }
             else
             {
                 if (randomOrder is 2 && OrderFullfilled is false) //noodle
                 {
                     neededTimer = 5;
+                    timers[5].SetActive(true);
                 }
             }
+        }
+
+        if (noodleIngredients[0].activeInHierarchy)
+        {
+            additionalIng[0].SetActive(true);
+        }
+        if (noodleIngredients[1].activeInHierarchy)
+        {
+            additionalIng[1].SetActive(true);
+        }
+        if (toastIngredients[0].activeInHierarchy)
+        {
+            additionalIng[2].SetActive(true);
+        }
+        if (toastIngredients[1].activeInHierarchy)
+        {
+            additionalIng[3].SetActive(true);
         }
     }
 
@@ -131,6 +153,7 @@ public class orderGenerator : MonoBehaviour
         {
             Toast();
             Noodle();
+            
         }
 
         if (drinks is not 3)
@@ -144,12 +167,16 @@ public class orderGenerator : MonoBehaviour
             if (DrinkFullfilled == false && OrderFullfilled == true)
             {
                 neededTimer = drinks;
+                timers[neededTimer].SetActive(true);
             }
         }
         else
         {
             DrinkFullfilled = true;
         }
+
+        
+        //StartCoroutine(GoTimers());
     }
 
     public void Toast()
@@ -172,6 +199,8 @@ public class orderGenerator : MonoBehaviour
                 toastee.SetActive(true);
             }
         }
+
+        
     }
     public void Noodle()
     {

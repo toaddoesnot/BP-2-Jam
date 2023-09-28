@@ -14,9 +14,12 @@ public class Clock : MonoBehaviour
 
     const float hoursToDegree = 360 / 12, minutesToDegrees = 360 / 60;
 
+    public miniTimer timerSc;
+
     void Start()
     {
         tm = this.GetComponent<TimeManager>();
+        timerSc.InitiateTimer();
     }
 
     void Update()

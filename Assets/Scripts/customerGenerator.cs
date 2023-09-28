@@ -61,7 +61,8 @@ public class customerGenerator : MonoBehaviour
             customerSlots[randSeat].GetComponent<characterSlot>().occupied = true;
             customerSlots[randSeat].GetComponent<characterSlot>().counting = true;
             customerSlots[randSeat].GetComponent<characterSlot>().currentState = 0;
-
+            customerSlots[randSeat].GetComponent<characterSlot>().timey.SetActive(true);
+            customerSlots[randSeat].GetComponent<characterSlot>().timerSc.InitiateTimer();
             //chosenCustomer = todayCustomers[randomCustomer];
             //Instantiate(chosenCustomer, chosenSeat.transform.position, Quaternion.identity, chosenSeat.transform);
             doorOpen.Play();

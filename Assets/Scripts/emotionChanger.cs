@@ -29,13 +29,13 @@ public class emotionChanger : MonoBehaviour
             {
                 head.SetActive(false);
                 heads[currentGuest].SetActive(true);
-                if(currentGuest == 1)
+                if (currentGuest == 1)
                 {
                     heads[3].SetActive(true); //secondDog
                 }
             }
-            
-            if(currentGuest == 0)
+
+            if (currentGuest == 0)
             {
                 heads[0].GetComponent<Image>().sprite = bearSprites[currentMood];
             }

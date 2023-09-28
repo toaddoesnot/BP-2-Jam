@@ -40,10 +40,13 @@ public class characterSlot : MonoBehaviour
     public int myGuest;
     public bool moodChanged;
 
+    public miniTimer timerSc; //timerSc.InitiateTimer();
+    public GameObject myNewTimer;
+
     void Awake()
     {
         timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
-        timey.SetActive(false);
+        //timey.SetActive(true);
     }
 
     void Update()
@@ -87,24 +90,20 @@ public class characterSlot : MonoBehaviour
                 ready2eat = true;
             }
         }
-        
-        if (canPress && currentState == 0)
-        {
-            menu.SetActive(true);
-        }
-        else
-        {
-            menu.SetActive(false);
-        }
 
         if (counting)
         {
             timeWaiting += Time.deltaTime;
         }
 
-        if (currentState is 0 && timeWaiting >= 2f)
+        if (currentState is 0 && timeWaiting >= 0.01f)
         {
             canPress = true;
+            menu.SetActive(true);
+        }
+        else
+        {
+            menu.SetActive(false);
         }
 
         if (timeWaiting >= 20f && timeWaiting < 40f)
@@ -154,6 +153,8 @@ public class characterSlot : MonoBehaviour
     {
         yield return null;
         timeWaiting = 0;
+        timerSc.remainingDuration = timerSc.Duration;
+
         if (moodState != 2)
         {
             moodState++;
@@ -170,6 +171,8 @@ public class characterSlot : MonoBehaviour
 
             counting = false;
             timeWaiting = 0;
+            timerSc.remainingDuration = timerSc.Duration;
+
             myPeep.SetActive(false);
             canPress = true;
         }
@@ -181,7 +184,7 @@ public class characterSlot : MonoBehaviour
         timeWaiting = 0;
         canPress = false;
 
-        if(moodState != 2)
+        if (moodState != 2)
         {
             moodState++;
         }
@@ -193,8 +196,15 @@ public class characterSlot : MonoBehaviour
             myOrder = Instantiate(orderInstance, orderPlaque.transform.position, Quaternion.identity, orderPlaque.transform); //NEWNEWNE 
             
             myOrder.GetComponent<orderGenerator>().nombre = myNo;
-            timey.SetActive(true);
+            
             currentState++; //now waiting for food
+            timerSc.remainingDuration = timerSc.Duration;
+
+            yield return new WaitForSeconds(0.1f);
+            myNewTimer = myOrder.GetComponent<orderGenerator>().timers[myOrder.GetComponent<orderGenerator>().neededTimer];
+            myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+
+            
         }
         else
         {
