@@ -106,82 +106,96 @@ public class characterSlot : MonoBehaviour
             menu.SetActive(false);
         }
 
-        if (timeWaiting >= 20f && timeWaiting < 40f)
+        if (timeWaiting >= 20f && timeWaiting < 21f)
         {
-            if (!moodChanged)
+            if (moodState is 2)
             {
-                if (moodState is 2)
+                moodState = 1;
+                timeWaiting = 21;
+            }
+            else
+            {
+                if (moodState is 1 && timeWaiting < 21f)
                 {
-                    moodState = 1;
-                    moodChanged = true;
-                }
-                else
-                {
-                    if (moodState is 1)
-                    {
-                        moodState = 0;
-                        moodChanged = true;
-                    }
+                    moodState = 0;
+                    timeWaiting = 21;
                 }
             }
         }
         else
         {
-            if (timeWaiting >= 40f)
+            if (timeWaiting >= 40f && timeWaiting < 41f)
             {
-                if (moodChanged)
+                   
+                if (moodState is 2)
                 {
-                    if (moodState is 2)
+                    moodState = 1;
+                    timeWaiting = 41;
+                }
+                else
+                {
+                    if (moodState is 1 && timeWaiting < 41f)
                     {
-                        moodState = 1;
-                        moodChanged = false;
-                    }
-                    else
-                    {
-                        if (moodState is 1)
-                        {
-                            moodState = 0;
-                            moodChanged = false;
-                        }
+                        moodState = 0;
+                        timeWaiting = 41;
                     }
                 }
             }
         }
     }
 
-    IEnumerator Eating()
+    public IEnumerator Eating()
     {
         yield return null;
         timeWaiting = 0;
-        timerSc.remainingDuration = timerSc.Duration;
 
         if (moodState != 2)
         {
             moodState++;
         }
 
+        yield return new WaitForSeconds(1f);
+
         if (currentState is 3)
         {
-            yield return new WaitForSeconds(10f);
-
-            plate.SetActive(false);
-            plate2.SetActive(true);
-            //leave and empty the place
-            wheel.GetComponent<Animation>().Play("wheelSpin");
-
             counting = false;
-            timeWaiting = 0;
-            timerSc.remainingDuration = timerSc.Duration;
-
-            myPeep.SetActive(false);
-            canPress = true;
+            StartCoroutine(ReceivedOrder());
         }
+        else
+        {
+            timerSc.InitiateTimer();
+            if (myNewTimer != null && myNewTimer.activeInHierarchy)
+            {
+                myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+            }
+        }
+    }
+
+    public IEnumerator ReceivedOrder() //leave and empty the place
+    {
+        yield return new WaitForSeconds(10f);
+
+        plate.SetActive(false);
+        plate2.SetActive(true);
+
+        wheel.GetComponent<Animation>().Play("wheelSpin");
+
+        myPeep.SetActive(false);
+        canPress = true;
+        currentState++;
     }
 
     IEnumerator Order()
     {
         yield return null;
         timeWaiting = 0;
+        
+        timerSc.ResetTimer();
+        if(myNewTimer != null && myNewTimer.activeInHierarchy)
+        {
+            myNewTimer.GetComponent<miniTimer>().ResetTimer();
+        }
+
         canPress = false;
 
         if (moodState != 2)
@@ -196,25 +210,16 @@ public class characterSlot : MonoBehaviour
             myOrder = Instantiate(orderInstance, orderPlaque.transform.position, Quaternion.identity, orderPlaque.transform); //NEWNEWNE 
             
             myOrder.GetComponent<orderGenerator>().nombre = myNo;
-            
-            currentState++; //now waiting for food
-            timerSc.remainingDuration = timerSc.Duration;
+            myOrder.GetComponent<orderGenerator>().myPeepsc = this.gameObject;
 
-            yield return new WaitForSeconds(0.1f);
+            currentState++; //now waiting for food
+
+            timeWaiting = 0;
+            timerSc.InitiateTimer();
+
+            yield return new WaitForSeconds(0.1f); //or else assigns incorrectly
             myNewTimer = myOrder.GetComponent<orderGenerator>().timers[myOrder.GetComponent<orderGenerator>().neededTimer];
             myNewTimer.GetComponent<miniTimer>().InitiateTimer();
-
-            
-        }
-        else
-        {
-            if (currentState is 4)
-            {
-                wheel.GetComponent<Animation>().Play("wheelUnSpin");
-                bye.Play();
-                plate2.SetActive(false);
-                occupied = false;
-            }
         }
     }
 
@@ -222,10 +227,20 @@ public class characterSlot : MonoBehaviour
     {
         if (canPress)
         {
-            currentState++;
-            StartCoroutine(Order());
-        }
-    }
+            if (currentState < 4)
+            {
+                currentState++;
 
-    
+                StartCoroutine(Order());
+            }
+            else
+            {
+                wheel.GetComponent<Animation>().Play("wheelUnSpin");
+                bye.Play();
+                plate2.SetActive(false);
+                occupied = false;
+            }
+        }
+        
+    }
 }

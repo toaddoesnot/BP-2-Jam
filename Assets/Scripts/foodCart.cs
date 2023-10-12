@@ -27,18 +27,9 @@ public class foodCart : MonoBehaviour
 
         drinks = drinkSc.drinkHave;
 
-        if (drinks != 4)
-        {
-            drinkSc.HasReadyCoffee = false;
-            drinkSc.HasReadySoda = false;
-            drinkSc.HasReadyOJ = false;
-        }
-
-        //if (handSc.haveOrder)
-
         foreach (GameObject juke in jukes)
         {
-            if (juke.GetComponent<characterSlot>().myOrder != null) // MAY NOT WORK
+            if (juke.GetComponent<characterSlot>().myOrder != null) 
             {
                 juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
             }

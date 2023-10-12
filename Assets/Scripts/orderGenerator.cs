@@ -21,6 +21,7 @@ public class orderGenerator : MonoBehaviour
 
     public bool OrderFullfilled;
     public bool DrinkFullfilled;
+    public bool FoodFullfilled;
 
     public drinkManager drinkSc;
     public hand handSc;
@@ -41,14 +42,12 @@ public class orderGenerator : MonoBehaviour
     public string nombre;
 
     public GameObject[] additionalIng;
+    public GameObject myPeepsc;
 
-    //foreach (GameObject nom in timers)
-       //     {
-      //          nom.GetComponent<miniTimer>().timeText.text = nombre.ToString();
-      //          nom.SetActive(false);
-      //          timers[neededTimer].SetActive(true);
-        //}
-public void Start()
+    public bool halfOrder;
+    private int whatIhave;
+
+    public void Start()
     {
         drinkSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<drinkManager>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -115,8 +114,26 @@ public void Start()
             {
                 if (randomOrder is 2 && OrderFullfilled is false) //noodle
                 {
-                    neededTimer = 5;
-                    timers[5].SetActive(true);
+                    if (!halfOrder)
+                    {
+                        neededTimer = 5;
+                        timers[5].SetActive(true);
+                    }
+                    else
+                    {
+                        if(whatIhave == 1)
+                        {
+                            neededTimer = 3;
+                            timers[3].SetActive(true);
+                        }
+                        if(whatIhave == 2)
+                        {
+                            neededTimer = 4;
+                            timers[4].SetActive(true);
+                        }
+                        ////
+                    }
+                    
                 }
             }
         }
@@ -244,15 +261,29 @@ public void Start()
             cartObj.drinks = 4;
             cartObj.breakLoop = true;
             cartObj.ping.Play();
+
+            StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
+            drinkSc.HasReadyCoffee = false;
+            drinkSc.HasReadySoda = false;
+            drinkSc.HasReadyOJ = false;
         }
         //
 
-        if (OrderFullfilled == false && handSc.foodHave == randomOrder)
+        if (OrderFullfilled == false && handSc.foodHave == randomOrder || OrderFullfilled == false && randomOrder is 2)
         {
             if (randomOrder is 0 && handSc.toastFill == firstCourse)
             {
                 handSc.haveOrder = false;
                 OrderFullfilled = true;
+                StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating()); //////new
+
+                if (drinks != 4 && !DrinkFullfilled)
+                {
+                    neededTimer = drinks;
+                    timers[neededTimer].SetActive(true);
+                }
+
                 cartObj.breakLoop = true;
                 cartObj.ping.Play();
             }
@@ -263,8 +294,66 @@ public void Start()
                 {
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
+
+                    if(drinks != 4 && !DrinkFullfilled)
+                    {
+                        neededTimer = drinks;
+                        timers[neededTimer].SetActive(true);
+                        myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                        myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+                    }
+
+                    StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
                     cartObj.breakLoop = true;
                     cartObj.ping.Play();
+                }
+                else ///HALF-ORDER
+                {
+                    print("Half order received");
+
+                    if (randomOrder is 2 && handSc.toastFill == firstCourse || randomOrder is 2 && handSc.noodFill == secondCourse && handSc.potatoInstead)
+                    {
+                        
+
+                        if (!halfOrder)
+                        {
+                            if(handSc.toastFill == firstCourse)
+                            {
+                                whatIhave = 2;
+
+                                bgs[0].SetActive(false);
+                                /////insert change of timer, disable order ticket sprite
+                            }
+                            if(handSc.noodFill == secondCourse)
+                            {
+                                whatIhave = 1;
+
+                                bgs[1].SetActive(false);
+                                /////insert change of timer, disable order ticket sprite
+                            }
+                            handSc.haveOrder = false;
+                            halfOrder = true;
+                        }
+                        else
+                        {
+                            handSc.haveOrder = false;
+                            OrderFullfilled = true;
+
+                            if (drinks != 4 && !DrinkFullfilled)
+                            {
+                                neededTimer = drinks;
+                                timers[neededTimer].SetActive(true);
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+                            }
+
+                            StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
+                            cartObj.breakLoop = true;
+                            cartObj.ping.Play();
+                        }
+                    }
                 }
             }
             else
@@ -273,8 +362,66 @@ public void Start()
                 {
                     handSc.haveOrder = false;
                     OrderFullfilled = true;
+
+                    if (drinks != 4 && !DrinkFullfilled)
+                    {
+                        neededTimer = drinks;
+                        timers[neededTimer].SetActive(true);
+                        myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                        myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+                        //timers[neededTimer].GetComponent<miniTimer>().InitiateTimer();
+                    }
+
+                    StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
                     cartObj.breakLoop = true;
                     cartObj.ping.Play();
+                }
+                else
+                {
+                    print("Half order received");
+
+                    if (randomOrder is 2 && handSc.toastFill == firstCourse || randomOrder is 2 && handSc.noodFill == secondCourse)
+                    {
+                        
+
+                        if (!halfOrder)
+                        {
+                            if (handSc.toastFill == firstCourse)
+                            {
+                                whatIhave = 2;
+                                bgs[0].SetActive(false);
+                                /////insert change of timer, disable order ticket sprite
+                            }
+                            if (handSc.noodFill == secondCourse)
+                            {
+                                whatIhave = 1;
+                                bgs[1].SetActive(false);
+                                /////insert change of timer, disable order ticket sprite
+                            }
+                            handSc.haveOrder = false;
+                            halfOrder = true;
+                        }
+                        else
+                        {
+                            handSc.haveOrder = false;
+                            OrderFullfilled = true;
+
+                            if (drinks != 4 && !DrinkFullfilled)
+                            {
+                                neededTimer = drinks;
+                                timers[neededTimer].SetActive(true);
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+                                //timers[neededTimer].GetComponent<miniTimer>().InitiateTimer();
+                            }
+
+                            StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
+                            cartObj.breakLoop = true;
+                            cartObj.ping.Play();
+                        }
+                    }
                 }
             }
         }

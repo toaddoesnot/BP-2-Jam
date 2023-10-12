@@ -18,19 +18,38 @@ public class miniTimer : MonoBehaviour
     public bool amClock;
     public TimeManager timeSc;
 
+    public int timerType; //0-normal, 1-clock, 2-cookers
+    public float burntTime;
+
+    void Awake()
+    {
+        if(timerType == 0)
+        {
+            burntTime = 6;
+        }
+    }
+
     public void InitiateTimer()
     {
+        
         Begin(Duration);
     }
 
     private void Begin(int Second)
     {
         remainingDuration = Second;
+        if (timerType == 0)
+        {
+            StopAllCoroutines();
+            StopAnimation();
+        }
         StartCoroutine(UpdateTimer());
     }
 
     private IEnumerator UpdateTimer()
     {
+        
+
         while (remainingDuration >= 0)
         {
             filled = false;
@@ -48,7 +67,8 @@ public class miniTimer : MonoBehaviour
     private void OnEnd()
     {
         filled = true;
-        if (amClock)
+
+        if (timerType == 1)
         {
             if(timeSc.timeOn == true)
             {
@@ -59,17 +79,40 @@ public class miniTimer : MonoBehaviour
                 Begin(Duration);
             }
         }
-        else
+
+        if(timerType != 1)
         {
-            this.GetComponent<Animation>().Play("bouncyTimer");
+            StartCoroutine(FoodBurn());
         }
+    }
+
+    IEnumerator FoodBurn()
+    {
+        yield return new WaitForSeconds(burntTime);
+        PlayAnimation();
+    }
+
+    public void PlayAnimation()
+    {
+        this.GetComponent<Animation>().Play("bouncyTimer");
+    }
+
+    public void StopAnimation()
+    {
+        this.GetComponent<Animation>().Stop("bouncyTimer");
+        print("stop animation");
     }
 
     public void ResetTimer()
     {
+        StopAllCoroutines();
         remainingDuration = 0;
         filled = false;
-        uiFill.fillAmount = 1;
-        this.GetComponent<Animation>().Stop();
+        uiFill.fillAmount = 1;//was one
+        print("stopped resettedd");
+
+        this.GetComponent<Animation>().Stop("bouncyTimer");
+
+        print("hello darkness");
     }
 }
