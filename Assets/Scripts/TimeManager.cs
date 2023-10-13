@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        if(timeOn is true)
+        if (timeOn is true)
         {
             totalTime += Time.deltaTime;
             currentTime = totalTime % dayDuration;

@@ -54,14 +54,9 @@ public class plateGenerator : MonoBehaviour
     {
         if (HasPlate is false)
         {
-            
             Instantiate(plate, transform.position, Quaternion.identity, this.transform);
 
             HasPlate = true;
-        }
-        else
-        {
-
         }
     }
 

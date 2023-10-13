@@ -24,6 +24,7 @@ public class FoodButtonClick : MonoBehaviour
     public bool HaveToast;
     public bool HaveNoodles;
     public bool HavePotatoes;
+    public bool HaveEgg;
 
     public GameObject myPlace;
 
@@ -75,16 +76,26 @@ public class FoodButtonClick : MonoBehaviour
                 }
                 else
                 {
-                    myfoodHave = 4;
-                    toastHave = 4;
-                    noodHave = 4;
+                    if(toast.activeInHierarchy is false && noodles.activeInHierarchy is false && potato.activeInHierarchy is false && egg.activeInHierarchy is true)
+                    {
+                        myfoodHave = 3;
+                        HaveEgg = true; //if (egg.activeInHierarchy)
+                    }
+                    else
+                    {
+                        myfoodHave = 4;
+                        toastHave = 4;
+                        noodHave = 4;
+                    }
                 }
+                
             }
-        }
-
+        } 
 
         if (toast.activeInHierarchy)
         {
+            HaveToast = true;
+
             if (butter.activeInHierarchy && strawberry.activeInHierarchy)
             {
                 ToastComplete = true;
@@ -120,7 +131,12 @@ public class FoodButtonClick : MonoBehaviour
             if (potato.activeInHierarchy)
             {
                 HavePotatoes = true;
-            }
+            } 
+
+            if (noodles.activeInHierarchy)
+            {
+                HaveNoodles = true;
+            } 
 
             if (egg.activeInHierarchy && shroom.activeInHierarchy)
             {
@@ -234,8 +250,6 @@ public class FoodButtonClick : MonoBehaviour
             {
                 if (handSc.haveOrder)
                 {
-                    //order values to me
-                    //
                     if (handSc.foodHave is 0)
                     {
                         toast.SetActive(true);
@@ -258,7 +272,11 @@ public class FoodButtonClick : MonoBehaviour
                             noodles.SetActive(false);
                             potato.SetActive(true);
                         }
-                    } 
+                    }
+                    if (handSc.foodHave is 3)
+                    {
+                        egg.SetActive(true);
+                    }
 
                     if (handSc.toastFill is 1)
                     {

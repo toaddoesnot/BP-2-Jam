@@ -183,6 +183,11 @@ public class characterSlot : MonoBehaviour
         myPeep.SetActive(false);
         canPress = true;
         currentState++;
+
+        ///below new stuff
+        
+        moodState = 1;
+        myNewTimer = null;
     }
 
     IEnumerator Order()
@@ -202,7 +207,7 @@ public class characterSlot : MonoBehaviour
         {
             moodState++;
         }
-
+        
         if (currentState is 1)
         {
             yield return new WaitForSeconds(6f); //choosing a meal

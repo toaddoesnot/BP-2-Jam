@@ -89,7 +89,11 @@ public class orderGenerator : MonoBehaviour
 
     public void Update()
     {
-        
+        foreach (GameObject time in timers)
+        {
+            time.GetComponent<miniTimer>().timeText.text = nombre.ToString();
+        }
+
         if (OrderFullfilled)
         {
             foreach (GameObject back in bgs)
@@ -121,15 +125,18 @@ public class orderGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if(whatIhave == 1)
-                        {
-                            neededTimer = 3;
-                            timers[3].SetActive(true);
-                        }
-                        if(whatIhave == 2)
+                        timers[5].SetActive(false);
+
+                        if (whatIhave == 1)
                         {
                             neededTimer = 4;
                             timers[4].SetActive(true);
+                            
+                        }
+                        if (whatIhave == 2)
+                        {
+                            neededTimer = 3;
+                            timers[3].SetActive(true);
                         }
                         ////
                     }
@@ -170,7 +177,6 @@ public class orderGenerator : MonoBehaviour
         {
             Toast();
             Noodle();
-            
         }
 
         if (drinks is not 3)
@@ -216,8 +222,6 @@ public class orderGenerator : MonoBehaviour
                 toastee.SetActive(true);
             }
         }
-
-        
     }
     public void Noodle()
     {
@@ -269,6 +273,7 @@ public class orderGenerator : MonoBehaviour
             drinkSc.HasReadyOJ = false;
         }
         //
+        
 
         if (OrderFullfilled == false && handSc.foodHave == randomOrder || OrderFullfilled == false && randomOrder is 2)
         {
@@ -276,13 +281,16 @@ public class orderGenerator : MonoBehaviour
             {
                 handSc.haveOrder = false;
                 OrderFullfilled = true;
-                StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating()); //////new
 
                 if (drinks != 4 && !DrinkFullfilled)
                 {
                     neededTimer = drinks;
                     timers[neededTimer].SetActive(true);
+                    myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                    //myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                 }
+
+                StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
 
                 cartObj.breakLoop = true;
                 cartObj.ping.Play();
@@ -314,8 +322,6 @@ public class orderGenerator : MonoBehaviour
 
                     if (randomOrder is 2 && handSc.toastFill == firstCourse || randomOrder is 2 && handSc.noodFill == secondCourse && handSc.potatoInstead)
                     {
-                        
-
                         if (!halfOrder)
                         {
                             if(handSc.toastFill == firstCourse)
@@ -323,6 +329,12 @@ public class orderGenerator : MonoBehaviour
                                 whatIhave = 2;
 
                                 bgs[0].SetActive(false);
+
+                                neededTimer = 3;
+                                timers[neededTimer].SetActive(true);
+
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                ////////myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                                 /////insert change of timer, disable order ticket sprite
                             }
                             if(handSc.noodFill == secondCourse)
@@ -330,10 +342,21 @@ public class orderGenerator : MonoBehaviour
                                 whatIhave = 1;
 
                                 bgs[1].SetActive(false);
+
+                                neededTimer = 4;
+                                timers[neededTimer].SetActive(true);
+
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                ///////myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                                 /////insert change of timer, disable order ticket sprite
                             }
                             handSc.haveOrder = false;
                             halfOrder = true;
+
+                            StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
+                            cartObj.breakLoop = true;
+                            cartObj.ping.Play();
                         }
                         else
                         {
@@ -344,6 +367,7 @@ public class orderGenerator : MonoBehaviour
                             {
                                 neededTimer = drinks;
                                 timers[neededTimer].SetActive(true);
+
                                 myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
                                 myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                             }
@@ -379,28 +403,41 @@ public class orderGenerator : MonoBehaviour
                 }
                 else
                 {
-                    print("Half order received");
-
                     if (randomOrder is 2 && handSc.toastFill == firstCourse || randomOrder is 2 && handSc.noodFill == secondCourse)
                     {
-                        
-
                         if (!halfOrder)
                         {
                             if (handSc.toastFill == firstCourse)
                             {
                                 whatIhave = 2;
                                 bgs[0].SetActive(false);
+
+                                neededTimer = 3;
+                                timers[neededTimer].SetActive(true);
+
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                //////////myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                                 /////insert change of timer, disable order ticket sprite
                             }
                             if (handSc.noodFill == secondCourse)
                             {
                                 whatIhave = 1;
                                 bgs[1].SetActive(false);
+
+                                neededTimer = 4;
+                                timers[neededTimer].SetActive(true);
+
+                                myPeepsc.GetComponent<characterSlot>().myNewTimer = timers[neededTimer];
+                                ////////myPeepsc.GetComponent<characterSlot>().myNewTimer.GetComponent<miniTimer>().InitiateTimer();
                                 /////insert change of timer, disable order ticket sprite
                             }
                             handSc.haveOrder = false;
                             halfOrder = true;
+
+                            StartCoroutine(myPeepsc.GetComponent<characterSlot>().Eating());
+
+                            cartObj.breakLoop = true;
+                            cartObj.ping.Play();
                         }
                         else
                         {

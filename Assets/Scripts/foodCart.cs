@@ -15,32 +15,47 @@ public class foodCart : MonoBehaviour
     public bool breakLoop;
 
     public AudioSource ping;
+    public bool canDrop;
     
     void Start()
     {
         drinks = 4;
+        canDrop = true;
     }
 
     public void OnMouseDown()
     {
-        print("can see you");
-
-        drinks = drinkSc.drinkHave;
-
-        foreach (GameObject juke in jukes)
+        if (canDrop)
         {
-            if (juke.GetComponent<characterSlot>().myOrder != null) 
+            print("can see you");
+
+            drinks = drinkSc.drinkHave;
+
+            foreach (GameObject juke in jukes)
             {
-                juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
+                if (juke.GetComponent<characterSlot>().myOrder != null)
+                {
+                    juke.GetComponent<characterSlot>().myOrder.GetComponent<orderGenerator>().compareOrder();
+                }
+
+                if (breakLoop)
+                {
+                    StartCoroutine(coolDown());
+                    break;
+                }
             }
-            
-            if (breakLoop)
-            {
-                StartCoroutine(coolDown());
-                break;
-            }
+            canDrop = false;
+            StartCoroutine(resetCart());
         }
+        
     }
+
+    IEnumerator resetCart()
+    {
+        yield return new WaitForSeconds(1.2f);
+        canDrop = true;
+    }
+
 
     IEnumerator coolDown()
     {
