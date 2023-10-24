@@ -25,7 +25,7 @@ public class customerGenerator : MonoBehaviour
 
     public void Start()
     {
-        InvokeRepeating("GenerateCustomer", 8f, 15f); //10f 30 f
+        InvokeRepeating("GenerateCustomer", 8f, 20f); //10f 30 f
     }
 
     public void StartCustomers()
@@ -52,8 +52,8 @@ public class customerGenerator : MonoBehaviour
     {
         if (weFull is false && clockSc.timeOn)
         {
-            //randomCustomer = Random.Range(0, 3);
-            randomCustomer = 0; //for bear memes
+            randomCustomer = Random.Range(0, 3);
+            //randomCustomer = 0; //for bear memes
 
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.SetActive(true);

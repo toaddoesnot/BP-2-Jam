@@ -62,7 +62,7 @@ public class CursorChanger : MonoBehaviour
                 foreach (GameObject cur in Cursors)
                 {
                     cur.SetActive(false);
-                    Cursors[17].SetActive(true);
+                    Cursors[18].SetActive(true);
                 }
             }
 
