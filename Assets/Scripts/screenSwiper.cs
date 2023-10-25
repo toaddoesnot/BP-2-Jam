@@ -14,6 +14,31 @@ public class screenSwiper : MonoBehaviour
     public Sprite room1;
     public Sprite room2;
 
+    public GameObject exclamation;
+    public GameObject[] notes;
+    public bool sthActive;
+
+    void Update()
+    {
+        if (notes[0].activeInHierarchy || notes[1].activeInHierarchy || notes[2].activeInHierarchy || notes[3].activeInHierarchy || notes[4].activeInHierarchy || notes[5].activeInHierarchy)
+        {
+            sthActive = true;
+        }
+        else
+        {
+            sthActive = false;
+        }
+
+        if (sthActive)
+        {
+            exclamation.SetActive(true);
+        }
+        else
+        {
+            exclamation.SetActive(false);
+        }
+    }
+
     public void PressButton()
     {
         if (onScreen == 0)

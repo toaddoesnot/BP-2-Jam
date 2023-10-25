@@ -105,7 +105,10 @@ public class Cookers : MonoBehaviour
                 {
                     if (foodScript.currentFoods == 4)
                     {
-                        whoDis = 2; //pasta
+                        whoDis = 2; //pasta 
+
+                        foodScript.Foods[4].GetComponent<ingridientSupply>().Spend();
+
                         StartCoroutine(Cook());
                         HasFood = true;
                         foodScript.currentFoods = -1;
@@ -113,6 +116,9 @@ public class Cookers : MonoBehaviour
                     if (foodScript.currentFoods == 8)
                     {
                         whoDis = 1; //potato
+
+                        foodScript.Foods[8].GetComponent<ingridientSupply>().Spend();
+
                         StartCoroutine(Cook());
                         HasFood = true;
                         foodScript.currentFoods = -1;
@@ -126,6 +132,9 @@ public class Cookers : MonoBehaviour
                         if (foodScript.currentFoods == 0)
                         {
                             whoDis = 3; //toast
+
+                            foodScript.Foods[0].GetComponent<ingridientSupply>().Spend();
+
                             StartCoroutine(Cook());
                             HasFood = true;
                             foodScript.currentFoods = -1;
@@ -133,6 +142,9 @@ public class Cookers : MonoBehaviour
                         if (foodScript.currentFoods == 5)
                         {
                             whoDis = 4; //egg
+
+                            foodScript.Foods[5].GetComponent<ingridientSupply>().Spend();
+
                             StartCoroutine(Cook());
                             HasFood = true;
                             foodScript.currentFoods = -1;

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 public class FoodButtonClick : MonoBehaviour
 {
-    public FoodClasses FoodSelected;
+    public FoodClasses FoodSelected; 
     public Inventory inventory;
     public GameObject inventoryManager;
 
@@ -336,6 +336,7 @@ public class FoodButtonClick : MonoBehaviour
             if (HaveToast)
             {
                 strawberry.SetActive(true);
+                FoodSelected.Foods[1].GetComponent<ingridientSupply>().Spend();
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().CherryOn();
             }
@@ -346,6 +347,7 @@ public class FoodButtonClick : MonoBehaviour
             if (HaveToast)
             {
                 butter.SetActive(true);
+                FoodSelected.Foods[2].GetComponent<ingridientSupply>().Spend();
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ButterOn();
             }
@@ -357,6 +359,7 @@ public class FoodButtonClick : MonoBehaviour
             if (HaveNoodles || HavePotatoes)
             {
                 shroom.SetActive(true);
+                FoodSelected.Foods[6].GetComponent<ingridientSupply>().Spend();
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ShroomOn();
             }
