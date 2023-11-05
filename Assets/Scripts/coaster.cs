@@ -15,54 +15,141 @@ public class coaster : MonoBehaviour
     public pourDrink myButton;
     public int myDrink;
 
-    void OnMouseDown()
+    public int cupsLeft;
+    public int rechargeCup; //how many recharges I have
+
+    private bool canPlace;
+
+    public Image[] dots;
+    public Sprite[] dotSprites;
+
+    void Start()
     {
-        if (occupied)
+        cupsLeft = 6;
+    }
+
+    void Update()
+    {
+        if (rechargeCup > 0)
         {
-            if (myCup.GetComponent<cupOfDrink>().drinkReady && foodSelected.noUcant is false && foodSelected.currentFoods is -1)
+            for (int i = 0; i < dots.Length; i++)
             {
-                if (myCup.GetComponent<cupOfDrink>().IamCoffee)
+                if (i < rechargeCup)
                 {
-                    drinkSc.HasReadyCoffee = true;
+                    // Dot is full
+                    dots[i].sprite = dotSprites[1];
                 }
-                if (myCup.GetComponent<cupOfDrink>().IamSoda)
+                else
                 {
-                    drinkSc.HasReadySoda = true;
-                }
-                if (myCup.GetComponent<cupOfDrink>().IamJuice)
-                {
-                    drinkSc.HasReadyOJ = true;
-                }
-
-                occupied = false;
-                myCup.GetComponent<cupOfDrink>().drinkReady = false;
-
-                myButton.filled = false;
-                myButton.ResetPadding();
-
-                myCup.GetComponent<cupOfDrink>().takeDrink.Play();
-                myCup.SetActive(false);
-            }
-            else //just with a glass
-            {
-                if (myCup.GetComponent<RectMask2D>().padding.w == 175) //if didn't start pouring
-                {
-                    occupied = false;
-                    myCup.SetActive(false);
-                    cupSound.Play();
-                    foodSelected.currentFoods = 12;
+                    // Dot is empty
+                    dots[i].sprite = dotSprites[0];
                 }
             }
         }
         else
         {
+            // Set all dots to empty if rechargeCup is zero
+            for (int i = 0; i < dots.Length; i++)
+            {
+                dots[i].sprite = dotSprites[0];
+            }
+        }
+
+        if (cupsLeft > 0)
+        {
+            myButton.GetComponent<Button>().enabled = true;
+            canPlace = true;
+        }
+        else
+        {
+            myButton.GetComponent<Button>().enabled = false;
+            canPlace = false;
+        }
+
+    }
+
+    public void Spend()
+    {
+        
+        if (cupsLeft == 1)
+        {
+            if (rechargeCup > 0)
+            {
+                Recharge();
+            }
+            else
+            {
+                cupsLeft = 0;
+            }
+        }
+        else
+        {
+            cupsLeft--;
+        }
+    }
+
+    public void Recharge()
+    {
+        cupsLeft = 6;
+        rechargeCup--;
+    }
+
+    void OnMouseDown()
+    {
+        if (occupied)
+        {
+            if (cupsLeft > 0)
+            {
+                if (myCup.GetComponent<cupOfDrink>().drinkReady && foodSelected.noUcant is false && foodSelected.currentFoods is -1)
+                {
+                    if (myCup.GetComponent<cupOfDrink>().IamCoffee)
+                    {
+                        drinkSc.HasReadyCoffee = true;
+                    }
+                    if (myCup.GetComponent<cupOfDrink>().IamSoda)
+                    {
+                        drinkSc.HasReadySoda = true;
+                    }
+                    if (myCup.GetComponent<cupOfDrink>().IamJuice)
+                    {
+                        drinkSc.HasReadyOJ = true;
+                    }
+
+                    Spend();
+                    occupied = false;
+                    myCup.GetComponent<cupOfDrink>().drinkReady = false;
+
+                    myButton.filled = false;
+                    myButton.ResetPadding();
+
+                    myCup.GetComponent<cupOfDrink>().takeDrink.Play();
+                    myCup.SetActive(false);
+                }
+                else //just with a glass
+                {
+                    if (myCup.GetComponent<RectMask2D>().padding.w == 175) //if didn't start pouring
+                    {
+                        occupied = false;
+                        myCup.SetActive(false);
+                        cupSound.Play();
+                        foodSelected.currentFoods = 12;
+                    }
+                }
+            } 
+        }
+        else
+        {
             if (foodSelected.currentFoods == 12)
             {
-                occupied = true;
-                myCup.SetActive(true);
-                cupSound.Play();
-                foodSelected.currentFoods = -1;
+                if (canPlace)
+                {
+                    occupied = true;
+                    myCup.SetActive(true);
+                    cupSound.Play();
+                    foodSelected.currentFoods = -1;
+                }
             }
+
             if (drinkSc.drinkHave == myDrink)
             {
                 myButton.filled = true;
@@ -86,6 +173,16 @@ public class coaster : MonoBehaviour
 
                 myButton.SetPadding();
             }
+        }
+    }
+
+    public void AddIngredient()
+    {
+        rechargeCup++;
+
+        if (rechargeCup == 1 && cupsLeft == 0)
+        {
+            Recharge();
         }
     }
 }

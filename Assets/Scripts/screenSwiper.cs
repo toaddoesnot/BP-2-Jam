@@ -18,6 +18,12 @@ public class screenSwiper : MonoBehaviour
     public GameObject[] notes;
     public bool sthActive;
 
+    //EVENTS
+    public bool addMoney;
+    public GameObject cashR;
+    public menuButton menuSc;
+    public piggyBank tipSc;
+
     void Update()
     {
         if (notes[0].activeInHierarchy || notes[1].activeInHierarchy || notes[2].activeInHierarchy || notes[3].activeInHierarchy || notes[4].activeInHierarchy || notes[5].activeInHierarchy)
@@ -46,12 +52,28 @@ public class screenSwiper : MonoBehaviour
             cameraObj.transform.localPosition = camL.transform.localPosition;
             this.GetComponent<Image>().sprite = room2;
             onScreen = 1;
+            addMoney = false;
         }
         else
         {
             cameraObj.transform.localPosition = camR.transform.localPosition;
             this.GetComponent<Image>().sprite = room1;
             onScreen = 0;
+
+            if (addMoney)
+            {
+                PaymentAnim();
+            }
         }
     }
+
+    public void PaymentAnim()
+    {
+        cashR.GetComponent<AudioSource>().Play();
+
+        menuSc.SetValue();
+        tipSc.PlayAnimation();
+    }
+
+    
 }

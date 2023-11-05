@@ -47,6 +47,10 @@ public class orderGenerator : MonoBehaviour
     public bool halfOrder;
     private int whatIhave;
 
+    public int orderWorth; ///NEW FOR MONEY handSc.moneyAm += 5;
+    public int myTip;
+    public int[] prices; //0 - plain toast; 1 - toasts +1; 2 - toasts +2; 3 - nood plain; 4 - nood +1; 5 - nood +2; 6 - drink
+
     public void Start()
     {
         drinkSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<drinkManager>();
@@ -168,18 +172,21 @@ public class orderGenerator : MonoBehaviour
         if (randomOrder is 0)
         {
             Toast();
+            orderWorth += prices[0];
         }
         if (randomOrder is 1)
         {
             Noodle();
+            orderWorth += prices[3];
         }
         if (randomOrder is 2)
         {
             Toast();
             Noodle();
+            orderWorth += prices[0] + prices[3];
         }
 
-        if (drinks is not 3)
+        if (drinks is not 3) //drinkPrice
         {
             foreach (GameObject drinkee in drinkIngredients)
             {
@@ -192,6 +199,7 @@ public class orderGenerator : MonoBehaviour
                 neededTimer = drinks;
                 timers[neededTimer].SetActive(true);
             }
+            orderWorth += prices[6];
         }
         else
         {
@@ -214,6 +222,7 @@ public class orderGenerator : MonoBehaviour
                 toastee.SetActive(false);
                 toastIngredients[firstCourse].SetActive(true);
             }
+            orderWorth += prices[1];
         }
         else
         {
@@ -221,6 +230,7 @@ public class orderGenerator : MonoBehaviour
             {
                 toastee.SetActive(true);
             }
+            orderWorth += prices[2];
         }
     }
     public void Noodle()
@@ -243,6 +253,7 @@ public class orderGenerator : MonoBehaviour
                 noodee.SetActive(false);
                 noodleIngredients[secondCourse].SetActive(true);
             }
+            orderWorth += prices[4];
         }
         else
         {
@@ -250,6 +261,7 @@ public class orderGenerator : MonoBehaviour
             {
                 noodee.SetActive(true);
             }
+            orderWorth += prices[5];
         }
     }
 

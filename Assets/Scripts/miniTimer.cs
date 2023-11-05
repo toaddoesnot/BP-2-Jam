@@ -31,7 +31,6 @@ public class miniTimer : MonoBehaviour
 
     public void InitiateTimer()
     {
-        
         Begin(Duration);
     }
 
@@ -48,8 +47,6 @@ public class miniTimer : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
-        
-
         while (remainingDuration >= 0)
         {
             filled = false;

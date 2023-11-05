@@ -8,6 +8,9 @@ public class ingridientSupply : MonoBehaviour
     public Sprite[] supplies; //from 9 to 0
     public Sprite lid;
 
+    public Image[] dots;
+    public Sprite[] dotSprites;
+
     public bool ninePack; //if deselected then 6 pack
     public bool lidClosed;
 
@@ -15,6 +18,7 @@ public class ingridientSupply : MonoBehaviour
     public int ingLeft;
 
     Image myImage;
+    private int minRecharged;
 
     void Start()
     {
@@ -34,6 +38,32 @@ public class ingridientSupply : MonoBehaviour
         {
             this.GetComponent<Button>().enabled = false;
         }
+
+        if (recharges > 0)
+        {
+            for (int i = 0; i < dots.Length; i++)
+            {
+                if (i < recharges)
+                {
+                    // Dot is full
+                    dots[i].sprite = dotSprites[1];
+                }
+                else
+                {
+                    // Dot is empty
+                    dots[i].sprite = dotSprites[0];
+                }
+            }
+        }
+        else
+        {
+            // Set all dots to empty if rechargeCup is zero
+            for (int i = 0; i < dots.Length; i++)
+            {
+                dots[i].sprite = dotSprites[0];
+            }
+        }
+
     }
 
     public void Spend()
@@ -66,5 +96,15 @@ public class ingridientSupply : MonoBehaviour
             ingLeft = 6;
         }
         recharges--;
+    }
+
+    public void AddIngredient()
+    {
+        recharges++;
+
+        if (recharges == 1 && ingLeft == 0)
+        {
+            Recharge();
+        }
     }
 }

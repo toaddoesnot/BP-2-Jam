@@ -895,6 +895,9 @@ MonoBehaviour:
   - {fileID: 6559696357091000011}
   myPeepsc: {fileID: 0}
   halfOrder: 0
+  orderWorth: 0
+  myTip: 3
+  prices: 02000000020000000400000003000000020000000400000002000000
 --- !u!82 &8437808103857395560
 AudioSource:
   m_ObjectHideFlags: 0

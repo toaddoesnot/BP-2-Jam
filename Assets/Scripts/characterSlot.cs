@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class characterSlot : MonoBehaviour
 {
@@ -42,6 +43,15 @@ public class characterSlot : MonoBehaviour
 
     public miniTimer timerSc; //timerSc.InitiateTimer();
     public GameObject myNewTimer;
+    public menuButton menuSc;
+
+    public int myPrice;
+    public int myTPrice;
+    public bool leaveTip;
+    public bool paid;
+
+    public screenSwiper swiperBt;
+    public piggyBank tipSc;
 
     void Awake()
     {
@@ -100,6 +110,8 @@ public class characterSlot : MonoBehaviour
         {
             canPress = true;
             menu.SetActive(true);
+            leaveTip = false;
+            paid = false;
         }
         else
         {
@@ -164,6 +176,7 @@ public class characterSlot : MonoBehaviour
         else
         {
             timerSc.InitiateTimer();
+
             if (myNewTimer != null && myNewTimer.activeInHierarchy)
             {
                 myNewTimer.GetComponent<miniTimer>().InitiateTimer();
@@ -177,6 +190,11 @@ public class characterSlot : MonoBehaviour
 
         plate.SetActive(false);
         plate2.SetActive(true);
+
+        if (moodState == 2)
+        {
+            leaveTip = true;
+        }
 
         wheel.GetComponent<Animation>().Play("wheelSpin");
 
@@ -225,6 +243,9 @@ public class characterSlot : MonoBehaviour
             yield return new WaitForSeconds(0.1f); //or else assigns incorrectly
             myNewTimer = myOrder.GetComponent<orderGenerator>().timers[myOrder.GetComponent<orderGenerator>().neededTimer];
             myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+
+            myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
+            myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
         }
     }
 
@@ -240,12 +261,28 @@ public class characterSlot : MonoBehaviour
             }
             else
             {
+                if (!paid)
+                {
+                    if (leaveTip)
+                    {
+                        menuSc.moneyLeft += myPrice;
+                        tipSc.tipsTotal += myTPrice;
+                        swiperBt.addMoney = true;
+                        paid = true;
+                    }
+                    else
+                    {
+                        menuSc.moneyLeft += myPrice;
+                        swiperBt.addMoney = true;
+                        paid = true; 
+                    }
+                }
+                
                 wheel.GetComponent<Animation>().Play("wheelUnSpin");
                 bye.Play();
                 plate2.SetActive(false);
                 occupied = false;
             }
         }
-        
     }
 }

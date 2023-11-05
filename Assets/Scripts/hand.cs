@@ -21,8 +21,8 @@ public class hand : MonoBehaviour
 
     public int tutorialLvl; //0-all; 1-toasts; 2-toasts+soups; 3=toasts+soups+drinks;
     
-    public TextMeshProUGUI moneyText;
-    public int moneyAm;
+    //public TextMeshProUGUI moneyText;
+    //public int moneyAm;
 
     public int whichFlow;
 
@@ -30,7 +30,7 @@ public class hand : MonoBehaviour
     void Update()
     {
         //moneyText.SetText("$:", moneyAm);
-        moneyText.text = "$" + moneyAm.ToString();
+        //moneyText.text = "$" + moneyAm.ToString();
 
         if (haveOrder is false)
         {

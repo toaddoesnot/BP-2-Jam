@@ -23,11 +23,12 @@ public class TimeManager : MonoBehaviour
     public bool doneFloat;
     public Fungus.Flowchart myFlowchart2;
 
-    public void Start() //StartTime
-    {
-        timeOn = true;
-    }
+    public GameObject closeSign;
+    public Sprite closed1;
+    public Sprite closed2;
 
+    public GameObject openSign;
+    public miniTimer timerSc;
 
     void Update()
     {
@@ -72,8 +73,20 @@ public class TimeManager : MonoBehaviour
 
     public void FinishTime()
     {
-        
         timeOn = false;
+        closeSign.GetComponent<Button>().enabled = true;
+        closeSign.GetComponent<Image>().sprite = closed2;
         //myFlowchart2.ExecuteBlock("step2");
+    }
+
+    public void OpenDiner()
+    {
+        timeOn = true;
+        timerSc.InitiateTimer();///////////
+        openSign.SetActive(false);
+
+        closeSign.SetActive(true);
+        closeSign.GetComponent<Button>().enabled = false;
+        closeSign.GetComponent<Image>().sprite = closed1;
     }
 }

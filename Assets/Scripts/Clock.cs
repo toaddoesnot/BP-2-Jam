@@ -14,21 +14,14 @@ public class Clock : MonoBehaviour
 
     const float hoursToDegree = 360 / 12, minutesToDegrees = 360 / 60;
 
-    public miniTimer timerSc;
-
     void Start()
     {
         tm = this.GetComponent<TimeManager>();
-        timerSc.InitiateTimer();
     }
 
     void Update()
     {
         hourHand.rotation = Quaternion.Euler(0, 0, -tm.GetHour() * hoursToDegree);
         minuteHand.rotation = Quaternion.Euler(0, 0, -tm.GetMinutes() * minutesToDegrees);
-
-
     }
-
-
 }

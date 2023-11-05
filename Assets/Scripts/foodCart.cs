@@ -8,8 +8,6 @@ public class foodCart : MonoBehaviour
     public GameObject[] jukes;
     
     public drinkManager drinkSc;
-    //characterSlot (script)
-    //handSc.moneyAm += 5; //FOR MONEY
 
     public int drinks;
     public bool breakLoop;
@@ -47,7 +45,6 @@ public class foodCart : MonoBehaviour
             canDrop = false;
             StartCoroutine(resetCart());
         }
-        
     }
 
     IEnumerator resetCart()
@@ -55,7 +52,6 @@ public class foodCart : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         canDrop = true;
     }
-
 
     IEnumerator coolDown()
     {
