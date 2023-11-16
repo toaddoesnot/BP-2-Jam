@@ -21,7 +21,7 @@ public class orderGenerator : MonoBehaviour
 
     public bool OrderFullfilled;
     public bool DrinkFullfilled;
-    public bool FoodFullfilled;
+    //public bool FoodFullfilled;
 
     public drinkManager drinkSc;
     public hand handSc;
@@ -93,6 +93,7 @@ public class orderGenerator : MonoBehaviour
 
     public void Update()
     {
+        
         foreach (GameObject time in timers)
         {
             time.GetComponent<miniTimer>().timeText.text = nombre.ToString();

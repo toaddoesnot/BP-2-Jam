@@ -15,6 +15,7 @@ TagManager:
   - OrderManager
   - Canvas
   - foodcart
+  - narrative
   layers:
   - Default
   - TransparentFX

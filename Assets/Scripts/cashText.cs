@@ -16,9 +16,14 @@ public class cashText : MonoBehaviour
     public Sprite[] cashSprites;
     public GameObject butt;
 
+    public bool doAnimation;
+
     void Start()
     {
-        InvokeRepeating("cashAnimation", 2f, 18f);
+        if (doAnimation)
+        {
+            InvokeRepeating("cashAnimation", 2f, 18f);
+        }
     }
 
     void cashAnimation()

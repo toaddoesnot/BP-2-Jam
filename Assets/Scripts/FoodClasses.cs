@@ -11,6 +11,16 @@ public class FoodClasses : MonoBehaviour
      
     public bool noUcant;
 
+    public bool needInstruction;
+    private bool gaveInstruction;
+
+    private instructionalComments subtitleSc;
+
+    void Awake()
+    {
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+    }
+
     public void Update()
     {
         if (this.GetComponent<Inventory>().sthCooked is true || this.GetComponent<drinkManager>().HasSthReady is true || handSc.haveOrder)
@@ -36,6 +46,18 @@ public class FoodClasses : MonoBehaviour
         if (!noUcant)
         {
             currentFoods = index;
+
+            if (needInstruction)
+            {
+                if (!gaveInstruction)
+                {
+                    string rightMouse = "You may also press Right Mouse Button to drop it.";
+                    subtitleSc.instComments.Add(rightMouse);
+                    subtitleSc.Subtitles();
+                    gaveInstruction = false;
+                }
+            }
+            
         }
     }
 }

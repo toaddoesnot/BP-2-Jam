@@ -38,6 +38,8 @@ public class Cookers : MonoBehaviour
     public int whoDis; //1-pot; 2-pasta; 3-toast; 4-egg;
     public GameObject timerObj;
 
+    public instructionalComments subtitleSc;
+
     private void Start()
     {
         myImage = this.GetComponent<Image>();
@@ -48,19 +50,8 @@ public class Cookers : MonoBehaviour
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
         timerObj.SetActive(false);
-    }
 
-    private void Update()
-    {
-        if (HasFood)
-        {
-            //self.GetComponent<BoxCollider2D>().enabled = false;
-        }
-        else
-        {
-            //self.GetComponent<BoxCollider2D>().enabled = true;
-        }
-
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
     void OnMouseDown()
@@ -101,6 +92,17 @@ public class Cookers : MonoBehaviour
             }
             else
             {
+                if (foodScript.currentFoods == 2 || foodScript.currentFoods == 1 || foodScript.currentFoods == 6)
+                {
+                    string justIng = "Ah, an add-on! Goes on a plate right after the base.";
+
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(justIng))
+                    {
+                        subtitleSc.instComments.Add(justIng);
+                        subtitleSc.Subtitles();
+                    }
+                }
+
                 if (IAmPot)
                 {
                     if (foodScript.currentFoods == 4)
@@ -123,8 +125,18 @@ public class Cookers : MonoBehaviour
                         HasFood = true;
                         foodScript.currentFoods = -1;
                     }
-                }
 
+                    if (foodScript.currentFoods == 0 || foodScript.currentFoods == 5)
+                    {
+                        string potComment = "This is a pot! For pasta and potatoes only.";
+                        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(potComment))
+                        {
+                            subtitleSc.instComments.Add(potComment);
+                            subtitleSc.Subtitles();
+                        }
+
+                    }
+                }
                 else
                 {
                     if (IAmToaster)
@@ -148,6 +160,17 @@ public class Cookers : MonoBehaviour
                             StartCoroutine(Cook());
                             HasFood = true;
                             foodScript.currentFoods = -1;
+                        }
+
+                        if (foodScript.currentFoods == 4 || foodScript.currentFoods == 8)
+                        {
+                            string panComment = "This is a frying pan! For eggs and French toast only.";
+                            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(panComment))
+                            {
+                                subtitleSc.instComments.Add(panComment);
+                                subtitleSc.Subtitles();
+                            }
+                            
                         }
                     }
                 }

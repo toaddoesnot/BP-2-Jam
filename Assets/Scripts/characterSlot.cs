@@ -53,6 +53,8 @@ public class characterSlot : MonoBehaviour
     public screenSwiper swiperBt;
     public piggyBank tipSc;
 
+    public GameObject myJuke;
+
     void Awake()
     {
         timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
@@ -61,6 +63,16 @@ public class characterSlot : MonoBehaviour
 
     void Update()
     {
+        if (canPress)
+        {
+            myJuke.GetComponent<Button>().enabled = true;
+        }
+        else
+        {
+            myJuke.GetComponent<Button>().enabled = false;
+        }
+
+
         if (myPeep.activeInHierarchy)
         {
             myPeep.GetComponent<emotionChanger>().amActive = true;
@@ -89,6 +101,7 @@ public class characterSlot : MonoBehaviour
         {
             if (!ready2eat)
             {
+                ready2eat = true;
                 currentState = 3;
                 Destroy(myOrder);
                 myOrder = null;
@@ -97,7 +110,7 @@ public class characterSlot : MonoBehaviour
                 plate.SetActive(true);
 
                 StartCoroutine(Eating());
-                ready2eat = true;
+                
             }
         }
 
@@ -282,6 +295,7 @@ public class characterSlot : MonoBehaviour
                 bye.Play();
                 plate2.SetActive(false);
                 occupied = false;
+                canPress = false;
             }
         }
     }

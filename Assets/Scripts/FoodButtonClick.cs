@@ -46,6 +46,10 @@ public class FoodButtonClick : MonoBehaviour
 
     public bool doneFlow;
 
+    //
+
+    public instructionalComments subtitleSc;
+
     private void Start()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
@@ -53,6 +57,7 @@ public class FoodButtonClick : MonoBehaviour
         FoodSelected = inventoryManager.GetComponent<FoodClasses>();
 
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
 
     }
 
@@ -171,6 +176,11 @@ public class FoodButtonClick : MonoBehaviour
 
     void OnMouseDown()
     {
+        string emptyPlate = "You can put your ingredients there.";
+        string noBase = "You need a base first: pasta, potatoes, or a French toast.";
+        string wrongIngredient = "Oops! These don’t go together.";
+        string raw = "You might want to cook it first.";
+
         if (FoodSelected.currentFoods == -1)
         {
             if (HaveToast is false)
@@ -216,7 +226,7 @@ public class FoodButtonClick : MonoBehaviour
                     
             }
 
-            if (inventory.EggCooked) //if (HaveNoodles || HavePotatoes)
+            if (inventory.EggCooked)
             {
                 egg.SetActive(true);
                 inventory.EggCooked = false;
@@ -243,7 +253,13 @@ public class FoodButtonClick : MonoBehaviour
                 }
                 else
                 {
-                    //take just plate
+                    //empty plate
+
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(emptyPlate))
+                    {
+                        subtitleSc.instComments.Add(emptyPlate);
+                        subtitleSc.Subtitles();
+                    }
                 }
             }
             else
@@ -340,6 +356,27 @@ public class FoodButtonClick : MonoBehaviour
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().CherryOn();
             }
+            else
+            {
+                if (HaveNoodles || HavePotatoes)
+                {
+                    //wrong ing
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+                    {
+                        subtitleSc.instComments.Add(wrongIngredient);
+                        subtitleSc.Subtitles();
+                    }
+                }
+                else
+                {
+                    //no base
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    {
+                        subtitleSc.instComments.Add(noBase);
+                        subtitleSc.Subtitles();
+                    }
+                }
+            }
         }
            
         if (FoodSelected.currentFoods == 2)
@@ -351,9 +388,29 @@ public class FoodButtonClick : MonoBehaviour
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ButterOn();
             }
+            else
+            {
+                if (HaveNoodles || HavePotatoes)
+                {
+                    //wrong ing
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+                    {
+                        subtitleSc.instComments.Add(wrongIngredient);
+                        subtitleSc.Subtitles();
+                    }
+                }
+                else
+                {
+                    //no base
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    {
+                        subtitleSc.instComments.Add(noBase);
+                        subtitleSc.Subtitles();
+                    }
+                }
+            }
         }
        
-
         if (FoodSelected.currentFoods == 6)
         {
             if (HaveNoodles || HavePotatoes)
@@ -362,6 +419,36 @@ public class FoodButtonClick : MonoBehaviour
                 FoodSelected.Foods[6].GetComponent<ingridientSupply>().Spend();
                 FoodSelected.currentFoods = -1;
                 myPlace.GetComponent<plateGenerator>().ShroomOn();
+            }
+            else
+            {
+                if (HaveToast)
+                {
+                    //wrong ing
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+                    {
+                        subtitleSc.instComments.Add(wrongIngredient);
+                        subtitleSc.Subtitles();
+                    }
+                }
+                else
+                {
+                    //no base
+                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    {
+                        subtitleSc.instComments.Add(noBase);
+                        subtitleSc.Subtitles();
+                    }
+                }
+            }
+        }
+        
+        if (FoodSelected.currentFoods == 8 || FoodSelected.currentFoods == 4 || FoodSelected.currentFoods == 0 || FoodSelected.currentFoods == 5)
+        {
+            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(raw))
+            {
+                subtitleSc.instComments.Add(raw);
+                subtitleSc.Subtitles();
             }
         }
         

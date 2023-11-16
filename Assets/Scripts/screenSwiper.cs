@@ -24,9 +24,29 @@ public class screenSwiper : MonoBehaviour
     public menuButton menuSc;
     public piggyBank tipSc;
 
+    public float transitionDuration;
+    public instructionalComments subtitleSc;
+    public bool extraCase;
+    public GameObject self;
+
+    public GameObject music;
+    public GameObject blackScreen;
+    public GameObject levelScript;
+
+    void Start()
+    {
+        if (blackScreen != null)
+        {
+            blackScreen.SetActive(true);
+        }
+        
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        self = this.gameObject;
+    }
+
     void Update()
     {
-        if (notes[0].activeInHierarchy || notes[1].activeInHierarchy || notes[2].activeInHierarchy || notes[3].activeInHierarchy || notes[4].activeInHierarchy || notes[5].activeInHierarchy)
+        if (notes[0].activeInHierarchy || notes[1].activeInHierarchy || notes[2].activeInHierarchy || notes[3].activeInHierarchy || notes[4].activeInHierarchy || notes[5].activeInHierarchy || extraCase)
         {
             sthActive = true;
         }
@@ -49,6 +69,13 @@ public class screenSwiper : MonoBehaviour
     {
         if (onScreen == 0)
         {
+            if (extraCase)
+            {
+                extraCase = false;
+                music.GetComponent<AudioSource>().Play();
+                levelScript.GetComponent<levelOne>().StartFrances();
+            }
+
             cameraObj.transform.localPosition = camL.transform.localPosition;
             this.GetComponent<Image>().sprite = room2;
             onScreen = 1;
@@ -75,5 +102,34 @@ public class screenSwiper : MonoBehaviour
         tipSc.PlayAnimation();
     }
 
-    
+    public void ForcePress()
+    {
+        cameraObj.transform.localPosition = camL.transform.localPosition;
+        this.GetComponent<Image>().sprite = room1;
+        this.GetComponent<Button>().enabled = false;
+
+        StartCoroutine(MoveCamera(camR.transform.localPosition));
+    }
+
+    private IEnumerator MoveCamera(Vector3 targetPosition)
+    {
+        yield return null;
+        blackScreen.GetComponent<Animation>().Play();
+
+        yield return 2f;
+
+        Vector3 startPosition = cameraObj.transform.localPosition;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < transitionDuration)
+        {
+            cameraObj.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / transitionDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        cameraObj.transform.localPosition = targetPosition;
+        subtitleSc.Subtitles();
+    }
+
 }

@@ -30,10 +30,35 @@ public class TimeManager : MonoBehaviour
     public GameObject openSign;
     public miniTimer timerSc;
 
+    public instructionalComments subtitleSc;
+    public bool needTip;
+
+    void Start()
+    {
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+
+        if (needTip)
+        {
+            InvokeRepeating("openTip", 2f, 10f);
+        }
+        
+    }
+
+    void openTip()
+    {
+        string openDiner = "Click on the sign to open the diner";
+        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(openDiner))
+        {
+            subtitleSc.instComments.Add(openDiner);
+            subtitleSc.Subtitles();
+        }
+    }
+
     void Update()
     {
         if (timeOn is true)
         {
+           
             totalTime += Time.deltaTime;
             currentTime = totalTime % dayDuration;
             //clockHandWTransform.eulerAngles = new Vector3(0, 0, -Time.realtimeSinceStartup * 90f);
@@ -82,6 +107,8 @@ public class TimeManager : MonoBehaviour
     public void OpenDiner()
     {
         timeOn = true;
+        CancelInvoke("openTip");
+
         timerSc.InitiateTimer();///////////
         openSign.SetActive(false);
 
