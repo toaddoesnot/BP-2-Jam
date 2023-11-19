@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Fungus;
 
 public class levelOne : MonoBehaviour
 {
     public screenSwiper cameraScreen;
     public instructionalComments subtitleSc;
-
-    public GameObject breakSound;
 
     public GameObject FrancesObj;
     public GameObject RcObj;
@@ -16,62 +15,120 @@ public class levelOne : MonoBehaviour
     [TextArea(5, 10)]
     public string[] strings;
 
+    public customerGenerator customerScript;
+    public GameObject secondBlack;
+
+    public TimeManager timeSc;
+    private bool times = false;
+
+    public Fungus.Flowchart FrancesDiner;
+
+    public int FrancesStates;
+
     void Awake()
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         cameraScreen.ForcePress();
-        StartCoroutine(Frances());
     }
 
-    public IEnumerator Frances()
+    public void BreakIn()
     {
-        yield return new WaitForSeconds(26f); //27 overall
-        breakSound.GetComponent<AudioSource>().Play();
-
-        yield return new WaitForSeconds(2f);
         cameraScreen.blackScreen.SetActive(false);
         cameraScreen.self.GetComponent<Button>().enabled = true;
         cameraScreen.extraCase = true;
     }
 
-    public void StartFrances()
+    public void Frances()
     {
-        FrancesObj.SetActive(true);
-        subtitleSc.ChangePosition();
+        if(FrancesStates == 0) //screen swiper starts it
+        {
+            FrancesObj.SetActive(true);
+            cameraScreen.self.GetComponent<Button>().enabled = false;
+            FrancesDiner.ExecuteBlock("Second");
 
-        StartCoroutine(FrancesInteractions());
+            FrancesStates = 1;
+        }
+        else
+        {
+            if (FrancesStates == 1) //flowchart 2 starts it
+            {
+                FrancesObj.SetActive(false);
+                customerScript.introLevels = true;
+                customerScript.GenerateCustomer();
+                cameraScreen.self.GetComponent<Button>().enabled = true;
+
+                FrancesStates = 2;
+            }
+            else
+            {
+                if (FrancesStates == 2)
+                {
+                    cameraScreen.self.GetComponent<Button>().enabled = false;
+                    secondBlack.SetActive(true);
+                    StartCoroutine(FinishFrances());
+                    FrancesDiner.ExecuteBlock("Third");
+
+                    FrancesStates = 3;
+                }
+                else
+                {
+                    if (FrancesStates == 3)
+                    {
+                        FrancesObj.SetActive(false);
+                        timeSc.OpenWithoutTime();
+                        customerScript.Generator();
+
+                        cameraScreen.self.GetComponent<Button>().enabled = true;
+                    }
+                }
+            }
+        }
     }
 
-    IEnumerator FrancesInteractions()
+    public IEnumerator FinishFrances()
     {
-        yield return null;
+        yield return new WaitForSeconds(2f);
+        FrancesObj.SetActive(true);
+        FrancesObj.transform.localPosition = new Vector3(-1466.85f, FrancesObj.transform.localPosition.y, FrancesObj.transform.localPosition.z);
+        secondBlack.SetActive(false);
+    }
 
-        subtitleSc.instComments.Add(strings[0]);
-        subtitleSc.instComments.Add(strings[1]);
-        subtitleSc.Subtitles();
+    public void Ready2Close()
+    {
+        
+        if (!times)
+        {
+            StartCoroutine(ClosingDiner());
+            times = true;
+        }
+        else
+        {
+            StartCoroutine(ClosingDiner2());
+        }
+    }
 
-        yield return new WaitForSeconds(8f);
-
-        RcObj.GetComponent<Animation>().Play("RC_out"); //rc-1000 rolls in
-         //change sprite to the one facing left
+    IEnumerator ClosingDiner()
+    {
+        yield return new WaitForSeconds(3f);
+        subtitleSc.instComments.Add(strings[10]);
+        if (!subtitleSc.playing)
+        {
+            subtitleSc.Subtitles();
+        }
 
         yield return new WaitForSeconds(4f);
+        timeSc.FinishTime(); ///instead of this collect money efore closing
+    }
 
-        subtitleSc.instComments.Add(strings[2]);
-        subtitleSc.instComments.Add(strings[3]);
-        subtitleSc.Subtitles();
-        subtitleSc.instBubble.GetComponent<Image>().sprite = subtitleSc.bubbles[1];
-
-        yield return new WaitForSeconds(11.5f);
-
-        subtitleSc.instComments.Add(strings[4]);
-        subtitleSc.instComments.Add(strings[5]);
-        subtitleSc.Subtitles();
-        subtitleSc.instBubble.GetComponent<Image>().sprite = subtitleSc.bubbles[0];
-
-        yield return new WaitForSeconds(10f);
-        RcObj.GetComponent<Animation>().Play("RC_in");
-        FrancesObj.SetActive(false);
-        //then in another script spawn Frances on chair 1 and you can give her a menu, then go to the first screen and prepare food for her
+    IEnumerator ClosingDiner2()
+    {
+        yield return null;
+        subtitleSc.instComments.Add(strings[11]);
+        subtitleSc.instComments.Add(strings[12]);
+        if (!subtitleSc.playing)
+        {
+            subtitleSc.Subtitles();
+        }
+        //go to cabin
     }
 }

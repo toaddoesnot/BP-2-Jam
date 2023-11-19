@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,9 +55,20 @@ public class characterSlot : MonoBehaviour
 
     public GameObject myJuke;
 
+    public float midTime = 20f;
+    public float maxTime = 40f;
+    public float eatingTime = 10f;
+
+    public hand handSc;
+
+
     void Awake()
     {
-        timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        if (timey != null)
+        {
+            timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
+        }
         //timey.SetActive(true);
     }
 
@@ -131,38 +142,38 @@ public class characterSlot : MonoBehaviour
             menu.SetActive(false);
         }
 
-        if (timeWaiting >= 20f && timeWaiting < 21f)
+        if (timeWaiting >= midTime && timeWaiting < midTime + 1f)
         {
             if (moodState is 2)
             {
                 moodState = 1;
-                timeWaiting = 21;
+                timeWaiting = midTime + 1f;
             }
             else
             {
-                if (moodState is 1 && timeWaiting < 21f)
+                if (moodState is 1 && timeWaiting < midTime + 1f)
                 {
                     moodState = 0;
-                    timeWaiting = 21;
+                    timeWaiting = midTime + 1f;
                 }
             }
         }
         else
         {
-            if (timeWaiting >= 40f && timeWaiting < 41f)
+            if (timeWaiting >= maxTime && timeWaiting < maxTime + 1f)
             {
                    
                 if (moodState is 2)
                 {
                     moodState = 1;
-                    timeWaiting = 41;
+                    timeWaiting = maxTime + 1f;
                 }
                 else
                 {
-                    if (moodState is 1 && timeWaiting < 41f)
+                    if (moodState is 1 && timeWaiting < maxTime + 1f)
                     {
                         moodState = 0;
-                        timeWaiting = 41;
+                        timeWaiting = maxTime + 1f;
                     }
                 }
             }
@@ -199,7 +210,7 @@ public class characterSlot : MonoBehaviour
 
     public IEnumerator ReceivedOrder() //leave and empty the place
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(eatingTime);
 
         plate.SetActive(false);
         plate2.SetActive(true);
@@ -254,8 +265,11 @@ public class characterSlot : MonoBehaviour
             timerSc.InitiateTimer();
 
             yield return new WaitForSeconds(0.1f); //or else assigns incorrectly
-            myNewTimer = myOrder.GetComponent<orderGenerator>().timers[myOrder.GetComponent<orderGenerator>().neededTimer];
-            myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+            if (handSc.tutorialLvl != 1)
+            {
+                myNewTimer = myOrder.GetComponent<orderGenerator>().timers[myOrder.GetComponent<orderGenerator>().neededTimer];
+                myNewTimer.GetComponent<miniTimer>().InitiateTimer();
+            }
 
             myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
             myTPrice = myOrder.GetComponent<orderGenerator>().myTip;

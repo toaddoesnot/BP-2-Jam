@@ -116,4 +116,13 @@ public class TimeManager : MonoBehaviour
         closeSign.GetComponent<Button>().enabled = false;
         closeSign.GetComponent<Image>().sprite = closed1;
     }
+
+    public void OpenWithoutTime()
+    {
+        openSign.SetActive(false);
+
+        closeSign.SetActive(true);
+        closeSign.GetComponent<Button>().enabled = false;
+        closeSign.GetComponent<Image>().sprite = closed1;
+    }
 }

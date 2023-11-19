@@ -62,9 +62,10 @@ public class orderGenerator : MonoBehaviour
         if (handSc.tutorialLvl is 1)
         {
             firstCourse = Random.Range(0, 3);
+            secondCourse = Random.Range(0, 3);
             drinks = 3;
 
-            randomOrder = 0;
+            randomOrder = Random.Range(0, 2);
             Order();
         }
         else
@@ -107,48 +108,53 @@ public class orderGenerator : MonoBehaviour
             }
         }
 
-        if (randomOrder == 0 && OrderFullfilled == false) //toast
+        if(handSc.tutorialLvl != 1)
         {
-            neededTimer = 4; //0,1,2 - drinks, 3 - white 4 - red 5 - both
-            timers[4].SetActive(true);
-        }
-        else
-        {
-            if (randomOrder is 1 && OrderFullfilled is false) //noodle
+            if (randomOrder == 0 && OrderFullfilled == false) //toast
             {
-                neededTimer = 3;
-                timers[3].SetActive(true);
+                neededTimer = 4; //0,1,2 - drinks, 3 - white 4 - red 5 - both
+                timers[4].SetActive(true);
             }
             else
             {
-                if (randomOrder is 2 && OrderFullfilled is false) //noodle
+                if (randomOrder is 1 && OrderFullfilled is false) //noodle
                 {
-                    if (!halfOrder)
+                    neededTimer = 3;
+                    timers[3].SetActive(true);
+                }
+                else
+                {
+                    if (randomOrder is 2 && OrderFullfilled is false) //noodle
                     {
-                        neededTimer = 5;
-                        timers[5].SetActive(true);
-                    }
-                    else
-                    {
-                        timers[5].SetActive(false);
+                        if (!halfOrder)
+                        {
+                            neededTimer = 5;
+                            timers[5].SetActive(true);
+                        }
+                        else
+                        {
+                            timers[5].SetActive(false);
 
-                        if (whatIhave == 1)
-                        {
-                            neededTimer = 4;
-                            timers[4].SetActive(true);
-                            
+                            if (whatIhave == 1)
+                            {
+                                neededTimer = 4;
+                                timers[4].SetActive(true);
+
+                            }
+                            if (whatIhave == 2)
+                            {
+                                neededTimer = 3;
+                                timers[3].SetActive(true);
+                            }
+                            ////
                         }
-                        if (whatIhave == 2)
-                        {
-                            neededTimer = 3;
-                            timers[3].SetActive(true);
-                        }
-                        ////
+
                     }
-                    
                 }
             }
         }
+
+        
 
         if (noodleIngredients[0].activeInHierarchy)
         {

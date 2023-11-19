@@ -10,6 +10,13 @@ public class levelManager : MonoBehaviour
     public float idleTimer;
     public float respawnTime;
 
+    public hand handSc;
+    public levelOne instLevels;
+
+    void Start()
+    {
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+    }
 
     void Update()
     {
@@ -52,6 +59,10 @@ public class levelManager : MonoBehaviour
 
     public void Replay()
     {
-        SceneManager.LoadScene(0);
+        if (handSc.tutorialLvl is 1)
+        {
+            instLevels.Ready2Close();
+        }
+        //SceneManager.LoadScene(0);
     }
 }

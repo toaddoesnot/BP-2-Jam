@@ -71,9 +71,9 @@ public class screenSwiper : MonoBehaviour
         {
             if (extraCase)
             {
-                extraCase = false;
                 music.GetComponent<AudioSource>().Play();
-                levelScript.GetComponent<levelOne>().StartFrances();
+                levelScript.GetComponent<levelOne>().Frances();
+                
             }
 
             cameraObj.transform.localPosition = camL.transform.localPosition;
@@ -83,6 +83,12 @@ public class screenSwiper : MonoBehaviour
         }
         else
         {
+            if (extraCase)
+            {
+                levelScript.GetComponent<levelOne>().FrancesDiner.ExecuteBlock("ExtraCom");
+                extraCase = false;
+            }
+
             cameraObj.transform.localPosition = camR.transform.localPosition;
             this.GetComponent<Image>().sprite = room1;
             onScreen = 0;
@@ -111,7 +117,7 @@ public class screenSwiper : MonoBehaviour
         StartCoroutine(MoveCamera(camR.transform.localPosition));
     }
 
-    private IEnumerator MoveCamera(Vector3 targetPosition)
+    private IEnumerator MoveCamera(Vector3 targetPosition) //from right to left
     {
         yield return null;
         blackScreen.GetComponent<Animation>().Play();
@@ -129,7 +135,6 @@ public class screenSwiper : MonoBehaviour
         }
 
         cameraObj.transform.localPosition = targetPosition;
-        subtitleSc.Subtitles();
     }
 
 }

@@ -21,6 +21,8 @@ public class miniTimer : MonoBehaviour
     public int timerType; //0-normal, 1-clock, 2-cookers
     public float burntTime;
 
+    public bool noTimer;
+
     void Awake()
     {
         if(timerType == 0)
@@ -31,7 +33,10 @@ public class miniTimer : MonoBehaviour
 
     public void InitiateTimer()
     {
-        Begin(Duration);
+        if (!noTimer)
+        {
+            Begin(Duration);
+        }
     }
 
     private void Begin(int Second)

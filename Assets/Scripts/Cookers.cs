@@ -96,11 +96,15 @@ public class Cookers : MonoBehaviour
                 {
                     string justIng = "Ah, an add-on! Goes on a plate right after the base.";
 
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(justIng))
+                    if (!subtitleSc.instComments.Contains(justIng))
                     {
                         subtitleSc.instComments.Add(justIng);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
 
                 if (IAmPot)
@@ -129,11 +133,15 @@ public class Cookers : MonoBehaviour
                     if (foodScript.currentFoods == 0 || foodScript.currentFoods == 5)
                     {
                         string potComment = "This is a pot! For pasta and potatoes only.";
-                        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(potComment))
+                        if (!subtitleSc.instComments.Contains(potComment))
                         {
                             subtitleSc.instComments.Add(potComment);
-                            subtitleSc.Subtitles();
+                            if (!subtitleSc.playing)
+                            {
+                                subtitleSc.Subtitles();
+                            }
                         }
+                        
 
                     }
                 }
@@ -165,10 +173,13 @@ public class Cookers : MonoBehaviour
                         if (foodScript.currentFoods == 4 || foodScript.currentFoods == 8)
                         {
                             string panComment = "This is a frying pan! For eggs and French toast only.";
-                            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(panComment))
+                            if (!subtitleSc.instComments.Contains(panComment))
                             {
                                 subtitleSc.instComments.Add(panComment);
-                                subtitleSc.Subtitles();
+                                if (!subtitleSc.playing)
+                                {
+                                    subtitleSc.Subtitles();
+                                }
                             }
                             
                         }

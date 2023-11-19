@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class instructionalComments : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class instructionalComments : MonoBehaviour
 
 	private bool changed;
 	public GameObject selfNar;
+	public GameObject choicesGroup;
+	
 
 	public void ChangePosition()
     {
@@ -107,5 +110,11 @@ public class instructionalComments : MonoBehaviour
 			}
 			
 		}
+	}
+
+	public void BranchingEnter()
+    {
+		instBubble.SetActive(false);
+		choicesGroup.GetComponent<Animation>().Play("stopBranch");
 	}
 }

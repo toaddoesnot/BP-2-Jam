@@ -255,11 +255,15 @@ public class FoodButtonClick : MonoBehaviour
                 {
                     //empty plate
 
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(emptyPlate))
+                    if (!subtitleSc.instComments.Contains(emptyPlate))
                     {
                         subtitleSc.instComments.Add(emptyPlate);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
             }
             else
@@ -361,20 +365,28 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveNoodles || HavePotatoes)
                 {
                     //wrong ing
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+                    if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
                 else
                 {
                     //no base
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
             }
         }
@@ -393,20 +405,28 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveNoodles || HavePotatoes)
                 {
                     //wrong ing
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+                    if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
                 else
                 {
                     //no base
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
             }
         }
@@ -425,31 +445,44 @@ public class FoodButtonClick : MonoBehaviour
                 if (HaveToast)
                 {
                     //wrong ing
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(wrongIngredient))
+
+                    if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
                 else
                 {
                     //no base
-                    if (!subtitleSc.playing && !subtitleSc.instComments.Contains(noBase))
+                    if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        subtitleSc.Subtitles();
+                        if (!subtitleSc.playing)
+                        {
+                            subtitleSc.Subtitles();
+                        }
                     }
+                    
                 }
             }
         }
         
         if (FoodSelected.currentFoods == 8 || FoodSelected.currentFoods == 4 || FoodSelected.currentFoods == 0 || FoodSelected.currentFoods == 5)
         {
-            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(raw))
+            if (!subtitleSc.instComments.Contains(raw))
             {
                 subtitleSc.instComments.Add(raw);
-                subtitleSc.Subtitles();
+                if (!subtitleSc.playing)
+                {
+                    subtitleSc.Subtitles();
+                }
             }
+            
         }
         
     }

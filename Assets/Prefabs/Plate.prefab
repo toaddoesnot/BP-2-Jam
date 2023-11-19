@@ -276,7 +276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 521.0002, y: -127}
+  m_AnchoredPosition: {x: 486.9, y: -126.5}
   m_SizeDelta: {x: 205, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6210426088280462891
@@ -416,6 +416,7 @@ MonoBehaviour:
   HaveToast: 0
   HaveNoodles: 0
   HavePotatoes: 0
+  HaveEgg: 0
   myPlace: {fileID: 0}
   ToastWButter: 0
   ToastWCherry: 0
@@ -428,6 +429,7 @@ MonoBehaviour:
   toastHave: 0
   noodHave: 0
   doneFlow: 0
+  subtitleSc: {fileID: 0}
 --- !u!1 &8891423469939797857
 GameObject:
   m_ObjectHideFlags: 0

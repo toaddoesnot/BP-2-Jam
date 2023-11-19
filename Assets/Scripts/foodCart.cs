@@ -20,14 +20,21 @@ public class foodCart : MonoBehaviour
     public instructionalComments subtitleSc;
 
     public GameObject Robot;
+    public hand handSc;
+    public levelOne instLevels;
+
+    private bool didCutscenes;
+    public GameObject clock;
 
     void Start()
     {
         drinks = 4;
         canDrop = true;
+
         FoodSelected = GameObject.FindGameObjectWithTag("Inventory").GetComponent<FoodClasses>();
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
     }
 
     public void OnMouseDown()
@@ -35,7 +42,7 @@ public class foodCart : MonoBehaviour
         if (canDrop)
         {
             print("can see you");
-            Robot.GetComponent<Animation>().Play("RC_delivery");
+            
 
             drinks = drinkSc.drinkHave;
 
@@ -49,11 +56,31 @@ public class foodCart : MonoBehaviour
                 if (breakLoop)
                 {
                     StartCoroutine(coolDown());
+                    Robot.GetComponent<Animation>().Play("RC_delivery");
+                    if (handSc.tutorialLvl is 1)
+                    {
+                        clock.GetComponent<Image>().fillAmount -= 0.25f;
+                        if (clock.GetComponent<Image>().fillAmount == 0f)
+                        {
+                            instLevels.Ready2Close();
+                        }
+                    }
+                        
                     break;
                 }
             }
             canDrop = false;
             StartCoroutine(resetCart());
+
+            if (!didCutscenes)
+            {
+                if (handSc.tutorialLvl is 1)
+                {
+                    instLevels.Frances();
+                }
+                didCutscenes = true;
+            }
+
         }
 
         if (FoodSelected.currentFoods == -1)
@@ -61,11 +88,15 @@ public class foodCart : MonoBehaviour
             if (inventory.sthCooked)
             {
                 string plateFirst = "On the plate first, please!";
-                if (!subtitleSc.playing && !subtitleSc.instComments.Contains(plateFirst))
+                if (!subtitleSc.instComments.Contains(plateFirst))
                 {
                     subtitleSc.instComments.Add(plateFirst);
-                    subtitleSc.Subtitles();
+                    if (!subtitleSc.playing)
+                    {
+                        subtitleSc.Subtitles();
+                    }
                 }
+                
             }
         }
         
