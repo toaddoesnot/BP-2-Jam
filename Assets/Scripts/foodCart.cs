@@ -26,6 +26,9 @@ public class foodCart : MonoBehaviour
     private bool didCutscenes;
     public GameObject clock;
 
+    public int dishesServed;
+    public dishwashingMachine dishSc;
+
     void Start()
     {
         drinks = 4;
@@ -56,7 +59,13 @@ public class foodCart : MonoBehaviour
                 if (breakLoop)
                 {
                     StartCoroutine(coolDown());
-                    Robot.GetComponent<Animation>().Play("RC_delivery");
+                    Robot.GetComponent<Animator>().Play("RC_delivery");
+                    dishesServed++;
+                    if (dishSc.recharges != 0)
+                    {
+                        dishSc.recharges--;
+                    }
+
                     if (handSc.tutorialLvl is 1)
                     {
                         clock.GetComponent<Image>().fillAmount -= 0.25f;
@@ -65,21 +74,21 @@ public class foodCart : MonoBehaviour
                             instLevels.Ready2Close();
                         }
                     }
-                        
+
+                    if (!didCutscenes)
+                    {
+                        if (handSc.tutorialLvl is 1)
+                        {
+                            instLevels.Frances();
+                            didCutscenes = true;
+                        }
+                    }
+
                     break;
                 }
             }
             canDrop = false;
             StartCoroutine(resetCart());
-
-            if (!didCutscenes)
-            {
-                if (handSc.tutorialLvl is 1)
-                {
-                    instLevels.Frances();
-                }
-                didCutscenes = true;
-            }
 
         }
 
@@ -91,10 +100,7 @@ public class foodCart : MonoBehaviour
                 if (!subtitleSc.instComments.Contains(plateFirst))
                 {
                     subtitleSc.instComments.Add(plateFirst);
-                    if (!subtitleSc.playing)
-                    {
-                        subtitleSc.Subtitles();
-                    }
+                    subtitleSc.Subtitles();
                 }
                 
             }

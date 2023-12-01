@@ -32,6 +32,11 @@ public class screenSwiper : MonoBehaviour
     public GameObject music;
     public GameObject blackScreen;
     public GameObject levelScript;
+    public GameObject blocker;
+
+    private FoodClasses foodSc;
+    private hand handSc;
+    private Inventory inventory;
 
     void Start()
     {
@@ -41,6 +46,11 @@ public class screenSwiper : MonoBehaviour
         }
         
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        foodSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<FoodClasses>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+
+
         self = this.gameObject;
     }
 
@@ -69,17 +79,29 @@ public class screenSwiper : MonoBehaviour
     {
         if (onScreen == 0)
         {
-            if (extraCase)
+            if (foodSc.currentFoods == -1 && !handSc.haveOrder && !inventory.sthCooked)
             {
-                music.GetComponent<AudioSource>().Play();
-                levelScript.GetComponent<levelOne>().Frances();
-                
+                if (extraCase)
+                {
+                    music.GetComponent<AudioSource>().Play();
+                    levelScript.GetComponent<levelOne>().Frances();
+                }
+
+                cameraObj.transform.localPosition = camL.transform.localPosition;
+                this.GetComponent<Image>().sprite = room2;
+                onScreen = 1;
+                addMoney = false;
             }
 
-            cameraObj.transform.localPosition = camL.transform.localPosition;
-            this.GetComponent<Image>().sprite = room2;
-            onScreen = 1;
-            addMoney = false;
+            if (handSc.haveOrder)
+            {
+                string tray = "I'll get it, just put in on the conveyor belt!";
+                if (!subtitleSc.instComments.Contains(tray))
+                {
+                    subtitleSc.instComments.Add(tray);
+                    subtitleSc.Subtitles();
+                }
+            }
         }
         else
         {
@@ -87,6 +109,7 @@ public class screenSwiper : MonoBehaviour
             {
                 levelScript.GetComponent<levelOne>().FrancesDiner.ExecuteBlock("ExtraCom");
                 extraCase = false;
+                StartCoroutine(unblock());
             }
 
             cameraObj.transform.localPosition = camR.transform.localPosition;
@@ -98,6 +121,12 @@ public class screenSwiper : MonoBehaviour
                 PaymentAnim();
             }
         }
+    }
+
+    IEnumerator unblock()
+    {
+        yield return new WaitForSeconds(2f);
+        blocker.SetActive(false);
     }
 
     public void PaymentAnim()

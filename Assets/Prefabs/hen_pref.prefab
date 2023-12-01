@@ -241,8 +241,12 @@ MonoBehaviour:
   empty: {fileID: 21300000, guid: 6269e33493fb2be4fb8d59f6ac25c106, type: 3}
   full: {fileID: 21300000, guid: a397952914601f94687c3da3f9e7050b, type: 3}
   fullTwo: {fileID: 21300000, guid: 67cf13cd7514a8f4e83e9366aae214f3, type: 3}
+  burnt: {fileID: 0}
+  burntTwo: {fileID: 0}
   whoDis: 0
   timerObj: {fileID: 2205446509235601944}
+  subtitleSc: {fileID: 0}
+  foodDead: 0
 --- !u!1 &2205446509235601944
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +349,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 2
   burntTime: 6
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &6934265361148582389
 Animation:
   m_ObjectHideFlags: 0
@@ -531,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4766966460955790295
 RectTransform:
   m_ObjectHideFlags: 0

@@ -61,8 +61,8 @@ public class levelManager : MonoBehaviour
     {
         if (handSc.tutorialLvl is 1)
         {
-            instLevels.Ready2Close();
+            SceneManager.LoadScene(1);
         }
-        //SceneManager.LoadScene(0);
+        //
     }
 }

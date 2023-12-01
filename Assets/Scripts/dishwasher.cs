@@ -14,6 +14,7 @@ public class dishwasher : MonoBehaviour
     public int orderCount;
 
     public AudioSource trashSound;
+    public dishwashingMachine dishSc;
 
     void OnMouseDown()
     {
@@ -42,6 +43,7 @@ public class dishwasher : MonoBehaviour
             {
                 inventory.havePlate = false;
             }
+
             if (drinkSc.HasReadyCoffee || drinkSc.HasReadySoda || drinkSc.HasReadyOJ)
             {
                 drinkSc.HasReadyCoffee = false;
@@ -55,6 +57,7 @@ public class dishwasher : MonoBehaviour
         }
         else
         {
+
             foodSelected.currentFoods = -1;
             trashSound.Play();
         }

@@ -53,17 +53,10 @@ public class FoodClasses : MonoBehaviour
                 {
                     string rightMouse = "You may also press Right Mouse Button to drop it.";
 
-                    if (!subtitleSc.instComments.Contains(rightMouse))
-                    {
-                        subtitleSc.instComments.Add(rightMouse);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
-                        gaveInstruction = true;
-                        needInstruction = false;
-                    }
-                    
+                    subtitleSc.instComments.Add(rightMouse);
+                    subtitleSc.Subtitles();
+                    gaveInstruction = true;
+                    needInstruction = false;
                 }
             }
         }

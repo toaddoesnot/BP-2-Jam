@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Fungus;
+using UnityEngine.SceneManagement;
 
 public class levelOne : MonoBehaviour
 {
@@ -24,6 +25,37 @@ public class levelOne : MonoBehaviour
     public Fungus.Flowchart FrancesDiner;
 
     public int FrancesStates;
+    public GameObject blocker;
+
+    public foodCart foodSc; //dishesServed == 4
+    public sink sinkSc;
+    public screenSwiper screenSc;
+
+    private bool done;
+    private bool done2;
+
+    void Update()
+    {
+        if (foodSc.dishesServed == 4)
+        {
+            if (!done)
+            {
+                Ready2Close();
+                done = true;
+            }
+        }
+        if (done)
+        {
+            if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+            {
+                if (!done2)
+                {
+                    StartCoroutine(ClosingDiner2());
+                    done2 = true;
+                }
+            }
+        }
+    }
 
     void Awake()
     {
@@ -65,6 +97,7 @@ public class levelOne : MonoBehaviour
                 {
                     cameraScreen.self.GetComponent<Button>().enabled = false;
                     secondBlack.SetActive(true);
+                    blocker.SetActive(true);
                     StartCoroutine(FinishFrances());
                     FrancesDiner.ExecuteBlock("Third");
 
@@ -77,6 +110,7 @@ public class levelOne : MonoBehaviour
                         FrancesObj.SetActive(false);
                         timeSc.OpenWithoutTime();
                         customerScript.Generator();
+                        blocker.SetActive(false);
 
                         cameraScreen.self.GetComponent<Button>().enabled = true;
                     }
@@ -95,7 +129,6 @@ public class levelOne : MonoBehaviour
 
     public void Ready2Close()
     {
-        
         if (!times)
         {
             StartCoroutine(ClosingDiner());
@@ -103,32 +136,25 @@ public class levelOne : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ClosingDiner2());
+            timeSc.openSign.SetActive(false);
+            timeSc.closeSign.SetActive(true);
         }
     }
 
     IEnumerator ClosingDiner()
     {
         yield return new WaitForSeconds(3f);
-        subtitleSc.instComments.Add(strings[10]);
-        if (!subtitleSc.playing)
-        {
-            subtitleSc.Subtitles();
-        }
-
-        yield return new WaitForSeconds(4f);
-        timeSc.FinishTime(); ///instead of this collect money efore closing
+        FrancesDiner.ExecuteBlock("beforeclosing");
     }
 
     IEnumerator ClosingDiner2()
     {
         yield return null;
-        subtitleSc.instComments.Add(strings[11]);
-        subtitleSc.instComments.Add(strings[12]);
-        if (!subtitleSc.playing)
-        {
-            subtitleSc.Subtitles();
-        }
-        //go to cabin
+        FrancesDiner.ExecuteBlock("closing");
+    }
+
+    public void CabinReturn()
+    {
+        SceneManager.LoadScene(1);
     }
 }

@@ -10,7 +10,7 @@ public class Cookers : MonoBehaviour
     //public GameObject FrenchToast;
 
     //public bool RamenReady;
-   // public bool ToastReady;
+    //public bool ToastReady;
 
     public bool HasFood;
 
@@ -31,14 +31,18 @@ public class Cookers : MonoBehaviour
 
     Image myImage;
     public GameObject lid;
+
     public Sprite empty;
     public Sprite full;
     public Sprite fullTwo;
+    public Sprite burnt;
+    public Sprite burntTwo;
 
     public int whoDis; //1-pot; 2-pasta; 3-toast; 4-egg;
     public GameObject timerObj;
 
     public instructionalComments subtitleSc;
+    public bool foodDead;
 
     private void Start()
     {
@@ -54,6 +58,28 @@ public class Cookers : MonoBehaviour
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
+    void Update()
+    {
+        if (foodReady && timerObj.GetComponent<miniTimer>().foodBurnt)
+        {
+            foodDead = true;
+
+            if (whoDis is 2 || whoDis is 3)
+            {
+                //myImage.sprite = burnt;
+            }
+
+            if (whoDis is 1 || whoDis is 4)
+            {
+                //myImage.sprite = burntTwo;
+            }
+        }
+        else
+        {
+            foodDead = false;
+        }
+    }
+
     void OnMouseDown()
     {
         if (HasFood)
@@ -63,6 +89,21 @@ public class Cookers : MonoBehaviour
                 print("Ready to check");
                 Checker();
             }
+            else
+            {
+                if (foodScript.currentFoods == 2 || foodScript.currentFoods == 1 || foodScript.currentFoods == 6)
+                {
+                    string justIng = "Ah, an add-on! Goes on a plate right after the base.";
+
+                    if (!subtitleSc.instComments.Contains(justIng))
+                    {
+                        subtitleSc.instComments.Add(justIng);
+                        subtitleSc.Subtitles();
+                    }
+
+                }
+            }
+            
         }
         else
         {
@@ -99,10 +140,7 @@ public class Cookers : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(justIng))
                     {
                         subtitleSc.instComments.Add(justIng);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -136,13 +174,8 @@ public class Cookers : MonoBehaviour
                         if (!subtitleSc.instComments.Contains(potComment))
                         {
                             subtitleSc.instComments.Add(potComment);
-                            if (!subtitleSc.playing)
-                            {
-                                subtitleSc.Subtitles();
-                            }
+                            subtitleSc.Subtitles();
                         }
-                        
-
                     }
                 }
                 else
@@ -176,10 +209,7 @@ public class Cookers : MonoBehaviour
                             if (!subtitleSc.instComments.Contains(panComment))
                             {
                                 subtitleSc.instComments.Add(panComment);
-                                if (!subtitleSc.playing)
-                                {
-                                    subtitleSc.Subtitles();
-                                }
+                                subtitleSc.Subtitles();
                             }
                             
                         }
@@ -217,6 +247,8 @@ public class Cookers : MonoBehaviour
             inventory.EggCooked = true;
             myStove.GetComponent<KitchenwareClicked>().TakeBread();
         }
+
+        //if()foodDead = false;
 
         ResetTimer();
         HasFood = false;

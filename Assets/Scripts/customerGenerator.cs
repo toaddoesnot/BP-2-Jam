@@ -93,6 +93,10 @@ public class customerGenerator : MonoBehaviour
             customerSlots[randSeat].GetComponent<characterSlot>().counting = true;
             customerSlots[randSeat].GetComponent<characterSlot>().currentState = 0;
 
+            customerSlots[randSeat].GetComponent<characterSlot>().mapCenter.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+            customerSlots[randSeat].GetComponent<characterSlot>().mapAnimation.SetActive(true);
+
+
             doorOpen.Play();
         }
            

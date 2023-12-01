@@ -12,8 +12,9 @@ public class instructionalComments : MonoBehaviour
 
 	[TextArea(5, 10)]
 	public List<string> instComments;
+    //QUIEING pUBLIC Queue<string> queueComments = new Queue<string>();
 
-	public float typingSpeed;
+    public float typingSpeed;
 	public string line;
 
 	public bool playing;
@@ -44,24 +45,35 @@ public class instructionalComments : MonoBehaviour
 
 	public void Subtitles()
     {
-		if (Time.time - lastTipTime > minTimeBetweenTips)
+		if (!playing)
 		{
-			typeSound.GetComponent<AudioSource>().Play();
-
-			lastTipTime = Time.time;
-			if (instBubble != null)
+            if (instBubble != null)
             {
-				instBubble.SetActive(true);
-			}
-			
-			StartCoroutine(DisplayLine());
-		}
-	}
+                instBubble.SetActive(true);
+            }
+            StartCoroutine(DisplayLine());
+        }
+		else
+		{
+            StopAllCoroutines();
+            instComments.RemoveAt(0);
+            instText.text = "";
+			playing = false;
+
+            StartCoroutine(DisplayLine());
+        }
+        
+        // if (Time.time - lastTipTime > minTimeBetweenTips)
+        //{
+        //	lastTipTime = Time.time;
+        ///instComments.Enqueue("Your new subtitle here");
+        //}
+    }
+	
 
 	IEnumerator DisplayLine()
 	{
-		yield return new WaitForSeconds(0.6f);
-		typeSound.GetComponent<AudioSource>().Play();
+		yield return null; //new WaitForSeconds(0.6f)
 
 		if (!playing)
         {
@@ -69,8 +81,9 @@ public class instructionalComments : MonoBehaviour
 			instText.text = "";
 			line = "";
 			line = instComments[0];
+            ///line = queueComments.Peek();
 
-			foreach (char letter in instComments[0].ToCharArray())
+            foreach (char letter in instComments[0].ToCharArray())
 			{
 				instText.text += letter;
 				yield return new WaitForSeconds(typingSpeed);
@@ -84,15 +97,16 @@ public class instructionalComments : MonoBehaviour
 		
 	}
 
-	IEnumerator ExitSubtitles()
+    IEnumerator ExitSubtitles()
     {
 		yield return new WaitForSeconds(1f);
 		playing = false;
 
 		yield return new WaitForSeconds(1.5f);
-		instComments.RemoveAt(0); 
+		instComments.RemoveAt(0);
+        ////queueComments.Dequeue();
 
-		instText.text = "";
+        instText.text = "";
 		line = "";
 
 		if (instComments.Count > 0)
@@ -108,7 +122,6 @@ public class instructionalComments : MonoBehaviour
 				yield return new WaitForSeconds(0.3f);
 				instBubble.SetActive(false);
 			}
-			
 		}
 	}
 

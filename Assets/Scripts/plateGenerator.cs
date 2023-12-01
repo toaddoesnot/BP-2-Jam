@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class plateGenerator : MonoBehaviour
 {
@@ -13,19 +14,19 @@ public class plateGenerator : MonoBehaviour
     public AudioSource myPlateSource;
     public AudioClip[] plateSounds;
 
+    public dishwashingMachine dishSc;
+    public GameObject reDisher;
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        GeneratePlate();
-    }
-
-    public void Update()
-    {
-        if (HasPlate is false)
+        if (!HasPlate)
         {
-            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
-            HasPlate = true;
+            reDisher.SetActive(true);
+        }
+        else
+        {
+            reDisher.SetActive(false);
+            //GetComponent<Collider2D>().enabled = false;
         }
     }
 
@@ -46,17 +47,20 @@ public class plateGenerator : MonoBehaviour
             myPlate = null;
             HasPlate = false;
             
-            //GeneratePlate();
+            GeneratePlate();
         }
     }
 
     public void GeneratePlate()
     {
-        if (HasPlate is false)
+        if (dishSc.recharges != 0)
         {
-            Instantiate(plate, transform.position, Quaternion.identity, this.transform);
+            if (HasPlate is false)
+            {
+                Instantiate(plate, transform.position, Quaternion.identity, this.transform);
 
-            HasPlate = true;
+                HasPlate = true;
+            }
         }
     }
 

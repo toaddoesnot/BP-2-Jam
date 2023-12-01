@@ -61,10 +61,16 @@ public class characterSlot : MonoBehaviour
 
     public hand handSc;
 
+    public GameObject mapAnimation;
+    public GameObject mapCenter;
+    public GameObject menuChoice;
+
+    public sink sinkSc;
 
     void Awake()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        menuChoice.SetActive(false);
         if (timey != null)
         {
             timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
@@ -83,15 +89,24 @@ public class characterSlot : MonoBehaviour
             myJuke.GetComponent<Button>().enabled = false;
         }
 
-
         if (myPeep.activeInHierarchy)
         {
             myPeep.GetComponent<emotionChanger>().amActive = true;
             myPeep.GetComponent<emotionChanger>().currentGuest = myGuest;
+            mapCenter.SetActive(true); //mapAnimation
         }
         else
         {
             myPeep.GetComponent<emotionChanger>().amActive = false;
+            if (cleanpl.activeInHierarchy)
+            {
+                mapCenter.SetActive(true);
+            }
+            else
+            {
+                mapCenter.SetActive(false);
+            }
+            
         }
 
         if(myOrder != null)
@@ -183,6 +198,8 @@ public class characterSlot : MonoBehaviour
     public IEnumerator Eating()
     {
         yield return null;
+        mapAnimation.SetActive(false);
+
         timeWaiting = 0;
 
         if (moodState != 2)
@@ -210,6 +227,7 @@ public class characterSlot : MonoBehaviour
 
     public IEnumerator ReceivedOrder() //leave and empty the place
     {
+        mapCenter.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         yield return new WaitForSeconds(eatingTime);
 
         plate.SetActive(false);
@@ -220,6 +238,7 @@ public class characterSlot : MonoBehaviour
             leaveTip = true;
         }
 
+        cleanpl.SetActive(true);
         wheel.GetComponent<Animation>().Play("wheelSpin");
 
         myPeep.SetActive(false);
@@ -235,6 +254,7 @@ public class characterSlot : MonoBehaviour
     IEnumerator Order()
     {
         yield return null;
+        mapAnimation.SetActive(false);
         timeWaiting = 0;
         
         timerSc.ResetTimer();
@@ -252,6 +272,7 @@ public class characterSlot : MonoBehaviour
         
         if (currentState is 1)
         {
+            menuChoice.SetActive(true);
             yield return new WaitForSeconds(6f); //choosing a meal
 
             myOrder = Instantiate(orderInstance, orderPlaque.transform.position, Quaternion.identity, orderPlaque.transform); //NEWNEWNE 
@@ -260,6 +281,8 @@ public class characterSlot : MonoBehaviour
             myOrder.GetComponent<orderGenerator>().myPeepsc = this.gameObject;
 
             currentState++; //now waiting for food
+            menuChoice.SetActive(false);
+            mapAnimation.SetActive(true);
 
             timeWaiting = 0;
             timerSc.InitiateTimer();
@@ -306,11 +329,25 @@ public class characterSlot : MonoBehaviour
                 }
                 
                 wheel.GetComponent<Animation>().Play("wheelUnSpin");
+                StartCoroutine(forgetClean());
+
                 bye.Play();
                 plate2.SetActive(false);
                 occupied = false;
                 canPress = false;
+                sinkSc.cleanups++;
+
+                drinkDone = false;
+                foodDone = false;
+                ready2eat = false;
+
             }
         }
+    }
+
+    IEnumerator forgetClean()
+    {
+        yield return new WaitForSeconds(1.5f);
+        cleanpl.SetActive(false);
     }
 }

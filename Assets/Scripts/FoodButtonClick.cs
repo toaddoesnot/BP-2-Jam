@@ -258,10 +258,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(emptyPlate))
                     {
                         subtitleSc.instComments.Add(emptyPlate);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -368,10 +365,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -381,10 +375,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -408,10 +399,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -421,10 +409,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -449,10 +434,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(wrongIngredient))
                     {
                         subtitleSc.instComments.Add(wrongIngredient);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -462,10 +444,7 @@ public class FoodButtonClick : MonoBehaviour
                     if (!subtitleSc.instComments.Contains(noBase))
                     {
                         subtitleSc.instComments.Add(noBase);
-                        if (!subtitleSc.playing)
-                        {
-                            subtitleSc.Subtitles();
-                        }
+                        subtitleSc.Subtitles();
                     }
                     
                 }
@@ -477,10 +456,7 @@ public class FoodButtonClick : MonoBehaviour
             if (!subtitleSc.instComments.Contains(raw))
             {
                 subtitleSc.instComments.Add(raw);
-                if (!subtitleSc.playing)
-                {
-                    subtitleSc.Subtitles();
-                }
+                subtitleSc.Subtitles();
             }
             
         }

@@ -18,10 +18,11 @@ public class miniTimer : MonoBehaviour
     public bool amClock;
     public TimeManager timeSc;
 
-    public int timerType; //0-normal, 1-clock, 2-cookers
+    public int timerType; //0-normal, 1-clock, 2-cookers, 3-sink
     public float burntTime;
 
     public bool noTimer;
+    public bool foodBurnt;
 
     void Awake()
     {
@@ -82,7 +83,7 @@ public class miniTimer : MonoBehaviour
             }
         }
 
-        if(timerType != 1)
+        if(timerType != 1 && timerType != 3)
         {
             StartCoroutine(FoodBurn());
         }
@@ -92,6 +93,12 @@ public class miniTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(burntTime);
         PlayAnimation();
+
+        if (timerType == 0)
+        {
+            yield return new WaitForSeconds(3f);
+            foodBurnt = true;
+        }
     }
 
     public void PlayAnimation()
@@ -114,6 +121,7 @@ public class miniTimer : MonoBehaviour
         print("stopped resettedd");
 
         this.GetComponent<Animation>().Stop("bouncyTimer");
+        foodBurnt = false;
 
         print("hello darkness");
     }
