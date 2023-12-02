@@ -64,6 +64,7 @@ public class foodCart : MonoBehaviour
                     if (dishSc.recharges != 0)
                     {
                         dishSc.recharges--;
+                        dishSc.recharges--;
                     }
 
                     if (handSc.tutorialLvl is 1)

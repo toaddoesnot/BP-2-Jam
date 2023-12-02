@@ -16,6 +16,7 @@ public class plateGenerator : MonoBehaviour
 
     public dishwashingMachine dishSc;
     public GameObject reDisher;
+    private bool firstTime;
 
     void Update()
     {
@@ -36,6 +37,11 @@ public class plateGenerator : MonoBehaviour
         {
             myPlate = collision.gameObject;
             myPlate.GetComponent<FoodButtonClick>().myPlace = self;
+            if (!firstTime)
+            {
+                myPlate.GetComponent<FoodButtonClick>().ghostPlate = false;
+                firstTime = true;
+            }
         }
     }
 
@@ -53,15 +59,39 @@ public class plateGenerator : MonoBehaviour
 
     public void GeneratePlate()
     {
-        if (dishSc.recharges != 0)
+        if (dishSc.recharges != 0) //!= 0
         {
-            if (HasPlate is false)
+            if(dishSc.recharges == 1)
             {
-                Instantiate(plate, transform.position, Quaternion.identity, this.transform);
 
-                HasPlate = true;
+            }
+            else
+            {
+                if (HasPlate is false)
+                {
+                    Instantiate(plate, transform.position, Quaternion.identity, this.transform);
+
+                    HasPlate = true;
+                }
             }
         }
+    }
+
+    public void ForceGenerate()
+    {
+        Instantiate(plate, transform.position, Quaternion.identity, this.transform);
+
+        HasPlate = true;
+
+        StartCoroutine(ForceCor());
+        
+    }
+
+    IEnumerator ForceCor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        myPlate.GetComponent<FoodButtonClick>().ghostPlate = true;
+        myPlate.GetComponent<FoodButtonClick>().OnPointerDown(null);
     }
 
     public void PastaOn()

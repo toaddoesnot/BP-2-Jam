@@ -63,6 +63,7 @@ public class orderGenerator : MonoBehaviour
         {
             firstCourse = Random.Range(0, 3);
             secondCourse = Random.Range(0, 3);
+            PotatoONoodle = Random.Range(0, 2);
             drinks = 3;
 
             randomOrder = Random.Range(0, 2);

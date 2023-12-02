@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Fungus;
 using System.Runtime.InteropServices;
+using UnityEngine.EventSystems;
 
-public class FoodButtonClick : MonoBehaviour
+public class FoodButtonClick : MonoBehaviour, IPointerDownHandler
 {
     public FoodClasses FoodSelected; 
     public Inventory inventory;
@@ -36,8 +37,6 @@ public class FoodButtonClick : MonoBehaviour
     public bool NoodWEgg;
     public bool NoodComplete;
 
-    //
-
     public hand handSc;
 
     public int myfoodHave;
@@ -46,19 +45,19 @@ public class FoodButtonClick : MonoBehaviour
 
     public bool doneFlow;
 
-    //
-
     public instructionalComments subtitleSc;
+    public dishwashingMachine dishSc;
+    public bool ghostPlate;
 
-    private void Start()
+    void Awake()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
         inventory = inventoryManager.GetComponent<Inventory>();
         FoodSelected = inventoryManager.GetComponent<FoodClasses>();
+        dishSc = GameObject.FindGameObjectWithTag("plates").GetComponent<dishwashingMachine>();
 
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
-
     }
 
     public void Update()
@@ -174,13 +173,14 @@ public class FoodButtonClick : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData) //
     {
         string emptyPlate = "You can put your ingredients there.";
         string noBase = "You need a base first: pasta, potatoes, or a French toast.";
         string wrongIngredient = "Oops! These don’t go together.";
         string raw = "You might want to cook it first.";
 
+        
         if (FoodSelected.currentFoods == -1)
         {
             if (HaveToast is false)
@@ -248,6 +248,7 @@ public class FoodButtonClick : MonoBehaviour
                     }
 
                     handSc.haveOrder = true;
+                    dishSc.recharges++;//DISH +1
 
                     Destroy(this.gameObject);
                 }
@@ -265,8 +266,10 @@ public class FoodButtonClick : MonoBehaviour
             }
             else
             {
-                if (handSc.haveOrder)
+                if (handSc.haveOrder && dishSc.recharges > 1 || ghostPlate)
                 {
+                    print("returning works");
+
                     if (handSc.foodHave is 0)
                     {
                         toast.SetActive(true);
@@ -344,6 +347,7 @@ public class FoodButtonClick : MonoBehaviour
                     }
 
                     handSc.haveOrder = false;
+                    dishSc.recharges--;
                 }
             }
         }

@@ -25,8 +25,8 @@ public class hand : MonoBehaviour
     //public int moneyAm;
 
     public int whichFlow;
+    public dishwashingMachine dishSc;
 
-    // Update is called once per frame
     void Update()
     {
         //moneyText.SetText("$:", moneyAm);

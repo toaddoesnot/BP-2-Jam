@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7233662646209413984}
   - component: {fileID: 2574363806940080068}
   - component: {fileID: 6222187554140972853}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: hen_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1583673910324387942}
   - component: {fileID: 3770097091877027861}
   - component: {fileID: 5554482328384161451}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: hen_pref
   m_TagString: Cooker
   m_Icon: {fileID: 0}

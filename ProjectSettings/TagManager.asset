@@ -16,6 +16,7 @@ TagManager:
   - Canvas
   - foodcart
   - narrative
+  - plates
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - non-clickable
   - cursor
   - UI
-  - 
+  - blocker
   - 
   - 
   - 
@@ -59,6 +60,6 @@ TagManager:
   - name: Food
     uniqueID: 717996953
     locked: 0
-  - name: New Layer 3
+  - name: blocker
     uniqueID: 1756208663
     locked: 0

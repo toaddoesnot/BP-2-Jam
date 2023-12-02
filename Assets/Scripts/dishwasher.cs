@@ -53,6 +53,7 @@ public class dishwasher : MonoBehaviour
             if (handSc.haveOrder)
             {
                 handSc.haveOrder = false;
+                dishSc.recharges--;
             }
         }
         else

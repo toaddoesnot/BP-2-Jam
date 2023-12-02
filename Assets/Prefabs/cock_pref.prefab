@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 8928360526052530023}
   - component: {fileID: 926237479761180100}
   - component: {fileID: 5960211391207147952}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: cock_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 89092998941483592}
   - component: {fileID: 4319335845845543540}
   - component: {fileID: 4632333927757791881}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: cock_pref
   m_TagString: Cooker
   m_Icon: {fileID: 0}
