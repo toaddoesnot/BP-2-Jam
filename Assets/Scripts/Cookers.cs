@@ -64,14 +64,14 @@ public class Cookers : MonoBehaviour
         {
             foodDead = true;
 
-            if (whoDis is 2 || whoDis is 3)
+            if (whoDis is 2 || whoDis is 3) //1 potato 2 pasta 3 toast 4 egg
             {
-                //myImage.sprite = burnt;
+                myImage.sprite = burnt;
             }
 
             if (whoDis is 1 || whoDis is 4)
             {
-                //myImage.sprite = burntTwo;
+                myImage.sprite = burntTwo;
             }
         }
         else
@@ -248,7 +248,12 @@ public class Cookers : MonoBehaviour
             myStove.GetComponent<KitchenwareClicked>().TakeBread();
         }
 
-        //if()foodDead = false;
+        if (foodDead)
+        {
+           inventory.sthBurnt = true;
+            foodDead = false;
+            timerObj.GetComponent<miniTimer>().foodBurnt = false;
+        }
 
         ResetTimer();
         HasFood = false;

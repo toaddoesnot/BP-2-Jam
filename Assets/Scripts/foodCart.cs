@@ -25,6 +25,7 @@ public class foodCart : MonoBehaviour
 
     private bool didCutscenes;
     public GameObject clock;
+    public GameObject clockArrow; //ar.rotation = Quaternion.Euler(0, 0, 25)
 
     public int dishesServed;
     public dishwashingMachine dishSc;
@@ -38,6 +39,8 @@ public class foodCart : MonoBehaviour
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+
+        
     }
 
     public void OnMouseDown()
@@ -45,7 +48,6 @@ public class foodCart : MonoBehaviour
         if (canDrop)
         {
             print("can see you");
-            
 
             drinks = drinkSc.drinkHave;
 
@@ -64,12 +66,20 @@ public class foodCart : MonoBehaviour
                     if (dishSc.recharges != 0)
                     {
                         dishSc.recharges--;
-                        dishSc.recharges--;
+                        if(dishSc.recharges != 0)
+                        {
+                            dishSc.recharges--;
+                        }
                     }
 
                     if (handSc.tutorialLvl is 1)
                     {
                         clock.GetComponent<Image>().fillAmount -= 0.25f;
+
+                        Quaternion currentRotation = clockArrow.GetComponent<Transform>().rotation;
+                        Quaternion newRotation = Quaternion.Euler(currentRotation.eulerAngles + new Vector3(0f, 0f, -90f));
+                        clockArrow.GetComponent<Transform>().rotation = newRotation;
+
                         if (clock.GetComponent<Image>().fillAmount == 0f)
                         {
                             instLevels.Ready2Close();
@@ -95,7 +105,7 @@ public class foodCart : MonoBehaviour
 
         if (FoodSelected.currentFoods == -1)
         {
-            if (inventory.sthCooked)
+            if (inventory.sthCooked && !inventory.sthBurnt)
             {
                 string plateFirst = "On the plate first, please!";
                 if (!subtitleSc.instComments.Contains(plateFirst))
@@ -103,7 +113,6 @@ public class foodCart : MonoBehaviour
                     subtitleSc.instComments.Add(plateFirst);
                     subtitleSc.Subtitles();
                 }
-                
             }
         }
         

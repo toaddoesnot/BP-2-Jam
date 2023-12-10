@@ -26,6 +26,7 @@ public class KitchenwareClicked : MonoBehaviour
     public GameObject self;
     public bool henss;
 
+
     public void Start()
     {
         if (henss)

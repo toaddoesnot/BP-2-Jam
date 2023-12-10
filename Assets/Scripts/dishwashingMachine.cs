@@ -17,6 +17,7 @@ public class dishwashingMachine : MonoBehaviour
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
         recharges = maxRecharges; 
+        
     }
 
     public void Replate()

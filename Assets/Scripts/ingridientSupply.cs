@@ -12,6 +12,8 @@ public class ingridientSupply : MonoBehaviour
     public Sprite[] dotSprites;
 
     public bool ninePack; //if deselected then 6 pack
+    public bool twoPack;
+
     public bool lidClosed;
 
     public int recharges;
@@ -19,16 +21,27 @@ public class ingridientSupply : MonoBehaviour
 
     Image myImage;
     private int minRecharged;
+    public hand handSc;
 
     void Start()
     {
         myImage = this.GetComponent<Image>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        if (handSc.tutorialLvl is 1)
+        {
+            recharges = 2;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         myImage.sprite = supplies[ingLeft];
+
+        if (handSc.tutorialLvl is 1 && recharges == 0)
+        {
+            recharges = 3;
+        }
 
         if (ingLeft > 0)
         {
@@ -39,31 +52,33 @@ public class ingridientSupply : MonoBehaviour
             this.GetComponent<Button>().enabled = false;
         }
 
-        if (recharges > 0)
+        if (dots != null && dots.Length > 0)
         {
-            for (int i = 0; i < dots.Length; i++)
+            if (recharges > 0)
             {
-                if (i < recharges)
+                for (int i = 0; i < dots.Length; i++)
                 {
-                    // Dot is full
-                    dots[i].sprite = dotSprites[1];
+                    if (i < recharges)
+                    {
+                        // Dot is full
+                        dots[i].sprite = dotSprites[1];
+                    }
+                    else
+                    {
+                        // Dot is empty
+                        dots[i].sprite = dotSprites[0];
+                    }
                 }
-                else
+            }
+            else
+            {
+                // Set all dots to empty if rechargeCup is zero
+                for (int i = 0; i < dots.Length; i++)
                 {
-                    // Dot is empty
                     dots[i].sprite = dotSprites[0];
                 }
             }
         }
-        else
-        {
-            // Set all dots to empty if rechargeCup is zero
-            for (int i = 0; i < dots.Length; i++)
-            {
-                dots[i].sprite = dotSprites[0];
-            }
-        }
-
     }
 
     public void Spend()
@@ -93,7 +108,14 @@ public class ingridientSupply : MonoBehaviour
         }
         else
         {
-            ingLeft = 6;
+            if (twoPack)
+            {
+                ingLeft = 2;
+            }
+            else
+            {
+                ingLeft = 6;
+            }
         }
         recharges--;
     }

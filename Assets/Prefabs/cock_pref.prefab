@@ -649,8 +649,8 @@ MonoBehaviour:
   empty: {fileID: 21300000, guid: 38847a28bee4e2e45a74d377f4bbf50f, type: 3}
   full: {fileID: 21300000, guid: f636454fa90dea04c9ce2e1577fb1928, type: 3}
   fullTwo: {fileID: 21300000, guid: d93a9ec0876d559408aeb68d036179e9, type: 3}
-  burnt: {fileID: 0}
-  burntTwo: {fileID: 0}
+  burnt: {fileID: 21300000, guid: 04499a435c07323429ec250ed4ef8d20, type: 3}
+  burntTwo: {fileID: 21300000, guid: 632c54388cf415b4b9fc060456383999, type: 3}
   whoDis: 0
   timerObj: {fileID: 5915162010363742584}
   subtitleSc: {fileID: 0}

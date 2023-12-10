@@ -41,37 +41,82 @@ public class CursorChanger : MonoBehaviour
         {
             if (inventorySc.SpaghettiCooked)
             {
-                foreach (GameObject cur in Cursors)
+                if (inventorySc.sthBurnt)
                 {
-                    cur.SetActive(false);
-                    Cursors[4].SetActive(true);
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[20].SetActive(true);
+                    }
                 }
+                else
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[4].SetActive(true);
+                    }
+                }
+                
             }
 
             if (inventorySc.ToastCooked)
             {
-                foreach (GameObject cur in Cursors)
+                if (inventorySc.sthBurnt)
                 {
-                    cur.SetActive(false);
-                    Cursors[10].SetActive(true);
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[21].SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[10].SetActive(true);
+                    }
                 }
             }
 
             if (inventorySc.PotatoCooked)
             {
-                foreach (GameObject cur in Cursors)
+                if (inventorySc.sthBurnt)
                 {
-                    cur.SetActive(false);
-                    Cursors[18].SetActive(true);
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[19].SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[18].SetActive(true);
+                    }
                 }
             }
 
             if (inventorySc.EggCooked)
             {
-                foreach (GameObject cur in Cursors)
+                if (inventorySc.sthBurnt)
                 {
-                    cur.SetActive(false);
-                    Cursors[1].SetActive(true);
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[22].SetActive(true);
+                    }
+                }
+                else
+                {
+                    foreach (GameObject cur in Cursors)
+                    {
+                        cur.SetActive(false);
+                        Cursors[1].SetActive(true);
+                    }
                 }
             }
 

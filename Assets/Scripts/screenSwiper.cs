@@ -40,16 +40,16 @@ public class screenSwiper : MonoBehaviour
 
     void Start()
     {
-        if (blackScreen != null)
-        {
-            blackScreen.SetActive(true);
-        }
         
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         foodSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<FoodClasses>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
 
+        if (handSc.tutorialLvl is 1 && blackScreen != null)
+        {
+            blackScreen.SetActive(true);
+        }
 
         self = this.gameObject;
     }

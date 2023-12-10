@@ -39,11 +39,15 @@ public class dishwasher : MonoBehaviour
                 inventory.PotatoCooked = false;
             }
 
+            if (inventory.sthBurnt)
+            {
+                inventory.sthBurnt = false;
+            }
+
             if (inventory.havePlate)
             {
                 inventory.havePlate = false;
             }
-
             if (drinkSc.HasReadyCoffee || drinkSc.HasReadySoda || drinkSc.HasReadyOJ)
             {
                 drinkSc.HasReadyCoffee = false;

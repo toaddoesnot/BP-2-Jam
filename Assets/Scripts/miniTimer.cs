@@ -94,7 +94,7 @@ public class miniTimer : MonoBehaviour
         yield return new WaitForSeconds(burntTime);
         PlayAnimation();
 
-        if (timerType == 0)
+        if (timerType == 2) //WAS 0 NOT SURE WHY
         {
             yield return new WaitForSeconds(3f);
             foodBurnt = true;

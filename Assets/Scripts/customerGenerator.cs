@@ -21,9 +21,12 @@ public class customerGenerator : MonoBehaviour
     //public float randomInterval;
     public bool weFull;
     public AudioSource doorOpen;
-    public float howFast; //usually 15
+    
 
     public bool introLevels;
+    private bool FrancesDone;
+
+    public float howFast; //usually 20
 
     public void Start()
     {
@@ -32,7 +35,7 @@ public class customerGenerator : MonoBehaviour
 
     public void StartCustomers()
     {
-        InvokeRepeating("GenerateCustomer", 8f, 20f);
+        InvokeRepeating("GenerateCustomer", 1f, 20f);
     }
 
     public void Generator()
@@ -82,7 +85,11 @@ public class customerGenerator : MonoBehaviour
                 randomCustomer = 2;
                 customerSlots[randSeat].GetComponent<characterSlot>().midTime = 200f;
                 customerSlots[randSeat].GetComponent<characterSlot>().maxTime = 400f;
-                customerSlots[randSeat].GetComponent<characterSlot>().eatingTime = 1f;
+                if (!FrancesDone)
+                {
+                    customerSlots[randSeat].GetComponent<characterSlot>().eatingTime = 1f;
+                    FrancesDone = true;
+                }
             }
             
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];

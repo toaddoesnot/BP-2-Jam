@@ -145,6 +145,17 @@ public class levelOne : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         FrancesDiner.ExecuteBlock("beforeclosing");
+        InvokeRepeating("RepeatInstructions", 10f, 10f);
+    }
+
+    void RepeatInstructions()
+    {
+        string closeDiner = "Collect all the dishes and tell me when to wash them. Then we should be ready!";
+        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+        {
+            subtitleSc.instComments.Add(closeDiner);
+            subtitleSc.Subtitles();
+        }
     }
 
     IEnumerator ClosingDiner2()

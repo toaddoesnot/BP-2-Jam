@@ -12,6 +12,7 @@ public class hand : MonoBehaviour
     public int toastFill;
     public int noodFill;
     public bool potatoInstead;
+    public bool haveEgg;
 
     public bool haveOrder;
 
@@ -38,6 +39,7 @@ public class hand : MonoBehaviour
             toastFill = 4;
             noodFill = 4;
             potatoInstead = false;
+            haveEgg = false;
         }
     }
 

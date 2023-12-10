@@ -18,6 +18,18 @@ public class plateGenerator : MonoBehaviour
     public GameObject reDisher;
     private bool firstTime;
 
+    public hand handSc;
+
+    void Awake()
+    {
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+
+        if (handSc.tutorialLvl != 1)
+        {
+            GeneratePlate();
+        }
+    }
+
     void Update()
     {
         if (!HasPlate)

@@ -21,7 +21,11 @@ public class Clock : MonoBehaviour
 
     void Update()
     {
-        hourHand.rotation = Quaternion.Euler(0, 0, -tm.GetHour() * hoursToDegree);
-        minuteHand.rotation = Quaternion.Euler(0, 0, -tm.GetMinutes() * minutesToDegrees);
+        if (tm.timeOn)
+        {
+            hourHand.rotation = Quaternion.Euler(0, 0, -tm.GetHour() * hoursToDegree);
+            minuteHand.rotation = Quaternion.Euler(0, 0, -tm.GetMinutes() * minutesToDegrees);
+        }
+        
     }
 }

@@ -8,7 +8,7 @@ using Fungus;
 public class TimeManager : MonoBehaviour
 {
     public const int hoursInDay = 24, minutesInHour = 60;
-    public float dayDuration = 120f;
+    public float dayDuration = 300f;
 
     float totalTime = 0;
     public float currentTime = 0;
@@ -32,10 +32,14 @@ public class TimeManager : MonoBehaviour
 
     public instructionalComments subtitleSc;
     public bool needTip;
+    public customerGenerator cg;
+    public hand handSc;
 
     void Start()
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
 
         if (needTip)
         {
@@ -47,7 +51,7 @@ public class TimeManager : MonoBehaviour
     void openTip()
     {
         string openDiner = "Click on the sign to open the diner";
-        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(openDiner))
+        if (!subtitleSc.instComments.Contains(openDiner))
         {
             subtitleSc.instComments.Add(openDiner);
             subtitleSc.Subtitles();
@@ -65,7 +69,7 @@ public class TimeManager : MonoBehaviour
 
             if (doneNoon is false)
             {
-                if (currentTime >= 60f)
+                if (currentTime >= 150f)
                 {
                     clockSound.Play();
                     doneNoon = true;
@@ -115,6 +119,12 @@ public class TimeManager : MonoBehaviour
         closeSign.SetActive(true);
         closeSign.GetComponent<Button>().enabled = false;
         closeSign.GetComponent<Image>().sprite = closed1;
+
+        if (handSc.tutorialLvl != 1)
+        {
+            cg.StartCustomers();
+        }
+            
     }
 
     public void OpenWithoutTime()

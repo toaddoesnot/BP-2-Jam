@@ -12,17 +12,20 @@ public class Inventory : MonoBehaviour
     public bool PotatoCooked;
 
     public bool sthCooked;
+    public bool sthBurnt;
 
     public bool havePlate;
 
     public int HowManyOrds;
-
-    //public TextMeshProUGUI orderText;
-    // Start is called before the first frame update
+    public instructionalComments subtitleSc;
+    public bool gaveInst;
+    public hand handSc;
 
     void Start()
     {
         //orderText.text = HowManyOrds.ToString();
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
     }
 
     // Update is called once per frame
@@ -38,12 +41,22 @@ public class Inventory : MonoBehaviour
             sthCooked = false;
         }
 
-
-        if (havePlate)
+        if (handSc.tutorialLvl is 1)
         {
-            
+            if (sthBurnt)
+            {
+                if (!gaveInst)
+                {
+                    string burnt = "No need to worry. Just throw it away!";
+                    if (!subtitleSc.instComments.Contains(burnt))
+                    {
+                        subtitleSc.instComments.Add(burnt);
+                        subtitleSc.Subtitles();
+                    }
+                    gaveInst = true;
+                }
+            }
         }
-
     }
 
     public void AddOrder()
