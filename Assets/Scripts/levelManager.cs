@@ -61,12 +61,17 @@ public class levelManager : MonoBehaviour
     {
         if (handSc.tutorialLvl is 1)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
         if (handSc.tutorialLvl is 100)
         {
-            SceneManager.LoadScene(4); //for now sample scene
+            SceneManager.LoadScene(0); //for now sample scene
         }
         //
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

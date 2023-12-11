@@ -70,4 +70,13 @@ public class menuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoopLvl()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void InstLvl()
+    {
+        SceneManager.LoadScene(2);
+    }
 }
