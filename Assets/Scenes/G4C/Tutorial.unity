@@ -379,9 +379,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1855160629}
+  - {fileID: 1855160669}
   selectedCommands:
-  - {fileID: 1855160664}
+  - {fileID: 1855160682}
   variables: []
   description: 
   stepPause: 0
@@ -2281,7 +2281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2476703594012444939, guid: d7eb1179bc2da6546b7d1d663ff27123, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1228
+      value: 97.9
       objectReference: {fileID: 0}
     - target: {fileID: 2476703594012444939, guid: d7eb1179bc2da6546b7d1d663ff27123, type: 3}
       propertyPath: m_AnchoredPosition.y

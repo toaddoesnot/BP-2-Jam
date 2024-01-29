@@ -166,6 +166,6 @@ public class levelOne : MonoBehaviour
 
     public void CabinReturn()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
