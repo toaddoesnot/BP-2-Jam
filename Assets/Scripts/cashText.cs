@@ -14,7 +14,11 @@ public class cashText : MonoBehaviour
     private int _value;
 
     public Sprite[] cashSprites;
+
     public GameObject butt;
+    public GameObject but1;
+    public GameObject but2;
+    public GameObject arrows;
 
     public bool doAnimation;
 
@@ -36,12 +40,17 @@ public class cashText : MonoBehaviour
         yield return new WaitForSeconds(0f);
         GetComponent<Image>().sprite = cashSprites[1];
         butt.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-        Text.faceColor = new Color32(255, 255, 255, 0); 
+        Text.faceColor = new Color32(255, 255, 255, 0);
+        
+        butt.transform.position = but2.transform.position;
 
-        yield return new WaitForSeconds(1f);
+         yield return new WaitForSeconds(1f);
         GetComponent<Image>().sprite = cashSprites[0];
         butt.GetComponent<Image>().color = new Color(0, 0, 0, 255);
         Text.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255, 255, 255, 255);
+        
+        butt.transform.position = but1.transform.position;
+
 
         print("shownAnimation");
     }

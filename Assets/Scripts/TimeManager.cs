@@ -35,6 +35,10 @@ public class TimeManager : MonoBehaviour
     public customerGenerator cg;
     public hand handSc;
 
+    public Sprite[] extraClocks;
+    public int emotSt;
+    public Image clockIm;
+
     void Start()
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
@@ -62,8 +66,7 @@ public class TimeManager : MonoBehaviour
     {
         if (timeOn is true)
         {
-           
-            totalTime += Time.deltaTime;
+           totalTime += Time.deltaTime;
             currentTime = totalTime % dayDuration;
             //clockHandWTransform.eulerAngles = new Vector3(0, 0, -Time.realtimeSinceStartup * 90f);
 
@@ -85,6 +88,21 @@ public class TimeManager : MonoBehaviour
                     //SceneManager.LoadScene(scene.name);
                     FinishTime();
                     doneFloat = true;
+                }
+            }
+
+            if (emotSt == 1)
+            {
+                if (currentTime >= 81f && currentTime < 90f)
+                {
+                    clockIm.sprite = extraClocks[0];
+                }
+                else
+                {
+                    if (currentTime >= 90f)
+                    {
+                        clockIm.sprite = extraClocks[1];
+                    }
                 }
             }
         }

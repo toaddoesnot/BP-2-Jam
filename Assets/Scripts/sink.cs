@@ -22,6 +22,8 @@ public class sink : MonoBehaviour
     public foodCart traySc;
     public dishwashingMachine dishSc;
 
+    public lightSwitch switchSc;
+
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +43,7 @@ public class sink : MonoBehaviour
         if(cleanups == 0)
         {
             sinkObj.sprite = sinkSprites[0];
+            switchSc.switcher = false;
         }
         else
         {
@@ -59,7 +62,7 @@ public class sink : MonoBehaviour
                     sinkObj.sprite = sinkSprites[3];
                 }
             }
-            
+            switchSc.switcher = true;
         }
         
     }

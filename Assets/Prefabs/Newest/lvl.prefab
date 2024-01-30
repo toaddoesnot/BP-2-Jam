@@ -514,8 +514,8 @@ MonoBehaviour:
   randSeat: 0
   weFull: 0
   doorOpen: {fileID: 4821651479977619472}
-  howFast: 5
   introLevels: 0
+  howFast: 5
 --- !u!82 &4821651480194659680
 AudioSource:
   m_ObjectHideFlags: 0
@@ -747,6 +747,11 @@ MonoBehaviour:
   timerSc: {fileID: 0}
   subtitleSc: {fileID: 0}
   needTip: 0
+  cg: {fileID: 0}
+  handSc: {fileID: 0}
+  extraClocks: []
+  emotSt: 0
+  clockIm: {fileID: 0}
 --- !u!82 &4821651480542453715
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1079,6 +1084,7 @@ MonoBehaviour:
   respawnTime: 90
   handSc: {fileID: 0}
   instLevels: {fileID: 0}
+  needRespawn: 0
 --- !u!1 &4821651480977631983
 GameObject:
   m_ObjectHideFlags: 0

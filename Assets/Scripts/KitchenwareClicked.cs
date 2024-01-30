@@ -26,20 +26,7 @@ public class KitchenwareClicked : MonoBehaviour
     public GameObject self;
     public bool henss;
 
-
-    public void Start()
-    {
-        if (henss)
-        {
-            //Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
-        }
-        else
-        {
-            //Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
-        }
-        
-    }
-
+    public int myState;
 
     public void Update()
     {
@@ -98,9 +85,13 @@ public class KitchenwareClicked : MonoBehaviour
         if (collision.gameObject.tag == "Cooker")
         {
             myObject = collision.gameObject;
+            
             myObjectsSc = myObject.GetComponent<Cookers>();
             myObjectsSc.timer = myTimer;
             myObjectsSc.myStove = self;
+
+            //em states here
+
             //gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //HasItem = true;
         }

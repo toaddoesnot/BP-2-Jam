@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class Cookers : MonoBehaviour
 {
-    
-    //public GameObject Ramen;
-    //public GameObject FrenchToast;
-
-    //public bool RamenReady;
-    //public bool ToastReady;
-
     public bool HasFood;
 
     public bool IAmPot;
@@ -60,6 +53,7 @@ public class Cookers : MonoBehaviour
 
     void Update()
     {
+        
         if (foodReady && timerObj.GetComponent<miniTimer>().foodBurnt)
         {
             foodDead = true;

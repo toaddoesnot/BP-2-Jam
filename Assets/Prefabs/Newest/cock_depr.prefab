@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20e12c186bd28e54e9ea47374a8f615b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a405f26764f0147448917ef9fb5f62b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.64705884, g: 0.019607844, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 4319335845845543540}
   - component: {fileID: 4632333927757791881}
   m_Layer: 5
-  m_Name: cock_pref
+  m_Name: cock_depr
   m_TagString: Cooker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38847a28bee4e2e45a74d377f4bbf50f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c69184d2984c7e4694c26f65ef03c3f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -646,11 +646,11 @@ MonoBehaviour:
   timer: {fileID: 0}
   foodReady: 0
   lid: {fileID: 3879445165672066454}
-  empty: {fileID: 21300000, guid: 38847a28bee4e2e45a74d377f4bbf50f, type: 3}
-  full: {fileID: 21300000, guid: f636454fa90dea04c9ce2e1577fb1928, type: 3}
-  fullTwo: {fileID: 21300000, guid: d93a9ec0876d559408aeb68d036179e9, type: 3}
-  burnt: {fileID: 21300000, guid: 04499a435c07323429ec250ed4ef8d20, type: 3}
-  burntTwo: {fileID: 21300000, guid: 632c54388cf415b4b9fc060456383999, type: 3}
+  empty: {fileID: 21300000, guid: 0c69184d2984c7e4694c26f65ef03c3f, type: 3}
+  full: {fileID: 21300000, guid: 1fb6a65464ae6e34d9e15702772d733c, type: 3}
+  fullTwo: {fileID: 21300000, guid: f866da1bc82f3c242b6b1d85ce208b49, type: 3}
+  burnt: {fileID: 21300000, guid: 7390d165da283a1409d70b54b5cafb42, type: 3}
+  burntTwo: {fileID: 21300000, guid: 70ea055b663c8f342a8424d92e7d2913, type: 3}
   whoDis: 0
   timerObj: {fileID: 5915162010363742584}
   subtitleSc: {fileID: 0}

@@ -13,6 +13,8 @@ public class levelManager : MonoBehaviour
     public hand handSc;
     public levelOne instLevels;
 
+    public bool needRespawn;
+
     void Start()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -20,15 +22,22 @@ public class levelManager : MonoBehaviour
 
     void Update()
     {
-        if (managerSc.timeOn)
+        if (needRespawn)
         {
-            if (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
+            if (managerSc.timeOn)
             {
-                idleTimer += Time.deltaTime;
-
-                if (idleTimer > respawnTime)
+                if (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
                 {
-                    Replay();
+                    idleTimer += Time.deltaTime;
+
+                    if (idleTimer > respawnTime)
+                    {
+                        Replay();
+                        idleTimer = 0;
+                    }
+                }
+                else
+                {
                     idleTimer = 0;
                 }
             }
@@ -37,10 +46,7 @@ public class levelManager : MonoBehaviour
                 idleTimer = 0;
             }
         }
-        else
-        {
-            idleTimer = 0;
-        }
+        
         
     }
 

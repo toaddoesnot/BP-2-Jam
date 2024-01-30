@@ -336,6 +336,7 @@ public class characterSlot : MonoBehaviour
                 occupied = false;
                 canPress = false;
                 sinkSc.cleanups++;
+                sinkSc.switchSc.switchSound.Play();
 
                 drinkDone = false;
                 foodDone = false;
