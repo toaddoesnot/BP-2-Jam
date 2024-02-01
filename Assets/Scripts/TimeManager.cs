@@ -8,7 +8,7 @@ using Fungus;
 public class TimeManager : MonoBehaviour
 {
     public const int hoursInDay = 24, minutesInHour = 60;
-    public float dayDuration = 300f;
+    public float dayDuration = 300f; //300
 
     float totalTime = 0;
     public float currentTime = 0;
@@ -68,17 +68,16 @@ public class TimeManager : MonoBehaviour
         {
            totalTime += Time.deltaTime;
             currentTime = totalTime % dayDuration;
-            //clockHandWTransform.eulerAngles = new Vector3(0, 0, -Time.realtimeSinceStartup * 90f);
 
-            if (doneNoon is false)
-            {
-                if (currentTime >= 150f)
-                {
-                    clockSound.Play();
-                    doneNoon = true;
-
-                }
-            }
+            //if (doneNoon is false)
+            //{
+            //    if (currentTime >= 150f)
+            //    {
+            //        clockSound.Play();
+            //        doneNoon = true;
+            //
+            //    }
+            //}
 
             if (currentTime >= maxTime)
             {
@@ -93,13 +92,13 @@ public class TimeManager : MonoBehaviour
 
             if (emotSt == 1)
             {
-                if (currentTime >= 81f && currentTime < 90f)
+                if (currentTime >= 158f && currentTime < 178f)
                 {
                     clockIm.sprite = extraClocks[0];
                 }
                 else
                 {
-                    if (currentTime >= 90f)
+                    if (currentTime >= 178f)
                     {
                         clockIm.sprite = extraClocks[1];
                     }
