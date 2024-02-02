@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &80640151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8895664066227226536, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+  m_PrefabInstance: {fileID: 3749856334133678934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814340643
 GameObject:
   m_ObjectHideFlags: 1
@@ -934,6 +945,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: emotSt
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: clockIm
+      value: 
+      objectReference: {fileID: 80640151}
+    - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: maxTime
       value: 299.8
       objectReference: {fileID: 0}
@@ -945,6 +964,18 @@ PrefabInstance:
       propertyPath: dayDuration
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: extraClocks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: extraClocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b2f4f5949ec0564fad4e2ad647b6d14, type: 3}
+    - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: extraClocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 53b5526ca3266d241b0b2c0b6df4b299, type: 3}
     - target: {fileID: 8895664065931124674, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: Duration
       value: 1500
@@ -953,6 +984,18 @@ PrefabInstance:
       propertyPath: noTimer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8895664065950941227, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: cashSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2637a1c3e9ecaf5468059a997dcd86c9, type: 3}
+    - target: {fileID: 8895664065950941227, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: cashSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: b5330f2c948344646b2571523c6872be, type: 3}
+    - target: {fileID: 8895664065950941230, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2637a1c3e9ecaf5468059a997dcd86c9, type: 3}
     - target: {fileID: 8895664065958723457, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1117,6 +1160,10 @@ PrefabInstance:
       propertyPath: FoodSelected
       value: 
       objectReference: {fileID: 3297030890454640486}
+    - target: {fileID: 8895664066227226536, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53b5526ca3266d241b0b2c0b6df4b299, type: 3}
     - target: {fileID: 8895664066234747081, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1459,12 +1506,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066767687750, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 66.02
+      value: 25.7
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066782162949, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3297030890454640492}
+    - target: {fileID: 8895664066800783636, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ad4d5e0762f41b45bbe33c2df9110c2, type: 3}
     - target: {fileID: 8895664066801696252, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2294,15 +2345,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2995325912597842770, guid: c08adbd86f6844a47b7ec7e34de49915, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.14119795
+      value: 0.16981131
       objectReference: {fileID: 0}
     - target: {fileID: 2995325912597842770, guid: c08adbd86f6844a47b7ec7e34de49915, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.15206861
+      value: 0.024830898
       objectReference: {fileID: 0}
     - target: {fileID: 2995325912597842770, guid: c08adbd86f6844a47b7ec7e34de49915, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.1792453
+      value: 0.039190315
       objectReference: {fileID: 0}
     - target: {fileID: 3162237021632857399, guid: c08adbd86f6844a47b7ec7e34de49915, type: 3}
       propertyPath: m_RootOrder
@@ -2525,6 +2576,18 @@ PrefabInstance:
       propertyPath: myDrink
       value: 
       objectReference: {fileID: 3749856334133678945}
+    - target: {fileID: 8047105197616248890, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6750623
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047105197616248890, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6750623
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047105197616248890, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6981132
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
 --- !u!224 &8093862357222346260 stripped
