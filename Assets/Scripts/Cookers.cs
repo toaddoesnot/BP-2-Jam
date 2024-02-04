@@ -37,6 +37,9 @@ public class Cookers : MonoBehaviour
     public instructionalComments subtitleSc;
     public bool foodDead;
 
+    public int emState; //1- depr
+    public float mySpeed;
+
     private void Start()
     {
         myImage = this.GetComponent<Image>();
@@ -49,6 +52,24 @@ public class Cookers : MonoBehaviour
         timerObj.SetActive(false);
 
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+
+        if (emState == 0)
+        {
+            mySpeed = 1;
+            timerObj.GetComponent<miniTimer>().Duration = 38;
+            timerObj.GetComponent<miniTimer>().burntTime = 6;
+        }
+        if (emState == 1)
+        {
+            mySpeed = 3.5f;
+            timerObj.GetComponent<miniTimer>().Duration = 133;
+            timerObj.GetComponent<miniTimer>().burntTime = 3;
+        }
+        if (emState == 2)
+        {
+            mySpeed = 0.3f;
+            timerObj.GetComponent<miniTimer>().Duration = 11;
+        }
     }
 
     void Update()
@@ -272,14 +293,15 @@ public class Cookers : MonoBehaviour
         }
 
         timerObj.GetComponent<miniTimer>().InitiateTimer();
+
         timer.value += 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(mySpeed);
         timer.value += 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(mySpeed);
         timer.value += 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(mySpeed);
         timer.value += 1;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(mySpeed);
         timer.value += 1;
         foodReady = true;
 

@@ -49,6 +49,9 @@ public class FoodButtonClick : MonoBehaviour, IPointerDownHandler
     public dishwashingMachine dishSc;
     public bool ghostPlate;
 
+    public Sprite[] dirtyPs;
+    public bool amDepr;
+
     void Awake()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory");
@@ -58,6 +61,11 @@ public class FoodButtonClick : MonoBehaviour, IPointerDownHandler
 
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+
+        if (amDepr)
+        {
+            GetComponent<Image>().sprite = dirtyPs[Random.Range(0,4)];
+        }
     }
 
     public void Update()

@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3509400260902038548}
   - component: {fileID: 9191012889355649083}
   m_Layer: 5
-  m_Name: stoveTime1
+  m_Name: sinkTime1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,11 +146,11 @@ RectTransform:
   - {fileID: 3083907438442585199}
   - {fileID: 7041180883800167994}
   m_Father: {fileID: 8895664066364557217}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: 231}
+  m_AnchoredPosition: {x: -3.6, y: -1.1}
   m_SizeDelta: {x: 76.935, y: 76.935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2551597223745672212
@@ -477,7 +477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7371039316335188590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1491,6 +1491,7 @@ MonoBehaviour:
   inventorySc: {fileID: 0}
   foods: {fileID: 0}
   handSc: {fileID: 0}
+  nothingSelected: 0
 --- !u!1 &6567004918812482189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5204,7 +5205,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8895664066364557217}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23977,6 +23978,7 @@ MonoBehaviour:
   handSc: {fileID: 0}
   extraClocks: []
   emotSt: 0
+  clockIm: {fileID: 0}
 --- !u!82 &8895664065931124673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24496,6 +24498,8 @@ MonoBehaviour:
   but2: {fileID: 99950778483312992}
   arrows: {fileID: 5874147717997557821}
   doAnimation: 0
+  mManic: 0
+  menuSc: {fileID: 0}
 --- !u!1 &8895664065953946047
 GameObject:
   m_ObjectHideFlags: 0
@@ -25823,6 +25827,7 @@ MonoBehaviour:
   inventorySc: {fileID: 0}
   foods: {fileID: 0}
   handSc: {fileID: 0}
+  nothingSelected: 0
 --- !u!1 &8895664066005422574
 GameObject:
   m_ObjectHideFlags: 0
@@ -26802,7 +26807,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8895664066364557217}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28368,7 +28373,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8895664066364557217}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -30635,7 +30640,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8895664066364557217}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33286,11 +33291,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8360606219280224869}
   - {fileID: 8895664065103805515}
   - {fileID: 8895664066070219127}
   - {fileID: 8895664066243686538}
   - {fileID: 8895664066150253612}
+  - {fileID: 8360606219280224869}
   m_Father: {fileID: 8895664065421826231}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

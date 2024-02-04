@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db82e7ab876da76488ad0e2ce662ce81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 671222ac364838240ab5e3a157f9b88d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3770097091877027861}
   - component: {fileID: 5554482328384161451}
   m_Layer: 5
-  m_Name: hen_pref
+  m_Name: hen_depr
   m_TagString: Cooker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6269e33493fb2be4fb8d59f6ac25c106, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 412f8293fcd10334f99725b09cebcc6e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a0072df5ea1b4dad2bcbf9446613b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emState: 0
   HasFood: 0
   IAmPot: 0
   IAmToaster: 1
@@ -239,22 +238,17 @@ MonoBehaviour:
   timer: {fileID: 0}
   foodReady: 0
   lid: {fileID: 786344997970596156}
-  empty: {fileID: 21300000, guid: 6269e33493fb2be4fb8d59f6ac25c106, type: 3}
-  full: {fileID: 21300000, guid: a397952914601f94687c3da3f9e7050b, type: 3}
-  fullTwo: {fileID: 21300000, guid: 67cf13cd7514a8f4e83e9366aae214f3, type: 3}
-  burnt: {fileID: 21300000, guid: aceb75c4ab6dfb245905931e1750eac2, type: 3}
-  burntTwo: {fileID: 21300000, guid: aceb75c4ab6dfb245905931e1750eac2, type: 3}
+  empty: {fileID: 21300000, guid: 412f8293fcd10334f99725b09cebcc6e, type: 3}
+  full: {fileID: 21300000, guid: a2bed886878a94d468c09d2ae2bff83b, type: 3}
+  fullTwo: {fileID: 21300000, guid: 9d43603f4d520a341a23c1b2ff1c8a63, type: 3}
+  burnt: {fileID: 21300000, guid: 61ace979462ce5d4e9ef285b4fc578a6, type: 3}
+  burntTwo: {fileID: 21300000, guid: 61ace979462ce5d4e9ef285b4fc578a6, type: 3}
   whoDis: 0
   timerObj: {fileID: 2205446509235601944}
   subtitleSc: {fileID: 0}
   foodDead: 0
-  extras:
-  - {fileID: 21300000, guid: 412f8293fcd10334f99725b09cebcc6e, type: 3}
-  - {fileID: 21300000, guid: 2141271dccfe7414fbbbea117780b0df, type: 3}
-  - {fileID: 21300000, guid: 9b4060cd85cef3249a5c074d4b5ac8b9, type: 3}
-  - {fileID: 21300000, guid: 61ace979462ce5d4e9ef285b4fc578a6, type: 3}
-  - {fileID: 21300000, guid: 61ace979462ce5d4e9ef285b4fc578a6, type: 3}
-  - {fileID: 21300000, guid: 671222ac364838240ab5e3a157f9b88d, type: 3}
+  emState: 1
+  mySpeed: 0
 --- !u!1 &2205446509235601944
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.64705884, g: 0.019607844, b: 0.019607844, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -349,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 2392984720716929359}
   uiFill: {fileID: 9202906199531957337}
-  Duration: 38
+  Duration: 133
   remainingDuration: 0
   filled: 0
   initiated: 0

@@ -38,6 +38,18 @@ public class customerGenerator : MonoBehaviour
         InvokeRepeating("GenerateCustomer", 1f, 20f);
     }
 
+    public void DepressiveCustomers()
+    {
+        StartCoroutine(FirstCustomer());
+        InvokeRepeating("GenerateCustomer", 20f, 50f);
+    }
+
+    IEnumerator FirstCustomer()
+    {
+        yield return new WaitForSeconds(2f);
+        GenerateCustomer();
+    }
+
     public void Generator()
     {
         StartCoroutine(GenerateX());

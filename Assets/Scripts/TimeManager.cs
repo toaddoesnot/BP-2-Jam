@@ -139,7 +139,22 @@ public class TimeManager : MonoBehaviour
 
         if (handSc.tutorialLvl != 1)
         {
-            cg.StartCustomers();
+            //HOW MANY CUSTOMERS IN EACH STAGE
+            if (emotSt == 1)
+            {
+                cg.DepressiveCustomers();
+            }
+            else
+            {
+                if (emotSt == 2)
+                {
+                    cg.StartCustomers();
+                }
+                else
+                {
+                    cg.StartCustomers();
+                }
+            }
         }
             
     }

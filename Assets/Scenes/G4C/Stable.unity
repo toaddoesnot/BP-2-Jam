@@ -123,6 +123,27 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &919692914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8895664066188562327, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+  m_PrefabInstance: {fileID: 3749856334133678934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &919692915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8895664066375665937, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+  m_PrefabInstance: {fileID: 3749856334133678934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326485983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6567004918701937013, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+  m_PrefabInstance: {fileID: 3749856334133678934}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92979965502ea184896933b574727aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814340643
 GameObject:
   m_ObjectHideFlags: 1
@@ -2374,9 +2395,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4551654674769085834, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: stoveUp
+      value: 
+      objectReference: {fileID: 919692915}
+    - target: {fileID: 4551654674769085834, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: cursorSc
+      value: 
+      objectReference: {fileID: 1326485983}
+    - target: {fileID: 4551654674769085834, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: moneyLeft
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4551654674769085834, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: stoveDown
+      value: 
+      objectReference: {fileID: 919692914}
     - target: {fileID: 4551654674769085834, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: NumberCounter
       value: 

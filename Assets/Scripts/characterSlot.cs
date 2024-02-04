@@ -67,6 +67,10 @@ public class characterSlot : MonoBehaviour
 
     public sink sinkSc;
 
+    public int EmState;
+    public instructionalComments subtitleSc;
+    public AudioSource heLeft;
+
     void Awake()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -76,6 +80,7 @@ public class characterSlot : MonoBehaviour
             timey.GetComponent<miniTimer>().timeText.text = myNo.ToString();
         }
         //timey.SetActive(true);
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
     void Update()
@@ -191,6 +196,45 @@ public class characterSlot : MonoBehaviour
                         timeWaiting = maxTime + 1f;
                     }
                 }
+
+                if (EmState == 1)
+                {
+                    //LEAVE DINER
+                    string lostOrder = "I think we just lost an order...";
+                    if (!subtitleSc.instComments.Contains(lostOrder))
+                    {
+                        subtitleSc.instComments.Add(lostOrder);
+                        subtitleSc.Subtitles();
+                    }
+                    heLeft.Play();
+
+                    timeWaiting = 0;
+                    counting = false;
+
+                    myPeep.SetActive(false);
+                    Destroy(myOrder);
+                    myOrder = null;
+
+                    timey.SetActive(false);
+
+                    canPress = true;
+                    currentState = 4;
+
+                    ///below new stuff
+
+                    moodState = 1;
+                    myNewTimer = null;
+
+                    paid = true;
+                    StartCoroutine(forgetClean());
+
+                    occupied = false;
+                    canPress = false;
+
+                    drinkDone = false;
+                    foodDone = false;
+                    ready2eat = false;
+                }
             }
         }
     }
@@ -294,8 +338,25 @@ public class characterSlot : MonoBehaviour
                 myNewTimer.GetComponent<miniTimer>().InitiateTimer();
             }
 
-            myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
-            myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
+            if(EmState == 1)
+            {
+                myPrice = myOrder.GetComponent<orderGenerator>().orderWorth / 2;
+                myTPrice = 1;
+            }
+            else
+            {
+                if (EmState == 2)
+                {
+                    myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
+                    myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
+                }
+                else
+                {
+                    myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
+                    myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
+                }
+            }
+            
         }
     }
 

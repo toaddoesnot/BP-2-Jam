@@ -14,6 +14,8 @@ public class CursorChanger : MonoBehaviour
 
     public hand handSc;
 
+    public bool nothingSelected;
+
     void Start()
     {
         //Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
@@ -24,6 +26,7 @@ public class CursorChanger : MonoBehaviour
         {
             cur.SetActive(false);
         }
+        nothingSelected = true;
     }
 
     // Update is called once per frame
@@ -36,6 +39,8 @@ public class CursorChanger : MonoBehaviour
             cur.transform.position = cursorPos2d;
         }
         //Cursor.visible = false;
+
+        CheckSelectionStatus();
 
         if (FoodClassSc.currentFoods is -1)
         {
@@ -277,5 +282,19 @@ public class CursorChanger : MonoBehaviour
         //currentFoods
     }
 
-    //CursorChangerSc.Cursors[1].SetActive(true);
+    void CheckSelectionStatus()
+    {
+        nothingSelected = true;
+
+        for (int i = 0; i < Cursors.Length; i++)
+        {
+            if (Cursors[i].activeInHierarchy)
+            {
+                nothingSelected = false;
+                break;
+            }
+        }
+        //CursorChangerSc.Cursors[1].SetActive(true);
+    }
+
 }

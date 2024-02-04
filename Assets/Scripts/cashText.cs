@@ -22,12 +22,28 @@ public class cashText : MonoBehaviour
 
     public bool doAnimation;
 
+    public bool mManic;
+    public menuButton menuSc;
+
     void Start()
     {
         if (doAnimation)
         {
             InvokeRepeating("cashAnimation", 2f, 18f);
         }
+
+        if (mManic)
+        {
+            InvokeRepeating("megaRich", 0.1f, 0.5f);
+            Duration = 1f;
+        }
+    }
+
+    void megaRich()
+    {
+        menuSc.moneyLeft += Random.Range(-100, 300);
+        menuSc.SetValue();
+        print("WE ARE RICH!!");
     }
 
     void cashAnimation()

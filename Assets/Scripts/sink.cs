@@ -23,6 +23,7 @@ public class sink : MonoBehaviour
     public dishwashingMachine dishSc;
 
     public lightSwitch switchSc;
+    public int emState;
 
     // Update is called once per frame
     void Update()
@@ -80,10 +81,30 @@ public class sink : MonoBehaviour
     IEnumerator Cleaning()
     {
         yield return null;
-        robot.GetComponent<Animator>().Play("RC_cleaning");
 
-        timerObj.SetActive(true);
-        timerObj.GetComponent<miniTimer>().InitiateTimer();
+        if(emState == 1)
+        {
+            robot.GetComponent<Animator>().Play("RC_cleaning_depr");
+
+            timerObj.SetActive(true);
+            timerObj.GetComponent<miniTimer>().InitiateTimer();
+
+            yield return new WaitForSeconds(4f);
+            timerObj.SetActive(false);
+        }
+        else
+        {
+            if (emState == 2)
+            {
+                robot.GetComponent<Animator>().Play("RC_cleaning");
+            }
+            else
+            {
+                robot.GetComponent<Animator>().Play("RC_cleaning");
+                timerObj.SetActive(true);
+                timerObj.GetComponent<miniTimer>().InitiateTimer();
+            }
+        }
 
         yield return new WaitForSeconds(3f);
 

@@ -30,6 +30,8 @@ public class foodCart : MonoBehaviour
     public int dishesServed;
     public dishwashingMachine dishSc;
 
+    public int emState;
+
     void Start()
     {
         drinks = 4;
@@ -61,7 +63,23 @@ public class foodCart : MonoBehaviour
                 if (breakLoop)
                 {
                     StartCoroutine(coolDown());
-                    Robot.GetComponent<Animator>().Play("RC_delivery");
+
+                    if(emState == 1)
+                    {
+                        Robot.GetComponent<Animator>().Play("RC_delivery_depr");
+                    }
+                    else
+                    {
+                        if (emState == 1)
+                        {
+                            Robot.GetComponent<Animator>().Play("RC_delivery");
+                        }
+                        else
+                        {
+                            Robot.GetComponent<Animator>().Play("RC_delivery");
+                        }
+                    }
+
                     dishesServed++;
                     if (dishSc.recharges != 0)
                     {
@@ -127,6 +145,22 @@ public class foodCart : MonoBehaviour
     IEnumerator coolDown()
     {
         yield return new WaitForSeconds(1f);
-        breakLoop = false;
+        if (emState == 1)
+        {
+            yield return new WaitForSeconds(4f);
+            breakLoop = false;
+        }
+        else
+        {
+            if (emState == 1)
+            {
+                breakLoop = false;
+            }
+            else
+            {
+                breakLoop = false;
+            }
+        }
+        
     }
 }

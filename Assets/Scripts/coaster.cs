@@ -23,9 +23,18 @@ public class coaster : MonoBehaviour
     public Image[] dots;
     public Sprite[] dotSprites;
 
+    public bool depress;
+
     void Start()
     {
-        cupsLeft = 6;
+        if (!depress)
+        {
+            cupsLeft = 6;
+        }
+        else
+        {
+            cupsLeft = 1;
+        }
     }
 
     void Update()
@@ -62,7 +71,8 @@ public class coaster : MonoBehaviour
         }
         else
         {
-            myButton.GetComponent<Button>().enabled = false;
+            //myButton.GetComponent<Button>().enabled = false;
+            cupsLeft = 0;
             canPlace = false;
         }
 
@@ -98,7 +108,7 @@ public class coaster : MonoBehaviour
     {
         if (occupied)
         {
-            if (cupsLeft > 0)
+            if (cupsLeft >= 0)
             {
                 if (myCup.GetComponent<cupOfDrink>().drinkReady && foodSelected.noUcant is false && foodSelected.currentFoods is -1)
                 {
@@ -144,35 +154,41 @@ public class coaster : MonoBehaviour
                 if (canPlace)
                 {
                     occupied = true;
+
                     myCup.SetActive(true);
                     cupSound.Play();
                     foodSelected.currentFoods = -1;
                 }
             }
-
-            if (drinkSc.drinkHave == myDrink)
+            else
             {
-                myButton.filled = true;
-                occupied = true;
-                myCup.SetActive(true);
-                cupSound.Play();
-                foodSelected.currentFoods = -1;
+                if (drinkSc.drinkHave == myDrink)
+                {
+                    myButton.filled = true;
+                    occupied = true;
+                    myCup.SetActive(true);
+                    cupSound.Play();
+                    foodSelected.currentFoods = -1;
 
-                if (myCup.GetComponent<cupOfDrink>().IamCoffee)
-                {
-                    drinkSc.HasReadyCoffee = false;
-                }
-                if (myCup.GetComponent<cupOfDrink>().IamSoda)
-                {
-                    drinkSc.HasReadySoda = false;
-                }
-                if (myCup.GetComponent<cupOfDrink>().IamJuice)
-                {
-                    drinkSc.HasReadyOJ = false;
-                }
+                    cupsLeft++;
 
-                myButton.SetPadding();
+                    if (myCup.GetComponent<cupOfDrink>().IamCoffee)
+                    {
+                        drinkSc.HasReadyCoffee = false;
+                    }
+                    if (myCup.GetComponent<cupOfDrink>().IamSoda)
+                    {
+                        drinkSc.HasReadySoda = false;
+                    }
+                    if (myCup.GetComponent<cupOfDrink>().IamJuice)
+                    {
+                        drinkSc.HasReadyOJ = false;
+                    }
+
+                    myButton.SetPadding();
+                }
             }
+            
         }
     }
 

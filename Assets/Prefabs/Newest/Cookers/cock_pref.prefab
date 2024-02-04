@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2890594579764469170}
   - component: {fileID: 5731637096308417192}
   - component: {fileID: 1086716725662388308}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: timeyFr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1056687664683040951}
   - component: {fileID: 8921091848484776991}
   - component: {fileID: 7906112596921930287}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 8928360526052530023}
   - component: {fileID: 926237479761180100}
   - component: {fileID: 5960211391207147952}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: cock_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 7162418545516074983}
   - component: {fileID: 4378580170959877091}
   - component: {fileID: 3691538846007650105}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: '!fill1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 8726247853251585948}
   - component: {fileID: 3902141783466658739}
   - component: {fileID: 1740414536179363295}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: stoveTime1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 89092998941483592}
   - component: {fileID: 4319335845845543540}
   - component: {fileID: 4632333927757791881}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: cock_pref
   m_TagString: Cooker
   m_Icon: {fileID: 0}
@@ -634,7 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a0072df5ea1b4dad2bcbf9446613b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emState: 0
   HasFood: 0
   IAmPot: 1
   IAmToaster: 0
@@ -656,10 +655,3 @@ MonoBehaviour:
   timerObj: {fileID: 5915162010363742584}
   subtitleSc: {fileID: 0}
   foodDead: 0
-  extras:
-  - {fileID: 21300000, guid: 0c69184d2984c7e4694c26f65ef03c3f, type: 3}
-  - {fileID: 21300000, guid: 1fb6a65464ae6e34d9e15702772d733c, type: 3}
-  - {fileID: 21300000, guid: f866da1bc82f3c242b6b1d85ce208b49, type: 3}
-  - {fileID: 21300000, guid: 7390d165da283a1409d70b54b5cafb42, type: 3}
-  - {fileID: 21300000, guid: 70ea055b663c8f342a8424d92e7d2913, type: 3}
-  - {fileID: 21300000, guid: a405f26764f0147448917ef9fb5f62b3, type: 3}

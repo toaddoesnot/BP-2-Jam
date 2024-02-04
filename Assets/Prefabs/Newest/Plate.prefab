@@ -430,6 +430,8 @@ MonoBehaviour:
   noodHave: 0
   doneFlow: 0
   subtitleSc: {fileID: 0}
+  dishSc: {fileID: 0}
+  ghostPlate: 0
 --- !u!1 &8891423469939797857
 GameObject:
   m_ObjectHideFlags: 0

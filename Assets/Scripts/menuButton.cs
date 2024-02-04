@@ -17,25 +17,59 @@ public class menuButton : MonoBehaviour ////cash register script
 
     public cashText NumberCounter;
     public bool boughtSth;
+    public CursorChanger cursorSc;
+    public instructionalComments subtitleSc;
+
+    public GameObject stoveUp;
+    public GameObject stoveDown;
+
+    public int stateEm;
+    public piggyBank pigSc;
 
     void Awake()
     {
         NumberCounter.Text.text = moneyLeft.ToString();
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
     void Update()
     {
-        moneyDisplay.text = "$" + moneyLeft.ToString();
+        if(stateEm == 0)
+        {
+            moneyDisplay.text = "$" + moneyLeft.ToString();
+        }
     }
 
     public void OpenMenu()
     {
-        boughtSth = false;
+        // IF CURSOR IS OK
+        if (cursorSc.nothingSelected)
+        {
+            boughtSth = false;
 
-        closeSound.Play();
+            closeSound.Play();
 
-        menuOpen = true;
-        menuPop.SetActive(true);
+            menuOpen = true;
+            menuPop.SetActive(true);
+
+            if (stoveUp.GetComponent<KitchenwareClicked>().myObject != null)
+            {
+                stoveUp.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
+            }
+            if (stoveDown.GetComponent<KitchenwareClicked>().myObject != null)
+            {
+                stoveDown.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
+            }
+        }
+        else
+        {
+            string hands = "Please touch the register with empty hands.";
+            if (!subtitleSc.instComments.Contains(hands))
+            {
+                subtitleSc.instComments.Add(hands);
+                subtitleSc.Subtitles();
+            }
+        }
     }
 
     public void CloseMenu()
@@ -48,6 +82,15 @@ public class menuButton : MonoBehaviour ////cash register script
         if (boughtSth)
         {
             SetValue();
+        }
+
+        if (stoveUp.GetComponent<KitchenwareClicked>().myObject != null)
+        {
+            stoveUp.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+        if (stoveDown.GetComponent<KitchenwareClicked>().myObject != null)
+        {
+            stoveDown.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = true;
         }
     }
 
