@@ -2725,6 +2725,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3297030890454640492}
+    - target: {fileID: 8895664066782162949, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 8895664066782162970, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.9944633

@@ -228,6 +228,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3493729265753615336, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
   m_PrefabInstance: {fileID: 3493729266837741138}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1221738499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1165648598753423497, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+  m_PrefabInstance: {fileID: 3493729266837741138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1411849341 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3493729265560109615, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -367,11 +372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 185.98099, y: 128.12595}
+  scrollPos: {x: -159.49341, y: 54.099552}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 442.8
-  zoom: 0.5799999
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -540,7 +545,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 75.53613
     y: 8.216492
-    width: 73.44828
+    width: 74
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -603,7 +608,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 180.03067
     y: -7.1681223
-    width: 92.75862
+    width: 93
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -844,7 +849,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 304.22675
     y: 17.439066
-    width: 78.96552
+    width: 79
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -922,7 +927,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 177.53613
     y: 49.21649
-    width: 103.793106
+    width: 104
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1199,7 +1204,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 420.1185
     y: -36.659836
-    width: 76.2069
+    width: 76
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1386,7 +1391,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 424.01413
     y: 23.439066
-    width: 77.58621
+    width: 77
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1533,7 +1538,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 417.61853
     y: 81.340164
-    width: 78.96552
+    width: 78
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1872,9 +1877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 548.05536
-    y: 35.3658
-    width: 88.6207
+    x: 564.05536
+    y: 46.3658
+    width: 90
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1903,7 +1908,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 552.8665
     y: -17.703335
-    width: 124.482765
+    width: 126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2167,13 +2172,13 @@ MonoBehaviour:
   itemId: 101
   indentLevel: 0
   description: 
-  targetObject: {fileID: 1100920250}
-  targetComponentAssemblyName: levelOne, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  targetObject: {fileID: 1221738499}
+  targetComponentAssemblyName: levelManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: levelOne
-  targetMethod: CabinReturn
-  targetMethodText: 'CabinReturn (): Void'
+  targetComponentText: levelManager
+  targetMethod: NewLevel
+  targetMethodText: 'NewLevel (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -2499,6 +2504,10 @@ PrefabInstance:
     - target: {fileID: 3493729265313154971, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493729265362045538, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewLevel
       objectReference: {fileID: 0}
     - target: {fileID: 3493729265406460241, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3204,7 +3213,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
   m_PrefabInstance: {fileID: 3493729266837741138}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1221738499}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c821c3f5680543245bb8ba3a56e35060, type: 3}

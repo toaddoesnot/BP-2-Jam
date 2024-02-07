@@ -8,44 +8,38 @@ public class menuManager : MonoBehaviour
 {
     public bool menuLvl;
 
-    public bool pauseOpen;
-    public GameObject pauseMenu;
+    public int levelsUnlocked;
+    public int currentLvl;
+
+    public Button[] buttons;
+    public bool exception;
+    public int trueLevels;
+
+    public GameObject[] texts;
 
     public void Start()
     {
-        
+        //PlayerPrefs.DeleteAll();
+
+        levelsUnlocked = PlayerPrefs.GetInt("levelsUnlocked", 1);
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
+
+        for (int i = 0; i < levelsUnlocked; i++)
+        {
+            buttons[i].interactable = true;
+        }
     }
 
     void Update()
     {
-        if (menuLvl)
-        {
-            Cursor.visible = true;
-            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        }
-        Debug.Log(Time.time);
-        if (menuLvl is false)
-        {
-            //if (Input.GetKeyDown(KeyCode.Escape))
-            //{
-            //    if (pauseOpen is false)
-            //    {
-                   // pauseMenu.SetActive(true);
-                   // pauseOpen = true;
-                   // Time.timeScale = 0;
-             //   }
-             //   Debug.Log("esc");
-            //}
-        }
-    }
+        currentLvl = levelsUnlocked - 1;
 
-    //PAUSE
-
-    public void ContinueGame()
-    {
-       // Time.timeScale = 1;
-       // pauseMenu.SetActive(false);
-       // pauseOpen = false;
+        
+        //
     }
 
     public void OpenMenu()
@@ -55,9 +49,21 @@ public class menuManager : MonoBehaviour
 
     //MENU
 
-    public void LoadGame()
+    public void Load0()
     {
         SceneManager.LoadScene(1);
+    }
+    public void Load1()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void Load2()
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void Load3()
+    {
+        SceneManager.LoadScene(4);
     }
 
     public void NewGame()
@@ -71,12 +77,32 @@ public class menuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoopLvl()
+    public void ToggleException()
     {
-        SceneManager.LoadScene(1);
-    }
-    public void InstLvl()
-    {
-        SceneManager.LoadScene(2);
+        
+
+        if (!exception)
+        {
+            trueLevels = levelsUnlocked;
+            exception = true;
+            levelsUnlocked = 4;
+            foreach (Button but in buttons)
+            {
+                but.interactable = true;
+            }
+        }
+        else
+        {
+            levelsUnlocked = trueLevels;
+            foreach (Button but in buttons)
+            {
+                but.interactable = false;
+            }
+            for (int i = 0; i < levelsUnlocked; i++)
+            {
+                buttons[i].interactable = true;
+            }
+            exception = false;
+        }
     }
 }

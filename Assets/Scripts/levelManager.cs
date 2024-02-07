@@ -56,11 +56,11 @@ public class levelManager : MonoBehaviour
 
         if(currentLevel >= PlayerPrefs.GetInt("levelsUnlocked"))
         {
-            PlayerPrefs.SetInt("levelsUnlocked", currentLevel);
+            PlayerPrefs.SetInt("levelsUnlocked", currentLevel + 1);
         }
 
         Debug.Log("LEVEL" + PlayerPrefs.GetInt("levelsUnlocked") + "unlocked");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void Replay()
