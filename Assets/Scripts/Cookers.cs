@@ -67,8 +67,9 @@ public class Cookers : MonoBehaviour
         }
         if (emState == 2)
         {
-            mySpeed = 0.3f;
-            timerObj.GetComponent<miniTimer>().Duration = 11;
+            mySpeed = 0.38f;
+            timerObj.GetComponent<miniTimer>().Duration = 13;
+            timerObj.GetComponent<miniTimer>().burntTime = 9;
         }
     }
 

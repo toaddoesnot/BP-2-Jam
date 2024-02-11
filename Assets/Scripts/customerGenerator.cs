@@ -22,20 +22,60 @@ public class customerGenerator : MonoBehaviour
     public bool weFull;
     public AudioSource doorOpen;
     
-
     public bool introLevels;
     private bool FrancesDone;
 
     public float howFast; //usually 20
 
+    public int EmState;
+    
+    public instructionalComments subtitleSc;
+    
+
     public void Start()
     {
-        //InvokeRepeating("GenerateCustomer", 8f, 20f); //10f 30 f
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+    }
+
+    public void Update()
+    {
+        bool allOccupied = true;
+
+        for (int i = 0; i < customerSlots.Length; i++)
+        {
+            if (customerSlots[i].GetComponent<characterSlot>().occupied == false)
+            {
+                randSeat = i;
+                allOccupied = false;
+            }
+        }
+        weFull = allOccupied;
+
+
+        //if (customerSlots[0].GetComponent<characterSlot>().occupied)
+
+        //{
+        //    weFull = true;
+        //}
+
+        if (EmState == 2)
+        {
+            for (int i = 0; i < customerSlots.Length; i++)
+            {
+                if (customerSlots[i].GetComponent<characterSlot>().gaveManic == true)
+                {
+                    foreach (GameObject slot in customerSlots)
+                    {
+                        slot.GetComponent<characterSlot>().gaveManic = true;
+                    }
+                }
+            }
+        }
     }
 
     public void StartCustomers()
     {
-        InvokeRepeating("GenerateCustomer", 1f, 20f);
+        InvokeRepeating("GenerateCustomer", 10f, 25f);
     }
 
     public void DepressiveCustomers()
@@ -44,6 +84,25 @@ public class customerGenerator : MonoBehaviour
         InvokeRepeating("GenerateCustomer", 20f, 50f);
     }
 
+    public void ManicCustomers()
+    {
+        InvokeRepeating("GenerateCustomer", 4f, 12f);
+    }
+
+    public IEnumerator ManicEpisode()
+    {
+        yield return null;
+        EmState = 2;
+
+        InvokeRepeating("GenerateCustomer", 1f, 8f);
+        string selfServe = "What if we let the guests sit themselves??";
+        if (!subtitleSc.instComments.Contains(selfServe))
+        {
+            subtitleSc.instComments.Add(selfServe);
+            subtitleSc.Subtitles();
+        }
+    }
+    
     IEnumerator FirstCustomer()
     {
         yield return new WaitForSeconds(2f);
@@ -65,21 +124,6 @@ public class customerGenerator : MonoBehaviour
 
         yield return new WaitForSeconds(12f);
         GenerateCustomer();
-    }
-
-    public void Update()
-    {
-        for(int i = 0; i < customerSlots.Length; i++)
-        {
-            if(customerSlots[i].GetComponent<characterSlot>().occupied == false)
-            {
-                randSeat = i;
-            }
-        }
-        if (customerSlots[0].GetComponent<characterSlot>().occupied)
-        {
-            weFull = true;
-        }
     }
 
     public void GenerateCustomer()
@@ -115,10 +159,19 @@ public class customerGenerator : MonoBehaviour
             customerSlots[randSeat].GetComponent<characterSlot>().mapCenter.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
             customerSlots[randSeat].GetComponent<characterSlot>().mapAnimation.SetActive(true);
 
-
             doorOpen.Play();
+
+            if (EmState == 2)
+            {
+                customerSlots[randSeat].GetComponent<characterSlot>().currentState++;
+
+                customerSlots[randSeat].GetComponent<characterSlot>().StartCoroutine(customerSlots[randSeat].GetComponent<characterSlot>().Order());
+            }
         }
            
     }
     //public stepsScript.gridIm.transform.position = refPos.transform.position;
+
+    
+    
 }

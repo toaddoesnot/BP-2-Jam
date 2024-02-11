@@ -34,6 +34,8 @@ public class levelOne : MonoBehaviour
     private bool done;
     private bool done2;
 
+    public GameObject eepyRC;
+
     void Update()
     {
         if (foodSc.dishesServed == 4)
@@ -61,6 +63,11 @@ public class levelOne : MonoBehaviour
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         cameraScreen.ForcePress();
+    }
+
+    public void StopEeping()
+    {
+        eepyRC.SetActive(false);
     }
 
     public void BreakIn()

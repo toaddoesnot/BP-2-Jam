@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadGame.unity
     guid: 1d68e92d3fe4ba04e936b188aa65fab9
   - enabled: 0
-    path: Assets/Scenes/G4C/Intro.unity
+    path: Assets/Scenes/Intro.unity
     guid: 5949bdd3a77d1874cb14bffc4e6ab915
   - enabled: 0
     path: Assets/Scenes/PAX.unity

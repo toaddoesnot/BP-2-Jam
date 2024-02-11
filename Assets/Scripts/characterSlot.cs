@@ -29,8 +29,8 @@ public class characterSlot : MonoBehaviour
     public string myNo;
 
     public GameObject myOrder;
-    private bool drinkDone;
-    private bool foodDone;
+    public bool drinkDone;
+    public bool foodDone;
     private bool ready2eat;
 
     public GameObject timey;
@@ -71,6 +71,9 @@ public class characterSlot : MonoBehaviour
     public instructionalComments subtitleSc;
     public AudioSource heLeft;
 
+    public bool gaveManic;
+    private int chooseTime;
+
     void Awake()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -81,6 +84,15 @@ public class characterSlot : MonoBehaviour
         }
         //timey.SetActive(true);
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+
+        if(EmState == 0 || EmState == 1)
+        {
+            chooseTime = 6;
+        }
+        else
+        {
+            chooseTime = 2;
+        }
     }
 
     void Update()
@@ -293,16 +305,36 @@ public class characterSlot : MonoBehaviour
         
         moodState = 1;
         myNewTimer = null;
+
+        if (EmState == 2)
+        {
+            if (gaveManic)
+            {
+                WheelPress();
+            }
+            else
+            {
+                string selfClean = "Don't worry, I can clean for you today!";
+                if (!subtitleSc.instComments.Contains(selfClean))
+                {
+                    subtitleSc.instComments.Add(selfClean);
+                    subtitleSc.Subtitles();
+                }
+                WheelPress();
+                gaveManic = true;
+            }
+            
+        }
     }
 
-    IEnumerator Order()
+    public IEnumerator Order()
     {
         yield return null;
         mapAnimation.SetActive(false);
         timeWaiting = 0;
-        
+
         timerSc.ResetTimer();
-        if(myNewTimer != null && myNewTimer.activeInHierarchy)
+        if (myNewTimer != null && myNewTimer.activeInHierarchy)
         {
             myNewTimer.GetComponent<miniTimer>().ResetTimer();
         }
@@ -313,14 +345,14 @@ public class characterSlot : MonoBehaviour
         {
             moodState++;
         }
-        
+
         if (currentState is 1)
         {
             menuChoice.SetActive(true);
-            yield return new WaitForSeconds(6f); //choosing a meal
+            yield return new WaitForSeconds(chooseTime); //choosing a meal
 
             myOrder = Instantiate(orderInstance, orderPlaque.transform.position, Quaternion.identity, orderPlaque.transform); //NEWNEWNE 
-            
+
             myOrder.GetComponent<orderGenerator>().nombre = myNo;
             myOrder.GetComponent<orderGenerator>().myPeepsc = this.gameObject;
 
@@ -338,7 +370,7 @@ public class characterSlot : MonoBehaviour
                 myNewTimer.GetComponent<miniTimer>().InitiateTimer();
             }
 
-            if(EmState == 1)
+            if (EmState == 1)
             {
                 myPrice = myOrder.GetComponent<orderGenerator>().orderWorth / 2;
                 myTPrice = 1;
@@ -347,8 +379,8 @@ public class characterSlot : MonoBehaviour
             {
                 if (EmState == 2)
                 {
-                    myPrice = myOrder.GetComponent<orderGenerator>().orderWorth;
-                    myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
+                    myPrice = myOrder.GetComponent<orderGenerator>().orderWorth + Random.Range(5, 10);
+                    myTPrice = myOrder.GetComponent<orderGenerator>().myTip + Random.Range(7, 10);
                 }
                 else
                 {
@@ -356,7 +388,7 @@ public class characterSlot : MonoBehaviour
                     myTPrice = myOrder.GetComponent<orderGenerator>().myTip;
                 }
             }
-            
+
         }
     }
 
@@ -364,12 +396,14 @@ public class characterSlot : MonoBehaviour
     {
         if (canPress)
         {
+            
             if (currentState < 4)
             {
                 currentState++;
 
                 StartCoroutine(Order());
             }
+
             else
             {
                 if (!paid)

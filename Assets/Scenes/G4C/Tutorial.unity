@@ -255,6 +255,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1540073343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540073344}
+  - component: {fileID: 1540073346}
+  - component: {fileID: 1540073345}
+  m_Layer: 5
+  m_Name: eepy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1540073344
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540073343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1766962296}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00028276, y: 0.00010681}
+  m_SizeDelta: {x: 335.28, y: 600.75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1540073345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540073343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a17f34c57c06dfb4eafc42f4e1563e66, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1540073346
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540073343}
+  m_CullTransparentMesh: 1
 --- !u!114 &1673186420 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3493729265181332006, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -269,6 +345,11 @@ MonoBehaviour:
 --- !u!95 &1766962295 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3493729265347619365, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+  m_PrefabInstance: {fileID: 3493729266837741138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1766962296 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3493729265347619361, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
   m_PrefabInstance: {fileID: 3493729266837741138}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1855160600
@@ -352,6 +433,8 @@ GameObject:
   - component: {fileID: 1855160680}
   - component: {fileID: 1855160679}
   - component: {fileID: 1855160682}
+  - component: {fileID: 1855160683}
+  - component: {fileID: 1855160684}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -372,11 +455,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -159.49341, y: 54.099552}
+  scrollPos: {x: -91.742714, y: 98.20716}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 442.8
-  zoom: 1
+  blockViewHeight: 542
+  zoom: 0.84999967
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -384,9 +467,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1855160669}
-  selectedCommands:
-  - {fileID: 1855160682}
+  - {fileID: 1855160610}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -445,8 +527,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 5
   indentLevel: 0
-  storyText: The protocol suggests that the new cook waits until the diner is appropriately
-    stuffed again.
+  storyText: 'This is a disaster! They forgot to turn me back on.
+
+
+
+    AND provide
+    a 2-week notice!'
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -473,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   indentLevel: 0
-  storyText: '*calculating computer sounds*'
+  storyText: "Where is\u2026 everybody?"
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -500,8 +586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  storyText: "Uh\u2026 that\u2019s unplanned. Somebody forgot to turn me on! AND
-    provide a 2-week notice."
+  storyText: "I haven\u2019t scanned your face before, you must be a new chef!"
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -543,9 +628,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 75.53613
-    y: 8.216492
-    width: 74
+    x: 70.53613
+    y: 10.482314
+    width: 73.52942
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -555,10 +640,12 @@ MonoBehaviour:
   eventHandler: {fileID: 1855160611}
   commandList:
   - {fileID: 1855160605}
+  - {fileID: 1855160683}
   - {fileID: 1855160609}
   - {fileID: 1855160608}
   - {fileID: 1855160607}
   - {fileID: 1855160606}
+  - {fileID: 1855160684}
   - {fileID: 1855160614}
   - {fileID: 1855160615}
   suppressAllAutoSelections: 0
@@ -608,7 +695,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 180.03067
     y: -7.1681223
-    width: 93
+    width: 93.529434
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -715,8 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 12
   indentLevel: 0
-  storyText: "Solution 2: I don\u2019t care, and I\u2019m not leaving without my
-    breakfast! The menu, please."
+  storyText: "Now, don\u2019t be ridiculous and give me the menu!"
   description: 
   character: {fileID: 114049402}
   portrait: {fileID: 0}
@@ -743,8 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: "Error code 7! The diner is NOT operating right now. Hence, the customers
-    can\u2019t be served."
+  storyText: Error code! The diner is closed.
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -847,9 +932,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 304.22675
+    x: 302.96094
     y: 17.439066
-    width: 79
+    width: 79.41177
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -882,8 +967,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 0
-  storyText: "You don\u2019t have to do it, really. Supply chain management wasn\u2019t
-    in the posting!"
+  storyText: "Oh no, we can\u2019t make the customers wait in Doppel Diner. You have
+    to step in! The management will surely provide you with good compensation!"
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -927,7 +1012,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 177.53613
     y: 49.21649
-    width: 104
+    width: 102.94119
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1039,7 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 18
   indentLevel: 0
-  storyText: You are open, finally! I thought I would starve to death!
+  storyText: "Oh\u2026 You are open, finally! I thought I would starve to death!"
   description: 
   character: {fileID: 114049402}
   portrait: {fileID: 0}
@@ -1081,8 +1166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 16
   indentLevel: 0
-  storyText: "Aaand error code 2. The cook is untrained, and can\u2019t manage the
-    whole diner all by themselves."
+  storyText: I apologize, Ma'am, but our new cook is not trained yet and no one can
+    manage the whole diner all alone!
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -1109,8 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 15
   indentLevel: 0
-  storyText: "Solution 1! Since I\u2019m already inside, we surely can skip to the
-    next step: serving."
+  storyText: Is there a meteroid storm I missed? Doppel Diner never closes!
   description: 
   character: {fileID: 114049402}
   portrait: {fileID: 0}
@@ -1202,9 +1286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 420.1185
-    y: -36.659836
-    width: 76
+    x: 422.65012
+    y: -39.191483
+    width: 75.88236
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1391,7 +1475,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 424.01413
     y: 23.439066
-    width: 77
+    width: 77.05884
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1536,9 +1620,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 417.61853
-    y: 81.340164
-    width: 78
+    x: 425.21338
+    y: 86.40346
+    width: 78.235306
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1821,8 +1905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 91
   indentLevel: 0
-  storyText: "By the protocol, they should respond within 24 hours.\r Why don\u2019t
-    you rest in your cabin for now?\r"
+  storyText: See you tomorrow! Hopefully, they will send someone by then.
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -1849,8 +1932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 90
   indentLevel: 0
-  storyText: I apologize profoundly again for such a sudden start. I already sent
-    a message to the team!
+  storyText: I apologize again for such a sudden start. I already sent a message
+    to the management.
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -1879,7 +1962,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 564.05536
     y: 46.3658
-    width: 90
+    width: 91.17648
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1908,7 +1991,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 552.8665
     y: -17.703335
-    width: 126
+    width: 126.47062
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2185,6 +2268,62 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1855160683
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 102
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1100920250}
+  targetComponentAssemblyName: levelOne, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: levelOne
+  targetMethod: StopEeping
+  targetMethodText: 'StopEeping (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &1855160684
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 103
+  indentLevel: 0
+  storyText: I apologize, we have to postpone your onboarding. I need to run some
+    protocols immediately to make our diner full-staffed again!
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &2328659490399970265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1165648600590335371, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -2313,6 +2452,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: myScene
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1165648598924683094, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2335,7 +2478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2655581445054024548, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3493729264909691880, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2472,6 +2615,10 @@ PrefabInstance:
     - target: {fileID: 3493729265215329844, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493729265244955183, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 105.31586
       objectReference: {fileID: 0}
     - target: {fileID: 3493729265279871863, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2945,6 +3092,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3493729266391750826, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3493729266437075547, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3024,6 +3175,10 @@ PrefabInstance:
     - target: {fileID: 3493729266576188591, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493729266689537349, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 105.31586
       objectReference: {fileID: 0}
     - target: {fileID: 3493729266715262704, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y

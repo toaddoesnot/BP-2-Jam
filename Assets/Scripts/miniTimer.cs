@@ -23,6 +23,7 @@ public class miniTimer : MonoBehaviour
 
     public bool noTimer;
     public bool foodBurnt;
+    private bool paused;
 
     void Awake()
     {
@@ -37,6 +38,20 @@ public class miniTimer : MonoBehaviour
         if (!noTimer)
         {
             Begin(Duration);
+        }
+    }
+
+    public void PauseTimer()
+    {
+        if (!paused)
+        {
+            StopAllCoroutines();
+            paused = true;
+        }
+        else
+        {
+            StartCoroutine(UpdateTimer());
+            paused = false;
         }
     }
 

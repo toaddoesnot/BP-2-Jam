@@ -14,6 +14,7 @@ public class levelManager : MonoBehaviour
     public levelOne instLevels;
 
     public bool needRespawn;
+    public int myScene;
 
     void Start()
     {
@@ -60,7 +61,7 @@ public class levelManager : MonoBehaviour
         }
 
         Debug.Log("LEVEL" + PlayerPrefs.GetInt("levelsUnlocked") + "unlocked");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(myScene);
     }
 
     public void Replay()

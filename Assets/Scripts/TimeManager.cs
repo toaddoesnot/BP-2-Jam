@@ -38,6 +38,7 @@ public class TimeManager : MonoBehaviour
     public Sprite[] extraClocks;
     public int emotSt;
     public Image clockIm;
+    public manicLevels manSc;
 
     void Start()
     {
@@ -66,18 +67,26 @@ public class TimeManager : MonoBehaviour
     {
         if (timeOn is true)
         {
-           totalTime += Time.deltaTime;
+            totalTime += Time.deltaTime;
             currentTime = totalTime % dayDuration;
 
-            //if (doneNoon is false)
-            //{
-            //    if (currentTime >= 150f)
-            //    {
-            //        clockSound.Play();
-            //        doneNoon = true;
-            //
-            //    }
-            //}
+            if(emotSt == 2)
+            {
+                if (doneNoon is false)
+                {
+                    if (currentTime >= 150f)
+                    {
+                        clockSound.Play();
+                        doneNoon = true;
+                
+                    }
+                }
+
+                if(totalTime >= 75f && totalTime < 77f)
+                {
+                    manSc.wentManic = true;
+                }
+            }
 
             if (currentTime >= maxTime)
             {
@@ -148,7 +157,7 @@ public class TimeManager : MonoBehaviour
             {
                 if (emotSt == 2)
                 {
-                    cg.StartCustomers();
+                    cg.ManicCustomers();
                 }
                 else
                 {

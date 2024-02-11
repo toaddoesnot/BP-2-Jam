@@ -38,25 +38,33 @@ public class buyButton : MonoBehaviour
 
         if (!amDrink)
         {
-            if (mySupply.recharges < maxRefill && menuSc.moneyLeft - myPrice >= 0 || mySupply.recharges < maxRefill && menuSc.moneyLeft + menuSc.pigSc.tipsTotal - myPrice >= 0)
+            if(mySupply != null)
             {
-                this.GetComponent<Button>().enabled = true;
+                if (mySupply.recharges < maxRefill && menuSc.moneyLeft - myPrice >= 0 || mySupply.recharges < maxRefill && menuSc.moneyLeft + menuSc.pigSc.tipsTotal - myPrice >= 0)
+                {
+                    this.GetComponent<Button>().enabled = true;
+                }
+                else
+                {
+                    this.GetComponent<Button>().enabled = false;
+                }
             }
-            else
-            {
-                this.GetComponent<Button>().enabled = false;
-            }
+                
         }
         if (amDrink)
         {
-            if (myDrink.rechargeCup < maxRefill && menuSc.moneyLeft - myPrice >= 0 || myDrink.rechargeCup < maxRefill && menuSc.moneyLeft + menuSc.pigSc.tipsTotal - myPrice >= 0)
+            if(myDrink != null)
             {
-                this.GetComponent<Button>().enabled = true;
+                if (myDrink.rechargeCup < maxRefill && menuSc.moneyLeft - myPrice >= 0 || myDrink.rechargeCup < maxRefill && menuSc.moneyLeft + menuSc.pigSc.tipsTotal - myPrice >= 0)
+                {
+                    this.GetComponent<Button>().enabled = true;
+                }
+                else
+                {
+                    this.GetComponent<Button>().enabled = false;
+                }
             }
-            else
-            {
-                this.GetComponent<Button>().enabled = false;
-            }
+            
         }
     }
 

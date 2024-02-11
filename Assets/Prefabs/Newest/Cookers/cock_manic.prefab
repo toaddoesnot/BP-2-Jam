@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 7906112596921930287}
   uiFill: {fileID: 3691538846007650105}
-  Duration: 38
+  Duration: 13
   remainingDuration: 0
   filled: 0
   initiated: 0
@@ -655,3 +655,5 @@ MonoBehaviour:
   timerObj: {fileID: 5915162010363742584}
   subtitleSc: {fileID: 0}
   foodDead: 0
+  emState: 2
+  mySpeed: 0

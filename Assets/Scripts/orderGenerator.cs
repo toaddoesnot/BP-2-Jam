@@ -86,7 +86,6 @@ public class orderGenerator : MonoBehaviour
                 firstCourse = Random.Range(0, 3);
                 secondCourse = Random.Range(0, 3);
                 drinks = Random.Range(0, 4);
-
                 randomOrder = Random.Range(0, 3);
                 Order();
             }
