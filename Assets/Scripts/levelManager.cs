@@ -19,14 +19,17 @@ public class levelManager : MonoBehaviour
 
     public depressedLevels deprSc;
     public stableLevels stabSc;
+    public manicLevels manicSc;
 
     public sink sinkSc;
     public screenSwiper screenSc;
     public instructionalComments subtitleSc;
+    public customerGenerator cg;
 
     void Start()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
@@ -94,7 +97,7 @@ public class levelManager : MonoBehaviour
     public void StableEnd()
     {
         //
-        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty && cg.weEmpty)
         {
             stabSc.YuriEncounter();
             managerSc.closeSign.GetComponent<Button>().interactable = false;
@@ -112,7 +115,7 @@ public class levelManager : MonoBehaviour
 
     public void DepressiveEnd()
     {
-        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty && cg.weEmpty)
         {
             deprSc.InitiateFrances();
             managerSc.closeSign.GetComponent<Button>().interactable = false;
@@ -120,6 +123,24 @@ public class levelManager : MonoBehaviour
         else
         {
             string closeDiner = "We still need to leave the diner clean... Relatively...";
+            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+            {
+                subtitleSc.instComments.Add(closeDiner);
+                subtitleSc.Subtitles();
+            }
+        }
+    }
+
+    public void ManicEnd()
+    {
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty && cg.weEmpty)
+        {
+            manicSc.FinishLevel();
+            managerSc.closeSign.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            string closeDiner = "I don't want to close!! Let's serve more customers.";
             if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
             {
                 subtitleSc.instComments.Add(closeDiner);

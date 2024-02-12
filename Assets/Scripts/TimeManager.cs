@@ -52,6 +52,11 @@ public class TimeManager : MonoBehaviour
         {
             InvokeRepeating("openTip", 2f, 10f);
         }
+
+        if (emotSt == 2)
+        {
+            OpenDiner();
+        }
         
     }
 
@@ -133,6 +138,19 @@ public class TimeManager : MonoBehaviour
         timeOn = false;
         closeSign.GetComponent<Button>().enabled = true;
         closeSign.GetComponent<Image>().sprite = closed2;
+
+        foreach (GameObject place in cg.customerSlots)
+        {
+            if (place.GetComponent<characterSlot>().occupied && place.GetComponent<characterSlot>().currentState == 0)
+            {
+                place.GetComponent<characterSlot>().JustLeave();
+            }
+        }
+
+        if (emotSt == 2 || emotSt == 1)
+        {
+            timerSc.ResetTimer();
+        }
     }
 
     public void OpenDiner()
@@ -147,7 +165,7 @@ public class TimeManager : MonoBehaviour
         closeSign.GetComponent<Button>().enabled = false;
         closeSign.GetComponent<Image>().sprite = closed1;
 
-        if (handSc.tutorialLvl == 0)
+        if (handSc.tutorialLvl == 100)
         {
             //HOW MANY CUSTOMERS IN EACH STAGE
             if (emotSt == 1)

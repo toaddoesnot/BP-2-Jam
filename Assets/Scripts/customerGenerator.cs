@@ -51,16 +51,20 @@ public class customerGenerator : MonoBehaviour
         }
         weFull = allOccupied;
 
-        if (!customerSlots[0].GetComponent<characterSlot>().occupied && !customerSlots[1].GetComponent<characterSlot>().occupied && !customerSlots[2].GetComponent<characterSlot>().occupied && !customerSlots[3].GetComponent<characterSlot>().occupied)
+        if (!customerSlots[0].GetComponent<characterSlot>().occupied && !customerSlots[1].GetComponent<characterSlot>().occupied && !customerSlots[2].GetComponent<characterSlot>().occupied && !customerSlots[3].GetComponent<characterSlot>().occupied && !customerSlots[4].GetComponent<characterSlot>().occupied && !customerSlots[5].GetComponent<characterSlot>().occupied)
         {
             weEmpty = true;
+        }
+        else
+        {
+            weEmpty = false;
         }
 
         //{
         //    weFull = true;
         //}
 
-        if (EmState == 2)
+        if (EmState == 0)
         {
             for (int i = 0; i < customerSlots.Length; i++)
             {

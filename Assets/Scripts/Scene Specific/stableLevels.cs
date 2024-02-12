@@ -20,6 +20,9 @@ public class stableLevels : MonoBehaviour
     public GameObject screenBt;
     public GameObject newBear;
 
+    public GameObject blackScreen;
+    public AudioSource soundBg;
+
     public void DrinkTutorial()
     {
         if (!gaveDrink)
@@ -54,6 +57,7 @@ public class stableLevels : MonoBehaviour
     {
         screenBt.GetComponent<Button>().enabled = true;
         screenBt.GetComponent<screenSwiper>().extraCase = true;
+        newBear.SetActive(true);
     }
 
     public void YuriLeaves2()
@@ -61,5 +65,11 @@ public class stableLevels : MonoBehaviour
         YuriObj.SetActive(false);
         newBear.SetActive(false);
         RCobj.GetComponent<Animator>().Play("RC_out");
+    }
+
+    public void FinishLevel()
+    {
+        blackScreen.SetActive(true);
+        soundBg.volume = 0.2f;
     }
 }

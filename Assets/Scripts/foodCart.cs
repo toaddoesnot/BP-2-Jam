@@ -82,7 +82,7 @@ public class foodCart : MonoBehaviour
                     }
                     else
                     {
-                        if (emState == 1)
+                        if (emState == 2)
                         {
                             Robot.GetComponent<Animator>().Play("RC_delivery");
                         }
@@ -102,7 +102,7 @@ public class foodCart : MonoBehaviour
                         }
                     }
 
-                    if (handSc.tutorialLvl != 0)
+                    if (handSc.tutorialLvl != 0 && handSc.tutorialLvl != 100)
                     {
                         clock.GetComponent<Image>().fillAmount -= 0.25f;
 

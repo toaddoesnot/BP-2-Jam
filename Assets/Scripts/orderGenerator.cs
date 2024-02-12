@@ -50,6 +50,7 @@ public class orderGenerator : MonoBehaviour
     public int orderWorth; ///NEW FOR MONEY handSc.moneyAm += 5;
     public int myTip;
     public int[] prices; //0 - plain toast; 1 - toasts +1; 2 - toasts +2; 3 - nood plain; 4 - nood +1; 5 - nood +2; 6 - drink
+    public bool Imanic;
 
     public void Start()
     {
@@ -104,12 +105,26 @@ public class orderGenerator : MonoBehaviour
                     }
                     else
                     {
-                        PotatoONoodle = Random.Range(0, 2);
-                        firstCourse = Random.Range(0, 3);
-                        secondCourse = Random.Range(0, 3);
-                        drinks = Random.Range(0, 4);
-                        randomOrder = Random.Range(0, 3);
-                        Order();
+                        if(handSc.EmState == 0 && Imanic)
+                        {
+                            PotatoONoodle = Random.Range(0, 2);
+                            firstCourse = Random.Range(0, 3);
+                            secondCourse = Random.Range(0, 3);
+                            drinks = Random.Range(0, 4);
+                            randomOrder = Random.Range(0, 3);
+                            Order();
+                        }
+                        else
+                        {
+                            PotatoONoodle = Random.Range(0, 2);
+                            firstCourse = Random.Range(0, 3);
+                            secondCourse = Random.Range(0, 3);
+                            drinks = Random.Range(0, 3); //always drink
+                            randomOrder = Random.Range(0, 2);
+                            Order();
+
+                        }
+                        
                     }
                 }
                 

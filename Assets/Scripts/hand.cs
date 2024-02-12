@@ -28,6 +28,8 @@ public class hand : MonoBehaviour
     public int whichFlow;
     public dishwashingMachine dishSc;
 
+    public int EmState;
+
     void Update()
     {
         //moneyText.SetText("$:", moneyAm);

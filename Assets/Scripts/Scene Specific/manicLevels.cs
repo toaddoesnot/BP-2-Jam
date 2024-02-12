@@ -20,6 +20,10 @@ public class manicLevels : MonoBehaviour
 
     public bool wentManic;
 
+    public GameObject blackScreen;
+    public AudioSource soundBg;
+    public levelManager levelSc;
+
     void Start()
     {
         cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
@@ -89,5 +93,18 @@ public class manicLevels : MonoBehaviour
 
         //////cg.weFull = false;
         cg.StartCoroutine("ManicEpisode");
+    }
+
+    public void FinishLevel()
+    {
+        blackScreen.SetActive(true);
+        soundBg.volume = 0.2f;
+        StartCoroutine(GentlyClose());
+    }
+
+    IEnumerator GentlyClose()
+    {
+        yield return new WaitForSeconds(5f);
+        levelSc.NewLevel();
     }
 }

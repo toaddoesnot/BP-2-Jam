@@ -251,6 +251,8 @@ public class characterSlot : MonoBehaviour
                     drinkDone = false;
                     foodDone = false;
                     ready2eat = false;
+
+                    mapCenter.SetActive(false);
                 }
             }
         }
@@ -474,6 +476,38 @@ public class characterSlot : MonoBehaviour
 
             }
         }
+    }
+
+    public void JustLeave()
+    {
+        timeWaiting = 0;
+        counting = false;
+
+        myPeep.SetActive(false);
+
+        timey.SetActive(false);
+
+        canPress = true;
+        currentState = 4;
+
+        ///below new stuff
+
+        moodState = 1;
+        myNewTimer = null;
+
+        paid = true;
+        StartCoroutine(forgetClean());
+
+        occupied = false;
+        canPress = false;
+
+        drinkDone = false;
+        foodDone = false;
+        ready2eat = false;
+
+        mapCenter.SetActive(false);
+        mapAnimation.SetActive(false);
+
     }
 
     IEnumerator forgetClean()

@@ -103,6 +103,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &1573636855421621900
 Animation:
   m_ObjectHideFlags: 0
@@ -450,6 +452,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &5290920584380138550
 Animation:
   m_ObjectHideFlags: 0
@@ -869,7 +873,6 @@ MonoBehaviour:
   - {fileID: 5564292825532041734}
   OrderFullfilled: 0
   DrinkFullfilled: 0
-  FoodFullfilled: 0
   drinkSc: {fileID: 0}
   handSc: {fileID: 0}
   noodleBase: {fileID: 8709066172253602462}
@@ -898,6 +901,7 @@ MonoBehaviour:
   orderWorth: 0
   myTip: 3
   prices: 02000000020000000400000003000000020000000400000002000000
+  Imanic: 1
 --- !u!82 &8437808103857395560
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1325,6 +1329,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &8237470946048637057
 Animation:
   m_ObjectHideFlags: 0
@@ -1825,6 +1831,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &6300115659203279820
 Animation:
   m_ObjectHideFlags: 0
@@ -2408,6 +2416,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &2423856006251220998
 Animation:
   m_ObjectHideFlags: 0
@@ -3389,6 +3399,8 @@ MonoBehaviour:
   timeSc: {fileID: 0}
   timerType: 0
   burntTime: 0
+  noTimer: 0
+  foodBurnt: 0
 --- !u!111 &2802188861278898546
 Animation:
   m_ObjectHideFlags: 0

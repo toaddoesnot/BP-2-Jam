@@ -34,7 +34,7 @@ public class menuButton : MonoBehaviour ////cash register script
 
     void Update()
     {
-        if(stateEm == 0)
+        if(stateEm == 0 || stateEm == 1)
         {
             moneyDisplay.text = "$" + moneyLeft.ToString();
         }

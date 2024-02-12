@@ -70,7 +70,7 @@ public class sink : MonoBehaviour
 
     public void RequestCleanup()
     {
-        if (!requested && cleanups != 0)
+        if (!requested && cleanups != 0 && traySc.canDrop)
         {
             StartCoroutine(Cleaning());
             requested = true;
