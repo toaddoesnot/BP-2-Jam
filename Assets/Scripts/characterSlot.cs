@@ -74,6 +74,9 @@ public class characterSlot : MonoBehaviour
     public bool gaveManic;
     private int chooseTime;
 
+    public bool lidAction; 
+    public levelOne tutLvl;
+
     void Awake()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -172,6 +175,8 @@ public class characterSlot : MonoBehaviour
         else
         {
             menu.SetActive(false);
+
+            //handSc  lidAction     tutLvl
         }
 
         if (timeWaiting >= midTime && timeWaiting < midTime + 1f)
@@ -359,6 +364,34 @@ public class characterSlot : MonoBehaviour
             currentState++; //now waiting for food
             menuChoice.SetActive(false);
             mapAnimation.SetActive(true);
+            if (lidAction)
+            {
+                if (handSc.tutorialLvl == 1)
+                {
+                    if (tutLvl.tutPhase == 0)
+                    {
+                        tutLvl.tutPhase = 1;
+                        tutLvl.lidSound.Play();
+                    }
+
+                }
+                if (handSc.tutorialLvl == 3)
+                {
+                    if (tutLvl.tutPhase == 4)
+                    {
+                        tutLvl.tutPhase = 5;
+                        tutLvl.lidSound.Play();
+                    }
+                }
+                if (handSc.tutorialLvl == 4)
+                {
+                    if (tutLvl.tutPhase == 7)
+                    {
+                        tutLvl.tutPhase = 8;
+                        tutLvl.lidSound.Play();
+                    }
+                }
+            }
 
             timeWaiting = 0;
             timerSc.InitiateTimer();
@@ -402,6 +435,8 @@ public class characterSlot : MonoBehaviour
                 currentState++;
 
                 StartCoroutine(Order());
+
+                
             }
 
             else

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Fungus;
 
 public class screenSwiper : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class screenSwiper : MonoBehaviour
     private FoodClasses foodSc;
     private hand handSc;
     private Inventory inventory;
+
+    public bool stable;
+    public stableLevels stableSc;
 
     void Start()
     {
@@ -83,8 +87,17 @@ public class screenSwiper : MonoBehaviour
             {
                 if (extraCase)
                 {
-                    music.GetComponent<AudioSource>().Play();
-                    levelScript.GetComponent<levelOne>().Frances();
+                    if (stable)
+                    {
+                        extraCase = false;
+                        this.GetComponent<Button>().enabled = false;
+                        stableSc.Stable.ExecuteBlock("randomCustomer");
+                    }
+                    else
+                    {
+                        music.GetComponent<AudioSource>().Play();
+                        levelScript.GetComponent<levelOne>().Frances();
+                    }
                 }
 
                 cameraObj.transform.localPosition = camL.transform.localPosition;

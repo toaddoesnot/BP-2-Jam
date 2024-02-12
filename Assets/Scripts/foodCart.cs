@@ -31,6 +31,7 @@ public class foodCart : MonoBehaviour
     public dishwashingMachine dishSc;
 
     public int emState;
+    public stableLevels stableSc;
 
     void Start()
     {
@@ -52,6 +53,17 @@ public class foodCart : MonoBehaviour
             print("can see you");
 
             drinks = drinkSc.drinkHave;
+
+            if (emState == 0 && !stableSc.gaveDrink)
+            {
+                if(drinkSc.HasReadyCoffee)
+                {
+                    ping.Play();
+                    drinkSc.HasReadyCoffee = false;
+                    stableSc.gaveDrink = true;
+                    stableSc.DrinkTutorial();
+                }
+            }
 
             foreach (GameObject juke in jukes)
             {
@@ -90,7 +102,7 @@ public class foodCart : MonoBehaviour
                         }
                     }
 
-                    if (handSc.tutorialLvl is 1)
+                    if (handSc.tutorialLvl != 0)
                     {
                         clock.GetComponent<Image>().fillAmount -= 0.25f;
 

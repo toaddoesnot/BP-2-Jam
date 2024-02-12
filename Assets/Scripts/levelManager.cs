@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class levelManager : MonoBehaviour
@@ -16,9 +17,17 @@ public class levelManager : MonoBehaviour
     public bool needRespawn;
     public int myScene;
 
+    public depressedLevels deprSc;
+    public stableLevels stabSc;
+
+    public sink sinkSc;
+    public screenSwiper screenSc;
+    public instructionalComments subtitleSc;
+
     void Start()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
     }
 
     void Update()
@@ -80,5 +89,42 @@ public class levelManager : MonoBehaviour
     public void BackMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void StableEnd()
+    {
+        //
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+        {
+            stabSc.YuriEncounter();
+            managerSc.closeSign.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            string closeDiner = "Let's collect and wash the dishes first!";
+            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+            {
+                subtitleSc.instComments.Add(closeDiner);
+                subtitleSc.Subtitles();
+            }
+        }
+    }
+
+    public void DepressiveEnd()
+    {
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+        {
+            deprSc.InitiateFrances();
+            managerSc.closeSign.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            string closeDiner = "We still need to leave the diner clean... Relatively...";
+            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+            {
+                subtitleSc.instComments.Add(closeDiner);
+                subtitleSc.Subtitles();
+            }
+        }
     }
 }

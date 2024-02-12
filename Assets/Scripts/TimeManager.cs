@@ -38,7 +38,9 @@ public class TimeManager : MonoBehaviour
     public Sprite[] extraClocks;
     public int emotSt;
     public Image clockIm;
+
     public manicLevels manSc;
+
 
     void Start()
     {
@@ -131,7 +133,6 @@ public class TimeManager : MonoBehaviour
         timeOn = false;
         closeSign.GetComponent<Button>().enabled = true;
         closeSign.GetComponent<Image>().sprite = closed2;
-        //myFlowchart2.ExecuteBlock("step2");
     }
 
     public void OpenDiner()
@@ -146,7 +147,7 @@ public class TimeManager : MonoBehaviour
         closeSign.GetComponent<Button>().enabled = false;
         closeSign.GetComponent<Image>().sprite = closed1;
 
-        if (handSc.tutorialLvl != 1)
+        if (handSc.tutorialLvl == 0)
         {
             //HOW MANY CUSTOMERS IN EACH STAGE
             if (emotSt == 1)

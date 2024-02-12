@@ -35,9 +35,18 @@ public class levelOne : MonoBehaviour
     private bool done2;
 
     public GameObject eepyRC;
+    public GameObject[] lids;
+    public AudioSource lidSound;
+    public GameObject blackScreen;
+
+    public int tutPhase;
+    public AudioSource bgSound;
+    public bool allEmpty;
 
     void Update()
     {
+
+
         if (foodSc.dishesServed == 4)
         {
             if (!done)
@@ -48,7 +57,7 @@ public class levelOne : MonoBehaviour
         }
         if (done)
         {
-            if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty)
+            if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty && customerScript.weEmpty)
             {
                 if (!done2)
                 {
@@ -56,6 +65,43 @@ public class levelOne : MonoBehaviour
                     done2 = true;
                 }
             }
+        }
+
+        if (tutPhase == 1)
+        {
+            lids[1].SetActive(false);
+        }
+        if (tutPhase == 2)
+        {
+            lids[4].SetActive(false);
+        }
+        if (tutPhase == 3)
+        {
+            lids[7].SetActive(false);
+        }
+        if (tutPhase == 4)
+        {
+            lids[8].SetActive(false);
+        }
+        if (tutPhase == 5)
+        {
+            lids[0].SetActive(false);
+        }
+        if (tutPhase == 6)
+        {
+            lids[3].SetActive(false);
+        }
+        if (tutPhase == 7)
+        {
+            lids[6].SetActive(false); //shroom
+        }
+        if (tutPhase == 8)
+        {
+            lids[2].SetActive(false); //potato
+        }
+        if (tutPhase == 9)
+        {
+            lids[5].SetActive(false); //egg
         }
     }
 
@@ -94,6 +140,9 @@ public class levelOne : MonoBehaviour
                 FrancesObj.SetActive(false);
                 customerScript.introLevels = true;
                 customerScript.GenerateCustomer();
+
+                print("a lid");
+
                 cameraScreen.self.GetComponent<Button>().enabled = true;
 
                 FrancesStates = 2;
@@ -168,11 +217,18 @@ public class levelOne : MonoBehaviour
     IEnumerator ClosingDiner2()
     {
         yield return null;
+        CancelInvoke();
         FrancesDiner.ExecuteBlock("closing");
     }
 
     public void CabinReturn()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void FinishLevel()
+    {
+        blackScreen.SetActive(true);
+        bgSound.volume = 0.2f;
     }
 }

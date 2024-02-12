@@ -19,6 +19,8 @@ public class plateGenerator : MonoBehaviour
     private bool firstTime;
 
     public hand handSc;
+    public bool tutorialed;
+    public levelOne tutLvl;
 
     void Awake()
     {
@@ -109,10 +111,43 @@ public class plateGenerator : MonoBehaviour
     public void PastaOn()
     {
         myPlateSource.PlayOneShot(plateSounds[0]);
+        if (tutorialed)
+        {
+            if (tutLvl.tutPhase == 6)
+            {
+                tutLvl.tutPhase = 7;
+                tutLvl.lidSound.Play();
+            }
+            else
+            {
+                if (tutLvl.tutPhase == 8)
+                {
+                    tutLvl.tutPhase = 9;
+                    tutLvl.lidSound.Play();
+                }
+            }
+        }
+            
     }
     public void ToastOn()
     {
         myPlateSource.PlayOneShot(plateSounds[1]);
+        if (tutorialed)
+        {
+            if (tutLvl.tutPhase == 2)
+            {
+                tutLvl.tutPhase = 3;
+                tutLvl.lidSound.Play();
+            }
+            else
+            {
+                if (tutLvl.tutPhase == 3)
+                {
+                    tutLvl.tutPhase = 4;
+                    tutLvl.lidSound.Play();
+                }
+            }
+        }
     }
     public void ButterOn()
     {

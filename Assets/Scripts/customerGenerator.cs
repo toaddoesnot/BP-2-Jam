@@ -30,7 +30,7 @@ public class customerGenerator : MonoBehaviour
     public int EmState;
     
     public instructionalComments subtitleSc;
-    
+    public bool weEmpty; //only for level instrucitonal
 
     public void Start()
     {
@@ -51,8 +51,10 @@ public class customerGenerator : MonoBehaviour
         }
         weFull = allOccupied;
 
-
-        //if (customerSlots[0].GetComponent<characterSlot>().occupied)
+        if (!customerSlots[0].GetComponent<characterSlot>().occupied && !customerSlots[1].GetComponent<characterSlot>().occupied && !customerSlots[2].GetComponent<characterSlot>().occupied && !customerSlots[3].GetComponent<characterSlot>().occupied)
+        {
+            weEmpty = true;
+        }
 
         //{
         //    weFull = true;
@@ -117,12 +119,15 @@ public class customerGenerator : MonoBehaviour
     IEnumerator GenerateX()
     {
         yield return null;
+        GetComponent<hand>().tutorialLvl = 2;
         GenerateCustomer();
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(25f);
+        GetComponent<hand>().tutorialLvl = 3;
         GenerateCustomer();
 
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(25f);
+        GetComponent<hand>().tutorialLvl = 4;
         GenerateCustomer();
     }
 

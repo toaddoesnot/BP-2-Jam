@@ -28,6 +28,10 @@ public class KitchenwareClicked : MonoBehaviour
 
     public int myState;
 
+    public bool needAdvice;
+    public levelOne tutLvl;
+    public GameObject[] plateSc; //
+
     public void Update()
     {
         if (myObject != null)
@@ -63,6 +67,14 @@ public class KitchenwareClicked : MonoBehaviour
             {
                 Instantiate(Pot, transform.position, Quaternion.identity, this.transform);
                 FoodSelected.currentFoods = -1;
+                if (needAdvice)
+                {
+                    if (tutLvl.tutPhase == 5)
+                    {
+                        tutLvl.tutPhase = 6;
+                        tutLvl.lidSound.Play();
+                    }
+                }
             }
         }
            
@@ -76,6 +88,14 @@ public class KitchenwareClicked : MonoBehaviour
             {
                 Instantiate(Toaster, transform.position, Quaternion.identity, this.transform);
                 FoodSelected.currentFoods = -1;
+                if (needAdvice)
+                {
+                    if(tutLvl.tutPhase == 1)
+                    {
+                        tutLvl.tutPhase = 2;
+                        tutLvl.lidSound.Play();
+                    }
+                }
             }
         }
     }
@@ -121,6 +141,16 @@ public class KitchenwareClicked : MonoBehaviour
     public void FryingReady()
     {
         foodSound.PlayOneShot(foodSounds[3]);
+        if (needAdvice)
+        {
+            if (tutLvl.tutPhase == 2)
+            {
+                plateSc[0].GetComponent<plateGenerator>().GeneratePlate();
+                plateSc[1].GetComponent<plateGenerator>().GeneratePlate();
+                plateSc[2].GetComponent<plateGenerator>().GeneratePlate();
+                plateSc[3].GetComponent<plateGenerator>().GeneratePlate();
+            }
+        }
     }
     public void TakeBread()
     {

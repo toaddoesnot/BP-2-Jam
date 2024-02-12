@@ -61,33 +61,58 @@ public class orderGenerator : MonoBehaviour
 
         if (handSc.tutorialLvl is 1)
         {
-            firstCourse = Random.Range(0, 3);
-            secondCourse = Random.Range(0, 3);
-            PotatoONoodle = Random.Range(0, 2);
+            firstCourse = 0;
+            secondCourse = 2;//Random.Range(0, 3);
             drinks = 3;
 
-            randomOrder = Random.Range(0, 2);
+            randomOrder = 0;//Random.Range(0, 2);
             Order();
         }
         else
         {
             if (handSc.tutorialLvl is 2)
             {
-                firstCourse = Random.Range(0, 3);
-                secondCourse = Random.Range(0, 3);
+                firstCourse = 1;
+                secondCourse = 2;
                 drinks = 3;
 
-                randomOrder = Random.Range(0, 3);
+                randomOrder = 0;
                 Order();
             }
             else
             {
-                PotatoONoodle = Random.Range(0, 2);
-                firstCourse = Random.Range(0, 3);
-                secondCourse = Random.Range(0, 3);
-                drinks = Random.Range(0, 4);
-                randomOrder = Random.Range(0, 3);
-                Order();
+                if (handSc.tutorialLvl is 3)
+                {
+                    firstCourse = 2;
+                    secondCourse = 1;
+                    drinks = 3;
+
+                    randomOrder = 1;
+                    Order();
+                }
+                else
+                {
+                    if (handSc.tutorialLvl is 4)
+                    {
+                        firstCourse = 2;
+                        secondCourse = 0;
+                        drinks = 3;
+                        PotatoONoodle = 1;
+
+                        randomOrder = 1;
+                        Order();
+                    }
+                    else
+                    {
+                        PotatoONoodle = Random.Range(0, 2);
+                        firstCourse = Random.Range(0, 3);
+                        secondCourse = Random.Range(0, 3);
+                        drinks = Random.Range(0, 4);
+                        randomOrder = Random.Range(0, 3);
+                        Order();
+                    }
+                }
+                
             }
         }
     }

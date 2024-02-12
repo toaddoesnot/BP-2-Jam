@@ -865,6 +865,8 @@ MonoBehaviour:
   dishSc: {fileID: 8895664067154281837}
   reDisher: {fileID: 8895664065101539112}
   handSc: {fileID: 0}
+  tutorialed: 0
+  tutLvl: {fileID: 0}
 --- !u!58 &6567004918387890838
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1086,6 +1088,8 @@ MonoBehaviour:
   dishSc: {fileID: 8895664067154281837}
   reDisher: {fileID: 8895664065820371875}
   handSc: {fileID: 0}
+  tutorialed: 0
+  tutLvl: {fileID: 0}
 --- !u!58 &6567004918502475758
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2110,6 +2114,8 @@ MonoBehaviour:
   dishSc: {fileID: 8895664067154281837}
   reDisher: {fileID: 8895664066881621530}
   handSc: {fileID: 0}
+  tutorialed: 0
+  tutLvl: {fileID: 0}
 --- !u!58 &6567004919032824433
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3206,6 +3212,8 @@ MonoBehaviour:
   dishSc: {fileID: 8895664067154281837}
   reDisher: {fileID: 8895664066417904314}
   handSc: {fileID: 0}
+  tutorialed: 0
+  tutLvl: {fileID: 0}
 --- !u!58 &6567004919877502761
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4666,8 +4674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2084.89, y: 60.9}
-  m_SizeDelta: {x: 386, y: 1573}
+  m_AnchoredPosition: {x: -2084.89, y: 32.316288}
+  m_SizeDelta: {x: 386, y: 1668.7881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8895664065086019519
 CanvasRenderer:
@@ -13986,6 +13994,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 2
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664065460505206}
   plate: {fileID: 8895664065815023112}
   plate2: {fileID: 8895664067101929897}
@@ -14010,6 +14020,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664065256221375}
   menuChoice: {fileID: 8895664065371894840}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!61 &8895664065350907515
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19239,6 +19255,7 @@ MonoBehaviour:
   dotSprites:
   - {fileID: 21300000, guid: 1f3127bad0c3ca647973bf3a1df7a7c0, type: 3}
   - {fileID: 21300000, guid: 8b400cfcd6c1b8b408087a67e9404b87, type: 3}
+  depress: 0
 --- !u!61 &8895664065685503412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23979,6 +23996,7 @@ MonoBehaviour:
   extraClocks: []
   emotSt: 0
   clockIm: {fileID: 0}
+  manSc: {fileID: 0}
 --- !u!82 &8895664065931124673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -28503,6 +28521,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 4
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664066062622603}
   plate: {fileID: 8895664066214068184}
   plate2: {fileID: 8895664065345635031}
@@ -28527,6 +28547,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664065708925143}
   menuChoice: {fileID: 8895664065587208850}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!61 &8895664066151001444
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28814,6 +28840,7 @@ MonoBehaviour:
   dotSprites:
   - {fileID: 21300000, guid: 1f3127bad0c3ca647973bf3a1df7a7c0, type: 3}
   - {fileID: 21300000, guid: 8b400cfcd6c1b8b408087a67e9404b87, type: 3}
+  depress: 0
 --- !u!61 &8895664066178122386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29407,6 +29434,9 @@ MonoBehaviour:
   self: {fileID: 8895664066188562327}
   henss: 1
   myState: 0
+  needAdvice: 0
+  tutLvl: {fileID: 0}
+  plateSc: []
 --- !u!82 &8895664066188562321
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33015,6 +33045,8 @@ MonoBehaviour:
   blackScreen: {fileID: 8895664065302906093}
   levelScript: {fileID: 0}
   blocker: {fileID: 8895664066103910264}
+  stable: 0
+  stableSc: {fileID: 0}
 --- !u!114 &8895664066354009218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33339,6 +33371,7 @@ MonoBehaviour:
   traySc: {fileID: 8895664067074185883}
   dishSc: {fileID: 8895664067154281837}
   switchSc: {fileID: 2585710774204701681}
+  emState: 0
 --- !u!222 &8895664066364557229
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33521,6 +33554,9 @@ MonoBehaviour:
   self: {fileID: 8895664066375665937}
   henss: 0
   myState: 0
+  needAdvice: 0
+  tutLvl: {fileID: 0}
+  plateSc: []
 --- !u!82 &8895664066375665939
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35204,6 +35240,7 @@ MonoBehaviour:
   dotSprites:
   - {fileID: 21300000, guid: 1f3127bad0c3ca647973bf3a1df7a7c0, type: 3}
   - {fileID: 21300000, guid: 8b400cfcd6c1b8b408087a67e9404b87, type: 3}
+  depress: 0
 --- !u!61 &8895664066515248537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37769,6 +37806,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 5
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664065441984607}
   plate: {fileID: 8895664066541738907}
   plate2: {fileID: 8895664065471542663}
@@ -37793,6 +37832,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664067141850044}
   menuChoice: {fileID: 8895664067126406325}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!61 &8895664066621429922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60212,6 +60257,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 3
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664065511551224}
   plate: {fileID: 8895664065687407030}
   plate2: {fileID: 8895664065784792587}
@@ -60236,6 +60283,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664066798035206}
   menuChoice: {fileID: 8895664066799301216}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!61 &8895664067061039098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60733,6 +60786,8 @@ MonoBehaviour:
   clockArrow: {fileID: 8895664065214257094}
   dishesServed: 0
   dishSc: {fileID: 8895664067154281837}
+  emState: 0
+  stableSc: {fileID: 0}
 --- !u!61 &8895664067074185860
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61970,6 +62025,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 6
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664066829227027}
   plate: {fileID: 8895664066109383824}
   plate2: {fileID: 8895664066072649278}
@@ -61994,6 +62051,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664066823557968}
   menuChoice: {fileID: 8895664066447570487}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!61 &8895664067149917022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62854,6 +62917,8 @@ MonoBehaviour:
   orderPlaque: {fileID: 8895664067020993038}
   myNo: 1
   myOrder: {fileID: 0}
+  drinkDone: 0
+  foodDone: 0
   timey: {fileID: 8895664065942698671}
   plate: {fileID: 8895664065571191373}
   plate2: {fileID: 8895664065219805646}
@@ -62878,6 +62943,12 @@ MonoBehaviour:
   mapCenter: {fileID: 8895664065394950162}
   menuChoice: {fileID: 8895664066882486648}
   sinkSc: {fileID: 8895664066364557219}
+  EmState: 0
+  subtitleSc: {fileID: 0}
+  heLeft: {fileID: 0}
+  gaveManic: 0
+  lidAction: 0
+  tutLvl: {fileID: 0}
 --- !u!50 &8895664067206487494
 Rigidbody2D:
   serializedVersion: 4
