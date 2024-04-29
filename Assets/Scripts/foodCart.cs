@@ -89,6 +89,8 @@ public class foodCart : MonoBehaviour
                         else
                         {
                             Robot.GetComponent<Animator>().Play("RC_delivery");
+
+                            
                         }
                     }
 
@@ -157,6 +159,19 @@ public class foodCart : MonoBehaviour
     IEnumerator coolDown()
     {
         yield return new WaitForSeconds(1f);
+
+        if (emState == -1)
+        {
+            if (handSc.tutorialLvl == 3 || handSc.tutorialLvl == 2)
+            {
+                instLevels.customerScript.Generator();
+                //if (instLevels.tutPhase == 4)
+                // {
+                //    instLevels.tutPhase = 5;
+                //}
+            }
+        }
+
         if (emState == 1)
         {
             yield return new WaitForSeconds(4f);

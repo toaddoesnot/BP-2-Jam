@@ -5,7 +5,11 @@ using UnityEngine;
 public class CursorChanger : MonoBehaviour
 {
     public Texture2D cursorDefault;
-    // Start is called before the first frame update
+    public Texture2D cursorDefault2;
+    private Camera _cam;
+    public AudioClip _clickClip;
+    public GameObject curAnim;
+
     public GameObject[] Cursors;
 
     public FoodClasses FoodClassSc;
@@ -18,7 +22,9 @@ public class CursorChanger : MonoBehaviour
 
     void Start()
     {
-        //Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.ForceSoftware); /////////////
+        _cam = Camera.main;
+
         //Cursor.visible = false;
         FoodClassSc = foods.GetComponent<FoodClasses>();
 
@@ -32,13 +38,25 @@ public class CursorChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            AudioSource.PlayClipAtPoint(_clickClip, _cam.transform.position);
+            Cursor.SetCursor(cursorDefault2, Vector2.zero, CursorMode.ForceSoftware);
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.ForceSoftware);
+        }
+        
+
+
+
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 cursorPos2d = new Vector3(cursorPos.x, cursorPos.y, 1);
         foreach (GameObject cur in Cursors)
         {
             cur.transform.position = cursorPos2d;
         }
-        //Cursor.visible = false;
 
         CheckSelectionStatus();
 

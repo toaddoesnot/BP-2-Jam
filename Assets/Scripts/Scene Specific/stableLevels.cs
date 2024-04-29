@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Fungus;
 
 public class stableLevels : MonoBehaviour
@@ -22,6 +23,9 @@ public class stableLevels : MonoBehaviour
 
     public GameObject blackScreen;
     public AudioSource soundBg;
+
+    public TextMeshProUGUI nodeText;
+    private bool amOpen;
 
     public void DrinkTutorial()
     {
@@ -71,5 +75,20 @@ public class stableLevels : MonoBehaviour
     {
         blackScreen.SetActive(true);
         soundBg.volume = 0.2f;
+    }
+
+    public void RemindToOpen()
+    {
+        
+
+        if (!amOpen)
+        {
+            nodeText.text = "Let's open the diner!";
+            amOpen = true;
+        }
+        else
+        {
+            nodeText.text = "";
+        }
     }
 }

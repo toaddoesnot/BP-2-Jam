@@ -17,6 +17,12 @@ public class menuManager : MonoBehaviour
 
     public GameObject[] texts;
 
+    public float idleTimer;
+    public float respawnTime;
+
+    public GameObject stars;
+    public GameObject video;
+
     public void Start()
     {
         //PlayerPrefs.DeleteAll();
@@ -25,12 +31,12 @@ public class menuManager : MonoBehaviour
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            buttons[i].interactable = false;
+            //buttons[i].interactable = false; ////reenable
         }
 
         for (int i = 0; i < levelsUnlocked; i++)
         {
-            buttons[i].interactable = true;
+            //buttons[i].interactable = true; ////reenable
         }
     }
 
@@ -38,8 +44,28 @@ public class menuManager : MonoBehaviour
     {
         currentLvl = levelsUnlocked - 1;
 
-        
-        //
+        if (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
+        {
+            idleTimer += Time.deltaTime;
+
+            if (idleTimer > respawnTime)
+            {
+               // PlayVideo();
+                //idleTimer = 0;
+            }
+        }
+        else
+        {
+            idleTimer = 0;
+            //stars.SetActive(true);
+            //video.SetActive(false);
+        }
+    }
+
+    public void PlayVideo()
+    {
+        //stars.SetActive(false);
+        //video.SetActive(true);
     }
 
     public void OpenMenu()
@@ -105,4 +131,8 @@ public class menuManager : MonoBehaviour
             exception = false;
         }
     }
+
+
+
+
 }

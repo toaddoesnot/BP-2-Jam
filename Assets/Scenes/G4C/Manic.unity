@@ -536,7 +536,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1159089862}
+  - {fileID: 1159089827}
   selectedCommands: []
   variables: []
   description: 
@@ -1402,8 +1402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2082.72, y: 60.9}
-  m_SizeDelta: {x: 386, y: 1573}
+  m_AnchoredPosition: {x: -2076, y: 57.737198}
+  m_SizeDelta: {x: 386, y: 1601.4746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436155981
 MonoBehaviour:
@@ -1873,6 +1873,10 @@ PrefabInstance:
       propertyPath: subtitleSc
       value: 
       objectReference: {fileID: 1074266404}
+    - target: {fileID: 4821651480919080667, guid: 4748658ecca8c2f45985f4b8a02a0dd1, type: 3}
+      propertyPath: needRespawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4821651481014675717, guid: 4748658ecca8c2f45985f4b8a02a0dd1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5457,7 +5461,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7a38d2715e5d0ba438c7581289e6138e, type: 3}
     - target: {fileID: 7499811136894131445, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7814305901004101709, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: m_RootOrder

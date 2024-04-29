@@ -515,6 +515,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594458138}
   m_CullTransparentMesh: 1
+--- !u!114 &615494962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7423502943269385401, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+  m_PrefabInstance: {fileID: 3493729266837741138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &731203321 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3493729266391750827, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -975,17 +986,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1165648598753423497, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
   m_PrefabInstance: {fileID: 3493729266837741138}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1411849341 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3493729265560109615, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
-  m_PrefabInstance: {fileID: 3493729266837741138}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1521144862 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3493729265601808972, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -1236,11 +1236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8371d2b2fe14a9ca0a9465140027de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1766962295 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3493729265347619365, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
-  m_PrefabInstance: {fileID: 3493729266837741138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1766962296 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3493729265347619361, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -1259,24 +1254,11 @@ GameObject:
   - component: {fileID: 1855160610}
   - component: {fileID: 1855160609}
   - component: {fileID: 1855160608}
-  - component: {fileID: 1855160607}
-  - component: {fileID: 1855160606}
   - component: {fileID: 1855160605}
   - component: {fileID: 1855160611}
   - component: {fileID: 1855160615}
   - component: {fileID: 1855160614}
   - component: {fileID: 1855160613}
-  - component: {fileID: 1855160612}
-  - component: {fileID: 1855160618}
-  - component: {fileID: 1855160617}
-  - component: {fileID: 1855160616}
-  - component: {fileID: 1855160637}
-  - component: {fileID: 1855160636}
-  - component: {fileID: 1855160635}
-  - component: {fileID: 1855160634}
-  - component: {fileID: 1855160633}
-  - component: {fileID: 1855160632}
-  - component: {fileID: 1855160631}
   - component: {fileID: 1855160630}
   - component: {fileID: 1855160629}
   - component: {fileID: 1855160628}
@@ -1308,10 +1290,8 @@ GameObject:
   - component: {fileID: 1855160646}
   - component: {fileID: 1855160645}
   - component: {fileID: 1855160644}
-  - component: {fileID: 1855160665}
   - component: {fileID: 1855160672}
   - component: {fileID: 1855160669}
-  - component: {fileID: 1855160668}
   - component: {fileID: 1855160667}
   - component: {fileID: 1855160678}
   - component: {fileID: 1855160677}
@@ -1327,6 +1307,9 @@ GameObject:
   - component: {fileID: 1855160684}
   - component: {fileID: 1855160686}
   - component: {fileID: 1855160685}
+  - component: {fileID: 1855160689}
+  - component: {fileID: 1855160688}
+  - component: {fileID: 1855160687}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1347,11 +1330,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 51.78671, y: 112.32478}
+  scrollPos: {x: 221.5603, y: 85.61467}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 542
-  zoom: 0.84999967
+  blockViewHeight: 532
+  zoom: 0.94000006
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -1359,7 +1342,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1855160672}
+  - {fileID: 1855160629}
   selectedCommands: []
   variables: []
   description: 
@@ -1403,63 +1386,8 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 12
+    floatVal: 4
   durationOLD: 0
---- !u!114 &1855160606
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 5
-  indentLevel: 0
-  storyText: This is a disaster! They forgot to turn me back on. AND provide a 2-week
-    notice!
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160607
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 4
-  indentLevel: 0
-  storyText: "Where is\u2026 everybody?"
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1855160608
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1516,9 +1444,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 70.53613
-    y: 10.482314
-    width: 73.52942
+    x: 66.08342
+    y: -30.917526
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1531,8 +1459,6 @@ MonoBehaviour:
   - {fileID: 1855160683}
   - {fileID: 1855160609}
   - {fileID: 1855160608}
-  - {fileID: 1855160607}
-  - {fileID: 1855160606}
   - {fileID: 1855160684}
   - {fileID: 1855160614}
   - {fileID: 1855160615}
@@ -1552,21 +1478,6 @@ MonoBehaviour:
   parentBlock: {fileID: 1855160610}
   suppressBlockAutoSelect: 0
   waitForFrames: 1
---- !u!114 &1855160612
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 10
-  indentLevel: 0
-  sayDialog: {fileID: 1411849341}
 --- !u!114 &1855160613
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1581,9 +1492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 180.03067
-    y: -7.1681223
-    width: 93.529434
+    x: 190.97632
+    y: -38.113785
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1592,17 +1503,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1855160634}
-  - {fileID: 1855160633}
-  - {fileID: 1855160632}
-  - {fileID: 1855160616}
-  - {fileID: 1855160612}
-  - {fileID: 1855160618}
-  - {fileID: 1855160635}
-  - {fileID: 1855160637}
-  - {fileID: 1855160636}
-  - {fileID: 1855160617}
-  - {fileID: 1855160631}
+  - {fileID: 1855160688}
+  - {fileID: 1855160687}
   - {fileID: 1855160630}
   suppressAllAutoSelections: 0
 --- !u!114 &1855160614
@@ -1650,86 +1552,6 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
---- !u!114 &1855160616
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5316d953c7abe498799575550c973535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 13
-  indentLevel: 0
-  animator:
-    animatorRef: {fileID: 0}
-    animatorVal: {fileID: 1766962295}
-  stateName:
-    stringRef: {fileID: 0}
-    stringVal: RC_out
-  layer:
-    integerRef: {fileID: 0}
-    integerVal: -1
-  time:
-    floatRef: {fileID: 0}
-    floatVal: 0
---- !u!114 &1855160617
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 12
-  indentLevel: 0
-  storyText: "Now, don\u2019t be ridiculous and give me the menu!"
-  description: 
-  character: {fileID: 114049402}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160618
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 11
-  indentLevel: 0
-  storyText: Error code! The diner is closed.
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1855160619
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1820,9 +1642,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 302.96094
-    y: 17.439066
-    width: 79.41177
+    x: 304.22675
+    y: 18.939066
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1835,7 +1657,6 @@ MonoBehaviour:
   - {fileID: 1855160620}
   - {fileID: 1855160619}
   - {fileID: 1855160623}
-  - {fileID: 1855160665}
   - {fileID: 1855160643}
   - {fileID: 1855160642}
   - {fileID: 1855160640}
@@ -1855,8 +1676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 0
-  storyText: "Oh no, we can\u2019t make the customers wait in Doppel Diner. You have
-    to step in! The management will surely provide you with good compensation!"
+  storyText: After what you ask? Em... Never mind...
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -1898,9 +1718,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 178.7126
-    y: 48.04002
-    width: 102.94119
+    x: 190.30923
+    y: 15.019013
+    width: 65.319145
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1910,6 +1730,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1855160628}
+  - {fileID: 1855160689}
   - {fileID: 1855160627}
   suppressAllAutoSelections: 0
 --- !u!114 &1855160630
@@ -1940,172 +1761,6 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
---- !u!114 &1855160631
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5316d953c7abe498799575550c973535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 20
-  indentLevel: 0
-  animator:
-    animatorRef: {fileID: 0}
-    animatorVal: {fileID: 1766962295}
-  stateName:
-    stringRef: {fileID: 0}
-    stringVal: RC_in
-  layer:
-    integerRef: {fileID: 0}
-    integerVal: -1
-  time:
-    floatRef: {fileID: 0}
-    floatVal: 0
---- !u!114 &1855160632
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 19
-  indentLevel: 0
-  storyText: "And who is this? Pretty dramatic employee turnover rate here, isn\u2019t
-    it? Tsk tsk. Well, good for you to have a paying customer!"
-  description: 
-  character: {fileID: 114049402}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160633
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 18
-  indentLevel: 0
-  storyText: "Oh\u2026 You are open, finally! I thought I would starve to death!"
-  description: 
-  character: {fileID: 114049402}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160634
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 17
-  indentLevel: 0
-  sayDialog: {fileID: 453735063}
---- !u!114 &1855160635
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 16
-  indentLevel: 0
-  storyText: I apologize, Ma'am, but our new cook is not trained yet and no one can
-    manage the whole diner all alone!
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160636
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 15
-  indentLevel: 0
-  storyText: Is there a meteroid storm I missed? Doppel Diner never closes!
-  description: 
-  character: {fileID: 114049402}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1855160637
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 14
-  indentLevel: 0
-  sayDialog: {fileID: 453735063}
 --- !u!114 &1855160639
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2171,8 +1826,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 422.65012
-    y: -39.191483
-    width: 75.88236
+    y: -37.815334
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2271,8 +1926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 76
   indentLevel: 0
-  storyText: "Sorry, sweetheart! Have to get used to it all: you know, coming on
-    time, paying\u2026"
+  storyText: Sorry, sweetheart! It's not often that you can see Doppel Diner... thriving.
   description: 
   character: {fileID: 114049402}
   portrait: {fileID: 0}
@@ -2359,7 +2013,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 424.01413
     y: 23.439066
-    width: 77.05884
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2504,9 +2158,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 425.21338
-    y: 86.40346
-    width: 78.235306
+    x: 423.71338
+    y: 89.40346
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2636,33 +2290,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1855160665
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 84
-  indentLevel: 0
-  storyText: Be careful who you make friends with. Your choices have consequences!
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1855160667
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2690,34 +2317,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1855160668
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 90
-  indentLevel: 0
-  storyText: I apologize again for such a sudden start. I already sent a message
-    to the management.
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1855160669
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2732,9 +2331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 564.05536
+    x: 562.78955
     y: 48.718742
-    width: 91.17648
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2743,7 +2342,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1855160668}
   - {fileID: 1855160667}
   - {fileID: 1855160686}
   - {fileID: 1855160685}
@@ -2763,9 +2361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 552.8665
-    y: -17.703335
-    width: 126.47062
+    x: 550.3349
+    y: -18.969158
+    width: 90.85106
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3084,8 +2682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 103
   indentLevel: 0
-  storyText: I apologize, we have to postpone your onboarding. I need to run some
-    protocols immediately to make our diner full-staffed again!
+  storyText: We were just about to close though...
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -3144,6 +2741,76 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1855160687
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 131
+  indentLevel: 0
+  storyText: Hey! I saw the close sign but the lights were on, so.... You will take
+    my order, right?
+  description: 
+  character: {fileID: 114049402}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1855160688
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65d551a201c94bc79950076ff3eaf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 130
+  indentLevel: 0
+  sayDialog: {fileID: 453735063}
+--- !u!114 &1855160689
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 129
+  indentLevel: 0
+  storyText: Look at you, Doppel Diner might fnially see a silver lining!
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &2328659490399970265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1165648600590335371, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -3178,6 +2845,14 @@ PrefabInstance:
     - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: myScene
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: needRespawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: respawnTime
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1165648598924683094, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3230,6 +2905,10 @@ PrefabInstance:
     - target: {fileID: 1165648600712270894, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646809185174647657, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2655581445054024548, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_RootOrder
@@ -3696,6 +3375,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1100920253}
     - target: {fileID: 3493729265753615342, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: nodeText
+      value: 
+      objectReference: {fileID: 615494962}
+    - target: {fileID: 3493729265753615342, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: blackScreen
       value: 
       objectReference: {fileID: 823398569}
@@ -3743,6 +3426,10 @@ PrefabInstance:
       propertyPath: lids.Array.data[8]
       value: 
       objectReference: {fileID: 171067807}
+    - target: {fileID: 3493729265755074283, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: transitionDuration
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3493729265757849700, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

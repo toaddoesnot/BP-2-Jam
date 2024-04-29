@@ -24,9 +24,12 @@ public class manicLevels : MonoBehaviour
     public AudioSource soundBg;
     public levelManager levelSc;
 
+    private hand handSc;
+
     void Start()
     {
         cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
     }
 
     void Update()
@@ -36,6 +39,7 @@ public class manicLevels : MonoBehaviour
             if (swipeSc.onScreen == 0)
             {
                 StartCoroutine(EnsueBlinking());
+                swipeSc.blocker.SetActive(true);
                 wentManic = false;
             }
         }
@@ -51,6 +55,8 @@ public class manicLevels : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+
+
         if (stoveUp.GetComponent<KitchenwareClicked>().HasItem)
         {
             Destroy(stoveUp.GetComponent<KitchenwareClicked>().myObject);
@@ -59,6 +65,8 @@ public class manicLevels : MonoBehaviour
         {
             Destroy(stoveDown.GetComponent<KitchenwareClicked>().myObject);
         }
+
+        handSc.haveOrder = false;
 
         cg.StopCoroutine("GenerateCustomer");
         foreach (GameObject order in cg.customerSlots)
@@ -79,6 +87,7 @@ public class manicLevels : MonoBehaviour
         blocker.SetActive(true);
         dogsTalk.SetActive(true);
         Manic.ExecuteBlock("dawgs");
+        swipeSc.blocker.SetActive(false);
     }
 
     public void StopBlinking()

@@ -115,24 +115,29 @@ public class customerGenerator : MonoBehaviour
         GenerateCustomer();
     }
 
-    public void Generator()
+    public void Generator() ///////////for tutorial only
     {
-        StartCoroutine(GenerateX());
-    }
-
-    IEnumerator GenerateX()
-    {
-        yield return null;
-        GetComponent<hand>().tutorialLvl = 2;
-        GenerateCustomer();
-
-        yield return new WaitForSeconds(25f);
-        GetComponent<hand>().tutorialLvl = 3;
-        GenerateCustomer();
-
-        yield return new WaitForSeconds(25f);
-        GetComponent<hand>().tutorialLvl = 4;
-        GenerateCustomer();
+        if(GetComponent<hand>().tutorialLvl == 1)
+        {
+            GetComponent<hand>().tutorialLvl = 2;
+            GenerateCustomer();
+        }
+        else
+        {
+            if (GetComponent<hand>().tutorialLvl == 2)
+            {
+                GetComponent<hand>().tutorialLvl = 3;
+                GenerateCustomer();
+            }
+            else
+            {
+                if (GetComponent<hand>().tutorialLvl == 3)
+                {
+                    GetComponent<hand>().tutorialLvl = 4;
+                    GenerateCustomer();
+                }
+            }
+        }
     }
 
     public void GenerateCustomer()

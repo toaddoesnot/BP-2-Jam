@@ -120,6 +120,7 @@ public class screenSwiper : MonoBehaviour
         {
             if (extraCase)
             {
+                levelScript.GetComponent<levelOne>().nodeText.text = "";
                 levelScript.GetComponent<levelOne>().FrancesDiner.ExecuteBlock("ExtraCom");
                 extraCase = false;
                 StartCoroutine(unblock());

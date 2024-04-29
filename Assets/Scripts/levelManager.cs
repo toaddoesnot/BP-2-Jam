@@ -37,26 +37,29 @@ public class levelManager : MonoBehaviour
     {
         if (needRespawn)
         {
-            if (managerSc.timeOn)
+            if (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
             {
-                if (!Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
-                {
-                    idleTimer += Time.deltaTime;
+                idleTimer += Time.deltaTime;
 
-                    if (idleTimer > respawnTime)
-                    {
-                        Replay();
-                        idleTimer = 0;
-                    }
-                }
-                else
+                if (idleTimer > respawnTime)
                 {
+                    Replay();
                     idleTimer = 0;
                 }
             }
             else
             {
                 idleTimer = 0;
+            }
+
+
+            if (managerSc.timeOn)
+            {
+               //PREV WAS HERE
+            }
+            else
+            {
+                //idleTimer = 0;
             }
         }
         
@@ -82,10 +85,18 @@ public class levelManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        if (handSc.tutorialLvl is 100)
+        else
         {
-            SceneManager.LoadScene(0); //for now sample scene
+            if (handSc.tutorialLvl is 100)
+            {
+                SceneManager.LoadScene(0); //for now sample scene
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
+        
         //
     }
 

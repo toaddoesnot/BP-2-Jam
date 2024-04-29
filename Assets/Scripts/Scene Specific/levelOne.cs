@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using Fungus;
 using UnityEngine.SceneManagement;
 
@@ -43,6 +44,8 @@ public class levelOne : MonoBehaviour
     public AudioSource bgSound;
     public bool allEmpty;
 
+    public TextMeshProUGUI nodeText;
+
     void Update()
     {
 
@@ -70,22 +73,27 @@ public class levelOne : MonoBehaviour
         if (tutPhase == 1)
         {
             lids[1].SetActive(false);
+            nodeText.text = "Click on the left mouse button once to grab. Click on the right mouse button to drop.";
         }
         if (tutPhase == 2)
         {
             lids[4].SetActive(false);
+            
         }
         if (tutPhase == 3)
         {
             lids[7].SetActive(false);
+            nodeText.text = "";
         }
         if (tutPhase == 4)
         {
             lids[8].SetActive(false);
+            
         }
         if (tutPhase == 5)
         {
             lids[0].SetActive(false);
+            
         }
         if (tutPhase == 6)
         {
@@ -121,12 +129,16 @@ public class levelOne : MonoBehaviour
         cameraScreen.blackScreen.SetActive(false);
         cameraScreen.self.GetComponent<Button>().enabled = true;
         cameraScreen.extraCase = true;
+
+        nodeText.text = "Check the other room";
     }
 
     public void Frances()
     {
         if(FrancesStates == 0) //screen swiper starts it
         {
+            nodeText.text = "";
+
             FrancesObj.SetActive(true);
             cameraScreen.self.GetComponent<Button>().enabled = false;
             FrancesDiner.ExecuteBlock("Second");
@@ -146,6 +158,7 @@ public class levelOne : MonoBehaviour
                 cameraScreen.self.GetComponent<Button>().enabled = true;
 
                 FrancesStates = 2;
+                nodeText.text = "Take the order and wait for the guest to choose.";
             }
             else
             {
@@ -201,7 +214,8 @@ public class levelOne : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         FrancesDiner.ExecuteBlock("beforeclosing");
-        InvokeRepeating("RepeatInstructions", 10f, 10f);
+        // InvokeRepeating("RepeatInstructions", 10f, 10f);
+        nodeText.text = "Collect all the dishes and tell me when to wash them. Then we should be ready!";
     }
 
     void RepeatInstructions()

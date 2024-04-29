@@ -31,6 +31,7 @@ public class miniTimer : MonoBehaviour
         {
             burntTime = 6;
         }
+        InitiateTimer();
     }
 
     public void InitiateTimer()
