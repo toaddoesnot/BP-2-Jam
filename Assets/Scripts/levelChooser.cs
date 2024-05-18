@@ -49,10 +49,10 @@ public class levelChooser : MonoBehaviour
         {
             if (but.GetComponent<Button>().interactable is true)
             {
-                Image image = but.GetComponent<Image>();
-                var tempColor = image.color;
-                tempColor.a = 0.1f;
-                image.color = tempColor;
+                //Image image = but.GetComponent<Image>();
+                //var tempColor = image.color;
+                //tempColor.a = 0.1f;
+                //image.color = tempColor;
             }
         }
 

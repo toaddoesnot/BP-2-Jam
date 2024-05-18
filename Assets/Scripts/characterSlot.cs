@@ -141,6 +141,62 @@ public class characterSlot : MonoBehaviour
                 print(myNo + ": I received my drink");
                 drinkDone = true;
             }
+
+            //INSERT CODE HERE           //public GameObject toast; strawberry; butter; noodles; potato; egg; shroom;
+            if (myOrder.GetComponent<orderGenerator>().randomOrder == 1 || myOrder.GetComponent<orderGenerator>().randomOrder == 2)
+            {
+                if (myOrder.GetComponent<orderGenerator>().PotatoONoodle is 0)
+                {
+                    plate.GetComponent<FoodButtonClick>().noodles.SetActive(true);
+
+                }
+                if (myOrder.GetComponent<orderGenerator>().PotatoONoodle is 1)
+                {
+                    plate.GetComponent<FoodButtonClick>().potato.SetActive(true);
+                }
+
+                if (myOrder.GetComponent<orderGenerator>().secondCourse == 0 && myOrder.GetComponent<orderGenerator>().secondCourse == 2)
+                {
+                    plate.GetComponent<FoodButtonClick>().egg.SetActive(true);
+                }
+                if (myOrder.GetComponent<orderGenerator>().secondCourse == 1 && myOrder.GetComponent<orderGenerator>().secondCourse == 2)
+                {
+                    plate.GetComponent<FoodButtonClick>().shroom.SetActive(true);
+                }
+
+                //FOR BOTH SIDES
+
+                if (myOrder.GetComponent<orderGenerator>().randomOrder == 2)
+                {
+                    plate.GetComponent<FoodButtonClick>().toast.SetActive(true);
+
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    {
+                        plate.GetComponent<FoodButtonClick>().strawberry.SetActive(true);
+                    }
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    {
+                        plate.GetComponent<FoodButtonClick>().butter.SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                if (myOrder.GetComponent<orderGenerator>().randomOrder == 0)
+                {
+                    plate.GetComponent<FoodButtonClick>().toast.SetActive(true);
+
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    {
+                        plate.GetComponent<FoodButtonClick>().strawberry.SetActive(true);
+                    }
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    {
+                        plate.GetComponent<FoodButtonClick>().butter.SetActive(true);
+                    }
+                }
+            }
+            //INSERT CODE HERE
         }
 
         if (foodDone && drinkDone)
@@ -149,14 +205,17 @@ public class characterSlot : MonoBehaviour
             {
                 ready2eat = true;
                 currentState = 3;
+
                 Destroy(myOrder);
                 myOrder = null;
 
                 timey.SetActive(false);
+
                 plate.SetActive(true);
 
-                StartCoroutine(Eating());
                 
+
+                StartCoroutine(Eating());
             }
         }
 

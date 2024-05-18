@@ -44,9 +44,9 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        //subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
-        //handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
-        //cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
+        subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+        handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+        cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
 
         if (needTip)
         {
