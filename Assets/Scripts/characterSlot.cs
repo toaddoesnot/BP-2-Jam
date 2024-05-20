@@ -13,6 +13,7 @@ public class characterSlot : MonoBehaviour
     public GameObject wheel;
     public GameObject menu;
     public GameObject cleanpl;
+    public GameObject ticket;
 
     public Sprite[] guestSprites;
 
@@ -36,6 +37,8 @@ public class characterSlot : MonoBehaviour
     public GameObject timey;
     public GameObject plate;
     public GameObject plate2;
+    public GameObject[] cup;
+    public GameObject cup2;
 
     public AudioSource bye;
     public int myGuest;
@@ -129,17 +132,43 @@ public class characterSlot : MonoBehaviour
             
         }
 
-        if(myOrder != null)
+        if (myOrder != null)
         {
             if (!foodDone && myOrder.GetComponent<orderGenerator>().OrderFullfilled)
             {
                 print(myNo + ": I received my order");
                 foodDone = true;
+
+                plate.SetActive(true);
             }
             if (!drinkDone && myOrder.GetComponent<orderGenerator>().DrinkFullfilled)
             {
                 print(myNo + ": I received my drink");
                 drinkDone = true;
+
+                ////
+                if (myOrder.GetComponent<orderGenerator>().drinks != 3)
+                {
+                    if (myOrder.GetComponent<orderGenerator>().drinks == 0)
+                    {
+                        cup[0].SetActive(true);
+                    }
+                    else
+                    {
+                        if (myOrder.GetComponent<orderGenerator>().drinks == 1)
+                        {
+                            cup[1].SetActive(true);
+                        }
+                        else
+                        {
+                            if (myOrder.GetComponent<orderGenerator>().drinks == 2)
+                            {
+                                cup[2].SetActive(true);
+                            }
+                        }
+                    }    
+                }
+                ////
             }
 
             //INSERT CODE HERE           //public GameObject toast; strawberry; butter; noodles; potato; egg; shroom;
@@ -155,11 +184,11 @@ public class characterSlot : MonoBehaviour
                     plate.GetComponent<FoodButtonClick>().potato.SetActive(true);
                 }
 
-                if (myOrder.GetComponent<orderGenerator>().secondCourse == 0 && myOrder.GetComponent<orderGenerator>().secondCourse == 2)
+                if (myOrder.GetComponent<orderGenerator>().secondCourse == 0 || myOrder.GetComponent<orderGenerator>().secondCourse == 2)
                 {
                     plate.GetComponent<FoodButtonClick>().egg.SetActive(true);
                 }
-                if (myOrder.GetComponent<orderGenerator>().secondCourse == 1 && myOrder.GetComponent<orderGenerator>().secondCourse == 2)
+                if (myOrder.GetComponent<orderGenerator>().secondCourse == 1 || myOrder.GetComponent<orderGenerator>().secondCourse == 2)
                 {
                     plate.GetComponent<FoodButtonClick>().shroom.SetActive(true);
                 }
@@ -170,11 +199,11 @@ public class characterSlot : MonoBehaviour
                 {
                     plate.GetComponent<FoodButtonClick>().toast.SetActive(true);
 
-                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 || myOrder.GetComponent<orderGenerator>().firstCourse == 2)
                     {
                         plate.GetComponent<FoodButtonClick>().strawberry.SetActive(true);
                     }
-                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 || myOrder.GetComponent<orderGenerator>().firstCourse == 2)
                     {
                         plate.GetComponent<FoodButtonClick>().butter.SetActive(true);
                     }
@@ -186,11 +215,11 @@ public class characterSlot : MonoBehaviour
                 {
                     plate.GetComponent<FoodButtonClick>().toast.SetActive(true);
 
-                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 0 || myOrder.GetComponent<orderGenerator>().firstCourse == 2)
                     {
                         plate.GetComponent<FoodButtonClick>().strawberry.SetActive(true);
                     }
-                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 && myOrder.GetComponent<orderGenerator>().firstCourse == 2)
+                    if (myOrder.GetComponent<orderGenerator>().firstCourse == 1 || myOrder.GetComponent<orderGenerator>().firstCourse == 2)
                     {
                         plate.GetComponent<FoodButtonClick>().butter.SetActive(true);
                     }
@@ -211,9 +240,7 @@ public class characterSlot : MonoBehaviour
 
                 timey.SetActive(false);
 
-                plate.SetActive(true);
-
-                
+                ticket.SetActive(false);
 
                 StartCoroutine(Eating());
             }
@@ -355,6 +382,13 @@ public class characterSlot : MonoBehaviour
         plate.SetActive(false);
         plate2.SetActive(true);
 
+        foreach(GameObject cuppy in cup)
+        {
+            cuppy.SetActive(false);
+        }
+
+        cup2.SetActive(true);
+
         if (moodState == 2)
         {
             leaveTip = true;
@@ -424,6 +458,14 @@ public class characterSlot : MonoBehaviour
 
             currentState++; //now waiting for food
             menuChoice.SetActive(false);
+
+            ticket.SetActive(true);
+
+            if(swiperBt.onScreen == 1)
+            {
+                swiperBt.checkOrder = true;
+            }
+
             mapAnimation.SetActive(true);
             if (lidAction)
             {
@@ -523,7 +565,10 @@ public class characterSlot : MonoBehaviour
                 StartCoroutine(forgetClean());
 
                 bye.Play();
+
                 plate2.SetActive(false);
+                cup2.SetActive(false);
+
                 occupied = false;
                 canPress = false;
                 sinkSc.cleanups++;

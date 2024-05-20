@@ -2848,7 +2848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: needRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: respawnTime

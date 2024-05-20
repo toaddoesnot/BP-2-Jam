@@ -79,8 +79,10 @@ public class manicLevels : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2f);
-        cg.clockSc.timerSc.PauseTimer();
+
+        timerSc.PauseTimer();//cg.clockSc.timerSc.PauseTimer();
         cg.clockSc.timeOn = false;
+
         
         blinkEf.SetActive(false);
 
@@ -92,13 +94,15 @@ public class manicLevels : MonoBehaviour
 
     public void StopBlinking()
     {
+        cg.clockSc.timeOn = true;
+
         dogsTalk.SetActive(false);
         blocker.SetActive(false);
         GetComponent<AudioSource>().Stop();
         bgSound.volume = 1f;
-
-        timerSc.PauseTimer();
-        cg.clockSc.timeOn = true;
+        
+        
+        timerSc.UnpauseTimer();
 
         //////cg.weFull = false;
         cg.StartCoroutine("ManicEpisode");

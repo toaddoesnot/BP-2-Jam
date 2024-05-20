@@ -16,6 +16,7 @@ public class screenSwiper : MonoBehaviour
     public Sprite room2;
 
     public GameObject exclamation;
+    public GameObject exclamation2;
     public GameObject[] notes;
     public bool sthActive;
 
@@ -41,6 +42,8 @@ public class screenSwiper : MonoBehaviour
 
     public bool stable;
     public stableLevels stableSc;
+
+    public bool checkOrder;
 
     void Start()
     {
@@ -77,6 +80,16 @@ public class screenSwiper : MonoBehaviour
         {
             exclamation.SetActive(false);
         }
+
+        if (checkOrder)
+        {
+            exclamation2.SetActive(true);
+        }
+        else
+        {
+            exclamation2.SetActive(false);
+        }
+
     }
 
     public void PressButton()
@@ -133,6 +146,10 @@ public class screenSwiper : MonoBehaviour
             if (addMoney)
             {
                 PaymentAnim();
+            }
+            if (checkOrder)
+            {
+                checkOrder = false;
             }
         }
     }

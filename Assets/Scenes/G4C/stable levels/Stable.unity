@@ -3665,7 +3665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4821651480919080667, guid: 4748658ecca8c2f45985f4b8a02a0dd1, type: 3}
       propertyPath: needRespawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4821651480919080667, guid: 4748658ecca8c2f45985f4b8a02a0dd1, type: 3}
       propertyPath: respawnTime
@@ -3948,7 +3948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1257493955239933309, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6196158105508843137, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_IsActive
@@ -4029,14 +4029,6 @@ PrefabInstance:
     - target: {fileID: 8895664065150025517, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8895664065214257089, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000048618
-      objectReference: {fileID: 0}
-    - target: {fileID: 8895664065214257089, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 282.9
       objectReference: {fileID: 0}
     - target: {fileID: 8895664065254752267, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4393,6 +4385,10 @@ PrefabInstance:
     - target: {fileID: 8895664065931124672, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: dayDuration
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895664065931124674, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: noTimer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8895664065931124674, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: Duration
@@ -5234,6 +5230,10 @@ PrefabInstance:
       propertyPath: menuSc
       value: 
       objectReference: {fileID: 8093862357222346261}
+    - target: {fileID: 9125511801183404864, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9178559860732455972, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 952.2242

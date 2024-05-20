@@ -23,15 +23,16 @@ public class miniTimer : MonoBehaviour
 
     public bool noTimer;
     public bool foodBurnt;
-    private bool paused;
+    
 
     void Awake()
     {
         if(timerType == 0)
         {
             burntTime = 6;
+            InitiateTimer();
         }
-        InitiateTimer();
+        //initiate was here
     }
 
     public void InitiateTimer()
@@ -44,16 +45,12 @@ public class miniTimer : MonoBehaviour
 
     public void PauseTimer()
     {
-        if (!paused)
-        {
-            StopAllCoroutines();
-            paused = true;
-        }
-        else
-        {
-            StartCoroutine(UpdateTimer());
-            paused = false;
-        }
+        StopAllCoroutines();
+    }
+     
+    public void UnpauseTimer()
+    {
+        StartCoroutine(UpdateTimer());
     }
 
     private void Begin(int Second)

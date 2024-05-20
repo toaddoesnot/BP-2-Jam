@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 6210426088280462891}
   - component: {fileID: 6210426088280462890}
   - component: {fileID: 2138770754928600553}
+  - component: {fileID: 6328684689154153910}
   m_Layer: 3
   m_Name: Plate_copy
   m_TagString: Plate
@@ -297,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -358,6 +359,22 @@ MonoBehaviour:
   ghostPlate: 0
   dirtyPs: []
   amDepr: 0
+--- !u!111 &6328684689154153910
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210426088280462892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3f3ab098d9e9fbf418df61f3fa0522bb, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3f3ab098d9e9fbf418df61f3fa0522bb, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8891423469939797857
 GameObject:
   m_ObjectHideFlags: 0
