@@ -161,8 +161,13 @@ public class customerGenerator : MonoBehaviour
                     FrancesDone = true;
                 }
             }
-            
-            customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];
+
+            customerSlots[randSeat].GetComponent<guestAssigner>().whichCustomer = randomCustomer;
+            customerSlots[randSeat].GetComponent<guestAssigner>().AssignGuest();
+
+            ///// REDUNDANT customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];
+            customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<emotionChanger>().bodies[randomCustomer].GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];//
+
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.SetActive(true);
             customerSlots[randSeat].GetComponent<characterSlot>().myGuest = randomCustomer;
 

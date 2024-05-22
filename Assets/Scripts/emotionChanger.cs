@@ -11,6 +11,7 @@ public class emotionChanger : MonoBehaviour
     public Sprite[] ratSprites;
 
     public GameObject[] heads; //bear, dog, rat, dog2
+    public GameObject[] bodies; //bear dog rat dog2
 
     public bool amActive;
     public int currentGuest;
@@ -25,6 +26,16 @@ public class emotionChanger : MonoBehaviour
 
         if (amActive)
         {
+            foreach (GameObject bod in bodies)
+            {
+                bod.SetActive(false);
+                bodies[currentGuest].SetActive(true);
+                if (currentGuest == 1)
+                {
+                    bodies[3].SetActive(true); //secondDog
+                }
+            }
+
             foreach (GameObject head in heads)
             {
                 head.SetActive(false);
