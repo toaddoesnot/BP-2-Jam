@@ -24,12 +24,13 @@ public class coaster : MonoBehaviour
     public Sprite[] dotSprites;
 
     public bool depress;
+    public GameObject outSign;
 
     void Start()
     {
         if (!depress)
         {
-            cupsLeft = 6;
+            cupsLeft = 5;
         }
         else
         {
@@ -39,21 +40,24 @@ public class coaster : MonoBehaviour
 
     void Update()
     {
-        if (rechargeCup > 0)
+        if (cupsLeft > 0) //rechargeCup
         {
             for (int i = 0; i < dots.Length; i++)
             {
-                if (i < rechargeCup)
+                if (i < cupsLeft) //rechargeCup
                 {
                     // Dot is full
                     dots[i].sprite = dotSprites[1];
+                    
                 }
                 else
                 {
                     // Dot is empty
                     dots[i].sprite = dotSprites[0];
+                    
                 }
             }
+            outSign.SetActive(false);
         }
         else
         {
@@ -62,6 +66,8 @@ public class coaster : MonoBehaviour
             {
                 dots[i].sprite = dotSprites[0];
             }
+
+            outSign.SetActive(true);
         }
 
         if (cupsLeft > 0)
@@ -100,7 +106,7 @@ public class coaster : MonoBehaviour
 
     public void Recharge()
     {
-        cupsLeft = 6;
+        cupsLeft = 5;
         rechargeCup--;
     }
 
@@ -194,11 +200,12 @@ public class coaster : MonoBehaviour
 
     public void AddIngredient()
     {
-        rechargeCup++;
+        //rechargeCup = 1;//++
 
-        if (rechargeCup == 1 && cupsLeft == 0)
-        {
-            Recharge();
-        }
+        //if (rechargeCup == 1 && cupsLeft == 0)
+        //{
+        //Recharge();
+        //}
+        cupsLeft = 5;
     }
 }

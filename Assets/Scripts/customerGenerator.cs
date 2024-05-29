@@ -167,6 +167,10 @@ public class customerGenerator : MonoBehaviour
 
             ///// REDUNDANT customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<emotionChanger>().bodies[randomCustomer].GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[randomCustomer];//
+            if(randomCustomer == 1)
+            {
+                customerSlots[randSeat].GetComponent<characterSlot>().myPeep.GetComponent<emotionChanger>().bodies[3].GetComponent<Image>().sprite = customerSlots[randSeat].GetComponent<characterSlot>().guestSprites[3];
+            }
 
             customerSlots[randSeat].GetComponent<characterSlot>().myPeep.SetActive(true);
             customerSlots[randSeat].GetComponent<characterSlot>().myGuest = randomCustomer;

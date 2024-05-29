@@ -54,11 +54,11 @@ public class ingridientSupply : MonoBehaviour
 
         if (dots != null && dots.Length > 0)
         {
-            if (recharges > 0)
+            if (recharges > 0 || ingLeft > 0)
             {
                 for (int i = 0; i < dots.Length; i++)
                 {
-                    if (i < recharges)
+                    if (i <= recharges) //recharges
                     {
                         // Dot is full
                         dots[i].sprite = dotSprites[1];
