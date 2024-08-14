@@ -19,6 +19,14 @@ public class guestRandomizer : MonoBehaviour
     public int manbody2;
     public int manbody3;
 
+    void Start()
+    {
+        if (emState == 1)
+        {
+            heads[2] = heads[0];
+        }
+    }
+
     public void RandomizeGuest()
     {
         if (emState == 0) //norm

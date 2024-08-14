@@ -81,6 +81,7 @@ public class customerGenerator : MonoBehaviour
 
     public void StartCustomers()
     {
+        StartCoroutine(FirstCustomer());
         InvokeRepeating("GenerateCustomer", 10f, 25f);
     }
 
@@ -92,7 +93,7 @@ public class customerGenerator : MonoBehaviour
 
     public void ManicCustomers()
     {
-        InvokeRepeating("GenerateCustomer", 4f, 12f);
+        InvokeRepeating("GenerateCustomer", 5f, 15f);
     }
 
     public IEnumerator ManicEpisode()
@@ -100,7 +101,7 @@ public class customerGenerator : MonoBehaviour
         yield return null;
         EmState = 2;
 
-        InvokeRepeating("GenerateCustomer", 1f, 8f);
+        InvokeRepeating("GenerateCustomer", 1f, 10f);
         string selfServe = "What if we let the guests sit themselves??";
         if (!subtitleSc.instComments.Contains(selfServe))
         {

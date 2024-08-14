@@ -16,6 +16,8 @@ public class guestAssigner : MonoBehaviour
     private int whichdDog1;
     private int whichdDog2;
 
+    public bool introLevels;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,16 +60,25 @@ public class guestAssigner : MonoBehaviour
         }
         if (whichCustomer == 2) //RATS
         {
-            if (this.GetComponent<characterSlot>().EmState == 1) //depr
+            if (introLevels)
             {
-                whichRat = Random.Range(1, 5);
+                whichRat = 5;
+                introLevels = false;
             }
             else
             {
-                whichRat = Random.Range(0, 5);
+                if (this.GetComponent<characterSlot>().EmState == 1) //depr
+                {
+                    whichRat = Random.Range(1, 5);
+                }
+                else
+                {
+                    whichRat = Random.Range(0, 5);
+                }
             }
- 
-            bears[whichRat].GetComponent<guestRandomizer>().RandomizeGuest();
+
+
+            rats[whichRat].GetComponent<guestRandomizer>().RandomizeGuest();
 
             this.GetComponent<characterSlot>().myPeep.GetComponent<emotionChanger>().ratSprites[0] = rats[whichRat].GetComponent<guestRandomizer>().heads[0];
             this.GetComponent<characterSlot>().myPeep.GetComponent<emotionChanger>().ratSprites[1] = rats[whichRat].GetComponent<guestRandomizer>().heads[1];

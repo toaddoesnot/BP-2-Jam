@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,6 +64,7 @@ public class menuManager : MonoBehaviour
 
     public void PlayVideo()
     {
+        SceneManager.LoadScene(6);
         //stars.SetActive(false);
         //video.SetActive(true);
     }

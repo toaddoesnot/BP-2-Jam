@@ -44,10 +44,12 @@ public class screenSwiper : MonoBehaviour
     public stableLevels stableSc;
 
     public bool checkOrder;
+    public GameObject thisButton;
 
     void Start()
     {
         
+
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         foodSc = GameObject.FindGameObjectWithTag("Inventory").GetComponent<FoodClasses>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
@@ -158,6 +160,7 @@ public class screenSwiper : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         blocker.SetActive(false);
+
     }
 
     public void PaymentAnim()

@@ -940,7 +940,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1556245324}
         m_TargetAssemblyTypeName: menuManager, Assembly-CSharp
-        m_MethodName: Load0
+        m_MethodName: PlayVideo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

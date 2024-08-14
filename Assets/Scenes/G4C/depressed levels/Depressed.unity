@@ -208,7 +208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: toaddoesnot.com/doppeldiner.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e010f02a892316a43bb2056b2876455a, type: 2}
   m_sharedMaterial: {fileID: 3855838409290012457, guid: e010f02a892316a43bb2056b2876455a, type: 2}
@@ -993,7 +993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thank you for playing the demo! Find out more about Doppel Diner at '
+  m_text: Thank you for playing the demo!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e010f02a892316a43bb2056b2876455a, type: 2}
   m_sharedMaterial: {fileID: 3855838409290012457, guid: e010f02a892316a43bb2056b2876455a, type: 2}
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4289053134
-  m_fontColor: {r: 0.8078432, g: 0.7568628, b: 0.64705884, a: 1}
+  m_fontColor: {r: 0.7882353, g: 0.03529412, b: 0.03529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5143,6 +5143,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3297030890454640494}
     - target: {fileID: 8895664066354009228, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: room1
+      value: 
+      objectReference: {fileID: 21300000, guid: 7275bd7366673cd4e856d459dc757fda, type: 3}
+    - target: {fileID: 8895664066354009228, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: room2
+      value: 
+      objectReference: {fileID: 21300000, guid: cadbe2261b7c08b4c80bd2a2941fec31, type: 3}
+    - target: {fileID: 8895664066354009228, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: menuSc
       value: 
       objectReference: {fileID: 8093862357222346261}
@@ -5150,6 +5158,10 @@ PrefabInstance:
       propertyPath: levelScript
       value: 
       objectReference: {fileID: 5726772373078885081}
+    - target: {fileID: 8895664066354009231, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7275bd7366673cd4e856d459dc757fda, type: 3}
     - target: {fileID: 8895664066356933123, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5612,15 +5624,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066818923997, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_Color.b
-      value: 0.7735849
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066818923997, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_Color.g
-      value: 0.7735849
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066818923997, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_Color.r
-      value: 0.7735849
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8895664066829227037, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_Color.b
@@ -6678,6 +6690,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 399347332254517811, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 424969463768460124, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7206,6 +7222,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7a38d2715e5d0ba438c7581289e6138e, type: 3}
+    - target: {fileID: 7499811136894131445, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814305901004101709, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9022168327399764742, guid: 9e0afc9fbc3aaa94a88d0cfe416787f2, type: 3}
       propertyPath: m_RootOrder
       value: 0

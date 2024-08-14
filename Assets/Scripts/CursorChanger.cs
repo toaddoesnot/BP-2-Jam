@@ -19,6 +19,7 @@ public class CursorChanger : MonoBehaviour
     public hand handSc;
 
     public bool nothingSelected;
+    public int manic;
 
     void Start()
     {
@@ -46,13 +47,18 @@ public class CursorChanger : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(_clickClip, _cam.transform.position);
             Cursor.SetCursor(cursorDefault2, Vector2.zero, CursorMode.ForceSoftware);
+
+            if (manic == 1)
+            {
+                this.GetComponent<manicShakes>().CanShakeS();
+            }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.ForceSoftware);
         }
-        
 
+        
 
 
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

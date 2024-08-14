@@ -17,25 +17,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/G4C/stable levels/Stable.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/G4C/stable levels/Stable3.unity
     guid: 92cfd2784b179b64c953063a961e60d1
   - enabled: 1
     path: Assets/Scenes/G4C/manic levels/Manic.unity
     guid: cb98bf49e19392a42914f130ddbda1af
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/G4C/manic levels/Manic5.unity
     guid: ae53c18d81b3e1c44a9e7da93899c20c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/G4C/manic levels/Manic6.unity
     guid: 06cc758b54d8f8e4c94313745ae94e22
   - enabled: 1
     path: Assets/Scenes/G4C/depressed levels/Depressed.unity
     guid: 829a8e0eee57e9048a66b9e458c553ae
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/G4C/depressed levels/Depressed8.unity
     guid: 276fb28c4f9bed04ea73bd5fef21b425
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/G4C/depressed levels/Depressed9.unity
     guid: c1f8aa53e14593e42b5990d9d7004073
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 5949bdd3a77d1874cb14bffc4e6ab915
   m_configObjects: {}

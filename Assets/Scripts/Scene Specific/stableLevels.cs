@@ -26,18 +26,21 @@ public class stableLevels : MonoBehaviour
 
     public TextMeshProUGUI nodeText;
     private bool amOpen;
+    public dishwasher trashSc;
 
     public void DrinkTutorial()
     {
         if (!gaveDrink)
         {
             drinkRequest.SetActive(true);
+            trashSc.cantTrash = true;
         }
         else
         {
             drinkRequest.SetActive(false);
             blocker.SetActive(false);
             openSign.interactable = true;
+            trashSc.cantTrash = false;
 
             Stable.ExecuteBlock("afterServing");
         }

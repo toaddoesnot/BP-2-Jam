@@ -618,5 +618,11 @@ public class characterSlot : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         cleanpl.SetActive(false);
+
+        plate.SetActive(false);
+        plate2.SetActive(false);
+        cup[0].SetActive(false); cup[1].SetActive(false); cup[2].SetActive(false);
+        cup2.SetActive(false);
+        ticket.SetActive(false);
     }
 }

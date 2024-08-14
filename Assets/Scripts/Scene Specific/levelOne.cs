@@ -46,6 +46,11 @@ public class levelOne : MonoBehaviour
 
     public TextMeshProUGUI nodeText;
 
+    public void JustNod()
+    {
+        nodeText.text = "Click on the left mouse button once to grab. Click on the right mouse button to drop.";
+    }
+
     void Update()
     {
 
@@ -73,7 +78,10 @@ public class levelOne : MonoBehaviour
         if (tutPhase == 1)
         {
             lids[1].SetActive(false);
-            nodeText.text = "Click on the left mouse button once to grab. Click on the right mouse button to drop.";
+            //nodeText.text = "Click on the left mouse button once to grab. Click on the right mouse button to drop.";
+
+            screenSc.thisButton.GetComponent<Button>().enabled = true;
+            //ENABLE ROOM SWITCHER
         }
         if (tutPhase == 2)
         {
@@ -159,6 +167,9 @@ public class levelOne : MonoBehaviour
 
                 FrancesStates = 2;
                 nodeText.text = "Take the order and wait for the guest to choose.";
+
+                screenSc.thisButton.GetComponent<Button>().enabled = false;
+                //DISABLE ROOM SWITCHER
             }
             else
             {
@@ -244,5 +255,6 @@ public class levelOne : MonoBehaviour
     {
         blackScreen.SetActive(true);
         bgSound.volume = 0.2f;
+        nodeText.text = "";
     }
 }

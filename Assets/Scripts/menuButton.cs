@@ -105,11 +105,11 @@ public class menuButton : MonoBehaviour ////cash register script
 
                 if (stoveUp.GetComponent<KitchenwareClicked>().myObject != null)
                 {
-                    stoveUp.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
+                    //////////stoveUp.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
                 }
                 if (stoveDown.GetComponent<KitchenwareClicked>().myObject != null)
                 {
-                    stoveDown.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
+                    ///////////stoveDown.GetComponent<KitchenwareClicked>().myObject.GetComponent<PolygonCollider2D>().enabled = false;
                 }
             }
             else

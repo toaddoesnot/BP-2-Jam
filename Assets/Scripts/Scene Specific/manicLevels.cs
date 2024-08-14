@@ -25,11 +25,20 @@ public class manicLevels : MonoBehaviour
     public levelManager levelSc;
 
     private hand handSc;
+    public FoodClasses foodSc; //
+    public Inventory inventorySc;
+
+    public manicShakes shakeSc;
+    public GameObject skies;
+    public GameObject accelerateSound;
+    public drinkManager drinkSc;
+
 
     void Start()
     {
         cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
+
     }
 
     void Update()
@@ -53,8 +62,8 @@ public class manicLevels : MonoBehaviour
         GetComponent<AudioSource>().Play();
         bgSound.volume = 0.2f;
 
-        yield return new WaitForSeconds(2f);
 
+        yield return new WaitForSeconds(2f);
 
 
         if (stoveUp.GetComponent<KitchenwareClicked>().HasItem)
@@ -67,6 +76,11 @@ public class manicLevels : MonoBehaviour
         }
 
         handSc.haveOrder = false;
+        foodSc.currentFoods = -1;
+        inventorySc.ToastCooked = false; inventorySc.SpaghettiCooked = false; inventorySc.EggCooked = false; inventorySc.PotatoCooked = false;
+        drinkSc.HasReadyCoffee = false; drinkSc.HasReadySoda = false; drinkSc.HasReadyOJ = false;
+
+
 
         cg.StopCoroutine("GenerateCustomer");
         foreach (GameObject order in cg.customerSlots)

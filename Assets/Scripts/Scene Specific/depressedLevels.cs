@@ -55,6 +55,7 @@ public class depressedLevels : MonoBehaviour
     public void FinishGame()
     {
         blankScreen.SetActive(true);
+        blank1.SetActive(true);
         StartCoroutine(finishingGame());
     }
 
@@ -65,6 +66,6 @@ public class depressedLevels : MonoBehaviour
         yield return new WaitForSeconds(5f);
         blank2.SetActive(true);
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(6);
     }
 }

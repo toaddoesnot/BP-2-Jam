@@ -40,7 +40,7 @@ public class TimeManager : MonoBehaviour
     public Image clockIm;
 
     public manicLevels manSc;
-
+    
 
     void Start()
     {
@@ -79,17 +79,29 @@ public class TimeManager : MonoBehaviour
 
             if(emotSt == 2)
             {
-                if (doneNoon is false)
+                // if (doneNoon is false)
+                //{
+
+                //}
+
+                if (currentTime >= 130f)
                 {
-                    if (currentTime >= 150f)
-                    {
-                        clockSound.Play();
-                        doneNoon = true;
-                
-                    }
+                    manSc.shakeSc.CanShakeS();
+                    manSc.skies.GetComponent<Animation>().Play("star_accelerate");
+                    manSc.accelerateSound.SetActive(true);
                 }
 
-                if(totalTime >= 75f && totalTime < 77f)
+                if (currentTime >= 150f)
+                {
+                    clockSound.Play();
+                    doneNoon = true;
+
+                    manSc.FinishLevel();
+
+
+                }
+
+                if (totalTime >= 75f && totalTime < 77f)
                 {
                     manSc.wentManic = true;
                 }
