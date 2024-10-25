@@ -54,16 +54,20 @@ public class foodCart : MonoBehaviour
 
             drinks = drinkSc.drinkHave;
 
-            if (emState == 0 && !stableSc.gaveDrink)
+            if (stableSc != null)
             {
-                if(drinkSc.HasReadyCoffee)
+                if (emState == 0 && !stableSc.gaveDrink)
                 {
-                    ping.Play();
-                    drinkSc.HasReadyCoffee = false;
-                    stableSc.gaveDrink = true;
-                    stableSc.DrinkTutorial();
+                    if (drinkSc.HasReadyCoffee)
+                    {
+                        ping.Play();
+                        drinkSc.HasReadyCoffee = false;
+                        stableSc.gaveDrink = true;
+                        stableSc.DrinkTutorial();
+                    }
                 }
             }
+            
 
             foreach (GameObject juke in jukes)
             {

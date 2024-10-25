@@ -21,7 +21,8 @@ public class hand : MonoBehaviour
     public Fungus.Flowchart myFlowchart;
 
     public int tutorialLvl; //0-all; 1-toasts; 2-toasts+soups; 3=toasts+soups+drinks;
-    
+    public int drinkNeed; //0-no, 1-maybe, 2-always
+
     //public TextMeshProUGUI moneyText;
     //public int moneyAm;
 

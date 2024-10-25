@@ -17,6 +17,7 @@ TagManager:
   - foodcart
   - narrative
   - plates
+  - goal
   layers:
   - Default
   - TransparentFX

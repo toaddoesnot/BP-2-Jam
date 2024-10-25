@@ -40,7 +40,7 @@ public class TimeManager : MonoBehaviour
     public Image clockIm;
 
     public manicLevels manSc;
-    
+
 
     void Start()
     {
@@ -50,7 +50,8 @@ public class TimeManager : MonoBehaviour
 
         if (needTip)
         {
-            InvokeRepeating("openTip", 2f, 10f);
+            openTip();
+            InvokeRepeating("openTip", 0f, 10f);
         }
 
         if (emotSt == 2)

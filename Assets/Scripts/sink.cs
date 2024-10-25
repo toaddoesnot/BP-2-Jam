@@ -24,6 +24,7 @@ public class sink : MonoBehaviour
 
     public lightSwitch switchSc;
     public int emState;
+    public bool blocked;
 
     // Update is called once per frame
     void Update()
@@ -70,7 +71,7 @@ public class sink : MonoBehaviour
 
     public void RequestCleanup()
     {
-        if (!requested && cleanups != 0 && traySc.canDrop)
+        if (!requested && cleanups != 0 && traySc.canDrop && !blocked)
         {
             StartCoroutine(Cleaning());
             requested = true;

@@ -161,6 +161,10 @@ public class customerGenerator : MonoBehaviour
                     customerSlots[randSeat].GetComponent<characterSlot>().eatingTime = 1f;
                     FrancesDone = true;
                 }
+                if (GetComponent<hand>().tutorialLvl == 4)
+                {
+                    customerSlots[randSeat].GetComponent<characterSlot>().eatingTime = 1f; ///new stuff!!!!!!!!!!!
+                }
             }
 
             customerSlots[randSeat].GetComponent<guestAssigner>().whichCustomer = randomCustomer;

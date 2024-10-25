@@ -26,11 +26,16 @@ public class levelManager : MonoBehaviour
     public instructionalComments subtitleSc;
     public customerGenerator cg;
 
+    public GoalSystem goalSc; //goalAchieved 
+
+
     void Start()
     {
         handSc = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<hand>();
         cg = GameObject.FindGameObjectWithTag("OrderManager").GetComponent<customerGenerator>();
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
+
+        goalSc = GameObject.FindGameObjectWithTag("goal").GetComponent<GoalSystem>();
     }
 
     void Update()
@@ -89,7 +94,7 @@ public class levelManager : MonoBehaviour
         {
             if (handSc.tutorialLvl is 100)
             {
-                SceneManager.LoadScene(0); //for now sample scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //for now sample scene
             }
             else
             {
@@ -103,6 +108,42 @@ public class levelManager : MonoBehaviour
     public void BackMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void NormalEnd()
+    {
+        if (sinkSc.cleanups == 0 && screenSc.onScreen == 0 && !sinkSc.anyDirty && cg.weEmpty)
+        {
+            if (goalSc.goalAchieved)
+            {
+                NewLevel();
+            }
+            else
+            {
+                string goalFailed = "We didn't meet the goal today. Looks like we have to work harder! ";
+                if (!subtitleSc.playing && !subtitleSc.instComments.Contains(goalFailed))
+                {
+                    subtitleSc.instComments.Add(goalFailed);
+                    subtitleSc.Subtitles();
+                }
+                Replay();
+            }
+        }
+        else
+        {
+            string closeDiner = "Let's collect and wash the dishes first!";
+            if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+            {
+                subtitleSc.instComments.Add(closeDiner);
+                subtitleSc.Subtitles();
+            }
+        }
+    }
+
+    public IEnumerator SlowFail()
+    {
+        yield return new WaitForSeconds(3f);
+
     }
 
     public void StableEnd()

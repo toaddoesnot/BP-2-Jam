@@ -47,6 +47,7 @@ public class characterSlot : MonoBehaviour
     public miniTimer timerSc; //timerSc.InitiateTimer();
     public GameObject myNewTimer;
     public menuButton menuSc;
+    public GoalSystem goalSc;
 
     public int myPrice;
     public int myTPrice;
@@ -549,13 +550,21 @@ public class characterSlot : MonoBehaviour
                     if (leaveTip)
                     {
                         menuSc.moneyLeft += myPrice;
+                        goalSc.currentMoney += myPrice; //!!!!!!!!!!!!!!!!!!!!
+
                         tipSc.tipsTotal += myTPrice;
+                        ////////goalSc.currentMoney += myTPrice; //!!!!!!!!!!!!!!!!!!!!
+                        goalSc.AddToGoal();
+
                         swiperBt.addMoney = true;
                         paid = true;
                     }
                     else
                     {
                         menuSc.moneyLeft += myPrice;
+                        goalSc.currentMoney += myPrice; //!!!!!!!!!!!!!!!!!!!!
+                        goalSc.AddToGoal();
+
                         swiperBt.addMoney = true;
                         paid = true; 
                     }

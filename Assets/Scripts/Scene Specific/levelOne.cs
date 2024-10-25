@@ -57,7 +57,7 @@ public class levelOne : MonoBehaviour
 
         if (foodSc.dishesServed == 4)
         {
-            if (!done)
+            if (!done && screenSc.onScreen == 0)
             {
                 Ready2Close();
                 done = true;
@@ -125,6 +125,7 @@ public class levelOne : MonoBehaviour
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
         cameraScreen.ForcePress();
+
     }
 
     public void StopEeping()
@@ -211,8 +212,12 @@ public class levelOne : MonoBehaviour
     {
         if (!times)
         {
+            sinkSc.blocked = true;
+            screenSc.thisButton.GetComponent<Button>().enabled = false;
+
             StartCoroutine(ClosingDiner());
             times = true;
+
         }
         else
         {
@@ -223,20 +228,24 @@ public class levelOne : MonoBehaviour
 
     IEnumerator ClosingDiner()
     {
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(1f);
+
         FrancesDiner.ExecuteBlock("beforeclosing");
         // InvokeRepeating("RepeatInstructions", 10f, 10f);
-        nodeText.text = "Collect all the dishes and tell me when to wash them. Then we should be ready!";
+        //nodeText.text = "Collect all the dishes and tell me when to wash them. Then we should be ready!"; /////NEWWWWWWWWWWWWWW
+        sinkSc.blocked = false;
+        screenSc.thisButton.GetComponent<Button>().enabled = true;
     }
 
     void RepeatInstructions()
     {
-        string closeDiner = "Collect all the dishes and tell me when to wash them. Then we should be ready!";
-        if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
-        {
-            subtitleSc.instComments.Add(closeDiner);
-            subtitleSc.Subtitles();
-        }
+        //string closeDiner = "Collect all the dishes and tell me when to wash them. Then we should be ready!"; /////NEWWWWWWWWWWWWWW
+        //if (!subtitleSc.playing && !subtitleSc.instComments.Contains(closeDiner))
+       // {
+        //    subtitleSc.instComments.Add(closeDiner);
+        //    subtitleSc.Subtitles();
+       // }
     }
 
     IEnumerator ClosingDiner2()

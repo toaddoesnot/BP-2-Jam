@@ -4364,10 +4364,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8895664067153061807, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db1a7eca136d8a04998a9b3c2f9fdcc3, type: 3}
     - target: {fileID: 8895664067154281837, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: recharges
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8895664067163962213, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db1a7eca136d8a04998a9b3c2f9fdcc3, type: 3}
     - target: {fileID: 8895664067163962234, guid: 46d17c45827a29d4eb5c747f164da4a4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

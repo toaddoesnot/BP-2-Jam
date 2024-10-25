@@ -119,7 +119,27 @@ public class orderGenerator : MonoBehaviour
                             PotatoONoodle = Random.Range(0, 2);
                             firstCourse = Random.Range(0, 3);
                             secondCourse = Random.Range(0, 3);
-                            drinks = Random.Range(0, 3); //always drink
+
+                            if(handSc.drinkNeed == 0)//no drink
+                            {
+                                drinks = 3;
+                            }
+                            else
+                            {
+                                if (handSc.drinkNeed == 1)//maybe drink
+                                {
+                                    drinks = Random.Range(0, 4);
+                                }
+                                else
+                                {
+                                    if (handSc.drinkNeed == 2)//always drink
+                                    {
+                                        drinks = Random.Range(0, 3); //always drink
+                                    }
+                                }
+                            }
+                            
+
                             randomOrder = Random.Range(0, 2);
                             Order();
 

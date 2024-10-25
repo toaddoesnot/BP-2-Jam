@@ -3401,7 +3401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPop: {fileID: 4551654675859675535}
   menuOpen: 0
-  moneyLeft: 10
+  moneyLeft: 0
   moneyDisplay: {fileID: 4551654675918245161}
   closeSound: {fileID: 4551654676405966311}
   openSound: {fileID: 4551654676205590374}
