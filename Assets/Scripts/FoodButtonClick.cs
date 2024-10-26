@@ -184,10 +184,21 @@ public class FoodButtonClick : MonoBehaviour, IPointerDownHandler
         string noBase = "You need a base first: pasta, potatoes, or a French toast.";
         string wrongIngredient = "Oops! These don’t go together.";
         string raw = "You might want to cook it first.";
+        string burnt = "Looks a little crispy. Better in the trashcan.";
 
-        
+
         if (FoodSelected.currentFoods == -1)
         {
+            if (inventory.sthBurnt)
+            {
+                if (!subtitleSc.instComments.Contains(burnt))
+                {
+                    subtitleSc.instComments.Add(burnt);
+                    subtitleSc.Subtitles();
+                }
+            }
+
+
             if (HaveToast is false)
             {
                 if (inventory.ToastCooked && !inventory.sthBurnt)

@@ -4223,6 +4223,7 @@ MonoBehaviour:
   goalAmount: 0
   currentMoney: 0
   goalAchieved: 0
+  tutorial: 0
 --- !u!1 &6478781512931857257
 GameObject:
   m_ObjectHideFlags: 0

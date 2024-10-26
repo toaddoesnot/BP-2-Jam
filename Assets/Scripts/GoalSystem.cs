@@ -13,6 +13,7 @@ public class GoalSystem : MonoBehaviour
     public float currentMoney;
 
     public bool goalAchieved;
+    public bool tutorial;
 
     /// ////// public menuButton menuSc; public int moneyLeft; 
 
@@ -20,22 +21,28 @@ public class GoalSystem : MonoBehaviour
     void Start()
     {
         goalAchieved = false;
-        moneySlider.maxValue = goalAmount;
-        moneySlider.value = 0;  
+        if (!tutorial)
+        {
+            moneySlider.maxValue = goalAmount;
+            moneySlider.value = 0;
 
-        flagIcon.SetActive(true);
-        tickIcon.SetActive(false);
+            flagIcon.SetActive(true);
+            tickIcon.SetActive(false);
+        }
     }
 
     public void AddToGoal()
     {
-        moneySlider.value = currentMoney; // Update the slider value
-
-        // Check if the goal is reached
-        if (currentMoney >= goalAmount)
+        if (!tutorial)
         {
-            GoalCompleted(); // Call the function to handle goal completion
-        }
+            moneySlider.value = currentMoney; // Update the slider value
+
+            // Check if the goal is reached
+            if (currentMoney >= goalAmount)
+            {
+                GoalCompleted(); // Call the function to handle goal completion
+            }
+        }  
     }
 
 

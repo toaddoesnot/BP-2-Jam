@@ -80,6 +80,8 @@ public class characterSlot : MonoBehaviour
 
     public bool lidAction; 
     public levelOne tutLvl;
+    public int chosenBeh; //0 - neutral, 1 - overstay, 2 - not stay
+
 
     void Awake()
     {

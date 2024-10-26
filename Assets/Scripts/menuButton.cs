@@ -52,7 +52,7 @@ public class menuButton : MonoBehaviour ////cash register script
     {
         if(stateEm == 0 || stateEm == 1)
         {
-            moneyDisplay.text = "$" + moneyLeft.ToString();
+            moneyDisplay.text = moneyLeft.ToString();
         }
 
         if (menuOpen)

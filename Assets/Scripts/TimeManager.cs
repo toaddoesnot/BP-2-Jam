@@ -41,7 +41,6 @@ public class TimeManager : MonoBehaviour
 
     public manicLevels manSc;
 
-
     void Start()
     {
         subtitleSc = GameObject.FindGameObjectWithTag("narrative").GetComponent<instructionalComments>();
@@ -58,10 +57,24 @@ public class TimeManager : MonoBehaviour
         {
             OpenDiner();
         }
-        
+
     }
 
-    void openTip()
+    public void TurnTipOn()
+    {
+        openSign.GetComponent<Button>().interactable = true;
+
+        needTip = true;
+
+        if (needTip)
+        {
+            openTip();
+            InvokeRepeating("openTip", 0f, 10f);
+        }
+
+    }
+
+    public void openTip()
     {
         string openDiner = "Click on the sign to open the diner";
         if (!subtitleSc.instComments.Contains(openDiner))

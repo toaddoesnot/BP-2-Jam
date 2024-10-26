@@ -336,6 +336,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196122520}
   m_CullTransparentMesh: 1
+--- !u!114 &233990976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3493729266722322255, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+  m_PrefabInstance: {fileID: 3493729266837741138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &240833644 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5434970372885683676, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -1311,11 +1322,15 @@ GameObject:
   - component: {fileID: 1855160684}
   - component: {fileID: 1855160686}
   - component: {fileID: 1855160685}
-  - component: {fileID: 1855160689}
   - component: {fileID: 1855160688}
   - component: {fileID: 1855160687}
   - component: {fileID: 1855160690}
   - component: {fileID: 1855160691}
+  - component: {fileID: 1855160701}
+  - component: {fileID: 1855160700}
+  - component: {fileID: 1855160699}
+  - component: {fileID: 1855160698}
+  - component: {fileID: 1855160697}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1336,11 +1351,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 184.73056, y: 79.61468}
+  scrollPos: {x: 265.59018, y: 82.65913}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 532
-  zoom: 1
+  zoom: 0.94000006
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -1348,8 +1363,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1855160669}
-  selectedCommands: []
+  - {fileID: 1855160629}
+  selectedCommands:
+  - {fileID: 1855160697}
   variables: []
   description: 
   stepPause: 0
@@ -1466,6 +1482,9 @@ MonoBehaviour:
   - {fileID: 1855160609}
   - {fileID: 1855160608}
   - {fileID: 1855160684}
+  - {fileID: 1855160701}
+  - {fileID: 1855160700}
+  - {fileID: 1855160699}
   - {fileID: 1855160614}
   - {fileID: 1855160615}
   suppressAllAutoSelections: 0
@@ -1499,7 +1518,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 190.97632
-    y: -38.113785
+    y: -39.113785
     width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1511,6 +1530,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 1855160688}
   - {fileID: 1855160687}
+  - {fileID: 1855160698}
   - {fileID: 1855160630}
   suppressAllAutoSelections: 0
 --- !u!114 &1855160614
@@ -1648,8 +1668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 304.22675
-    y: 18.939066
+    x: 311.22675
+    y: 20.875237
     width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1682,7 +1702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 0
-  storyText: After what you ask? Em... Never mind...
+  storyText: The management will surely provide you with good compensation!
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -1724,9 +1744,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 190.30923
-    y: 15.019013
-    width: 64
+    x: 186.30923
+    y: 39.019012
+    width: 65.319145
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1736,7 +1756,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1855160628}
-  - {fileID: 1855160689}
+  - {fileID: 1855160697}
   - {fileID: 1855160627}
   - {fileID: 1855160690}
   suppressAllAutoSelections: 0
@@ -2018,7 +2038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 424.01413
+    x: 422.01413
     y: 23.439066
     width: 60
     height: 40
@@ -2311,7 +2331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 91
   indentLevel: 0
-  storyText: See you tomorrow! Hopefully, they will send someone by then.
+  storyText: I apologize again for such a sudden start. See you tomorrow! Hopefully,
+    they will send someone by then.
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -2338,7 +2359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 561.78955
+    x: 562.8534
     y: 48.718742
     width: 60
     height: 40
@@ -2370,7 +2391,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 550.3349
     y: -18.969158
-    width: 86
+    width: 90.85106
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2660,7 +2681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 103
   indentLevel: 0
-  storyText: We were just about to close though...
+  storyText: "Where is\u2026 everybody?"
   description: 
   character: {fileID: 731203321}
   portrait: {fileID: 0}
@@ -2733,8 +2754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 131
   indentLevel: 0
-  storyText: Hey! I saw the close sign but the lights were on, so.... You will take
-    my order, right?
+  storyText: Is there a meteoroid storm I missed? Doppel Diner never closes!
   description: 
   character: {fileID: 114049402}
   portrait: {fileID: 0}
@@ -2762,33 +2782,6 @@ MonoBehaviour:
   itemId: 130
   indentLevel: 0
   sayDialog: {fileID: 453735063}
---- !u!114 &1855160689
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855160600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 129
-  indentLevel: 0
-  storyText: Look at you, Doppel Diner might fnially see a silver lining!
-  description: 
-  character: {fileID: 731203321}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1855160690
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2837,6 +2830,144 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1855160697
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 137
+  indentLevel: 0
+  storyText: "Oh no, we can\u2019t make the guests wait in Doppel Diner. You have
+    to step in!"
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1855160698
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 136
+  indentLevel: 0
+  storyText: "Let\u2019s agree that this door was just too tight. Now, the menu,
+    please!"
+  description: 
+  character: {fileID: 114049402}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1855160699
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 135
+  indentLevel: 0
+  storyText: I apologize, we have to postpone your onboarding. I need to run some
+    protocols immediately to make our diner full-staffed again!
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1855160700
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  storyText: AND provide a 2-week notice!
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1855160701
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855160600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 133
+  indentLevel: 0
+  storyText: This is a disaster! They forgot to turn me back on.
+  description: 
+  character: {fileID: 731203321}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1890052761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3493729265755074279, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
@@ -2932,6 +3063,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 492543799291429748, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 782577152806694161, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2942,7 +3077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1007790483289799984, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1165648598753423496, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: myScene
@@ -3015,6 +3150,10 @@ PrefabInstance:
     - target: {fileID: 1165648600712270894, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420508884644314502, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1912531404447613530, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_IsActive
@@ -3904,6 +4043,10 @@ PrefabInstance:
       propertyPath: stoveDown
       value: 
       objectReference: {fileID: 3493729266837741142}
+    - target: {fileID: 3493729266090992296, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: moneyDisplay
+      value: 
+      objectReference: {fileID: 233990976}
     - target: {fileID: 3493729266094939582, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4565,8 +4708,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4738039744703875079, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: tutorial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738039744703875079, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: goalAmount
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859669612222015021, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: menuDialog
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5055111721608887467, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4602,6 +4753,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467108985089284499, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133449485020995216, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9182275638072297198, guid: 5274fab8798b08c4c8a7cb61385ae05e, type: 3}
